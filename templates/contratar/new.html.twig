@@ -1,0 +1,10 @@
+{% extends 'template.html.twig' %}
+
+
+{% block body %}
+    <h1>Create new Contratar</h1>
+
+    {{ include('contratar/_form.html.twig') }}
+
+    <a href="{{ path('contratar_index') }}">back to list</a>
+{% endblock %}

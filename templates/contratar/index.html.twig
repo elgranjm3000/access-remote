@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contratar index{% endblock %}
+
+{% block body %}
+    <h1>Contratar index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Detalles</th>
+                <th>Fecha</th>
+                <th>Lugar</th>
+                <th>Pagar</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Correo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contratar in contratars %}
+            <tr>
+                <td>{{ contratar.id }}</td>
+                <td>{{ contratar.detalles }}</td>
+                <td>{{ contratar.fecha ? contratar.fecha|date('Y-m-d') : '' }}</td>
+                <td>{{ contratar.lugar }}</td>
+                <td>{{ contratar.pagar }}</td>
+                <td>{{ contratar.nombre }}</td>
+                <td>{{ contratar.telefono }}</td>
+                <td>{{ contratar.correo }}</td>
+                <td>
+                    <a href="{{ path('contratar_show', {'id': contratar.id}) }}">show</a>
+                    <a href="{{ path('contratar_edit', {'id': contratar.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('contratar_new') }}">Create new</a>
+{% endblock %}

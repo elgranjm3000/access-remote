@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contratar{% endblock %}
+
+{% block body %}
+    <h1>Contratar</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contratar.id }}</td>
+            </tr>
+            <tr>
+                <th>Detalles</th>
+                <td>{{ contratar.detalles }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ contratar.fecha ? contratar.fecha|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Lugar</th>
+                <td>{{ contratar.lugar }}</td>
+            </tr>
+            <tr>
+                <th>Pagar</th>
+                <td>{{ contratar.pagar }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ contratar.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ contratar.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Correo</th>
+                <td>{{ contratar.correo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('contratar_index') }}">back to list</a>
+
+    <a href="{{ path('contratar_edit', {'id': contratar.id}) }}">edit</a>
+
+    {{ include('contratar/_delete_form.html.twig') }}
+{% endblock %}
