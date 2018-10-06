@@ -1,0 +1,68 @@
+ 
+<div class="mw1000 center-block">
+ <div class="admin-form theme-primary">
+                <div class="panel heading-border panel-primary">
+                  <div class="panel-body bg-light">
+
+
+ {{ form_start(form, {'attr': {'id': 'form-ui'}}) }}
+                 <div id="spy1" class="section-divider mb40"><span></span></div>
+		        	 <div class="row">
+                        <div class="col-md-8">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.nombreEmpresa, {'attr': {'class': 'gui-input','placeholder':"Nombre de empresa"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                               {{ form_widget(form.contacto, {'attr': {'class': 'gui-input','placeholder':'Contacto'}}) }}
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.telefonoMovil, {'attr': {'class': 'gui-input','placeholder':"Telefono Movil"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.telefonoOfic, {'attr': {'class': 'gui-input','placeholder':"Telefono de Oficina"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.telefonoParticular, {'attr': {'class': 'gui-input','placeholder':"Telefono Particular"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+                      
+                      </div>
+                          <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+
+ 
+
+		        </div>
+{{ form_end(form) }} 
+
+</div>
+</div>
+</div>
+
+</div>

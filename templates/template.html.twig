@@ -2,18 +2,27 @@
 <html lang="en">
   <head>
     <!-- Site Title-->
-    <title>Monster Dashboard</title>
+    <title>{% block title %}{% endblock %}</title>
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
     <!-- Stylesheets-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin-tools/admin-forms/css/admin-forms.css') }}">
+
+            <link rel="stylesheet" type="text/css" href="{{ asset('plugins/css/footable.core.min.css')}} ">
+
+
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,600,700%7CMontserrat:400,700">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/skin/default_skin/css/theme.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
         <!--[if lt IE 10]>
     <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <script src="js/html5shiv.min.js"></script>
         <![endif]-->
+
+ 
   </head>
   <body>
     <!-- Start: Main-->
@@ -149,17 +158,73 @@
         <!-- Begin: Content-->
        
     </div>
+
+    <style type="text/css">
+  
+      .ladda-button[data-loading] {
+        overflow: visible;
+      }
+      
+      .ladda-button[data-style=contract][data-loading] {
+        width: 35px;
+      }
+
+
+</style>
     <!-- core scripts-->
+
+
     <script src="{{ asset('plugins/core.min.js') }}"></script>
     <!-- Theme Javascript-->
     <script src="{{ asset('assets/js/utility/utility.js') }}"></script>
     <script src="{{ asset('assets/js/demo/demo.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script type="text/javascript" src="https://fooplugins.github.io/FooTable/compiled/footable.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <script type="text/javascript">
       jQuery(document).ready(function () {
         "use strict";
         // Init Theme Core
         Core.init();
+        // Init Demo JS
+               Demo.init();
+ Ladda.bind('.ladda-button', {
+          timeout: 2000
+        });
+
+        // Init FooTable Examples
+       /* $('.footable').footable({
+"filtering": {
+        "enabled": true
+      }
+    });*/
+
+   Ladda.bind('.progress-button', {
+          callback: function (instance) {
+            var progress = 0;
+            var interval = setInterval(function () {
+              progress = Math.min(progress + Math.random() * 0.1, 1);
+              instance.setProgress(progress);
+              if (progress === 1) {
+                instance.stop();
+                clearInterval(interval);
+              }
+            }, 200);
+          }
+        });
+
+
+
+        $('.footable').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        }
+    });
+
+ // Bind progress buttons and simulate loading progress. Note: Button still requires ".ladda-button" clas
+
+
+
       });
     </script>
   </body>

@@ -1,0 +1,136 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Listado de Proveedores{% endblock %}
+  {% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Proveedor</a></li>                            
+              <li class="crumb-trail">Listado</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('proveedores_new') }}">Crear nuevo proveedor</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+      {% endblock %}
+
+
+
+{% block body %}
+   {# <h1>Proveedores index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NombreEmpresa</th>
+                <th>Contacto</th>
+                <th>TelefonoMovil</th>
+                <th>TelefonoOfic</th>
+                <th>TelefonoParticular</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for proveedore in proveedores %}
+            <tr>
+                <td>{{ proveedore.id }}</td>
+                <td>{{ proveedore.nombreEmpresa }}</td>
+                <td>{{ proveedore.contacto }}</td>
+                <td>{{ proveedore.telefonoMovil }}</td>
+                <td>{{ proveedore.telefonoOfic }}</td>
+                <td>{{ proveedore.telefonoParticular }}</td>
+                <td>
+                    <a href="{{ path('proveedores_show', {'id': proveedore.id}) }}">show</a>
+                    <a href="{{ path('proveedores_edit', {'id': proveedore.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('proveedores_new') }}">Create new</a>
+    #}
+  <!-- Begin: Content-->
+        <section id="content" class="table-layout animated fadeIn">
+          <!-- begin: .tray-left-->
+        
+          <!-- begin: .tray-center-->
+          <div class="tray tray-center">
+            <!-- Panel with: Basic Footable-->
+          
+            <!-- Panel with: Data Filter-->
+     
+            <!-- Panel with: Pagination-->
+            <div id="spy3" class="panel">
+             
+              <div class="panel-body pn">
+                <table class="table footable">
+
+                  <thead>
+                    <tr>
+                        <th>Id</th>
+                <th>NombreEmpresa</th>
+                <th>Contacto</th>
+                <th>TelefonoMovil</th>
+                <th>TelefonoOfic</th>
+                <th>TelefonoParticular</th>
+                <th>actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                     {% for proveedore in proveedores %}
+            <tr>
+                <td>{{ proveedore.id }}</td>
+                <td>{{ proveedore.nombreEmpresa }}</td>
+                <td>{{ proveedore.contacto }}</td>
+                <td>{{ proveedore.telefonoMovil }}</td>
+                <td>{{ proveedore.telefonoOfic }}</td>
+                <td>{{ proveedore.telefonoParticular }}</td>
+                <td>
+                    <a href="{{ path('proveedores_show', {'id': proveedore.id}) }}" title="Visualizar" ><span class="glyphicon glyphicon-search"></span></a>
+                    <a href="{{ path('proveedores_edit', {'id': proveedore.id}) }}" title="Editar"><span class="glyphicon glyphicon-edit"></span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+                  </tbody>
+                  <tfoot class="footer-menu">
+                    <tr>
+                      <td colspan="7">
+                        <nav class="text-center">
+                          <ul class="pagination hide-if-no-paging"></ul>
+                        </nav>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+            <!-- Panel with: Expanding Rows-->
+          
+            <!-- DEMO - breaks used to extend container - DEMO--><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          </div>
+        </section>
+{% endblock %}
+
+
