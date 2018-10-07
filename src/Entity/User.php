@@ -1,6 +1,8 @@
 <?php
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -44,9 +46,15 @@ class User implements UserInterface, \Serializable
      */
     private $plainPassword;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Clientes", mappedBy="IdUsuario")
+     */
+    private $clientes;
+
     public function __construct()
     {
         $this->isActive = true;
+        $this->clientes = new ArrayCollection();
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
     }
@@ -154,4 +162,40 @@ class User implements UserInterface, \Serializable
 
         return $this;
     }
+
+    /**
+     * @return Collection|Clientes[]
+     */
+    public function getClientes(): Collection
+    {
+        return $this->clientes;
+    }
+
+    public function addCliente(Clientes $cliente): self
+    {
+        if (!$this->clientes->contains($cliente)) {
+            $this->clientes[] = $cliente;
+            $cliente->setIdUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCliente(Clientes $cliente): self
+    {
+        if ($this->clientes->contains($cliente)) {
+            $this->clientes->removeElement($cliente);
+            // set the owning side to null (unless already changed)
+            if ($cliente->getIdUsuario() === $this) {
+                $cliente->setIdUsuario(null);
+            }
+        }
+
+        return $this;
+    }
+
+     public function __toString()
+   {
+      return strval($this->getId());
+   }
 }

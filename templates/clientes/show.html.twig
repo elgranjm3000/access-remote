@@ -1,0 +1,70 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Clientes{% endblock %}
+
+{% block body %}
+    <h1>Clientes</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cliente.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ cliente.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Nit</th>
+                <td>{{ cliente.nit }}</td>
+            </tr>
+            <tr>
+                <th>ContactoPrincipal</th>
+                <td>{{ cliente.contactoPrincipal }}</td>
+            </tr>
+            <tr>
+                <th>Correo</th>
+                <td>{{ cliente.correo }}</td>
+            </tr>
+            <tr>
+                <th>FechaNacimiento</th>
+                <td>{{ cliente.fechaNacimiento ? cliente.fechaNacimiento|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Comentarios</th>
+                <td>{{ cliente.comentarios }}</td>
+            </tr>
+            <tr>
+                <th>Zona</th>
+                <td>{{ cliente.zona }}</td>
+            </tr>
+            <tr>
+                <th>Dpto</th>
+                <td>{{ cliente.dpto }}</td>
+            </tr>
+            <tr>
+                <th>Municipio</th>
+                <td>{{ cliente.municipio }}</td>
+            </tr>
+            <tr>
+                <th>TelefonoMovil</th>
+                <td>{{ cliente.telefonoMovil }}</td>
+            </tr>
+            <tr>
+                <th>TelefonoLocal</th>
+                <td>{{ cliente.telefonoLocal }}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ cliente.direccion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('clientes_index') }}">back to list</a>
+
+    <a href="{{ path('clientes_edit', {'id': cliente.id}) }}">edit</a>
+
+    {{ include('clientes/_delete_form.html.twig') }}
+{% endblock %}

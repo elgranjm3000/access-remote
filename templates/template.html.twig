@@ -81,7 +81,7 @@
               <li class="list-group-item"><a href="#" class="animated animated-short fadeInUp"><span class="fa fa-user"></span> Friends<span class="label label-warning">6</span></a></li>
               <li class="list-group-item"><a href="#" class="animated animated-short fadeInUp"><span class="fa fa-bell"></span> Notifications</a></li>
               <li class="list-group-item"><a href="#" class="animated animated-short fadeInUp"><span class="fa fa-gear"></span> Settings</a></li>
-              <li class="dropdown-footer"><a href="pages_login.html"><span class="fa fa-power-off pr5"></span> Logout</a></li>
+              <li class="dropdown-footer"><a href="{{path('security_logout')}}"><span class="fa fa-power-off pr5"></span> Cerrar sistema</a></li>
             </ul>
           </li>
         </ul>
@@ -105,16 +105,14 @@
             <li class="sidebar-label pt35"></li>
             
             
-            <li><a href="#" class="accordion-toggle menu-open"><span class="fa fa-columns"></span><span class="sidebar-title">Administracion</span><span class="caret"></span></a>
-              <ul class="nav sub-nav">
-                <li><a href="#" class="accordion-toggle menu-open"><span class="fa fa-arrows-h"></span>Inicio<span class="caret"></span></a>
-                  <ul class="nav sub-nav">
-                    <li class="active"><a href="layout_sidebar-left-fixed.html">Inicio</a></li>
-                   
-                  </ul>
+            <li><a title="Proveedores" href="{{ path('proveedores_index') }}" ><span class="fa fa-building"></span><span class="sidebar-title">Proveedores</span><span class="caret"></span></a>
+              
                 </li>
                 
+                <li><a title="Clientes" href="{{ path('clientes_index') }}" ><span class="fa fa-child"></span><span class="sidebar-title">Clientes</span><span class="caret"></span></a>
               
+                </li>
+                
             
              
                
