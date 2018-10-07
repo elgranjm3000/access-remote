@@ -1,13 +1,43 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Edit Clientes{% endblock %}
+{% block title %}Editar Registro - Clientes{% endblock %}
+
+
+{% block header %}
+
+ <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="{{ path('clientes_index') }}">Clientes</a></li>                            
+              <li class="crumb-trail">Editar registro</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('clientes_index') }}">Listado de Clientes</a></li>
+              <li>  {{ include('clientes/_delete_form.html.twig') }}</li>
+              
+            </ul>
+          </div>
+         
+        </header>
+
+<div class="content-header">
+                <h2><b class="text-primary">Editar Clientes</b>
+                </h2>
+              
+              </div>
+{% endblock %}
+
 
 {% block body %}
-    <h1>Edit Clientes</h1>
+    
 
-    {{ include('clientes/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('clientes/_form.html.twig', {'button_label': 'Actualizar'}) }}
 
-    <a href="{{ path('clientes_index') }}">back to list</a>
 
-    {{ include('clientes/_delete_form.html.twig') }}
 {% endblock %}

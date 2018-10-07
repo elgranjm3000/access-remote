@@ -1,27 +1,58 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Clientes index{% endblock %}
+{% block title %}Listado de clientes{% endblock %}
+
+{% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Clientes</a></li>                            
+              <li class="crumb-trail">Listado</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('clientes_new') }}">Crear nuevo cliente</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+{% endblock %}
+
 
 {% block body %}
-    <h1>Clientes index</h1>
-
-    <table class="table">
+   <section id="content" class="table-layout animated fadeIn">
+          <!-- begin: .tray-left-->
+        
+          <!-- begin: .tray-center-->
+          <div class="tray tray-center">
+            <!-- Panel with: Basic Footable-->
+          
+            <!-- Panel with: Data Filter-->
+     
+            <!-- Panel with: Pagination-->
+            <div id="spy3" class="panel">
+             
+              <div class="panel-body pn">
+    <table class="table footable">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>Nit</th>
-                <th>ContactoPrincipal</th>
-                <th>Correo</th>
-                <th>FechaNacimiento</th>
-                <th>Comentarios</th>
+                <th>Nit</th>                
+                <th>Correo</th>                                
                 <th>Zona</th>
                 <th>Dpto</th>
-                <th>Municipio</th>
-                <th>TelefonoMovil</th>
-                <th>TelefonoLocal</th>
-                <th>Direccion</th>
-                <th>actions</th>
+                <th>Acciones</th>
+              
             </tr>
         </thead>
         <tbody>
@@ -29,29 +60,26 @@
             <tr>
                 <td>{{ cliente.id }}</td>
                 <td>{{ cliente.nombre }}</td>
-                <td>{{ cliente.nit }}</td>
-                <td>{{ cliente.contactoPrincipal }}</td>
+                <td>{{ cliente.nit }}</td>                
                 <td>{{ cliente.correo }}</td>
-                <td>{{ cliente.fechaNacimiento ? cliente.fechaNacimiento|date('Y-m-d') : '' }}</td>
-                <td>{{ cliente.comentarios }}</td>
+                {#<td>{{ cliente.fechaNacimiento ? cliente.fechaNacimiento|date('Y-m-d') : '' }}</td>#}
                 <td>{{ cliente.zona }}</td>
-                <td>{{ cliente.dpto }}</td>
-                <td>{{ cliente.municipio }}</td>
-                <td>{{ cliente.telefonoMovil }}</td>
-                <td>{{ cliente.telefonoLocal }}</td>
-                <td>{{ cliente.direccion }}</td>
+                <td>{{ cliente.dpto }}</td>                
                 <td>
-                    <a href="{{ path('clientes_show', {'id': cliente.id}) }}">show</a>
-                    <a href="{{ path('clientes_edit', {'id': cliente.id}) }}">edit</a>
+                    <a href="{{ path('clientes_show', {'id': cliente.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
+                    <a href="{{ path('clientes_edit', {'id': cliente.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="14">no records found</td>
+                <td colspan="6">No hay registro de clientes</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('clientes_new') }}">Create new</a>
+    </div>
+</div>
+</div>
+</section>
 {% endblock %}

@@ -1,4 +1,167 @@
-{{ form_start(form) }}
+{#{{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{{ form_end(form) }}#}
+
+
+<div class="mw1000 center-block">
+ <div class="admin-form theme-primary">
+                <div class="panel heading-border panel-primary">
+                  <div class="panel-body bg-light">
+
+
+ {{ form_start(form, {'attr': {'id': 'form-ui'}}) }}
+                 <div id="spy1" class="section-divider mb40"><span></span></div>
+		        	 <div class="row">
+                        <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.nombre, {'attr': {'class': 'gui-input','placeholder':"Nombre de cliente"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                               {{ form_widget(form.nit, {'attr': {'class': 'gui-input','placeholder':'NIT'}}) }}
+
+                          </div>
+                        </div>
+
+
+  						<div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.contactoPrincipal, {'attr': {'class': 'gui-input','placeholder':"Contacto principal"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div class="row">
+                      
+
+                        <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.correo, {'attr': {'class': 'gui-input','placeholder':"Correo"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.fechaNacimiento, {'attr': {'class': 'gui-input js-datepicker','placeholder':"Fecha de nacimiento"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+ 				
+
+
+                          <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.IdUsuario, {'attr': {'class': 'gui-input','placeholder':"Telefono movil"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+                      
+                      </div>
+
+                      <div class="row">
+                      		 <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.dpto, {'attr': {'class': 'gui-input','placeholder':"Departamento"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+
+                         <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.municipio, {'attr': {'class': 'gui-input','placeholder':"Municipio"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+
+					<div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.zona, {'attr': {'class': 'gui-input','placeholder':"Zona"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                      
+                      </div>
+
+                      <div class="row">
+                      		 <div class="col-md-6">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.telefonoLocal, {'attr': {'class': 'gui-input','placeholder':"Telefono local"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                           <div class="col-md-6">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.telefonoMovil, {'attr': {'class': 'gui-input','placeholder':"Telefono movil"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                       
+                      </div>
+
+                      <div class="row">
+                      	  <div class="col-md-6">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.direccion, {'attr': {'class': 'gui-input','placeholder':"Direccion"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                         <div class="col-md-6">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.comentarios, {'attr': {'class': 'gui-input','placeholder':"comentarios"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                      		 
+                      </div>
+                          <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+
+ 
+
+		        </div>
+{{ form_end(form) }} 
+
+</div>
+</div>
+</div>
+
+</div>

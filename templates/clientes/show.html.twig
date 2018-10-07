@@ -2,25 +2,59 @@
 
 {% block title %}Clientes{% endblock %}
 
-{% block body %}
-    <h1>Clientes</h1>
 
-    <table class="table">
+  {% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Clientes</a></li>                            
+              <li class="crumb-trail">Detalles</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('clientes_index') }}">Listado de Clientes</a></li>
+              <li class="active"><a href="{{ path('clientes_edit', {'id': cliente.id}) }}">Editar Cliente</a></li>
+              <li>{{ include('clientes/_delete_form.html.twig') }}</li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+      {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="panel">
+              <div class="panel-heading"><span class="panel-title"><span class="fa fa-info"></span>Detalles de clientes</span>
+                
+              </div>
+            </div>
+    <div id="spy1" class="row">
+<div class="col-sm-12">
+                <div class="panel">
+                  <div class="panel-body pn">
+                    
+                      <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ cliente.id }}</td>
-            </tr>
+           
             <tr>
                 <th>Nombre</th>
                 <td>{{ cliente.nombre }}</td>
             </tr>
             <tr>
-                <th>Nit</th>
+                <th>NIT</th>
                 <td>{{ cliente.nit }}</td>
             </tr>
             <tr>
-                <th>ContactoPrincipal</th>
+                <th>Contacto Principal</th>
                 <td>{{ cliente.contactoPrincipal }}</td>
             </tr>
             <tr>
@@ -28,19 +62,19 @@
                 <td>{{ cliente.correo }}</td>
             </tr>
             <tr>
-                <th>FechaNacimiento</th>
+                <th>Fecha de nacimiento</th>
                 <td>{{ cliente.fechaNacimiento ? cliente.fechaNacimiento|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
                 <th>Comentarios</th>
-                <td>{{ cliente.comentarios }}</td>
+                <td>{{ cliente.comentarios|raw }}</td>
             </tr>
             <tr>
                 <th>Zona</th>
                 <td>{{ cliente.zona }}</td>
             </tr>
             <tr>
-                <th>Dpto</th>
+                <th>Departament</th>
                 <td>{{ cliente.dpto }}</td>
             </tr>
             <tr>
@@ -48,23 +82,22 @@
                 <td>{{ cliente.municipio }}</td>
             </tr>
             <tr>
-                <th>TelefonoMovil</th>
+                <th>Telefono Movil</th>
                 <td>{{ cliente.telefonoMovil }}</td>
             </tr>
             <tr>
-                <th>TelefonoLocal</th>
+                <th>Telefono Local</th>
                 <td>{{ cliente.telefonoLocal }}</td>
             </tr>
             <tr>
                 <th>Direccion</th>
-                <td>{{ cliente.direccion }}</td>
+                <td>{{ cliente.direccion|raw }}</td>
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('clientes_index') }}">back to list</a>
-
-    <a href="{{ path('clientes_edit', {'id': cliente.id}) }}">edit</a>
-
-    {{ include('clientes/_delete_form.html.twig') }}
+               
+                </div>
+              </div>
+          </div>
+      </div>
 {% endblock %}
