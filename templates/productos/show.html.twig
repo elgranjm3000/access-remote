@@ -1,0 +1,84 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Productos-detalles{% endblock %}
+
+  {% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Productos</a></li>                            
+              <li class="crumb-trail">Detalles</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('productos_new') }}">Crear de Productos</a></li>
+              <li class="active"><a href="{{ path('productos_edit', {'id': producto.id}) }}">Editar Producto</a></li>
+              <li>{{ include('productos/_delete_form.html.twig') }}</li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+      {% endblock %}
+
+{% block body %}
+    <div class="panel">
+              <div class="panel-heading"><span class="panel-title"><span class="fa fa-info"></span>Detalles de productos</span>
+                
+              </div>
+            </div>
+    <div id="spy1" class="row">
+<div class="col-sm-12">
+                <div class="panel">
+                  <div class="panel-body pn">
+                    
+                      <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ producto.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ producto.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Unidad de Medida</th>
+                <td>{{ producto.unidadMedida }}</td>
+            </tr>
+            <tr>
+                <th>Costo</th>
+                <td>{{ producto.costo }}</td>
+            </tr>
+            <tr>
+                <th>Precio de venta</th>
+                <td>{{ producto.precioVenta }}</td>
+            </tr>
+            <tr>
+                <th>Comentarios</th>
+                <td>{{ producto.comentarios|raw }}</td>
+            </tr>
+            <tr>
+                <th>Cantidad de Presentacion</th>
+                <td>{{ producto.cantidadPresentacion }}</td>
+            </tr>
+            <tr>
+                    <th>Familia</th>
+                    <td>{{ producto.idfamilia.nombre }}</td>
+            </tr>
+        </tbody>
+    </table>
+               
+                </div>
+              </div>
+          </div>
+      </div>
+{% endblock %}

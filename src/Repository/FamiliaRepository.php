@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\FechaNacimiento;
+use App\Entity\Familia;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method FechaNacimiento|null find($id, $lockMode = null, $lockVersion = null)
- * @method FechaNacimiento|null findOneBy(array $criteria, array $orderBy = null)
- * @method FechaNacimiento[]    findAll()
- * @method FechaNacimiento[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Familia|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Familia|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Familia[]    findAll()
+ * @method Familia[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class FechaNacimientoRepository extends ServiceEntityRepository
+class FamiliaRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, FechaNacimiento::class);
+        parent::__construct($registry, Familia::class);
     }
 
 //    /**
-//     * @return FechaNacimiento[] Returns an array of FechaNacimiento objects
+//     * @return Familia[] Returns an array of Familia objects
 //     */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class FechaNacimientoRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?FechaNacimiento
+    public function findOneBySomeField($value): ?Familia
     {
         return $this->createQueryBuilder('f')
             ->andWhere('f.exampleField = :val')
