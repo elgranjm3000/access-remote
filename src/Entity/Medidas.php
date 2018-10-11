@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\FamiliaRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\MedidasRepository")
  */
-class Familia
+class Medidas
 {
     /**
      * @ORM\Id()
@@ -21,10 +21,10 @@ class Familia
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nombre;
+    private $unidad;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Productos", mappedBy="idfamilia", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Productos", mappedBy="idmedidas")
      */
     private $productos;
 
@@ -38,14 +38,14 @@ class Familia
         return $this->id;
     }
 
-    public function getNombre(): ?string
+    public function getUnidad(): ?string
     {
-        return $this->nombre;
+        return $this->unidad;
     }
 
-    public function setNombre(string $nombre): self
+    public function setUnidad(string $unidad): self
     {
-        $this->nombre = $nombre;
+        $this->unidad = $unidad;
 
         return $this;
     }
@@ -62,7 +62,7 @@ class Familia
     {
         if (!$this->productos->contains($producto)) {
             $this->productos[] = $producto;
-            $producto->setIdfamilia($this);
+            $producto->setIdmedidas($this);
         }
 
         return $this;
@@ -73,15 +73,11 @@ class Familia
         if ($this->productos->contains($producto)) {
             $this->productos->removeElement($producto);
             // set the owning side to null (unless already changed)
-            if ($producto->getIdfamilia() === $this) {
-                $producto->setIdfamilia(null);
+            if ($producto->getIdmedidas() === $this) {
+                $producto->setIdmedidas(null);
             }
         }
 
         return $this;
     }
-      public function __toString()
-   {
-      return strval($this->getId());
-   }
 }

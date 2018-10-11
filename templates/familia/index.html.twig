@@ -1,6 +1,6 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Listado de Productos{% endblock %}
+{% block title %}Listado de Familia{% endblock %}
 
   {% block header %}
 
@@ -8,7 +8,7 @@
 
              <div class="topbar-left">
             <ol class="breadcrumb">
-              <li class="crumb-active"><a href="#">Productos</a></li>                            
+              <li class="crumb-active"><a href="#">Familia</a></li>                            
               <li class="crumb-trail">Listado</li>
             </ol>
           </div>
@@ -17,7 +17,7 @@
          <header id="topbar" class="ph10">
           <div class="topbar-left">
             <ul class="nav nav-list nav-list-topbar pull-left">
-              <li class="active"><a href="{{ path('productos_new') }}">Crear nuevo producto</a></li>
+              <li class="active"><a href="{{ path('familia_new') }}">Crear nueva familia</a></li>
               
             </ul>
           </div>
@@ -29,6 +29,7 @@
 
 
 {% block body %}
+
         <section id="content" class="table-layout animated fadeIn">
         <!-- begin: .tray-left-->
 
@@ -42,42 +43,31 @@
         <div id="spy3" class="panel">
 
         <div class="panel-body pn">
-        <table class="table footableproductos">
+        <table class="table footable">
         <thead>
             <tr>
-                
                 <th>Nombre</th>
-                <th>Unidad/Medida</th>
-                <th>Familia</th>
-                <th>Costo</th>
-                <th>Precio de Venta</th>                
-                <th>Cantidad de Presentacion</th>
-                <th>Acciones</th>
+                <th>Accion</th>
             </tr>
         </thead>
         <tbody>
-        {% for producto in productos %}
+        {% for familium in familias %}
             <tr>
-                
-                <td>{{ producto.nombre }}</td>
-                <td>{{ producto.idmedidas.unidad }}</td>
-                <td>{{ producto.idfamilia.nombre }}</td>
-                <td>{{ producto.costo }}</td>
-                <td>{{ producto.precioVenta }}</td>
-                
-                <td>{{ producto.cantidadPresentacion }}</td>
+                <td>{{ familium.nombre }}</td>
                 <td>
-                    <a href="{{ path('productos_show', {'id': producto.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
-                    <a href="{{ path('productos_edit', {'id': producto.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                    <a href="{{ path('familia_show', {'id': familium.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
+                    <a href="{{ path('familia_edit', {'id': familium.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">No hay registro</td>
+                <td colspan="3">No hay registro</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
+   </table>
 
      </div>
             </div>

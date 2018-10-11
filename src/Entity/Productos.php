@@ -21,10 +21,7 @@ class Productos
      */
     private $nombre;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $unidadMedida;
+    
 
     /**
      * @ORM\Column(type="float")
@@ -50,6 +47,11 @@ class Productos
      * @ORM\ManyToOne(targetEntity="App\Entity\Familia", inversedBy="productos")
      */
     private $idfamilia;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Medidas", inversedBy="productos")
+     */
+    private $idmedidas;
 
     public function getId(): ?int
     {
@@ -139,4 +141,21 @@ class Productos
 
         return $this;
     }
+
+    public function getIdmedidas(): ?Medidas
+    {
+        return $this->idmedidas;
+    }
+
+    public function setIdmedidas(?Medidas $idmedidas): self
+    {
+        $this->idmedidas = $idmedidas;
+
+        return $this;
+    }
+
+        public function __toString()
+   {
+      return strval($this->getId());
+   }
 }

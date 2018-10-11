@@ -1,0 +1,39 @@
+
+
+
+
+<div class="mw1000 center-block">
+ <div class="admin-form theme-primary">
+                <div class="panel heading-border panel-primary">
+                  <div class="panel-body bg-light">
+
+
+ {{ form_start(form, {'attr': {'id': 'form-ui'}}) }}
+                 <div id="spy1" class="section-divider mb40"><span></span></div>
+		        	 <div class="row">
+                        <div class="col-md-12">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.nombre, {'attr': {'class': 'gui-input','placeholder':"Nombre de familia"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+                      
+                      </div>
+
+
+
+                      
+                          <button type="submit" class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+
+ 
+
+		        </div>
+{{ form_end(form) }} 
+
+</div>
+</div>
+</div>
+
+</div>

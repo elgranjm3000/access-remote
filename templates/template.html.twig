@@ -119,6 +119,10 @@
                  <li><a title="Clientes" href="{{ path('productos_index') }}" ><span class="fa fa-product-hunt" aria-hidden="true"></span><span class="sidebar-title">Productos</span><span class="caret"></span></a>
               
                 </li>
+
+                <li><a title="Clientes" href="{{ path('familia_index') }}" ><span class="fa fa-users" aria-hidden="true"></span><span class="sidebar-title">Familia</span><span class="caret"></span></a>
+              
+                </li>
                 
             
              
@@ -229,8 +233,39 @@
         });
 
         $('.footable').DataTable({
+           "bLengthChange":false,
+                  "bFilter":true,
+                  "bInfo":false,
+                  "bAutoWidth":false,
         "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        }
+    });
+
+
+        $('.footableproductos').DataTable({
+           
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        },initComplete: function () {
+            this.api().columns(2).every( function () {
+                var column = this;
+                var select = $('<select class="form-control"><option value=""></option></select>')
+                    .appendTo( $(column.header()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
         }
     });
 
