@@ -123,6 +123,11 @@
                 <li><a title="Clientes" href="{{ path('familia_index') }}" ><span class="fa fa-users" aria-hidden="true"></span><span class="sidebar-title">Familia</span><span class="caret"></span></a>
               
                 </li>
+
+                <li><a title="Clientes" href="{{ path('almacen_index') }}" ><span class="fa fa-cube" aria-hidden="true"></span><span class="sidebar-title">Almacenes</span><span class="caret"></span></a>
+              
+                </li>
+                
                 
             
              
@@ -278,5 +283,8 @@
 
       });
     </script>
+
+    {% block addscript %}
+    {% endblock %}
   </body>
 </html>

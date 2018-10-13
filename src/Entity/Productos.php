@@ -53,6 +53,13 @@ class Productos
      */
     private $idmedidas;
 
+
+      /**
+     * @ORM\Column(type="string",nullable=true)
+     *     
+     */
+    private $brochure;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -152,6 +159,21 @@ class Productos
         $this->idmedidas = $idmedidas;
 
         return $this;
+    }
+
+     public function getBrochure()
+    {
+        return $this->brochure;
+    }
+
+    public function setBrochure($brochure)
+    {
+
+      if($brochure != "" ){
+        $this->brochure = $brochure;
+
+        return $this;
+      }
     }
 
         public function __toString()

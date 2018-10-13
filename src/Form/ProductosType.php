@@ -10,6 +10,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 
 class ProductosType extends AbstractType
 {
@@ -47,6 +49,7 @@ class ProductosType extends AbstractType
     // 'multiple' => true,
     // 'expanded' => true,
 ))
+            ->add('brochure', FileType::class, array('data_class' => null))
         ;
     }
 

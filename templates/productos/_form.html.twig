@@ -77,6 +77,23 @@
                         
                       </div>
 
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="section">
+                            <label class="field">Imagen del Producto
+                              {{ form_widget(form.brochure, {'attr': {'class': 'gui-input filearchivo','placeholder':"Imagen de producto","onchange":"loadFile(event)" }}) }}
+
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+
+                          <img id="output" class="img-responsive" {% if producto.brochure != "" %} src="{{ asset('uploads/brochures') }}/{{producto.brochure}}" {% endif %}/>
+
+                        </div>
+                        
+                      </div>
+
                       
                           <button type="submit" class="btn btn-success">{{ button_label|default('Guardar') }}</button>
 
@@ -85,6 +102,13 @@
 		        </div>
 {{ form_end(form) }} 
 
+
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+  };
+</script>
 </div>
 </div>
 </div>

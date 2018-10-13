@@ -38,3 +38,11 @@
     {{ include('productos/_form.html.twig') }}
 
 {% endblock %}
+
+ {% block addscript %}
+ <script type="text/javascript">
+jQuery(document).ready(function () {
+   $('.filearchivo').removeAttr("required");
+   });
+ </script>
+    {% endblock %}
