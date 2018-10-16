@@ -36,6 +36,11 @@ class Facturas
      */
     private $comentarios;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\MovimientosDepositos", inversedBy="idFactura")
+     */
+    private $movimientosDepositos;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +90,18 @@ class Facturas
     public function setComentarios(string $comentarios): self
     {
         $this->comentarios = $comentarios;
+
+        return $this;
+    }
+
+    public function getMovimientosDepositos(): ?MovimientosDepositos
+    {
+        return $this->movimientosDepositos;
+    }
+
+    public function setMovimientosDepositos(?MovimientosDepositos $movimientosDepositos): self
+    {
+        $this->movimientosDepositos = $movimientosDepositos;
 
         return $this;
     }

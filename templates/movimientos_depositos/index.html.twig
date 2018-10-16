@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MovimientosDepositos index{% endblock %}
+
+{% block body %}
+    <h1>MovimientosDepositos index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FechaMovimiento</th>
+                <th>Monto</th>
+                <th>Banco</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for movimientos_deposito in movimientos_depositos %}
+            <tr>
+                <td>{{ movimientos_deposito.id }}</td>
+                <td>{{ movimientos_deposito.fechaMovimiento ? movimientos_deposito.fechaMovimiento|date('Y-m-d') : '' }}</td>
+                <td>{{ movimientos_deposito.monto }}</td>
+                <td>{{ movimientos_deposito.banco }}</td>
+                <td>
+                    <a href="{{ path('movimientos_depositos_show', {'id': movimientos_deposito.ids}) }}">show</a>
+                    <a href="{{ path('movimientos_depositos_edit', {'id': movimientos_deposito.ids}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('movimientos_depositos_new') }}">Create new</a>
+{% endblock %}
