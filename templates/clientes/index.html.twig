@@ -66,9 +66,9 @@
                 <td>{{ cliente.zona }}</td>
                 <td>{{ cliente.dpto }}</td>                
                 <td>
-                    <a title="Detalles clientes" href="{{ path('clientes_show', {'id': cliente.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
-                    <a title="Editar cliente" href="{{ path('clientes_edit', {'id': cliente.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
-                     <a title="Crear facturas" href="{{ path('facturas_new', {'cliente': cliente.id}) }}"><span class="glyphicon glyphicon-tasks "></span></a>
+                    <a title="Detalles clientes" data-toggle="tooltip" href="{{ path('clientes_show', {'id': cliente.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
+                    <a data-toggle="tooltip" title="Editar cliente" href="{{ path('clientes_edit', {'id': cliente.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                     <a data-toggle="tooltip" title="Crear facturas" href="{{ path('facturas_new', {'cliente': cliente.id}) }}"><span class="glyphicon glyphicon-tasks "></span></a>
                 </td>
             </tr>
         {% else %}

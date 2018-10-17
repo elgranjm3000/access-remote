@@ -63,7 +63,7 @@ class Productos
     private $brochure;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\DetallesFactura", mappedBy="idproducto")
+     * @ORM\OneToMany(targetEntity="App\Entity\DetallesFactura", mappedBy="idproducto",cascade={"persist", "remove"})
      */
     private $detallesFacturas;
 

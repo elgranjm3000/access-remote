@@ -95,6 +95,7 @@ class ComposerStaticInite636396b04629a6494bf67ee6735ac83
             'Psr\\Cache\\' => 10,
             'PhpParser\\' => 10,
             'PackageVersions\\' => 16,
+            'PUGX\\AutocompleterBundle\\' => 25,
         ),
         'M' => 
         array (
@@ -382,6 +383,10 @@ class ComposerStaticInite636396b04629a6494bf67ee6735ac83
         'PackageVersions\\' => 
         array (
             0 => __DIR__ . '/..' . '/ocramius/package-versions/src/PackageVersions',
+        ),
+        'PUGX\\AutocompleterBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pugx/autocompleter-bundle/src',
         ),
         'Monolog\\' => 
         array (

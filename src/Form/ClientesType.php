@@ -48,11 +48,11 @@ class ClientesType extends AbstractType
 
     // uses the User.username property as the visible option string
     'choice_label' => 'username',
-     'placeholder' => 'Seleccione un usuario'
+     'placeholder' => 'Seleccione un producto',
 
     // used to render a select box, check boxes or radios
     // 'multiple' => true,
-    // 'expanded' => true,
+     'expanded' => true,
 ))
         ;
     }

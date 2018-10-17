@@ -41,8 +41,17 @@
 
 
 {% block addscript %}
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+
 <script type="text/javascript">
       jQuery(document).ready(function (){
+
+
+
           $( ".ingresar" ).click(function() {
     var t = $('.footable').DataTable();
 
@@ -62,6 +71,30 @@
                     $(".comentarios").val()+"<input type='hidden' value='"+comentarios+"' name='comentarios[]'>"
                   ] ).draw( false );
           });
+
+
+          var table = $('.footable').DataTable();
+ 
+    $('.footable tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+
+            var btn = this;
+            $tr = $(this).closest('tr');
+            var data = table.row($tr).data();
+            //var id = $tr.find("#idcuenta").val();
+            //console.log(id);
+        //    var pathname = getAbsolutePath();   
+
+            window.location.href = "edit/"+id;
+    
+          
+        }
+    } );
       });
 
 </script>

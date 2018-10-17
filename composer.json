@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "friendsofsymfony/ckeditor-bundle": "^1.2",
+        "pugx/autocompleter-bundle": "^1.4",
         "sensio/framework-extra-bundle": "^5.2",
         "symfony/asset": "*",
         "symfony/console": "*",

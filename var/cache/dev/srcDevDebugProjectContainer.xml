@@ -23,6 +23,7 @@
       <parameter key="MakerBundle">Symfony\Bundle\MakerBundle\MakerBundle</parameter>
       <parameter key="WebServerBundle">Symfony\Bundle\WebServerBundle\WebServerBundle</parameter>
       <parameter key="FOSCKEditorBundle">FOS\CKEditorBundle\FOSCKEditorBundle</parameter>
+      <parameter key="PUGXAutocompleterBundle">PUGX\AutocompleterBundle\PUGXAutocompleterBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -80,6 +81,10 @@
       <parameter key="FOSCKEditorBundle" type="collection">
         <parameter key="path">/var/www/html/access/vendor/friendsofsymfony/ckeditor-bundle/src</parameter>
         <parameter key="namespace">FOS\CKEditorBundle</parameter>
+      </parameter>
+      <parameter key="PUGXAutocompleterBundle" type="collection">
+        <parameter key="path">/var/www/html/access/vendor/pugx/autocompleter-bundle/src</parameter>
+        <parameter key="namespace">PUGX\AutocompleterBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -291,6 +296,8 @@
       </parameter>
     </parameter>
     <parameter key="env(VAR_DUMPER_SERVER)">127.0.0.1:9912</parameter>
+    <parameter key="pugx_autocompleter.autocomplete.class">PUGX\AutocompleterBundle\Form\Type\AutocompleteType</parameter>
+    <parameter key="pugx_autocompleter.filter_autocomplete.class">PUGX\AutocompleterBundle\Form\Type\AutocompleteFilterType</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -793,6 +800,7 @@
         <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
         <argument>FOS\CKEditorBundle\Form\Type</argument>
+        <argument></argument>
       </argument>
       <argument type="collection">
         <argument>App\Form\AlmacenType</argument>
@@ -810,6 +818,8 @@
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type\EntityType</argument>
         <argument>FOS\CKEditorBundle\Form\Type\CKEditorType</argument>
+        <argument>PUGX\AutocompleterBundle\Form\Type\AutocompleteType</argument>
+        <argument>PUGX\AutocompleterBundle\Form\Type\AutocompleteFilterType</argument>
       </argument>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\HttpFoundation\Type\FormTypeHttpFoundationExtension</argument>
@@ -1033,7 +1043,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.lC.UoSH"/>
+      <argument type="service" id=".service_locator.DgAmzLV"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.http_foundation"/>
@@ -2061,14 +2071,6 @@
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
-        <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
@@ -4550,6 +4552,17 @@
       <tag name="twig.extension"/>
       <argument type="service" id="fos_ck_editor.renderer"/>
     </service>
+    <service id="pugx_autocompleter.autocomplete" class="PUGX\AutocompleterBundle\Form\Type\AutocompleteType" public="true">
+      <tag name="form.type" alias="autocomplete"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="pugx_autocompleter.filter_autocomplete" class="PUGX\AutocompleterBundle\Form\Type\AutocompleteFilterType" public="true">
+      <tag name="form.type" alias="filter_autocomplete"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="pugx_autocompleter.filter.doctrine_subscriber" class="PUGX\AutocompleterBundle\Listener\FilterSubscriber" public="true">
+      <tag name="kernel.event_subscriber"/>
+    </service>
     <service id=".instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\AlmacenController" class="App\Controller\AlmacenController" public="false" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AlmacenController" class="App\Controller\AlmacenController" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AlmacenController" class="App\Controller\AlmacenController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5014,9 +5027,11 @@
       <argument type="service" id="debug.argument_resolver.variadic.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.lC.UoSH" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.DgAmzLV" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="PUGX\AutocompleterBundle\Form\Type\AutocompleteType" type="service" id="pugx_autocompleter.autocomplete"/>
+        <argument key="PUGX\AutocompleterBundle\Form\Type\AutocompleteFilterType" type="service" id="pugx_autocompleter.filter_autocomplete"/>
         <argument key="App\Form\AlmacenType" type="service" id="App\Form\AlmacenType"/>
         <argument key="App\Form\ClientesType" type="service" id="App\Form\ClientesType"/>
         <argument key="App\Form\ContratarType" type="service" id="App\Form\ContratarType"/>

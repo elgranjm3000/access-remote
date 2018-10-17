@@ -10,6 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
+
 class DetallesFacturaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -26,7 +27,7 @@ class DetallesFacturaType extends AbstractType
 
     // uses the User.username property as the visible option string
     'choice_label' => 'nombre',
-     'placeholder' => 'Seleccione Productos'
+     'placeholder' => 'Seleccione un usuario'
 
     // used to render a select box, check boxes or radios
     // 'multiple' => true,

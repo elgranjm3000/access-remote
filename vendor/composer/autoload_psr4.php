@@ -68,6 +68,7 @@ return array(
     'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'PackageVersions\\' => array($vendorDir . '/ocramius/package-versions/src/PackageVersions'),
+    'PUGX\\AutocompleterBundle\\' => array($vendorDir . '/pugx/autocompleter-bundle/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Fig\\Link\\' => array($vendorDir . '/fig/link-util/src'),
     'Facebook\\WebDriver\\' => array($vendorDir . '/facebook/webdriver/lib'),

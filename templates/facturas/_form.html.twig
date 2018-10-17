@@ -48,7 +48,7 @@
                 <div class="row">
                           <div class="col-md-12">
                             <div class="section">
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" title="Incluir productos de su preferencia">
                                   <span class=" fa fa-plus-square-o" aria-hidden="true"></span> Agregar Productos
                                 </button>
                                 <table class="table footable">
@@ -121,7 +121,7 @@
         {{ form_start(form1) }}
 
       <div class="form-group">
-          {{ form_widget(form1.idproducto, {'attr': {'class': 'gui-input producto','placeholder':"COMENTARIOS"}}) }}
+          {{ form_widget(form1.idproducto, {'attr': {'class': 'gui-input producto form-control','placeholder':"COMENTARIOS"}}) }}
 
         </div>
 

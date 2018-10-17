@@ -9,12 +9,45 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Productos;
 
 /**
  * @Route("/detalles/factura")
  */
 class DetallesFacturaController extends AbstractController
 {
+
+
+     /**
+     * @Route("/search", name="detalles_factura_search", methods="GET",  defaults={"_format"="json"})
+     */
+     public function searchAuthor(Request $request)
+    {
+        $q = $request->query->get('q'); // use "term" instead of "q" for jquery-ui
+       // $results = $this->getDoctrine()->getRepository(Productos::class)->findLikeNombre($q);
+
+            $em = $this->getDoctrine()->getManager();
+
+        $dql_query = $em->createQuery("
+                                SELECT o FROM App:Productos o
+                                WHERE                             
+                                o.nombre LIKE '".$q."%'
+        ");
+        $results = $dql_query->getResult();
+
+        return $this->render('detalles_factura/select.json.twig', ['results' => $results]);
+    }
+
+
+    /**
+     * @Route("/search/author", name="detalles_factura_searchauthor", methods="GET",  defaults={"_format"="json"})
+     */
+    public function getAuthor($id = null)
+    {
+        $author = $this->getDoctrine()->getRepository(Productos::class)->find($id);
+
+        return $this->json($author->getNombre());
+    }
     /**
      * @Route("/", name="detalles_factura_index", methods="GET")
      */
@@ -87,4 +120,7 @@ class DetallesFacturaController extends AbstractController
 
         return $this->redirectToRoute('detalles_factura_index');
     }
+
+
+   
 }

@@ -52,7 +52,7 @@ class Facturas
     protected $idclientesrelacion;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\DetallesFactura", mappedBy="idfactura")
+     * @ORM\OneToMany(targetEntity="App\Entity\DetallesFactura", mappedBy="idfactura", cascade={"persist", "remove"})
      */
     private $detallesFacturas;
 
