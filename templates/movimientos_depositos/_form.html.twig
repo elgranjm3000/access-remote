@@ -1,4 +1,66 @@
-{{ form_start(form) }}
+
+{#{{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{{ form_end(form) }}#}
+
+
+<div class="mw1000 center-block">
+ <div class="admin-form theme-primary">
+                <div class="panel heading-border panel-primary">
+                  <div class="panel-body bg-light">
+
+
+ {{ form_start(form, {'attr': {'id': 'form-ui'}}) }}
+ {{ form_widget(form.idfacturarelacion, {'attr': {'class': 'gui-input','placeholder':"RECIBO CAJA",'value': deposito }}) }}
+
+
+
+                 <div id="spy1" class="section-divider mb40"><span></span></div>
+		        	 <div class="row">
+                        <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.fechaMovimiento, {'attr': {'class': 'gui-input js-datepicker','placeholder':"Fecha de movimiento" }}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.monto, {'attr': {'class': 'gui-input','placeholder':"monto" }}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                           <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.banco, {'attr': {'class': 'gui-input','placeholder':"banco" }}) }}
+
+                            </label>
+                          </div>
+                        </div>
+                       
+
+                      </div>
+
+                      
+                      		 
+                      
+                          <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+
+ 
+
+		        
+{{ form_end(form) }} 
+
+</div>
+</div>
+</div>
+
+</div>

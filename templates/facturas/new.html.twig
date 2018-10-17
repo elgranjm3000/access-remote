@@ -1,0 +1,40 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Crear Facturas{% endblock %}
+
+{% block header %}
+ <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="{{ path('facturas_index') }}">Facturas</a></li>                            
+              <li class="crumb-trail">Nueva Factura</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('facturas_index') }}">Historico Factura</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+<div class="content-header">
+                <h2><b class="text-primary">Facturacion</b>
+                </h2>
+              
+              </div>
+
+
+{% endblock %}
+
+{% block body %}
+    
+
+    {{ include('facturas/_form.html.twig') }}
+
+
+{% endblock %}

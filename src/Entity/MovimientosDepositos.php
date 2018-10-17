@@ -18,10 +18,7 @@ class MovimientosDepositos
      */
     private $id;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Facturas", mappedBy="movimientosDepositos")
-     */
-    private $idFactura;
+  
 
     /**
      * @ORM\Column(type="date")
@@ -38,10 +35,15 @@ class MovimientosDepositos
      */
     private $banco;
 
-    public function __construct()
-    {
-        $this->idFactura = new ArrayCollection();
-    }
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Facturas", inversedBy="movimientosdepositos")
+     */
+    private $facturas;
+
+
+    protected $idfacturarelacion;
+
+    
 
     public function getId(): ?int
     {
@@ -111,6 +113,30 @@ class MovimientosDepositos
     public function setBanco(string $banco): self
     {
         $this->banco = $banco;
+
+        return $this;
+    }
+
+    public function getFacturas(): ?Facturas
+    {
+        return $this->facturas;
+    }
+
+    public function setFacturas(?Facturas $facturas): self
+    {
+        $this->facturas = $facturas;
+
+        return $this;
+    }
+
+     public function getIdfacturarelacion()
+    {
+        return $this->idfacturarelacion;
+    }
+
+    public function setIdfacturarelacion($idfacturarelacion)
+    {
+        $this->idfacturarelacion = $idfacturarelacion;
 
         return $this;
     }

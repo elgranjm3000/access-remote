@@ -1,0 +1,42 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Editar  Facturas{% endblock %}
+
+
+{% block header %}
+
+ <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="{{ path('facturas_index') }}">Facturas</a></li>                            
+              <li class="crumb-trail">Editar registro</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('facturas_index') }}">Listado de Facturas</a></li>
+              <li>  {{ include('facturas/_delete_form.html.twig') }}</li>
+              
+            </ul>
+          </div>
+         
+        </header>
+
+<div class="content-header">
+                <h2><b class="text-primary">Editar Facturas</b>
+                </h2>
+              
+              </div>
+{% endblock %}
+
+{% block body %}
+  
+
+    {{ include('facturas/_form.html.twig', {'button_label': 'Actualizar'}) }}
+
+  
+{% endblock %}

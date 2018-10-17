@@ -15,6 +15,7 @@ class MovimientosDepositosType extends AbstractType
             ->add('fechaMovimiento')
             ->add('monto')
             ->add('banco')
+            ->add('idfactura')
         ;
     }
 

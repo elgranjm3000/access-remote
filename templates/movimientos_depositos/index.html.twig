@@ -1,39 +1,79 @@
-{% extends 'base.html.twig' %}
+{% extends 'template.html.twig' %}
 
-{% block title %}MovimientosDepositos index{% endblock %}
+{% block title %}Historico de movimientos{% endblock %}
+
+
+{% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Depositos</a></li>                            
+              <li class="crumb-trail">Listado</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('facturas_new') }}">Crear Facturacion</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+{% endblock %}
 
 {% block body %}
-    <h1>MovimientosDepositos index</h1>
-
-    <table class="table">
+   <section id="content" class="table-layout animated fadeIn">
+          <!-- begin: .tray-left-->
+        
+          <!-- begin: .tray-center-->
+          <div class="tray tray-center">
+            <!-- Panel with: Basic Footable-->
+          
+            <!-- Panel with: Data Filter-->
+     
+            <!-- Panel with: Pagination-->
+            <div id="spy3" class="panel">
+             
+              <div class="panel-body pn">
+    <table class="table footable">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>FechaMovimiento</th>
+                <th>Nro de Factura</th>
+                <th>Fecha de Movimiento</th>
                 <th>Monto</th>
                 <th>Banco</th>
-                <th>actions</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for movimientos_deposito in movimientos_depositos %}
             <tr>
-                <td>{{ movimientos_deposito.id }}</td>
-                <td>{{ movimientos_deposito.fechaMovimiento ? movimientos_deposito.fechaMovimiento|date('Y-m-d') : '' }}</td>
+                <td style="color:red">{{ "%08d" | format(movimientos_deposito.facturas.id) }}</td>
+                <td>{{ movimientos_deposito.fechaMovimiento ? movimientos_deposito.fechaMovimiento|date('d/m/Y') : '' }}</td>
                 <td>{{ movimientos_deposito.monto }}</td>
                 <td>{{ movimientos_deposito.banco }}</td>
                 <td>
-                    <a href="{{ path('movimientos_depositos_show', {'id': movimientos_deposito.ids}) }}">show</a>
-                    <a href="{{ path('movimientos_depositos_edit', {'id': movimientos_deposito.ids}) }}">edit</a>
+                    <a href="{{ path('movimientos_depositos_show', {'id': movimientos_deposito.id,'deposito':movimientos_deposito.facturas.id }) }}"><span class="glyphicon glyphicon-search"></span></a>
+                    <a href="{{ path('movimientos_depositos_edit', {'id': movimientos_deposito.id,'deposito':movimientos_deposito.facturas.id }) }}"><span class="glyphicon glyphicon-edit"></span></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">No hay movimientos</td>
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+     </table>
 
-    <a href="{{ path('movimientos_depositos_new') }}">Create new</a>
+    </div>
+</div>
+</div>
+</section>
 {% endblock %}

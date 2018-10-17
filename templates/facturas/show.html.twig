@@ -1,0 +1,78 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Detalles - Facturas{% endblock %}
+
+  {% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Facturas</a></li>                            
+              <li class="crumb-trail">Detalles</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('facturas_index') }}">Listado de Facturas</a></li>
+              <li class="active"><a href="{{ path('facturas_edit', {'id': factura.id}) }}">Editar Factura</a></li>
+
+              <li class="active"><a href="{{ path('movimientos_depositos_new', {'deposito': factura.id}) }}">Crear deposito</a></li>
+
+
+              
+              <li>{{ include('facturas/_delete_form.html.twig') }}</li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+      {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="panel">
+              <div class="panel-heading"><span class="panel-title"><span class="fa fa-info"></span>Detalles de Facturas</span>
+                
+              </div>
+            </div>
+    <div id="spy1" class="row">
+<div class="col-sm-12">
+                <div class="panel">
+                  <div class="panel-body pn">
+                    
+                      <table class="table">
+        <tbody>
+            <tr>
+                <th style="font-weight:bold;font-size:25px !important">Numero de factura</th>
+                <td style="color:red;font-weight:bold;font-size:25px !important">{{ "%08d" | format(factura.id) }}</td>
+            </tr>
+            <tr>
+                <th>Recibo Caja</th>
+                <td>{{ factura.reciboCaja }}</td>
+            </tr>
+            <tr>
+                <th>Orden de Compra</th>
+                <td>{{ factura.ordenCompra }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ factura.fecha ? factura.fecha|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Comentarios</th>
+                <td>{{ factura.comentarios|raw }}</td>
+            </tr>
+        </tbody>
+   </table>
+               
+                </div>
+              </div>
+          </div>
+      </div>
+{% endblock %}

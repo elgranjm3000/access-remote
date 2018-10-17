@@ -69,11 +69,12 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     '/clientes/' => array(array('_route' => 'clientes_index', '_controller' => 'App\\Controller\\ClientesController::index'), null, array('GET' => 0), null),
                     '/clientes/new' => array(array('_route' => 'clientes_new', '_controller' => 'App\\Controller\\ClientesController::new'), null, array('GET' => 0, 'POST' => 1), null),
                     '/admin' => array(array('_route' => 'admin', '_controller' => 'App\\Controller\\DefaultController::admin'), null, null, null),
+                    '/facturas/' => array(array('_route' => 'facturas_index', '_controller' => 'App\\Controller\\FacturasController::index'), null, array('GET' => 0), null),
+                    '/facturas/new' => array(array('_route' => 'facturas_new', '_controller' => 'App\\Controller\\FacturasController::new'), null, array('GET' => 0, 'POST' => 1), null),
                     '/familia/' => array(array('_route' => 'familia_index', '_controller' => 'App\\Controller\\FamiliaController::index'), null, array('GET' => 0), null),
                     '/familia/new' => array(array('_route' => 'familia_new', '_controller' => 'App\\Controller\\FamiliaController::new'), null, array('GET' => 0, 'POST' => 1), null),
                     '/' => array(array('_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'), null, null, null),
                     '/movimientos/depositos/' => array(array('_route' => 'movimientos_depositos_index', '_controller' => 'App\\Controller\\MovimientosDepositosController::index'), null, array('GET' => 0), null),
-                    '/movimientos/depositos/new' => array(array('_route' => 'movimientos_depositos_new', '_controller' => 'App\\Controller\\MovimientosDepositosController::new'), null, array('GET' => 0, 'POST' => 1), null),
                     '/productos/' => array(array('_route' => 'productos_index', '_controller' => 'App\\Controller\\ProductosController::index'), null, array('GET' => 0), null),
                     '/productos/new' => array(array('_route' => 'productos_new', '_controller' => 'App\\Controller\\ProductosController::new'), null, array('GET' => 0, 'POST' => 1), null),
                     '/proveedores/' => array(array('_route' => 'proveedores_index', '_controller' => 'App\\Controller\\ProveedoresController::index'), null, array('GET' => 0), null),
@@ -121,41 +122,53 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         .'|/edit(*:87)'
                         .'|(*:94)'
                     .')'
-                    .'|/familia/([^/]++)(?'
-                        .'|(*:122)'
-                        .'|/edit(*:135)'
-                        .'|(*:143)'
+                    .'|/fa(?'
+                        .'|cturas/([^/]++)(?'
+                            .'|(*:126)'
+                            .'|/edit(*:139)'
+                            .'|(*:147)'
+                        .')'
+                        .'|milia/([^/]++)(?'
+                            .'|(*:173)'
+                            .'|/edit(*:186)'
+                            .'|(*:194)'
+                        .')'
                     .')'
-                    .'|/movimientos/depositos/([^/]++)(?'
-                        .'|(*:186)'
-                        .'|/edit(*:199)'
-                        .'|(*:207)'
+                    .'|/movimientos/depositos/(?'
+                        .'|new/([^/]++)(*:242)'
+                        .'|([^/]++)(?'
+                            .'|/([^/]++)(?'
+                                .'|(*:273)'
+                                .'|/edit(*:286)'
+                            .')'
+                            .'|(*:295)'
+                        .')'
                     .')'
                     .'|/pro(?'
                         .'|ductos/([^/]++)(?'
-                            .'|(*:241)'
-                            .'|/edit(*:254)'
-                            .'|(*:262)'
+                            .'|(*:330)'
+                            .'|/edit(*:343)'
+                            .'|(*:351)'
                         .')'
                         .'|veedores/([^/]++)(?'
-                            .'|(*:291)'
-                            .'|/edit(*:304)'
-                            .'|(*:312)'
+                            .'|(*:380)'
+                            .'|/edit(*:393)'
+                            .'|(*:401)'
                         .')'
                     .')'
                     .'|/_(?'
-                        .'|error/(\\d+)(?:\\.([^/]++))?(*:353)'
-                        .'|wdt/([^/]++)(*:373)'
+                        .'|error/(\\d+)(?:\\.([^/]++))?(*:442)'
+                        .'|wdt/([^/]++)(*:462)'
                         .'|profiler/([^/]++)(?'
                             .'|/(?'
-                                .'|search/results(*:419)'
-                                .'|router(*:433)'
+                                .'|search/results(*:508)'
+                                .'|router(*:522)'
                                 .'|exception(?'
-                                    .'|(*:453)'
-                                    .'|\\.css(*:466)'
+                                    .'|(*:542)'
+                                    .'|\\.css(*:555)'
                                 .')'
                             .')'
-                            .'|(*:476)'
+                            .'|(*:565)'
                         .')'
                     .')'
                 .')$}sD',
@@ -172,25 +185,29 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                             75 => array(array('_route' => 'clientes_show', '_controller' => 'App\\Controller\\ClientesController::show'), array('id'), array('GET' => 0), null),
                             87 => array(array('_route' => 'clientes_edit', '_controller' => 'App\\Controller\\ClientesController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null),
                             94 => array(array('_route' => 'clientes_delete', '_controller' => 'App\\Controller\\ClientesController::delete'), array('id'), array('DELETE' => 0), null),
-                            122 => array(array('_route' => 'familia_show', '_controller' => 'App\\Controller\\FamiliaController::show'), array('id'), array('GET' => 0), null),
-                            135 => array(array('_route' => 'familia_edit', '_controller' => 'App\\Controller\\FamiliaController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null),
-                            143 => array(array('_route' => 'familia_delete', '_controller' => 'App\\Controller\\FamiliaController::delete'), array('id'), array('DELETE' => 0), null),
-                            186 => array(array('_route' => 'movimientos_depositos_show', '_controller' => 'App\\Controller\\MovimientosDepositosController::show'), array('id'), array('GET' => 0), null),
-                            199 => array(array('_route' => 'movimientos_depositos_edit', '_controller' => 'App\\Controller\\MovimientosDepositosController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null),
-                            207 => array(array('_route' => 'movimientos_depositos_delete', '_controller' => 'App\\Controller\\MovimientosDepositosController::delete'), array('id'), array('DELETE' => 0), null),
-                            241 => array(array('_route' => 'productos_show', '_controller' => 'App\\Controller\\ProductosController::show'), array('id'), array('GET' => 0), null),
-                            254 => array(array('_route' => 'productos_edit', '_controller' => 'App\\Controller\\ProductosController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null),
-                            262 => array(array('_route' => 'productos_delete', '_controller' => 'App\\Controller\\ProductosController::delete'), array('id'), array('DELETE' => 0), null),
-                            291 => array(array('_route' => 'proveedores_show', '_controller' => 'App\\Controller\\ProveedoresController::show'), array('id'), array('GET' => 0), null),
-                            304 => array(array('_route' => 'proveedores_edit', '_controller' => 'App\\Controller\\ProveedoresController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null),
-                            312 => array(array('_route' => 'proveedores_delete', '_controller' => 'App\\Controller\\ProveedoresController::delete'), array('id'), array('DELETE' => 0), null),
-                            353 => array(array('_route' => '_twig_error_test', '_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'), array('code', '_format'), null, null),
-                            373 => array(array('_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'), array('token'), null, null),
-                            419 => array(array('_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'), array('token'), null, null),
-                            433 => array(array('_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'), array('token'), null, null),
-                            453 => array(array('_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'), array('token'), null, null),
-                            466 => array(array('_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'), array('token'), null, null),
-                            476 => array(array('_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'), array('token'), null, null),
+                            126 => array(array('_route' => 'facturas_show', '_controller' => 'App\\Controller\\FacturasController::show'), array('id'), array('GET' => 0), null),
+                            139 => array(array('_route' => 'facturas_edit', '_controller' => 'App\\Controller\\FacturasController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null),
+                            147 => array(array('_route' => 'facturas_delete', '_controller' => 'App\\Controller\\FacturasController::delete'), array('id'), array('DELETE' => 0), null),
+                            173 => array(array('_route' => 'familia_show', '_controller' => 'App\\Controller\\FamiliaController::show'), array('id'), array('GET' => 0), null),
+                            186 => array(array('_route' => 'familia_edit', '_controller' => 'App\\Controller\\FamiliaController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null),
+                            194 => array(array('_route' => 'familia_delete', '_controller' => 'App\\Controller\\FamiliaController::delete'), array('id'), array('DELETE' => 0), null),
+                            242 => array(array('_route' => 'movimientos_depositos_new', '_controller' => 'App\\Controller\\MovimientosDepositosController::new'), array('deposito'), array('GET' => 0, 'POST' => 1), null),
+                            273 => array(array('_route' => 'movimientos_depositos_show', '_controller' => 'App\\Controller\\MovimientosDepositosController::show'), array('id', 'deposito'), array('GET' => 0), null),
+                            286 => array(array('_route' => 'movimientos_depositos_edit', '_controller' => 'App\\Controller\\MovimientosDepositosController::edit'), array('id', 'deposito'), array('GET' => 0, 'POST' => 1), null),
+                            295 => array(array('_route' => 'movimientos_depositos_delete', '_controller' => 'App\\Controller\\MovimientosDepositosController::delete'), array('id'), array('DELETE' => 0), null),
+                            330 => array(array('_route' => 'productos_show', '_controller' => 'App\\Controller\\ProductosController::show'), array('id'), array('GET' => 0), null),
+                            343 => array(array('_route' => 'productos_edit', '_controller' => 'App\\Controller\\ProductosController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null),
+                            351 => array(array('_route' => 'productos_delete', '_controller' => 'App\\Controller\\ProductosController::delete'), array('id'), array('DELETE' => 0), null),
+                            380 => array(array('_route' => 'proveedores_show', '_controller' => 'App\\Controller\\ProveedoresController::show'), array('id'), array('GET' => 0), null),
+                            393 => array(array('_route' => 'proveedores_edit', '_controller' => 'App\\Controller\\ProveedoresController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null),
+                            401 => array(array('_route' => 'proveedores_delete', '_controller' => 'App\\Controller\\ProveedoresController::delete'), array('id'), array('DELETE' => 0), null),
+                            442 => array(array('_route' => '_twig_error_test', '_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'), array('code', '_format'), null, null),
+                            462 => array(array('_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'), array('token'), null, null),
+                            508 => array(array('_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'), array('token'), null, null),
+                            522 => array(array('_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'), array('token'), null, null),
+                            542 => array(array('_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'), array('token'), null, null),
+                            555 => array(array('_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'), array('token'), null, null),
+                            565 => array(array('_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'), array('token'), null, null),
                         );
 
                         list($ret, $vars, $requiredMethods, $requiredSchemes) = $routes[$m];
@@ -216,7 +233,7 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $ret;
                 }
 
-                if (476 === $m) {
+                if (565 === $m) {
                     break;
                 }
                 $regex = substr_replace($regex, 'F', $m - $offset, 1 + strlen($m));

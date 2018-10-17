@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,9 +39,16 @@ class Facturas
     private $comentarios;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\MovimientosDepositos", inversedBy="idFactura")
+     * @ORM\OneToMany(targetEntity="App\Entity\MovimientosDepositos", mappedBy="facturas")
      */
-    private $movimientosDepositos;
+    private $movimientosdepositos;
+
+    public function __construct()
+    {
+        $this->movimientosdepositos = new ArrayCollection();
+    }
+
+  
 
     public function getId(): ?int
     {
@@ -94,15 +103,41 @@ class Facturas
         return $this;
     }
 
-    public function getMovimientosDepositos(): ?MovimientosDepositos
+    /**
+     * @return Collection|MovimientosDepositos[]
+     */
+    public function getMovimientosdepositos(): Collection
     {
-        return $this->movimientosDepositos;
+        return $this->movimientosdepositos;
     }
 
-    public function setMovimientosDepositos(?MovimientosDepositos $movimientosDepositos): self
+    public function addMovimientosdeposito(MovimientosDepositos $movimientosdeposito): self
     {
-        $this->movimientosDepositos = $movimientosDepositos;
+        if (!$this->movimientosdepositos->contains($movimientosdeposito)) {
+            $this->movimientosdepositos[] = $movimientosdeposito;
+            $movimientosdeposito->setFacturas($this);
+        }
 
         return $this;
     }
+
+    public function removeMovimientosdeposito(MovimientosDepositos $movimientosdeposito): self
+    {
+        if ($this->movimientosdepositos->contains($movimientosdeposito)) {
+            $this->movimientosdepositos->removeElement($movimientosdeposito);
+            // set the owning side to null (unless already changed)
+            if ($movimientosdeposito->getFacturas() === $this) {
+                $movimientosdeposito->setFacturas(null);
+            }
+        }
+
+        return $this;
+    }
+
+     public function __toString()
+   {
+      return strval($this->getId());
+   }
+
+   
 }

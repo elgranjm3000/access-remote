@@ -1,0 +1,82 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Facturas-Listados{% endblock %}
+
+
+
+{% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Facturas</a></li>                            
+              <li class="crumb-trail">Listado</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('facturas_new') }}">Crear Facturacion</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+{% endblock %}
+{% block body %}
+   <section id="content" class="table-layout animated fadeIn">
+          <!-- begin: .tray-left-->
+        
+          <!-- begin: .tray-center-->
+          <div class="tray tray-center">
+            <!-- Panel with: Basic Footable-->
+          
+            <!-- Panel with: Data Filter-->
+     
+            <!-- Panel with: Pagination-->
+            <div id="spy3" class="panel">
+             
+              <div class="panel-body pn">
+    <table class="table footable">
+        <thead>
+            <tr>
+                <th>Nro de Factura</th>
+                <th>Recibo de Caja</th>
+                <th>Orden de Compra</th>
+                <th>Fecha</th>
+                <th>Comentarios</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for factura in facturas %}
+            <tr>
+                <td style="color:red">{{ "%08d" | format(factura.id) }} </td>
+                <td>{{ factura.reciboCaja }}</td>
+                <td>{{ factura.ordenCompra }}</td>
+                <td>{{ factura.fecha ? factura.fecha|date('d/m/Y') : '' }}</td>
+                <td>{{ factura.comentarios|raw }}</td>
+                <td>
+                    <a title="Detalles" href="{{ path('facturas_show', {'id': factura.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
+                    <a title="Editar Factura" href="{{ path('facturas_edit', {'id': factura.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                    <a title="Crear deposito" href="{{ path('movimientos_depositos_new', {'deposito': factura.id}) }}"><span class="fa fa-file"></span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+  </table>
+
+    </div>
+</div>
+</div>
+</section>
+{% endblock %}
