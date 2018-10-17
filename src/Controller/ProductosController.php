@@ -9,12 +9,30 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
 /**
  * @Route("/productos")
  */
 class ProductosController extends AbstractController
 {
+
+    /**
+     * @Route("/buscarproducto", name="buscarproducto", methods="GET")
+     */
+    public function buscarproducto(Request $request)
+    {
+
+      
+        $entityManager = $this->getDoctrine();     
+        $tareas = $entityManager->getRepository(Productos::class)->find($_GET['iditems']);
+        $localidad['precioventa'] =   $tareas->getprecioVenta();           
+        $generardatos[] = $localidad;
+         
+        
+        return new JsonResponse($generardatos);
+        
+        
+    }
     /**
      * @Route("/", name="productos_index", methods="GET")
      */

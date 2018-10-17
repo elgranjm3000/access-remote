@@ -21,18 +21,11 @@ class DetallesFacturaType extends AbstractType
             ->add('comentarios')
             ->add('precio')
             ->add('total')
-            ->add('idproducto', EntityType::class, array(
-    // looks for choices from this entity
-    'class' => Productos::class,
-
-    // uses the User.username property as the visible option string
-    'choice_label' => 'nombre',
-     'placeholder' => 'Seleccione un usuario'
-
-    // used to render a select box, check boxes or radios
-    // 'multiple' => true,
-    // 'expanded' => true,
-))
+            ->add('idproducto', EntityType::class, array(    
+                        'class' => Productos::class,
+                        'choice_label' => 'nombre',
+                        'placeholder' => 'Seleccione un producto'
+                ))
       
         ;
     }

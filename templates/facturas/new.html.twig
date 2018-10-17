@@ -2,6 +2,13 @@
 
 {% block title %}Crear Facturas{% endblock %}
 
+ {% block addcss %}
+  <style type="text/css">
+    .precio,.total{
+      color:red !important;
+    }
+  </style>
+{% endblock %}
 {% block header %}
  <header id="topbar" class="ph10">
 
@@ -44,7 +51,6 @@
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 
 <script type="text/javascript">
@@ -52,8 +58,8 @@
 
 
 
-          $( ".ingresar" ).click(function() {
-    var t = $('.footable').DataTable();
+      $( ".ingresar" ).click(function() {
+          var t = $('.footable').DataTable();
 
             var productos =  $(".producto").val();
             var cantidad =  $(".cantidad").val();
@@ -66,35 +72,70 @@
                     $(".producto option:selected").text()+"<input type='hidden' value='"+productos+"' name='productos[]'>",
                     $(".cantidad").val()+"<input type='hidden' value='"+cantidad+"' name='cantidad[]'>",
                     $(".precio").val()+"<input type='hidden' value='"+precio+"' name='precio[]'>",
-                    $(".total").val()+"<input type='hidden' value='"+total+"' name='total[]'>",
-                    $(".promocion").val()+"<input type='hidden' value='"+promocion+"' name='promocion[]'>",
-                    $(".comentarios").val()+"<input type='hidden' value='"+comentarios+"' name='comentarios[]'>"
+                    $(".total").val(),
+                    $(".promocion").val()+"<input type='hidden' value='"+promocion+"' name='promocion[]'>"+" "+"<input type='hidden' value='"+total+"' name='total[]'>",
+                    $(".comentarios").val()+"<input type='hidden' value='"+comentarios+"' name='comentarios[]'>",
+                     "<button type='button' class='btn btn-simple btn-danger btn-icon remove' title='Cancelar pedido'><span class='fa fa-remove'></span></button>"
                   ] ).draw( false );
+
+
+                   $(".cerramodal").click();
+                   $(".pedidos")[0].reset();
+
+   var table = $('.footable').DataTable();
+  var datossuma =  table.column( 3 ).data().sum();
+  console.log(datossuma);
+    $(".totales").html("Total: "+datossuma);
+
+
           });
 
 
-          var table = $('.footable').DataTable();
- 
-    $('.footable tbody').on( 'click', 'tr', function () {
-        if ( $(this).hasClass('selected') ) {
-            $(this).removeClass('selected');
-        }
-        else {
-            table.$('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
 
+
+
+
+
+
+    $("#detalles_factura_idproducto").change(function() {
+       $.get( "{{ path('buscarproducto') }}", { iditems:$(this).val()}).done(function( data ) {
+
+            if(data.length>0){ 
+                  $(".precio").val(data[0]['precioventa']);         
+
+                  var total = data[0]['precioventa']*$(".cantidad").val();                
+                  $(".total").val(total);
+              }
+              
+          });
+    });
+
+
+    $(".cantidad").change(function() {
+          var total = $(".precio").val()*$(".cantidad").val();                
+          $(".total").val(total);
+    });
+
+    var table = $('.footable').DataTable();
+
+    $('.footable tbody').on('click', '.remove', function () {
+
+      var r = confirm("¿Desea quitar este registro?");
+      if(r == true){
             var btn = this;
             $tr = $(this).closest('tr');
-            var data = table.row($tr).data();
-            //var id = $tr.find("#idcuenta").val();
-            //console.log(id);
-        //    var pathname = getAbsolutePath();   
+            var data = table.row($tr).data();          
+            table.row($(btn).parents('tr')).remove().draw(false);
 
-            window.location.href = "edit/"+id;
-    
-          
-        }
-    } );
+
+      
+  var datossuma =  table.column( 3 ).data().sum();
+  console.log(datossuma);
+    $(".totales").html("Total: "+datossuma);
+
+          }
+      });
+
       });
 
 </script>
