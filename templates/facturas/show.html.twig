@@ -18,7 +18,7 @@
           <div class="topbar-left">
             <ul class="nav nav-list nav-list-topbar pull-left">
               <li class="active"><a href="{{ path('facturas_index') }}">Listado de Facturas</a></li>
-              <li class="active"><a href="{{ path('facturas_edit', {'id': factura.id}) }}">Editar Factura</a></li>
+              <li class="active"><a href="{{ path('facturas_edit', {'id': factura.id,'cliente':factura.idcliente.id}) }}">Editar Factura</a></li>
 
               <li class="active"><a href="{{ path('movimientos_depositos_new', {'deposito': factura.id}) }}">Crear deposito</a></li>
 

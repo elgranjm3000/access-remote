@@ -405,6 +405,13 @@
         <argument type="service" id=".service_locator.ychIlgF.App\Controller\DefaultController"/>
       </call>
     </service>
+    <service id="App\Controller\DetallesFacturaController" class="App\Controller\DetallesFacturaController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.ychIlgF.App\Controller\DetallesFacturaController"/>
+      </call>
+    </service>
     <service id="App\Controller\FacturasController" class="App\Controller\FacturasController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -470,6 +477,9 @@
     <service id="App\Form\ContratarType" class="App\Form\ContratarType" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\DetallesFacturaType" class="App\Form\DetallesFacturaType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\FacturasType" class="App\Form\FacturasType" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -500,6 +510,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\ContratarRepository" class="App\Repository\ContratarRepository" public="false" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\DetallesFacturaRepository" class="App\Repository\DetallesFacturaRepository" public="false" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -784,6 +798,7 @@
         <argument>App\Form\AlmacenType</argument>
         <argument>App\Form\ClientesType</argument>
         <argument>App\Form\ContratarType</argument>
+        <argument>App\Form\DetallesFacturaType</argument>
         <argument>App\Form\FacturasType</argument>
         <argument>App\Form\FamiliaType</argument>
         <argument>App\Form\MovimientosDepositos1Type</argument>
@@ -1018,7 +1033,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.Pb13KcY"/>
+      <argument type="service" id=".service_locator.lC.UoSH"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.http_foundation"/>
@@ -2053,6 +2068,14 @@
         <argument>2048</argument>
       </call>
       <call method="addListener">
+        <argument>console.command</argument>
+        <argument type="collection">
+          <argument type="service" id="debug.debug_handlers_listener"/>
+          <argument>configure</argument>
+        </argument>
+        <argument>2048</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
           <argument type="service" id="router_listener"/>
@@ -2774,7 +2797,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.PNNGIJG"/>
+      <argument type="service" id=".service_locator.qUTXpTj"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -3195,6 +3218,34 @@
       </call>
       <call method="add">
         <argument type="service" id=".security.request_matcher.noSyi_3"/>
+        <argument type="collection">
+          <argument>ROLE_USER</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.mUVMv8E"/>
+        <argument type="collection">
+          <argument>ROLE_USER</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.Mf1OjS7"/>
+        <argument type="collection">
+          <argument>ROLE_USER</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.nwNFhRq"/>
+        <argument type="collection">
+          <argument>ROLE_USER</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.kpa.4iB"/>
         <argument type="collection">
           <argument>ROLE_USER</argument>
         </argument>
@@ -3702,6 +3753,18 @@
     </service>
     <service id=".security.request_matcher.noSyi_3" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/productos</argument>
+    </service>
+    <service id=".security.request_matcher.mUVMv8E" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/familia</argument>
+    </service>
+    <service id=".security.request_matcher.Mf1OjS7" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/almacenes</argument>
+    </service>
+    <service id=".security.request_matcher.nwNFhRq" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/facturas</argument>
+    </service>
+    <service id=".security.request_matcher.kpa.4iB" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/movimientos</argument>
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
@@ -4496,6 +4559,9 @@
     <service id=".instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\DefaultController" class="App\Controller\DefaultController" public="false" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\DefaultController" class="App\Controller\DefaultController" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\DefaultController" class="App\Controller\DefaultController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\DetallesFacturaController" class="App\Controller\DetallesFacturaController" public="false" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\DetallesFacturaController" class="App\Controller\DetallesFacturaController" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\DetallesFacturaController" class="App\Controller\DetallesFacturaController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\FacturasController" class="App\Controller\FacturasController" public="false" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\FacturasController" class="App\Controller\FacturasController" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\FacturasController" class="App\Controller\FacturasController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4526,6 +4592,8 @@
     <service id=".abstract.instanceof.App\Form\ClientesType" class="App\Form\ClientesType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContratarType" class="App\Form\ContratarType" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ContratarType" class="App\Form\ContratarType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\DetallesFacturaType" class="App\Form\DetallesFacturaType" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\DetallesFacturaType" class="App\Form\DetallesFacturaType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FacturasType" class="App\Form\FacturasType" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\FacturasType" class="App\Form\FacturasType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FamiliaType" class="App\Form\FamiliaType" public="false" autowire="true" abstract="true"/>
@@ -4546,6 +4614,8 @@
     <service id=".abstract.instanceof.App\Repository\ClientesRepository" class="App\Repository\ClientesRepository" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ContratarRepository" class="App\Repository\ContratarRepository" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ContratarRepository" class="App\Repository\ContratarRepository" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\DetallesFacturaRepository" class="App\Repository\DetallesFacturaRepository" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\DetallesFacturaRepository" class="App\Repository\DetallesFacturaRepository" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\FacturasRepository" class="App\Repository\FacturasRepository" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\FacturasRepository" class="App\Repository\FacturasRepository" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\FamiliaRepository" class="App\Repository\FamiliaRepository" public="false" autowire="true" abstract="true"/>
@@ -4730,6 +4800,18 @@
         <argument key="cliente" type="service" id=".errored..service_locator.PGhsZLE.App\Entity\Clientes"/>
       </argument>
     </service>
+    <service id=".service_locator.kFI1I3_" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="detallesFacturaRepository" type="service" id="App\Repository\DetallesFacturaRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.0fqA5K5" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="detallesFactura" type="service" id=".errored..service_locator.0fqA5K5.App\Entity\DetallesFactura"/>
+      </argument>
+    </service>
     <service id=".service_locator.fAmOCKw" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -4802,7 +4884,7 @@
         <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.IXp2acy" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.qisnEBm" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AlmacenController::delete" type="service" id=".service_locator.GhCUbNg"/>
@@ -4813,6 +4895,10 @@
         <argument key="App\Controller\ClientesController::edit" type="service" id=".service_locator.PGhsZLE"/>
         <argument key="App\Controller\ClientesController::index" type="service" id=".service_locator.ohh9a7M"/>
         <argument key="App\Controller\ClientesController::show" type="service" id=".service_locator.PGhsZLE"/>
+        <argument key="App\Controller\DetallesFacturaController::delete" type="service" id=".service_locator.0fqA5K5"/>
+        <argument key="App\Controller\DetallesFacturaController::edit" type="service" id=".service_locator.0fqA5K5"/>
+        <argument key="App\Controller\DetallesFacturaController::index" type="service" id=".service_locator.kFI1I3_"/>
+        <argument key="App\Controller\DetallesFacturaController::show" type="service" id=".service_locator.0fqA5K5"/>
         <argument key="App\Controller\FacturasController::delete" type="service" id=".service_locator.YU.8.TJ"/>
         <argument key="App\Controller\FacturasController::edit" type="service" id=".service_locator.YU.8.TJ"/>
         <argument key="App\Controller\FacturasController::index" type="service" id=".service_locator.fAmOCKw"/>
@@ -4843,6 +4929,10 @@
         <argument key="App\Controller\ClientesController:edit" type="service" id=".service_locator.PGhsZLE"/>
         <argument key="App\Controller\ClientesController:index" type="service" id=".service_locator.ohh9a7M"/>
         <argument key="App\Controller\ClientesController:show" type="service" id=".service_locator.PGhsZLE"/>
+        <argument key="App\Controller\DetallesFacturaController:delete" type="service" id=".service_locator.0fqA5K5"/>
+        <argument key="App\Controller\DetallesFacturaController:edit" type="service" id=".service_locator.0fqA5K5"/>
+        <argument key="App\Controller\DetallesFacturaController:index" type="service" id=".service_locator.kFI1I3_"/>
+        <argument key="App\Controller\DetallesFacturaController:show" type="service" id=".service_locator.0fqA5K5"/>
         <argument key="App\Controller\FacturasController:delete" type="service" id=".service_locator.YU.8.TJ"/>
         <argument key="App\Controller\FacturasController:edit" type="service" id=".service_locator.YU.8.TJ"/>
         <argument key="App\Controller\FacturasController:index" type="service" id=".service_locator.fAmOCKw"/>
@@ -4924,12 +5014,13 @@
       <argument type="service" id="debug.argument_resolver.variadic.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.Pb13KcY" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.lC.UoSH" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\AlmacenType" type="service" id="App\Form\AlmacenType"/>
         <argument key="App\Form\ClientesType" type="service" id="App\Form\ClientesType"/>
         <argument key="App\Form\ContratarType" type="service" id="App\Form\ContratarType"/>
+        <argument key="App\Form\DetallesFacturaType" type="service" id="App\Form\DetallesFacturaType"/>
         <argument key="App\Form\FacturasType" type="service" id="App\Form\FacturasType"/>
         <argument key="App\Form\FamiliaType" type="service" id="App\Form\FamiliaType"/>
         <argument key="App\Form\MovimientosDepositos1Type" type="service" id="App\Form\MovimientosDepositos1Type"/>
@@ -4943,12 +5034,13 @@
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="service" id="form.type.form"/>
       </argument>
     </service>
-    <service id=".service_locator.PNNGIJG" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.qUTXpTj" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\AlmacenRepository" type="service" id="App\Repository\AlmacenRepository"/>
         <argument key="App\Repository\ClientesRepository" type="service" id="App\Repository\ClientesRepository"/>
         <argument key="App\Repository\ContratarRepository" type="service" id="App\Repository\ContratarRepository"/>
+        <argument key="App\Repository\DetallesFacturaRepository" type="service" id="App\Repository\DetallesFacturaRepository"/>
         <argument key="App\Repository\FacturasRepository" type="service" id="App\Repository\FacturasRepository"/>
         <argument key="App\Repository\FamiliaRepository" type="service" id="App\Repository\FamiliaRepository"/>
         <argument key="App\Repository\FechaNacimientoRepository" type="service" id="App\Repository\FechaNacimientoRepository"/>
@@ -5124,7 +5216,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.IXp2acy"/>
+      <argument type="service" id=".service_locator.qisnEBm"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
@@ -5157,6 +5249,11 @@
     </service>
     <service id=".service_locator.ychIlgF.App\Controller\DefaultController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <argument>App\Controller\DefaultController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.ychIlgF" method="withContext"/>
+    </service>
+    <service id=".service_locator.ychIlgF.App\Controller\DetallesFacturaController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <argument>App\Controller\DetallesFacturaController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.ychIlgF" method="withContext"/>
     </service>
@@ -5251,6 +5348,7 @@
     </service>
     <service id=".errored..service_locator.GhCUbNg.App\Entity\Almacen" class="App\Entity\Almacen"/>
     <service id=".errored..service_locator.PGhsZLE.App\Entity\Clientes" class="App\Entity\Clientes"/>
+    <service id=".errored..service_locator.0fqA5K5.App\Entity\DetallesFactura" class="App\Entity\DetallesFactura"/>
     <service id=".errored..service_locator.YU.8.TJ.App\Entity\Facturas" class="App\Entity\Facturas"/>
     <service id=".errored..service_locator.Af7ADn2.App\Entity\Familia" class="App\Entity\Familia"/>
     <service id=".errored..service_locator.wTK5wS5.App\Entity\MovimientosDepositos" class="App\Entity\MovimientosDepositos"/>
@@ -5581,7 +5679,7 @@
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.IXp2acy"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.qisnEBm"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".service_locator.AoifO_3" alias=".2_ServiceLocator~.OSktso" public="false"/>

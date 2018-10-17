@@ -39,13 +39,28 @@ class Facturas
     private $comentarios;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\MovimientosDepositos", mappedBy="facturas")
+     * @ORM\OneToMany(targetEntity="App\Entity\MovimientosDepositos", mappedBy="facturas", cascade={"persist", "remove"})
      */
     private $movimientosdepositos;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Clientes", inversedBy="facturas")
+     */
+    private $idcliente;
+
+
+    protected $idclientesrelacion;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\DetallesFactura", mappedBy="idfactura")
+     */
+    private $detallesFacturas;
+
 
     public function __construct()
     {
         $this->movimientosdepositos = new ArrayCollection();
+        $this->detallesFacturas = new ArrayCollection();
     }
 
   
@@ -138,6 +153,61 @@ class Facturas
    {
       return strval($this->getId());
    }
+
+     public function getIdcliente(): ?Clientes
+     {
+         return $this->idcliente;
+     }
+
+     public function setIdcliente(?Clientes $idcliente): self
+     {
+         $this->idcliente = $idcliente;
+
+         return $this;
+     }
+
+         public function getIdclientesrelacion()
+    {
+        return $this->idclientesrelacion;
+    }
+
+    public function setIdclientesrelacion($idclientesrelacion)
+    {
+        $this->idclientesrelacion = $idclientesrelacion;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|DetallesFactura[]
+     */
+    public function getDetallesFacturas(): Collection
+    {
+        return $this->detallesFacturas;
+    }
+
+    public function addDetallesFactura(DetallesFactura $detallesFactura): self
+    {
+        if (!$this->detallesFacturas->contains($detallesFactura)) {
+            $this->detallesFacturas[] = $detallesFactura;
+            $detallesFactura->setIdfactura($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDetallesFactura(DetallesFactura $detallesFactura): self
+    {
+        if ($this->detallesFacturas->contains($detallesFactura)) {
+            $this->detallesFacturas->removeElement($detallesFactura);
+            // set the owning side to null (unless already changed)
+            if ($detallesFactura->getIdfactura() === $this) {
+                $detallesFactura->setIdfactura(null);
+            }
+        }
+
+        return $this;
+    }
 
    
 }

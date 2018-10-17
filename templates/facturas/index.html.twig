@@ -19,7 +19,7 @@
          <header id="topbar" class="ph10">
           <div class="topbar-left">
             <ul class="nav nav-list nav-list-topbar pull-left">
-              <li class="active"><a href="{{ path('facturas_new') }}">Crear Facturacion</a></li>
+              <li class="active"><a href="{{ path('clientes_index') }}">Clientes</a></li>
               
             </ul>
           </div>
@@ -63,7 +63,7 @@
                 <td>{{ factura.comentarios|raw }}</td>
                 <td>
                     <a title="Detalles" href="{{ path('facturas_show', {'id': factura.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
-                    <a title="Editar Factura" href="{{ path('facturas_edit', {'id': factura.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                    <a title="Editar Factura" href="{{ path('facturas_edit', {'id': factura.id,'cliente':factura.idcliente.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
                     <a title="Crear deposito" href="{{ path('movimientos_depositos_new', {'deposito': factura.id}) }}"><span class="fa fa-file"></span></a>
                 </td>
             </tr>

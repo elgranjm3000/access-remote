@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class FacturasType extends AbstractType
 {
@@ -15,6 +16,7 @@ class FacturasType extends AbstractType
     {
         $builder
             ->add('reciboCaja')
+            ->add('idclientesrelacion',HiddenType::class)
             ->add('ordenCompra')
             ->add('fecha', DateType::class, array(
     'widget' => 'single_text',

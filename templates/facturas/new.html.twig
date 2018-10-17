@@ -23,7 +23,7 @@
          
         </header>
 <div class="content-header">
-                <h2><b class="text-primary">Facturacion</b>
+                <h2><b class="text-primary">Facturación</b>
                 </h2>
               
               </div>
@@ -37,4 +37,32 @@
     {{ include('facturas/_form.html.twig') }}
 
 
+{% endblock %}
+
+
+{% block addscript %}
+<script type="text/javascript">
+      jQuery(document).ready(function (){
+          $( ".ingresar" ).click(function() {
+    var t = $('.footable').DataTable();
+
+            var productos =  $(".producto").val();
+            var cantidad =  $(".cantidad").val();
+            var precio = $(".precio").val();
+            var total = $(".total").val();
+            var promocion = $(".promocion").val();
+            var comentarios = $(".comentarios").val();
+
+                   t.row.add( [
+                    $(".producto option:selected").text()+"<input type='hidden' value='"+productos+"' name='productos[]'>",
+                    $(".cantidad").val()+"<input type='hidden' value='"+cantidad+"' name='cantidad[]'>",
+                    $(".precio").val()+"<input type='hidden' value='"+precio+"' name='precio[]'>",
+                    $(".total").val()+"<input type='hidden' value='"+total+"' name='total[]'>",
+                    $(".promocion").val()+"<input type='hidden' value='"+promocion+"' name='promocion[]'>",
+                    $(".comentarios").val()+"<input type='hidden' value='"+comentarios+"' name='comentarios[]'>"
+                  ] ).draw( false );
+          });
+      });
+
+</script>
 {% endblock %}

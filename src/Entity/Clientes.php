@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -80,6 +82,16 @@ class Clientes
      * @ORM\Column(type="text")
      */
     private $direccion;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Facturas", mappedBy="idcliente", cascade={"persist", "remove"})
+     */
+    private $facturas;
+
+    public function __construct()
+    {
+        $this->facturas = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -238,6 +250,37 @@ class Clientes
     public function setDireccion(string $direccion): self
     {
         $this->direccion = $direccion;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Facturas[]
+     */
+    public function getFacturas(): Collection
+    {
+        return $this->facturas;
+    }
+
+    public function addFactura(Facturas $factura): self
+    {
+        if (!$this->facturas->contains($factura)) {
+            $this->facturas[] = $factura;
+            $factura->setIdcliente($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFactura(Facturas $factura): self
+    {
+        if ($this->facturas->contains($factura)) {
+            $this->facturas->removeElement($factura);
+            // set the owning side to null (unless already changed)
+            if ($factura->getIdcliente() === $this) {
+                $factura->setIdcliente(null);
+            }
+        }
 
         return $this;
     }

@@ -43,3 +43,7 @@ security:
          - { path: ^/proveedores, roles: ROLE_USER }
          - { path: ^/clientes, roles: ROLE_USER }
          - { path: ^/productos, roles: ROLE_USER }
+         - { path: ^/familia, roles: ROLE_USER }
+         - { path: ^/almacenes, roles: ROLE_USER }
+         - { path: ^/facturas, roles: ROLE_USER }
+         - { path: ^/movimientos, roles: ROLE_USER }

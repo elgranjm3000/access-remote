@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -59,6 +61,16 @@ class Productos
      *     
      */
     private $brochure;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\DetallesFactura", mappedBy="idproducto")
+     */
+    private $detallesFacturas;
+
+    public function __construct()
+    {
+        $this->detallesFacturas = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -180,4 +192,35 @@ class Productos
    {
       return strval($this->getId());
    }
+
+        /**
+         * @return Collection|DetallesFactura[]
+         */
+        public function getDetallesFacturas(): Collection
+        {
+            return $this->detallesFacturas;
+        }
+
+        public function addDetallesFactura(DetallesFactura $detallesFactura): self
+        {
+            if (!$this->detallesFacturas->contains($detallesFactura)) {
+                $this->detallesFacturas[] = $detallesFactura;
+                $detallesFactura->setIdproducto($this);
+            }
+
+            return $this;
+        }
+
+        public function removeDetallesFactura(DetallesFactura $detallesFactura): self
+        {
+            if ($this->detallesFacturas->contains($detallesFactura)) {
+                $this->detallesFacturas->removeElement($detallesFactura);
+                // set the owning side to null (unless already changed)
+                if ($detallesFactura->getIdproducto() === $this) {
+                    $detallesFactura->setIdproducto(null);
+                }
+            }
+
+            return $this;
+        }
 }
