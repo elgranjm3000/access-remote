@@ -88,7 +88,11 @@ class FacturasController extends AbstractController
      */
     public function show(Facturas $factura): Response
     {
-        return $this->render('facturas/show.html.twig', ['factura' => $factura]);
+
+        $productosfacturados = $this->getDoctrine()
+        ->getRepository(DetallesFactura::class)
+        ->findBy(['idfactura'=>$factura]);
+        return $this->render('facturas/show.html.twig', ['factura' => $factura,'productosfacturados'=>$productosfacturados]);
     }
 
     /**
@@ -112,8 +116,20 @@ class FacturasController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+              $ip=$this->getDoctrine()->getEntityManager();  
 
-             for ($i=1; $i < count($_POST["productos"]); $i++) { 
+
+   $em = $this->getDoctrine()->getManager();
+
+        $dql_query = $em->createQuery("
+                                DELETE FROM App:DetallesFactura o
+                                WHERE                             
+                                o.idfactura = '".$factura."'
+        ");
+        $results = $dql_query->getResult();
+
+
+             for ($i=0; $i < count($_POST["productos"]); $i++) { 
                 
                 $lineaproducto = new DetallesFactura();
                 $lineaproducto->setCantidad($_POST["cantidad"][$i]);    
@@ -128,8 +144,8 @@ class FacturasController extends AbstractController
                 $em->flush();
             }
 
-           // return $this->redirectToRoute('facturas_edit', ['id' => $factura->getId()]);
-             return $this->redirectToRoute('facturas_index');
+            return $this->redirectToRoute('facturas_show', ['id' => $factura->getId()]);
+             //return $this->redirectToRoute('facturas_index');
         }
 
         return $this->render('facturas/edit.html.twig', [

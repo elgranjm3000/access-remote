@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Productos;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/detalles/factura")
@@ -17,6 +18,26 @@ use App\Entity\Productos;
 class DetallesFacturaController extends AbstractController
 {
 
+
+   /**
+     * @Route("/detallesproductosremove", name="detallesproductosremove", methods="GET")
+     */
+    public function buscarproducto(Request $request)
+    {
+
+      
+        $entityManager = $this->getDoctrine();     
+        $tareas = $entityManager->getRepository(DetallesFactura::class)->find($_GET['id']);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($tareas);
+        $em->flush();
+        $localidad['precioventa'] =   "Eliminado";           
+        $generardatos[] = $localidad;         
+        
+        return new JsonResponse($generardatos);
+        
+        
+    }
 
      /**
      * @Route("/search", name="detalles_factura_search", methods="GET",  defaults={"_format"="json"})

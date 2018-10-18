@@ -75,4 +75,59 @@
               </div>
           </div>
       </div>
+</div>
+
+   <table class="table footable" id="data">
+                                  <thead>
+                                        <tr>
+                                          <th>Producto</th>
+                                          <th>Cantidad</th>
+                                          <th>Precio</th>
+                                          <th>Sub-Total</th>
+                                          <th>Orden de Produccion</th>
+                                          <th>Comentarios</th>
+                                        </tr>
+                                  </thead>
+                                  <tbody>
+                                    {% if productosfacturados is defined %}
+                                          
+                                            {% for productos in productosfacturados %}
+                                            <tr>
+                                              <td>{{ productos.idproducto.nombre }}
+                                                <input type="hidden" value='{{ productos.idproducto.id }}' name="productos[]">
+
+                                                <input type="hidden" value='{{ productos.id }}' name="'idproducto[]" class="idproducto">
+                                              </td>
+                                              <td>{{ productos.cantidad }}
+                                                <input type="hidden" value="{{ productos.cantidad }}" name="cantidad[]"></td>
+                                              <td>{{ productos.precio }}<input type="hidden" value="{{ productos.precio }}" name="precio[]"></td>
+                                              <td>{{ productos.total }}</td>
+                                              <td>{{ productos.ordenPromocion }}
+                                                <input type="hidden" value="{{ productos.total }}" name="total[]">
+                                                <input type="hidden" value="{{ productos.ordenPromocion }}" name="promocion[]"></td>
+                                              <td>{{ productos.comentarios }}
+                                                <input type="hidden" value="{{ productos.comentarios }}" name="comentarios[]"></td>
+                                             
+                                            </tr>
+                                            {% endfor %}
+                                          
+                                    {% endif %}
+                                  </tbody>
+                                </table>
+<h1>Sub-Total: <label class="totales" style="color:red"></label></h1>
+{% endblock %}
+
+{% block addscript %}
+  <script type="text/javascript">
+
+jQuery(document).ready(function (){
+        var table = $('.footable').DataTable();
+
+    var datossuma =  table.column( 3 ).data().sum();
+    $(".totales").html(datossuma);
+
+          
+      
+});
+  </script>
 {% endblock %}

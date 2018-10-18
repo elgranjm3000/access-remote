@@ -41,6 +41,7 @@
   
 {% endblock %}
 {% block addscript %}
+
 <script type="text/javascript">
      jQuery(document).ready(function (){
 
@@ -117,11 +118,26 @@ var table = $('.footable').DataTable()
             $tr = $(this).closest('tr');
             var data = table.row($tr).data();          
             table.row($(btn).parents('tr')).remove().draw(false);
+            var idfound =  $tr.find("td:eq(0)").find(".idproducto").val();
+if(idfound > 0){
 
 
+ $.ajax({      
       
+      url:   '{{ url('detallesproductosremove') }}',
+     type: "GET",
+      data: { id : idfound },    
+      beforeSend: function () {
+      },
+      success:  function (response) {
+        
+      }
+    }); 
+
+}
+
   var datossuma =  table.column( 3 ).data().sum();
-  console.log(datossuma);
+  
     $(".totales").html("Total: "+datossuma);
 
           }

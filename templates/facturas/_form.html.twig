@@ -69,12 +69,20 @@
                                           
                                             {% for productos in productosfacturados %}
                                             <tr>
-                                              <td>{{ productos.idproducto.nombre }}</td>
-                                              <td>{{ productos.cantidad }}</td>
-                                              <td>{{ productos.precio }}</td>
+                                              <td>{{ productos.idproducto.nombre }}
+                                                <input type="hidden" value='{{ productos.idproducto.id }}' name="productos[]">
+
+                                                <input type="hidden" value='{{ productos.id }}' name="'idproducto[]" class="idproducto">
+                                              </td>
+                                              <td>{{ productos.cantidad }}
+                                                <input type="hidden" value="{{ productos.cantidad }}" name="cantidad[]"></td>
+                                              <td>{{ productos.precio }}<input type="hidden" value="{{ productos.precio }}" name="precio[]"></td>
                                               <td>{{ productos.total }}</td>
-                                              <td>{{ productos.ordenPromocion }}</td>
-                                              <td>{{ productos.comentarios }}</td>
+                                              <td>{{ productos.ordenPromocion }}
+                                                <input type="hidden" value="{{ productos.total }}" name="total[]">
+                                                <input type="hidden" value="{{ productos.ordenPromocion }}" name="promocion[]"></td>
+                                              <td>{{ productos.comentarios }}
+                                                <input type="hidden" value="{{ productos.comentarios }}" name="comentarios[]"></td>
                                               <td><button type='button' class='btn btn-simple btn-danger btn-icon remove' title='Cancelar pedido'><span class='fa fa-remove'></span></button></td>
                                             </tr>
                                             {% endfor %}
