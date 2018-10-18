@@ -45,7 +45,7 @@ class FacturasController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             
-
+      
             $idcliente = $factura->getIdclientesrelacion();
             $ip=$this->getDoctrine()->getEntityManager();  
             $factura->setIdcliente($ip->getReference(Clientes::class,$idcliente));
@@ -53,7 +53,7 @@ class FacturasController extends AbstractController
             $em->persist($factura);
             $em->flush();
             $idfactura = $factura->getId();
-            for ($i=1; $i < count($_POST["productos"]); $i++) { 
+            for ($i=0; $i < count($_POST["productos"]); $i++) { 
                 $lineaproducto = new DetallesFactura();
                 $lineaproducto->setCantidad($_POST["cantidad"][$i]);    
                 $lineaproducto->setOrdenPromocion($_POST["promocion"][$i]);    
