@@ -456,6 +456,6 @@ class __TwigTemplate_6c6bb6acca9bd607004e242cfe10b04cd5604255cae081c4975af28dee0
         </div>
     {% endfor %}
 {% endblock %}
-", "@WebProfiler/Collector/validator.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\validator.html.twig");
+", "@WebProfiler/Collector/validator.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\validator.html.twig");
     }
 }

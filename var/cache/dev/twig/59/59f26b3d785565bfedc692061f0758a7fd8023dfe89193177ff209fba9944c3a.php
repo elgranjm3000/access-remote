@@ -1659,6 +1659,6 @@ class __TwigTemplate_9623cfe753bf0c70651ff4196e1682b9f8b0a990dc721924068966f78a3
         </tbody>
     </table>
 {% endmacro %}
-", "@Doctrine/Collector/db.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\db.html.twig");
+", "@Doctrine/Collector/db.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\db.html.twig");
     }
 }

@@ -67,6 +67,6 @@ class __TwigTemplate_86892173102dc81006f44583001a54ce2dab6c24849332162c8ed0a4c49
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ contratar.id) }}\">
     <button class=\"btn\">Delete</button>
 </form>
-", "contratar/_delete_form.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\contratar\\_delete_form.html.twig");
+", "contratar/_delete_form.html.twig", "C:\\xampp\\htdocs\\access\\templates\\contratar\\_delete_form.html.twig");
     }
 }

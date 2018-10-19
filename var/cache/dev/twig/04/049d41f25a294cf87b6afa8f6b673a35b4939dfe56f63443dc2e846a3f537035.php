@@ -205,6 +205,6 @@ class __TwigTemplate_dbb494d8715999eb42d306f4b5124f92df6e259ebf7e7da17a1a5c30c0c
         </div>
     {% endif %}
 {% endblock %}
-", "@WebProfiler/Collector/exception.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\exception.html.twig");
+", "@WebProfiler/Collector/exception.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\exception.html.twig");
     }
 }

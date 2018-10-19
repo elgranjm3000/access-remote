@@ -231,6 +231,6 @@ use FOS\\CKEditorBundle\\Renderer\\CKEditorRendererInterface;
         });
     <?php endif; ?>
 </script>
-", "@FOSCKEditor/Form/_ckeditor_javascript.html.php", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\friendsofsymfony\\ckeditor-bundle\\src\\Resources\\views\\Form\\_ckeditor_javascript.html.php");
+", "@FOSCKEditor/Form/_ckeditor_javascript.html.php", "C:\\xampp\\htdocs\\access\\vendor\\friendsofsymfony\\ckeditor-bundle\\src\\Resources\\views\\Form\\_ckeditor_javascript.html.php");
     }
 }

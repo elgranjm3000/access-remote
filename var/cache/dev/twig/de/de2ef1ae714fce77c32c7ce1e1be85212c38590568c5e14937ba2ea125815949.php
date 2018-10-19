@@ -73,6 +73,6 @@ class __TwigTemplate_adbe71e764b3b2c387ffda9c16d7063ded9b779bb26aae3e61d7626abc6
     v0.8c0,0-0.6-0.1-1.1-0.1H17z M20.7,16.8c-1-1.1-1.6-1.9-2.3-3.6L19,13c0.5,1.1,0.8,1.7,1.4,2.4c0.3,0.3,0.5,0.5,0.8,0.9
     C21.1,16.4,20.9,16.6,20.7,16.8z\"/>
 </svg>
-", "@WebProfiler/Icon/translation.svg", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Icon\\translation.svg");
+", "@WebProfiler/Icon/translation.svg", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Icon\\translation.svg");
     }
 }

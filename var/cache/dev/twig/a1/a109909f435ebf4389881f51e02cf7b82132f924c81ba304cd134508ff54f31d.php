@@ -231,6 +231,6 @@ class __TwigTemplate_2ef08f1d5ae471c093a52c15b36df0853fe04815efe29c952a3d139c715
 
     <a href=\"{{ path('contratar_new') }}\">Create new</a>
 {% endblock %}
-", "contratar/index.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\contratar\\index.html.twig");
+", "contratar/index.html.twig", "C:\\xampp\\htdocs\\access\\templates\\contratar\\index.html.twig");
     }
 }

@@ -63,6 +63,6 @@ class __TwigTemplate_aec1a221bbdc7d97d2ea13d96e98fb533bc4c10da04f26eb904fe55ea3a
 <?php printf('%s=\"%s\" ', \$view->escape(\$k), \$view->escape(\$v)) ?>
 <?php endif ?>
 <?php endforeach ?>
-", "@Framework/Form/choice_attributes.html.php", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\choice_attributes.html.php");
+", "@Framework/Form/choice_attributes.html.php", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\choice_attributes.html.php");
     }
 }

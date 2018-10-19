@@ -49,6 +49,6 @@ class __TwigTemplate_a1222e691e2aac3b0d10316fb47a6f9b36b390f3a43547e6c5a681bead8
     public function getSourceContext()
     {
         return new Twig_Source("<input type=\"<?php echo isset(\$type) ? \$view->escape(\$type) : 'text' ?>\" <?php echo \$view['form']->block(\$form, 'widget_attributes') ?><?php if (!empty(\$value) || is_numeric(\$value)): ?> value=\"<?php echo \$view->escape(\$value) ?>\"<?php endif ?> />
-", "@Framework/Form/form_widget_simple.html.php", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\form_widget_simple.html.php");
+", "@Framework/Form/form_widget_simple.html.php", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\form_widget_simple.html.php");
     }
 }

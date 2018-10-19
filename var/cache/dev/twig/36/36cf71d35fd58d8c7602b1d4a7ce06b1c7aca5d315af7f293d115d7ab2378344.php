@@ -421,6 +421,6 @@ class __TwigTemplate_c21b2bb411a4f12f9d17cb188e955ebd8510a9080225d3b4064085f593d
     });
 
 /*]]>*/</script>
-", "@Twig/base_js.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\twig-bundle\\Resources\\views\\base_js.html.twig");
+", "@Twig/base_js.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\twig-bundle\\Resources\\views\\base_js.html.twig");
     }
 }

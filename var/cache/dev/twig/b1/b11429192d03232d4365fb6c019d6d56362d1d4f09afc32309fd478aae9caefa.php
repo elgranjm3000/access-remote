@@ -396,6 +396,6 @@ class __TwigTemplate_28e51b1262985285f948b59c1b352275a25d4703cd7c1a0e688b05b391e
 {% block body %}
     {% include '@Twig/Exception/exception.html.twig' %}
 {% endblock %}
-", "@Twig/Exception/exception_full.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\exception_full.html.twig");
+", "@Twig/Exception/exception_full.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\exception_full.html.twig");
     }
 }

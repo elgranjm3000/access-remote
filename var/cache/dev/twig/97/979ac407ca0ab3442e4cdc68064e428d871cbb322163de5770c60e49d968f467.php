@@ -916,6 +916,6 @@ class __TwigTemplate_18ee90b8116b92d1414d4a8cef0ed8d48e897d2363f5bf569961e43c7b6
         </tbody>
     </table>
 {% endmacro %}
-", "@WebProfiler/Collector/translation.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\translation.html.twig");
+", "@WebProfiler/Collector/translation.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\translation.html.twig");
     }
 }

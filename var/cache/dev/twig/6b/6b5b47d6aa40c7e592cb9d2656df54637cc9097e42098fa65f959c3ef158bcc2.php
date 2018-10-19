@@ -1156,6 +1156,6 @@ class __TwigTemplate_ddac4fbbc7097d7163919e95000b96fd14e6163d50a8b6e6889e286099b
         </table>
     {% endif %}
 {% endblock %}
-", "@Security/Collector/security.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\security-bundle\\Resources\\views\\Collector\\security.html.twig");
+", "@Security/Collector/security.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\security-bundle\\Resources\\views\\Collector\\security.html.twig");
     }
 }

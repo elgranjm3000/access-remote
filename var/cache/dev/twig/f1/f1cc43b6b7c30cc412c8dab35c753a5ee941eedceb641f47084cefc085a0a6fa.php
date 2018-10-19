@@ -233,6 +233,6 @@ jQuery(document).ready(function () {
    \$('.filearchivo').removeAttr(\"required\");
    });
  </script>
-    {% endblock %}", "productos/edit.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\productos\\edit.html.twig");
+    {% endblock %}", "productos/edit.html.twig", "C:\\xampp\\htdocs\\access\\templates\\productos\\edit.html.twig");
     }
 }

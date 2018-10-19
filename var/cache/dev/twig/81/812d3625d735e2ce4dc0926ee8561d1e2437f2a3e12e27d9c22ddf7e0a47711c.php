@@ -61,6 +61,6 @@ class __TwigTemplate_7e76c5d9f9b8fd941da4d987e5ea0521ba8e2dba24f2812ef2a351bf87f
     <?php echo \$view['form']->block(\$form, 'form_rows') ?>
     <?php echo \$view['form']->rest(\$form) ?>
 </div>
-", "@Framework/Form/form_widget_compound.html.php", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\form_widget_compound.html.php");
+", "@Framework/Form/form_widget_compound.html.php", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\form_widget_compound.html.php");
     }
 }

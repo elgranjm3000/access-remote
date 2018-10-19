@@ -77,6 +77,6 @@ class __TwigTemplate_a1f441adc8869a8716ae3c788866d57413578021261ec97e40539e536fd
     c-0.6,0-1.2,0.5-1.2,1.2c0,0.6,0.5,1.2,1.1,1.2c0,0,0,0,0,0c-1.3,0-2.3-1.2-2.3-2.6c0-1.5,1-2.5,2.3-2.5c1.3,0,2.3,1.1,2.3,2.5
     C17.1,9.8,16.2,10.9,15,11z\"/>
 </svg>
-", "@WebProfiler/Icon/exception.svg", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Icon\\exception.svg");
+", "@WebProfiler/Icon/exception.svg", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Icon\\exception.svg");
     }
 }

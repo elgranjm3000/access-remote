@@ -173,6 +173,6 @@ class __TwigTemplate_16020c3bee43169bbb3b9a5815d9cecc079454cc9cdf3bcfa65e0b3577d
         </div>
     </div>
 </div>
-", "@Twig/Exception/traces.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\traces.html.twig");
+", "@Twig/Exception/traces.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\traces.html.twig");
     }
 }

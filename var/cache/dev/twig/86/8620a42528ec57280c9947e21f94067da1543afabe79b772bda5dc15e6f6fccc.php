@@ -140,6 +140,6 @@ class __TwigTemplate_5049a10889add790a92d2dc4bbe3dd4a76152f6263c66149db2d5a1f166
     </ul>
 </div>
 {% endblock %}
-", "home/index.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\home\\index.html.twig");
+", "home/index.html.twig", "C:\\xampp\\htdocs\\access\\templates\\home\\index.html.twig");
     }
 }

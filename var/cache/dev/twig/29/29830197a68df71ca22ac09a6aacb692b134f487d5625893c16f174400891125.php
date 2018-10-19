@@ -1047,6 +1047,6 @@ $context["log"], "priorityName", array()) == "WARNING")) ? ("status-warning") : 
         {% endif %}
     {% endif %}
 {% endmacro %}
-", "@WebProfiler/Collector/logger.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\logger.html.twig");
+", "@WebProfiler/Collector/logger.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\logger.html.twig");
     }
 }

@@ -94,6 +94,6 @@ class __TwigTemplate_300a2f32c6dc4a2f9a4101cb369b155f102548ae7ba3a5dbbd6065ecfca
     </exception>
 {% endfor %}
 </error>
-", "@Twig/Exception/exception.xml.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\exception.xml.twig");
+", "@Twig/Exception/exception.xml.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\exception.xml.twig");
     }
 }

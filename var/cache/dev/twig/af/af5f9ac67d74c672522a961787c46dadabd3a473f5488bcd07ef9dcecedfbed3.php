@@ -192,6 +192,6 @@ class __TwigTemplate_1edb5fc94f2671ad08e8a9cb041a53fb08035d25b2ff84612a9dffbd5dc
     {{ include('clientes/_form.html.twig') }}
 
 {% endblock %}
-", "clientes/new.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\clientes\\new.html.twig");
+", "clientes/new.html.twig", "C:\\xampp\\htdocs\\access\\templates\\clientes\\new.html.twig");
     }
 }

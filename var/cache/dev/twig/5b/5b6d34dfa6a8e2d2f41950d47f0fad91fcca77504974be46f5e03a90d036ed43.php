@@ -49,6 +49,6 @@ class __TwigTemplate_14b035ae4dee5679b38f0ec979cf96e1a4e739b42b4143b8621c224a335
     public function getSourceContext()
     {
         return new Twig_Source("<?php echo \$view['form']->block(\$form, 'form_widget_simple', array('type' => isset(\$type) ? \$type : 'password')) ?>
-", "@Framework/Form/password_widget.html.php", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\password_widget.html.php");
+", "@Framework/Form/password_widget.html.php", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\password_widget.html.php");
     }
 }

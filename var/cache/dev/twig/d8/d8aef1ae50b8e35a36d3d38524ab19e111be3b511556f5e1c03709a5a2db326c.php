@@ -90,6 +90,6 @@ class __TwigTemplate_cd977b8371271ef4eec884f86b809b3d426e66d01d624700942de71e638
   {{ include('@Twig/Exception/trace.txt.twig', { trace: trace }, with_context = false) }}
 {% endfor %}
 {% endif %}
-", "@Twig/Exception/traces.txt.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\traces.txt.twig");
+", "@Twig/Exception/traces.txt.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\traces.txt.twig");
     }
 }

@@ -600,6 +600,6 @@ class __TwigTemplate_9c5302e34c0caaf428d415a4bc91d2068d1d90f6fe30b393e6b93e810ba
         }())
     </script>
 {% endblock %}
-", "@WebProfiler/Profiler/layout.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\layout.html.twig");
+", "@WebProfiler/Profiler/layout.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\layout.html.twig");
     }
 }

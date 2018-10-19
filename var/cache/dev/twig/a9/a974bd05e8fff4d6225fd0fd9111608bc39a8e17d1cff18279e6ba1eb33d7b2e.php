@@ -51,6 +51,6 @@ class __TwigTemplate_887e995e63977209158ad6a5f385d590ec2cdc35d059ee8fe9f54a87bb1
     {
         return new Twig_Source("id=\"<?php echo \$view->escape(\$id) ?>\" name=\"<?php echo \$view->escape(\$full_name) ?>\"<?php if (\$disabled): ?> disabled=\"disabled\"<?php endif ?>
 <?php if (\$required): ?> required=\"required\"<?php endif ?>
-<?php echo \$attr ? ' '.\$view['form']->block(\$form, 'attributes') : '' ?>", "@Framework/Form/widget_attributes.html.php", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\widget_attributes.html.php");
+<?php echo \$attr ? ' '.\$view['form']->block(\$form, 'attributes') : '' ?>", "@Framework/Form/widget_attributes.html.php", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\widget_attributes.html.php");
     }
 }

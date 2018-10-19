@@ -175,21 +175,25 @@ class __TwigTemplate_17a85de973501531635d02e38f96db45ae0637a95c688775b3de7679230
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["cliente"], "dpto", array()), "html", null, true);
             echo "</td>                
                 <td>
-                    <a href=\"";
+                    <a title=\"Detalles clientes\" data-toggle=\"tooltip\" href=\"";
             // line 69
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("clientes_show", array("id" => twig_get_attribute($this->env, $this->source, $context["cliente"], "id", array()))), "html", null, true);
             echo "\"><span class=\"glyphicon glyphicon-search\"></span></a>
-                    <a href=\"";
+                    <a data-toggle=\"tooltip\" title=\"Editar cliente\" href=\"";
             // line 70
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("clientes_edit", array("id" => twig_get_attribute($this->env, $this->source, $context["cliente"], "id", array()))), "html", null, true);
             echo "\"><span class=\"glyphicon glyphicon-edit\"></span></a>
+                     <a data-toggle=\"tooltip\" title=\"Crear facturas\" href=\"";
+            // line 71
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("facturas_new", array("cliente" => twig_get_attribute($this->env, $this->source, $context["cliente"], "id", array()))), "html", null, true);
+            echo "\"><span class=\"glyphicon glyphicon-tasks \"></span></a>
                 </td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 74
+            // line 75
             echo "            <tr>
                 <td colspan=\"6\">No hay registro de clientes</td>
             </tr>
@@ -198,7 +202,7 @@ class __TwigTemplate_17a85de973501531635d02e38f96db45ae0637a95c688775b3de7679230
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cliente'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 78
+        // line 79
         echo "        </tbody>
     </table>
 
@@ -227,7 +231,7 @@ class __TwigTemplate_17a85de973501531635d02e38f96db45ae0637a95c688775b3de7679230
 
     public function getDebugInfo()
     {
-        return array (  202 => 78,  193 => 74,  184 => 70,  180 => 69,  175 => 67,  170 => 66,  166 => 64,  162 => 63,  158 => 62,  154 => 61,  151 => 60,  146 => 59,  117 => 32,  108 => 31,  89 => 20,  73 => 6,  64 => 5,  46 => 3,  15 => 1,);
+        return array (  206 => 79,  197 => 75,  188 => 71,  184 => 70,  180 => 69,  175 => 67,  170 => 66,  166 => 64,  162 => 63,  158 => 62,  154 => 61,  151 => 60,  146 => 59,  117 => 32,  108 => 31,  89 => 20,  73 => 6,  64 => 5,  46 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -300,8 +304,9 @@ class __TwigTemplate_17a85de973501531635d02e38f96db45ae0637a95c688775b3de7679230
                 <td>{{ cliente.zona }}</td>
                 <td>{{ cliente.dpto }}</td>                
                 <td>
-                    <a href=\"{{ path('clientes_show', {'id': cliente.id}) }}\"><span class=\"glyphicon glyphicon-search\"></span></a>
-                    <a href=\"{{ path('clientes_edit', {'id': cliente.id}) }}\"><span class=\"glyphicon glyphicon-edit\"></span></a>
+                    <a title=\"Detalles clientes\" data-toggle=\"tooltip\" href=\"{{ path('clientes_show', {'id': cliente.id}) }}\"><span class=\"glyphicon glyphicon-search\"></span></a>
+                    <a data-toggle=\"tooltip\" title=\"Editar cliente\" href=\"{{ path('clientes_edit', {'id': cliente.id}) }}\"><span class=\"glyphicon glyphicon-edit\"></span></a>
+                     <a data-toggle=\"tooltip\" title=\"Crear facturas\" href=\"{{ path('facturas_new', {'cliente': cliente.id}) }}\"><span class=\"glyphicon glyphicon-tasks \"></span></a>
                 </td>
             </tr>
         {% else %}
@@ -317,6 +322,6 @@ class __TwigTemplate_17a85de973501531635d02e38f96db45ae0637a95c688775b3de7679230
 </div>
 </section>
 {% endblock %}
-", "clientes/index.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\clientes\\index.html.twig");
+", "clientes/index.html.twig", "C:\\xampp\\htdocs\\access\\templates\\clientes\\index.html.twig");
     }
 }

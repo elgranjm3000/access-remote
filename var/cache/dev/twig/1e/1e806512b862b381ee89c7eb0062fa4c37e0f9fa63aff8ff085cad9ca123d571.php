@@ -992,6 +992,6 @@ class __TwigTemplate_6ecd5e80d0a3754fb520e7ae1d4547addc51a817901059b89e694caac45
         {% endif %}
     {% endfor %}
 {% endblock %}
-", "@Swiftmailer/Collector/swiftmailer.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\swiftmailer-bundle\\Resources\\views\\Collector\\swiftmailer.html.twig");
+", "@Swiftmailer/Collector/swiftmailer.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\swiftmailer-bundle\\Resources\\views\\Collector\\swiftmailer.html.twig");
     }
 }

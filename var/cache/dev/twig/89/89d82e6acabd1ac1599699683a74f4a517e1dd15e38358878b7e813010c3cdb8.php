@@ -83,6 +83,6 @@ class __TwigTemplate_eb0b03ef382b9ca083ed06a2ea78f9279d314c4faca2232817f28f85bd4
         </div>
     </div>
 </div>
-", "@WebProfiler/Profiler/header.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\header.html.twig");
+", "@WebProfiler/Profiler/header.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\header.html.twig");
     }
 }

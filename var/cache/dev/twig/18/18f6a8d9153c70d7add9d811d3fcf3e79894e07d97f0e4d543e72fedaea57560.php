@@ -225,6 +225,6 @@ jQuery(document).ready(function () {
    \$('.filearchivo').removeAttr(\"required\");
    });
  </script>
-    {% endblock %}", "productos/new.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\productos\\new.html.twig");
+    {% endblock %}", "productos/new.html.twig", "C:\\xampp\\htdocs\\access\\templates\\productos\\new.html.twig");
     }
 }

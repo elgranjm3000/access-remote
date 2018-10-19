@@ -202,6 +202,6 @@ class __TwigTemplate_66f50068c13ef17a2847ca13315a6d7f89aff3fbf1dfbf8907dfd52a7a1
 
 
 {% endblock %}
-", "clientes/edit.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\clientes\\edit.html.twig");
+", "clientes/edit.html.twig", "C:\\xampp\\htdocs\\access\\templates\\clientes\\edit.html.twig");
     }
 }

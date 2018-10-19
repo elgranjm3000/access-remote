@@ -324,6 +324,6 @@ class __TwigTemplate_11da98ecae093b77d5fcfb82af5b14600878cbf3b0acc1ae2b141e91542
 </div>
 </div>
 
-</div>", "productos/_form.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\productos\\_form.html.twig");
+</div>", "productos/_form.html.twig", "C:\\xampp\\htdocs\\access\\templates\\productos\\_form.html.twig");
     }
 }

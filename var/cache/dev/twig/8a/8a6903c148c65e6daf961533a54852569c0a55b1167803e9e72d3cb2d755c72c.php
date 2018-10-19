@@ -57,6 +57,6 @@ class __TwigTemplate_15582f2533800656547b6b62c13886aa16e13a42d8061b0f9395a44c442
     <?php if (strlen(\$value) > 0): ?> value=\"<?php echo \$view->escape(\$value) ?>\"<?php endif ?>
     <?php if (\$checked): ?> checked=\"checked\"<?php endif ?>
 />
-", "@Framework/Form/checkbox_widget.html.php", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\checkbox_widget.html.php");
+", "@Framework/Form/checkbox_widget.html.php", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\checkbox_widget.html.php");
     }
 }

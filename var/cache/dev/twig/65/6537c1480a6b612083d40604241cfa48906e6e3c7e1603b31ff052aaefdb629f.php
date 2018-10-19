@@ -81,6 +81,6 @@ class __TwigTemplate_9f7256f02b3fc979449205133ac9cbca90bda5c4c439374f1bb8850f3f0
             </trace>
 {% endfor %}
         </traces>
-", "@Twig/Exception/traces.xml.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\traces.xml.twig");
+", "@Twig/Exception/traces.xml.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\traces.xml.twig");
     }
 }

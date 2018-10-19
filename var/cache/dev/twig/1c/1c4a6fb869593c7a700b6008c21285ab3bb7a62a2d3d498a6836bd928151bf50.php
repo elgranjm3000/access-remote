@@ -210,6 +210,6 @@ class __TwigTemplate_61d07194e102b4a72cae0f1cb711d0c27b87257bfbe96fdefd9a98bccc6
         {{ include('@Twig/base_js.html.twig') }}
     </body>
 </html>
-", "@Twig/layout.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\twig-bundle\\Resources\\views\\layout.html.twig");
+", "@Twig/layout.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\twig-bundle\\Resources\\views\\layout.html.twig");
     }
 }

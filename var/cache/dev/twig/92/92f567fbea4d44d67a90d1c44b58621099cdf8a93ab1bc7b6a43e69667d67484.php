@@ -157,6 +157,6 @@ class __TwigTemplate_fe61daf237e589d621f08c8aa80adc945cf15c0cfa3239ee0d96fc3e717
         {%- endfor -%}
     </pre>
 {% endif %}
-", "@Doctrine/Collector/explain.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\explain.html.twig");
+", "@Doctrine/Collector/explain.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\explain.html.twig");
     }
 }

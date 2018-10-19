@@ -65,6 +65,6 @@ class __TwigTemplate_88ce874a8f0591d2eb92dc520437f08a419602d5ef4f8c9a083a313e76c
         return new Twig_Source("<?xml version=\"1.0\" encoding=\"{{ _charset }}\" ?>
 
 <error code=\"{{ status_code }}\" message=\"{{ status_text }}\" />
-", "@Twig/Exception/error.xml.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.xml.twig");
+", "@Twig/Exception/error.xml.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.xml.twig");
     }
 }

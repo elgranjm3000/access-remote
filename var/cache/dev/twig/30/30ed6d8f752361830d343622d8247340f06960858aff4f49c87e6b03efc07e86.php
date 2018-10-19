@@ -49,6 +49,6 @@ class __TwigTemplate_ca9a645558fefcfba01808b31527a2ea181bc2a939ddb8558f7922c85d3
     public function getSourceContext()
     {
         return new Twig_Source("<?php echo \$view['form']->block(\$form, 'button_widget', array('type' => isset(\$type) ? \$type : 'reset')) ?>
-", "@Framework/Form/reset_widget.html.php", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\reset_widget.html.php");
+", "@Framework/Form/reset_widget.html.php", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\reset_widget.html.php");
     }
 }

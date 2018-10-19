@@ -61,6 +61,6 @@ class __TwigTemplate_cf47bfee9e468c394f8064273c5c2a803bcbde665f1408ee44c9aaf4929
         return new Twig_Source("/*
 {{ include('@Twig/Exception/exception.txt.twig', { exception: exception }) }}
 */
-", "@Twig/Exception/exception.css.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\exception.css.twig");
+", "@Twig/Exception/exception.css.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\exception.css.twig");
     }
 }

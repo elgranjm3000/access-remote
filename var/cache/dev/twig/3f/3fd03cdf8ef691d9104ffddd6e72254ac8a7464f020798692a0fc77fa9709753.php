@@ -2227,6 +2227,6 @@ table.logs .metadata {
         margin-left: 2px;
     }
 }
-", "@WebProfiler/Profiler/profiler.css.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\profiler.css.twig");
+", "@WebProfiler/Profiler/profiler.css.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\profiler.css.twig");
     }
 }

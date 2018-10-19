@@ -124,6 +124,6 @@ class __TwigTemplate_06cdca6385cc2a2550a884321819ee1365b881eef3e86f871db0a2a1255
 
     {{ include('contratar/_delete_form.html.twig') }}
 {% endblock %}
-", "contratar/edit.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\contratar\\edit.html.twig");
+", "contratar/edit.html.twig", "C:\\xampp\\htdocs\\access\\templates\\contratar\\edit.html.twig");
     }
 }

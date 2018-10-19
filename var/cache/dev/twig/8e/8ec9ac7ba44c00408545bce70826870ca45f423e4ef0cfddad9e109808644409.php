@@ -1458,6 +1458,6 @@ class __TwigTemplate_ee19a3407713f39fd25a8f3db429a169b8dc19b6838c2ae4657a8ebb3c4
     });
 
 /*]]>*/</script>
-", "@WebProfiler/Profiler/base_js.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\base_js.html.twig");
+", "@WebProfiler/Profiler/base_js.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\base_js.html.twig");
     }
 }

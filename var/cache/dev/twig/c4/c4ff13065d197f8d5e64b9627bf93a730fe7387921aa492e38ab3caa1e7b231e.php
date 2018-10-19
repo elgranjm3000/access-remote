@@ -286,6 +286,6 @@ class __TwigTemplate_c87657c8af7c84cb4f8c533fbe1abeb9a8253c770d942ae4b0631b6d031
    
    
 {% endblock %}
-", "proveedores/show.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\proveedores\\show.html.twig");
+", "proveedores/show.html.twig", "C:\\xampp\\htdocs\\access\\templates\\proveedores\\show.html.twig");
     }
 }

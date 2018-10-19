@@ -58,6 +58,6 @@ class __TwigTemplate_34df5e70967b4af1d689b3b19324457fb28d5f5353c5c50ade41e5e360a
     {
         return new Twig_Source("{% extends 'page_login.html.twig' %}
 
-", "security/login.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\security\\login.html.twig");
+", "security/login.html.twig", "C:\\xampp\\htdocs\\access\\templates\\security\\login.html.twig");
     }
 }

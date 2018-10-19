@@ -121,6 +121,6 @@ class __TwigTemplate_8ba91a2415b61055564a91fa797c166915607124715dc8af668aa3f3e34
 {{ form_end(form) }}
 </div>
 </section>
-{% endblock %}", "security/register.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\security\\register.html.twig");
+{% endblock %}", "security/register.html.twig", "C:\\xampp\\htdocs\\access\\templates\\security\\register.html.twig");
     }
 }

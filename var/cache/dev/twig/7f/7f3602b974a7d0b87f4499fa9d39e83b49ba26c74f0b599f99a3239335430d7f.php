@@ -55,6 +55,6 @@ class __TwigTemplate_8fd90df21bfa39b7699197b122391d2e8a774008040561241449ba6cc6c
     public function getSourceContext()
     {
         return new Twig_Source("{{ include('@Twig/Exception/error.xml.twig') }}
-", "@Twig/Exception/error.rdf.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.rdf.twig");
+", "@Twig/Exception/error.rdf.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.rdf.twig");
     }
 }

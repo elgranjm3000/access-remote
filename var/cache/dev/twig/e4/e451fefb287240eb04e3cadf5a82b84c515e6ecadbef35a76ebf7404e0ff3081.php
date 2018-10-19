@@ -97,6 +97,6 @@ class __TwigTemplate_d76a14c13fdbc99ce92b7d6daabacfe87e1c2ea4dab8b15f45f5549106e
 
     <a href=\"{{ path('contratar_index') }}\">back to list</a>
 {% endblock %}
-", "contratar/new.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\contratar\\new.html.twig");
+", "contratar/new.html.twig", "C:\\xampp\\htdocs\\access\\templates\\contratar\\new.html.twig");
     }
 }

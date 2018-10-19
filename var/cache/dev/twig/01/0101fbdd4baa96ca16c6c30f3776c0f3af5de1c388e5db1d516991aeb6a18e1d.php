@@ -155,6 +155,6 @@ class __TwigTemplate_fe541f925508446450ebf9e482a1d7b0b20252c45ceda70082c27e97567
         {% block javascripts %}{% endblock %}
     </body>
 </html>
-", "base.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\base.html.twig");
+", "base.html.twig", "C:\\xampp\\htdocs\\access\\templates\\base.html.twig");
     }
 }

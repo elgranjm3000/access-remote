@@ -49,6 +49,6 @@ class __TwigTemplate_600b5043df437e31bb678b2a34e6f718f18dc75edb8d6da8aebb86bf56a
     public function getSourceContext()
     {
         return new Twig_Source("<?php echo \$view['form']->block(\$form, 'form_widget_simple', array('type' => isset(\$type) ? \$type : 'text')) ?>
-", "@Framework/Form/number_widget.html.php", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\number_widget.html.php");
+", "@Framework/Form/number_widget.html.php", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\number_widget.html.php");
     }
 }

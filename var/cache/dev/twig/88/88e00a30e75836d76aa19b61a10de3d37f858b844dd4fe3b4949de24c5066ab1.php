@@ -195,6 +195,6 @@ class __TwigTemplate_6d030d82fbe66c17612acde27ae2db2fc03e0e0160b93293ae8d8e31545
 
     
 {% endblock %}
-", "familia/new.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\familia\\new.html.twig");
+", "familia/new.html.twig", "C:\\xampp\\htdocs\\access\\templates\\familia\\new.html.twig");
     }
 }

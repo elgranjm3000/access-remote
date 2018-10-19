@@ -290,6 +290,6 @@ class __TwigTemplate_01524d92ac5ed4cb2551cf0b58385e57a8e5ec3b76a5cb14139d34bf52e
           </div>
         </section>
 {% endblock %}
-", "familia/index.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\familia\\index.html.twig");
+", "familia/index.html.twig", "C:\\xampp\\htdocs\\access\\templates\\familia\\index.html.twig");
     }
 }

@@ -255,6 +255,6 @@ class __TwigTemplate_2603c73e284ffe6eefc77eb7c69446bf98541baa642d26a0ef2e15b63e1
           <h5 class=\"title-divider text-muted mt40 mb20\">Server Statistics<span class=\"pull-right text-primary fw600\">USA</span></h5>
         </div>
       </aside>
-{% endblock %}", "home/inicio.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\home\\inicio.html.twig");
+{% endblock %}", "home/inicio.html.twig", "C:\\xampp\\htdocs\\access\\templates\\home\\inicio.html.twig");
     }
 }

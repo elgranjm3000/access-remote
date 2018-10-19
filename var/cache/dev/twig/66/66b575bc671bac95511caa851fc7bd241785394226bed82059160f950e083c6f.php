@@ -121,6 +121,6 @@ class __TwigTemplate_6fd134395c1e739923f38afc5a5bcf4201c644e94e06d65206cc7a83c41
         {% endfor %}
     </tbody>
 </table>
-", "@WebProfiler/Profiler/bag.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\bag.html.twig");
+", "@WebProfiler/Profiler/bag.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\bag.html.twig");
     }
 }

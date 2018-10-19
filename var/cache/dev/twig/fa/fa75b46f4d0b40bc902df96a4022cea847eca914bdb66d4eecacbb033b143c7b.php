@@ -381,6 +381,6 @@ class __TwigTemplate_039a5db7def02996656845bdd9a501e6f6aea1baf07a0fe642cfb7feea8
 {% endblock %}
 
 
-", "proveedores/index.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\proveedores\\index.html.twig");
+", "proveedores/index.html.twig", "C:\\xampp\\htdocs\\access\\templates\\proveedores\\index.html.twig");
     }
 }

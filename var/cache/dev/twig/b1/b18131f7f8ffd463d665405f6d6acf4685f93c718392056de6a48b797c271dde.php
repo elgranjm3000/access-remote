@@ -55,6 +55,6 @@ class __TwigTemplate_660f1a593fb0b8cabc04c77438d0709aa4fa764a4fa84a706ce3804f5ba
     public function getSourceContext()
     {
         return new Twig_Source("{{ include('@Twig/Exception/error.xml.twig') }}
-", "@Twig/Exception/error.atom.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.atom.twig");
+", "@Twig/Exception/error.atom.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.atom.twig");
     }
 }

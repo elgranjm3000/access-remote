@@ -67,6 +67,6 @@ class __TwigTemplate_c22fab4e8547d4712209a4bf08745cad284d2ee1b60456aaae4f553ad35
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ familium.id) }}\">
     <button class=\"btn btn-danger\">Eliminar registro</button>
 </form>
-", "familia/_delete_form.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\familia\\_delete_form.html.twig");
+", "familia/_delete_form.html.twig", "C:\\xampp\\htdocs\\access\\templates\\familia\\_delete_form.html.twig");
     }
 }

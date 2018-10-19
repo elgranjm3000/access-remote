@@ -196,6 +196,6 @@ a.doc:hover {
     top: -7em;
     visibility: hidden;
 }
-", "@WebProfiler/Profiler/open.css.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\open.css.twig");
+", "@WebProfiler/Profiler/open.css.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\open.css.twig");
     }
 }

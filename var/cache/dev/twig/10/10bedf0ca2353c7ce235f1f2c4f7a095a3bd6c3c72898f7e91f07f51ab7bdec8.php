@@ -99,6 +99,6 @@ class __TwigTemplate_001d9a2f711e86808fdf1c0469a28abe9ddd60ebbd8a27e79a1b9e883ce
 <?php if (\$enable && \$async) : ?>
     <?php include __DIR__.'/_ckeditor_javascript.html.php'; ?>
 <?php endif; ?>
-", "@FOSCKEditor/Form/ckeditor_javascript.html.php", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\friendsofsymfony\\ckeditor-bundle\\src\\Resources\\views\\Form\\ckeditor_javascript.html.php");
+", "@FOSCKEditor/Form/ckeditor_javascript.html.php", "C:\\xampp\\htdocs\\access\\vendor\\friendsofsymfony\\ckeditor-bundle\\src\\Resources\\views\\Form\\ckeditor_javascript.html.php");
     }
 }

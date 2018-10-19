@@ -140,6 +140,6 @@ class __TwigTemplate_c101f925990521179b6997bf28e51ce4f6d92befc1a2f322973c0c2ab8e
     {{ filename|file_excerpt(line, -1) }}
 </div>
 {% endblock %}
-", "@WebProfiler/Profiler/open.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\open.html.twig");
+", "@WebProfiler/Profiler/open.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\open.html.twig");
     }
 }

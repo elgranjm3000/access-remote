@@ -213,6 +213,6 @@ class __TwigTemplate_110e1d586dc760e17c54a0bc22ec440d94903d000eda680698b7bba238c
         </div>
     </form>
 </div>
-", "@WebProfiler/Profiler/search.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\search.html.twig");
+", "@WebProfiler/Profiler/search.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\search.html.twig");
     }
 }

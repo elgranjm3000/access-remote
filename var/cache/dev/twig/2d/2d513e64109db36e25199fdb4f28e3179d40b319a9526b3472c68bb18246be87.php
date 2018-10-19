@@ -67,6 +67,6 @@ class __TwigTemplate_58816cac02aec0191a73c85e2d6f054a764cb5db334393312b592a54b04
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ cliente.id) }}\">
     <button class=\"btn btn-danger\">Eliminar registro</button>
 </form>
-", "clientes/_delete_form.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\clientes\\_delete_form.html.twig");
+", "clientes/_delete_form.html.twig", "C:\\xampp\\htdocs\\access\\templates\\clientes\\_delete_form.html.twig");
     }
 }

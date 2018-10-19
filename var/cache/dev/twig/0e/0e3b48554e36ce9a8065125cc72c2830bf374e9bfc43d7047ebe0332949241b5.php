@@ -97,6 +97,6 @@ class __TwigTemplate_504e080e742e8db13a7b68dce7b10379a7054edf330992e968204a02383
         Sfjs.loadToolbar('{{ token }}');
     })();
 /*]]>*/</script>
-", "@WebProfiler/Profiler/toolbar_js.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\toolbar_js.html.twig");
+", "@WebProfiler/Profiler/toolbar_js.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\toolbar_js.html.twig");
     }
 }

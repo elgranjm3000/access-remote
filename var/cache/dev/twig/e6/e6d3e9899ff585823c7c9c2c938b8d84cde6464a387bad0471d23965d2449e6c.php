@@ -161,6 +161,6 @@ class __TwigTemplate_efd05013f45412be5f9c185c7f7a97bacad1f0b49b2142ae585f4f7a6ff
 </div>
 </div>
 
-</div>", "almacen/_form.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\almacen\\_form.html.twig");
+</div>", "almacen/_form.html.twig", "C:\\xampp\\htdocs\\access\\templates\\almacen\\_form.html.twig");
     }
 }

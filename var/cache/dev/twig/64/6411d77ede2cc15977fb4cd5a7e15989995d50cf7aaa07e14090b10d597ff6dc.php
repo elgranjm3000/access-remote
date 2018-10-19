@@ -396,6 +396,6 @@ class __TwigTemplate_acffe6dec0a0696395e53410cabd3c64eb74802b249aa399ba7c2b072d2
         </div>
     {% endfor %}
 {% endblock %}
-", "@Debug/Profiler/dump.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\debug-bundle\\Resources\\views\\Profiler\\dump.html.twig");
+", "@Debug/Profiler/dump.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\debug-bundle\\Resources\\views\\Profiler\\dump.html.twig");
     }
 }

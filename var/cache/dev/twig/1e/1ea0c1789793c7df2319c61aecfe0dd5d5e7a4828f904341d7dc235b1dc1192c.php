@@ -65,6 +65,6 @@ class __TwigTemplate_980f05e09f46ab843fd11e41309d7696cb809be6c104f46c552156bf2f9
 {{ status_code }} {{ status_text }}
 
 */
-", "@Twig/Exception/error.css.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.css.twig");
+", "@Twig/Exception/error.css.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.css.twig");
     }
 }

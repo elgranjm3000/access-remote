@@ -289,6 +289,6 @@ class __TwigTemplate_062b6d3013e5d0658a78dcfe3ce217dfab4b5c6e71de5752aa28bda5b21
 </div>
 </section>
 {% endblock %}
-", "almacen/index.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\almacen\\index.html.twig");
+", "almacen/index.html.twig", "C:\\xampp\\htdocs\\access\\templates\\almacen\\index.html.twig");
     }
 }

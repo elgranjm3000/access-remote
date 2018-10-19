@@ -253,6 +253,6 @@ class __TwigTemplate_895a6e6d2e09199334215fc02f4febc3eac1cda0fe3b99add5865bf4763
           </div>
       </div>
 {% endblock %}
-", "almacen/show.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\almacen\\show.html.twig");
+", "almacen/show.html.twig", "C:\\xampp\\htdocs\\access\\templates\\almacen\\show.html.twig");
     }
 }

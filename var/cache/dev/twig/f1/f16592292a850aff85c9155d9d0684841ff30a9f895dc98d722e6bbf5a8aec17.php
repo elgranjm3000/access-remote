@@ -61,6 +61,6 @@ class __TwigTemplate_6498982aaf0cad15b83722fee1c1774189803012fbfa8bc4fbbacd6ac5c
         <?php endforeach; ?>
     </ul>
 <?php endif ?>
-", "@Framework/Form/form_errors.html.php", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\form_errors.html.php");
+", "@Framework/Form/form_errors.html.php", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\form_errors.html.php");
     }
 }

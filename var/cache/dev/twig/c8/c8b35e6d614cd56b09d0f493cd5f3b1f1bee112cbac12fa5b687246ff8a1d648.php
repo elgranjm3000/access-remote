@@ -194,6 +194,6 @@ class __TwigTemplate_412b5130b98b95201d5e4a62f96adf4425ed5afea469ae62f004ec8e35c
     {{ include('familia/_form.html.twig', {'button_label': 'Actualizar'}) }}
 
 {% endblock %}
-", "familia/edit.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\templates\\familia\\edit.html.twig");
+", "familia/edit.html.twig", "C:\\xampp\\htdocs\\access\\templates\\familia\\edit.html.twig");
     }
 }

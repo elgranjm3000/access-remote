@@ -140,6 +140,6 @@ class __TwigTemplate_fb98ac1c87fb0b9b6e7f218f5815f02c019c44e3b1b733110c44481efff
     <h2>{{ messages[about].title }}</h2>
     <p>{{ messages[about].message }}</p>
 {% endblock %}
-", "@WebProfiler/Profiler/info.html.twig", "C:\\xampp\\htdocs\\lamya_Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\info.html.twig");
+", "@WebProfiler/Profiler/info.html.twig", "C:\\xampp\\htdocs\\access\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\info.html.twig");
     }
 }
