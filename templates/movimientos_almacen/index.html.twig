@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MovimientosAlmacen index{% endblock %}
+
+{% block body %}
+    <h1>MovimientosAlmacen index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cantidad</th>
+                <th>Status</th>
+                <th>Fecha</th>
+                <th>Comentarios</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for movimientos_almacen in movimientos_almacens %}
+            <tr>
+                <td>{{ movimientos_almacen.id }}</td>
+                <td>{{ movimientos_almacen.Cantidad }}</td>
+                <td>{{ movimientos_almacen.Status ? 'Yes' : 'No' }}</td>
+                <td>{{ movimientos_almacen.Fecha ? movimientos_almacen.Fecha|date('Y-m-d') : '' }}</td>
+                <td>{{ movimientos_almacen.Comentarios }}</td>
+                <td>
+                    <a href="{{ path('movimientos_almacen_show', {'id': movimientos_almacen.id}) }}">show</a>
+                    <a href="{{ path('movimientos_almacen_edit', {'id': movimientos_almacen.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('movimientos_almacen_new') }}">Create new</a>
+{% endblock %}

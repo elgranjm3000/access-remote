@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MovimientosAlmacen{% endblock %}
+
+{% block body %}
+    <h1>MovimientosAlmacen</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ movimientos_almacen.id }}</td>
+            </tr>
+            <tr>
+                <th>Cantidad</th>
+                <td>{{ movimientos_almacen.Cantidad }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ movimientos_almacen.Status ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ movimientos_almacen.Fecha ? movimientos_almacen.Fecha|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Comentarios</th>
+                <td>{{ movimientos_almacen.Comentarios }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('movimientos_almacen_index') }}">back to list</a>
+
+    <a href="{{ path('movimientos_almacen_edit', {'id': movimientos_almacen.id}) }}">edit</a>
+
+    {{ include('movimientos_almacen/_delete_form.html.twig') }}
+{% endblock %}

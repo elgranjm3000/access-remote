@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MovimientosAlmacen{% endblock %}
+
+{% block body %}
+    <h1>Create new MovimientosAlmacen</h1>
+
+    {{ include('movimientos_almacen/_form.html.twig') }}
+
+    <a href="{{ path('movimientos_almacen_index') }}">back to list</a>
+{% endblock %}

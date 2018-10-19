@@ -26,18 +26,12 @@ class MovimientosAlmacen
      * @ORM\ManyToOne(targetEntity="App\Entity\Almacen")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $IdAlmacenDestino;
+    private $Destino;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Almacen")
-     * @ORM\JoinColumn(nullable=false)
      */
-    private $IdAlmacenOrigen;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $NumMovimientos;
+    private $Origen;
 
     /**
      * @ORM\Column(type="integer")
@@ -45,16 +39,25 @@ class MovimientosAlmacen
     private $Cantidad;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="boolean", nullable=true)
      */
-    private $Comentarion;
+    private $Status;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Clientes")
+     */
+    private $IdCliente;
 
     /**
      * @ORM\Column(type="date")
      */
     private $Fecha;
 
-  
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Comentarios;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,38 +75,26 @@ class MovimientosAlmacen
         return $this;
     }
 
-    public function getIdAlmacenDestino(): ?Almacen
+    public function getDestino(): ?Almacen
     {
-        return $this->IdAlmacenDestino;
+        return $this->Destino;
     }
 
-    public function setIdAlmacenDestino(?Almacen $IdAlmacenDestino): self
+    public function setDestino(?Almacen $Destino): self
     {
-        $this->IdAlmacenDestino = $IdAlmacenDestino;
+        $this->Destino = $Destino;
 
         return $this;
     }
 
-    public function getIdAlmacenOrigen(): ?Almacen
+    public function getOrigen(): ?Almacen
     {
-        return $this->IdAlmacenOrigen;
+        return $this->Origen;
     }
 
-    public function setIdAlmacenOrigen(?Almacen $IdAlmacenOrigen): self
+    public function setOrigen(?Almacen $Origen): self
     {
-        $this->IdAlmacenOrigen = $IdAlmacenOrigen;
-
-        return $this;
-    }
-
-    public function getNumMovimientos(): ?int
-    {
-        return $this->NumMovimientos;
-    }
-
-    public function setNumMovimientos(int $NumMovimientos): self
-    {
-        $this->NumMovimientos = $NumMovimientos;
+        $this->Origen = $Origen;
 
         return $this;
     }
@@ -120,14 +111,26 @@ class MovimientosAlmacen
         return $this;
     }
 
-    public function getComentarion(): ?string
+    public function getStatus(): ?bool
     {
-        return $this->Comentarion;
+        return $this->Status;
     }
 
-    public function setComentarion(string $Comentarion): self
+    public function setStatus(?bool $Status): self
     {
-        $this->Comentarion = $Comentarion;
+        $this->Status = $Status;
+
+        return $this;
+    }
+
+    public function getIdCliente(): ?Clientes
+    {
+        return $this->IdCliente;
+    }
+
+    public function setIdCliente(?Clientes $IdCliente): self
+    {
+        $this->IdCliente = $IdCliente;
 
         return $this;
     }
@@ -144,5 +147,15 @@ class MovimientosAlmacen
         return $this;
     }
 
-   
+    public function getComentarios(): ?string
+    {
+        return $this->Comentarios;
+    }
+
+    public function setComentarios(?string $Comentarios): self
+    {
+        $this->Comentarios = $Comentarios;
+
+        return $this;
+    }
 }

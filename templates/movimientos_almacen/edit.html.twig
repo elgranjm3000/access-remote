@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit MovimientosAlmacen{% endblock %}
+
+{% block body %}
+    <h1>Edit MovimientosAlmacen</h1>
+
+    {{ include('movimientos_almacen/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('movimientos_almacen_index') }}">back to list</a>
+
+    {{ include('movimientos_almacen/_delete_form.html.twig') }}
+{% endblock %}
