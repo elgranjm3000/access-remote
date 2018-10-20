@@ -44,8 +44,8 @@
         <thead>
             <tr>
                 <th style="text-align: center;">Id</th>
+                <th style="text-align: center;">Producto</th>
                 <th style="text-align: center;">Cantidad</th>
-                <th style="text-align: center;">Status</th>
                 <th style="text-align: center;">Fecha</th>
                 <th style="text-align: center;">actions</th>
             </tr>
@@ -54,12 +54,12 @@
         {% for movimientos_almacen in movimientos_almacens %}
             <tr>
                 <td style="text-align: center;">{{ movimientos_almacen.id }}</td>
+                <td style="text-align: center;">{{ movimientos_almacen.IdProducto }}</td>
                 <td style="text-align: center;">{{ movimientos_almacen.Cantidad }}</td>
-                <td style="text-align: center;">{{ movimientos_almacen.Status ? 'Yes' : 'No' }}</td>
                 <td style="text-align: center;">{{ movimientos_almacen.Fecha ? movimientos_almacen.Fecha|date('Y-m-d') : '' }}</td>
                 <td style="text-align: center;">
-                    <a href="{{ path('movimientos_almacen_show', {'id': movimientos_almacen.id}) }}">show</a>
-                    <a href="{{ path('movimientos_almacen_edit', {'id': movimientos_almacen.id}) }}">edit</a>
+                    <a href="{{ path('movimientos_almacen_show', {'id': movimientos_almacen.id}) }}">Detalles</a>
+                    <a href="{{ path('movimientos_almacen_edit', {'id': movimientos_almacen.id}) }}">Editar</a>
                 </td>
             </tr>
         {% else %}
@@ -71,10 +71,7 @@
     </table>
   </div>
             </div>
-            <!-- Panel with: Expanding Rows-->
-          
-            <!-- DEMO - breaks used to extend container - DEMO--><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           </div>
         </section>
-    <a href="{{ path('movimientos_almacen_new') }}">Create new</a>
+    
 {% endblock %}

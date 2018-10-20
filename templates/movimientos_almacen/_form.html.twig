@@ -39,24 +39,17 @@
                         </div>
                       </div>
                  <div class="row">
-                    <div class="col-md-4">
-                      <div class="section">
-                        <label class="field">
-                          {{ form_widget(form.Fecha, {'attr': {'class': 'gui-input js-datepicker'}}) }}
+                   	<div class="col-md-6">
+                          <div class="section">
+                          	<label>Fecha</label>
+                            <label class="field">
+                              {{ form_widget(form.Fecha, {'attr': {'class': 'gui-input js-datepicker','placeholder':"FECHA"}}) }}
 
-                       </label>
-                       </div>
-                    </div>
-                  <div class="col-md-4">
-                      <div class="section">
-                      	<label>Comentarios</label>
-                        <label class="field">
-                          {{ form_widget(form.Comentarios, {'attr': {'class': 'form-control'}}) }}
-
-                       </label>
-                       </div>
-                    </div>
-                     <div class="col-md-4">
+                            </label>
+                          </div>
+                        </div>
+                     
+                     <div class="col-md-6">
                       <div class="section">
                       	<label>Almacen de Destino</label>
                         <label class="field">
@@ -67,7 +60,18 @@
                     </div>    
 					
                    
-                    
+                    <div class="row">
+                  <div class="col-md-12">
+
+                    	 <div class="section">
+                      	<label>Comentarios</label>
+                        <label class="field">
+                          {{ form_widget(form.Comentarios, {'attr': {'class': 'form-control'}}) }}
+
+                       </label>
+                       </div>
+                   </div>
+                    </div>
 				</div>
                      
                       

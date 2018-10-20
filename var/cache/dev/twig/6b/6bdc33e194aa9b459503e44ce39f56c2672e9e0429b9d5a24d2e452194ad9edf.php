@@ -100,37 +100,26 @@ class __TwigTemplate_301a97c84f1690042059861967652e48c1f0698b6e8943983cafc0c3942
                         </div>
                       </div>
                  <div class=\"row\">
-                    <div class=\"col-md-4\">
-                      <div class=\"section\">
-
-                        <label class=\"field\">
-                          ";
+                   \t<div class=\"col-md-6\">
+                          <div class=\"section\">
+                          \t<label>Fecha</label>
+                            <label class=\"field\">
+                              ";
         // line 46
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 46, $this->source); })()), "Fecha", array()), 'widget', array("attr" => array("class" => "gui-input js-datepicker")));
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 46, $this->source); })()), "Fecha", array()), 'widget', array("attr" => array("class" => "gui-input js-datepicker", "placeholder" => "FECHA")));
         echo "
 
-                       </label>
-                       </div>
-                    </div>
-                  <div class=\"col-md-4\">
-                      <div class=\"section\">
-                      \t<label>Comentarios</label>
-                        <label class=\"field\">
-                          ";
-        // line 55
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 55, $this->source); })()), "Comentarios", array()), 'widget', array("attr" => array("class" => "form-control")));
-        echo "
-
-                       </label>
-                       </div>
-                    </div>
-                     <div class=\"col-md-4\">
+                            </label>
+                          </div>
+                        </div>
+                     
+                     <div class=\"col-md-6\">
                       <div class=\"section\">
                       \t<label>Almacen de Destino</label>
                         <label class=\"field\">
                           ";
-        // line 64
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 64, $this->source); })()), "Destino", array()), 'widget', array("attr" => array("class" => "form-control")));
+        // line 56
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 56, $this->source); })()), "Destino", array()), 'widget', array("attr" => array("class" => "form-control")));
         echo "
 
                        </label>
@@ -138,28 +127,42 @@ class __TwigTemplate_301a97c84f1690042059861967652e48c1f0698b6e8943983cafc0c3942
                     </div>    
 \t\t\t\t\t
                    
-                    
+                    <div class=\"row\">
+                  <div class=\"col-md-12\">
+
+                    \t <div class=\"section\">
+                      \t<label>Comentarios</label>
+                        <label class=\"field\">
+                          ";
+        // line 69
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 69, $this->source); })()), "Comentarios", array()), 'widget', array("attr" => array("class" => "form-control")));
+        echo "
+
+                       </label>
+                       </div>
+                   </div>
+                    </div>
 \t\t\t\t</div>
                      
                       
                           <button type=\"submit\" class=\"btn btn-success\" style=\"display: block;margin: auto;\">";
-        // line 75
-        echo twig_escape_filter($this->env, (((isset($context["button_label"]) || array_key_exists("button_label", $context))) ? (_twig_default_filter((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new Twig_Error_Runtime('Variable "button_label" does not exist.', 75, $this->source); })()), "Guardar")) : ("Guardar")), "html", null, true);
+        // line 78
+        echo twig_escape_filter($this->env, (((isset($context["button_label"]) || array_key_exists("button_label", $context))) ? (_twig_default_filter((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new Twig_Error_Runtime('Variable "button_label" does not exist.', 78, $this->source); })()), "Guardar")) : ("Guardar")), "html", null, true);
         echo "</button>
 ";
-        // line 76
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 76, $this->source); })()), "Status", array()), 'widget', array("attr" => array("hidden" => "hidden")));
+        // line 79
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 79, $this->source); })()), "Status", array()), 'widget', array("attr" => array("hidden" => "hidden")));
         echo "
 ";
-        // line 77
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 77, $this->source); })()), "IdCliente", array()), 'widget', array("attr" => array("hidden" => "hidden")));
+        // line 80
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 80, $this->source); })()), "IdCliente", array()), 'widget', array("attr" => array("hidden" => "hidden")));
         echo "
 
  
 
 ";
-        // line 81
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 81, $this->source); })()), 'form_end');
+        // line 84
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 84, $this->source); })()), 'form_end');
         echo " 
 
 
@@ -189,7 +192,7 @@ class __TwigTemplate_301a97c84f1690042059861967652e48c1f0698b6e8943983cafc0c3942
 
     public function getDebugInfo()
     {
-        return array (  162 => 81,  155 => 77,  151 => 76,  147 => 75,  133 => 64,  121 => 55,  109 => 46,  96 => 36,  83 => 26,  71 => 17,  61 => 10,  53 => 4,  44 => 3,  15 => 1,);
+        return array (  165 => 84,  158 => 80,  154 => 79,  150 => 78,  138 => 69,  122 => 56,  109 => 46,  96 => 36,  83 => 26,  71 => 17,  61 => 10,  53 => 4,  44 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -235,25 +238,17 @@ class __TwigTemplate_301a97c84f1690042059861967652e48c1f0698b6e8943983cafc0c3942
                         </div>
                       </div>
                  <div class=\"row\">
-                    <div class=\"col-md-4\">
-                      <div class=\"section\">
+                   \t<div class=\"col-md-6\">
+                          <div class=\"section\">
+                          \t<label>Fecha</label>
+                            <label class=\"field\">
+                              {{ form_widget(form.Fecha, {'attr': {'class': 'gui-input js-datepicker','placeholder':\"FECHA\"}}) }}
 
-                        <label class=\"field\">
-                          {{ form_widget(form.Fecha, {'attr': {'class': 'gui-input js-datepicker'}}) }}
-
-                       </label>
-                       </div>
-                    </div>
-                  <div class=\"col-md-4\">
-                      <div class=\"section\">
-                      \t<label>Comentarios</label>
-                        <label class=\"field\">
-                          {{ form_widget(form.Comentarios, {'attr': {'class': 'form-control'}}) }}
-
-                       </label>
-                       </div>
-                    </div>
-                     <div class=\"col-md-4\">
+                            </label>
+                          </div>
+                        </div>
+                     
+                     <div class=\"col-md-6\">
                       <div class=\"section\">
                       \t<label>Almacen de Destino</label>
                         <label class=\"field\">
@@ -264,7 +259,18 @@ class __TwigTemplate_301a97c84f1690042059861967652e48c1f0698b6e8943983cafc0c3942
                     </div>    
 \t\t\t\t\t
                    
-                    
+                    <div class=\"row\">
+                  <div class=\"col-md-12\">
+
+                    \t <div class=\"section\">
+                      \t<label>Comentarios</label>
+                        <label class=\"field\">
+                          {{ form_widget(form.Comentarios, {'attr': {'class': 'form-control'}}) }}
+
+                       </label>
+                       </div>
+                   </div>
+                    </div>
 \t\t\t\t</div>
                      
                       

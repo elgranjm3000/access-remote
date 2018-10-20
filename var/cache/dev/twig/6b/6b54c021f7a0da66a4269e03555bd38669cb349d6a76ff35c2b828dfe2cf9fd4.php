@@ -132,8 +132,8 @@ class __TwigTemplate_df55852dfe99bd34742192b94746df383276e4b1ac0d3dc740d5a155419
         <thead>
             <tr>
                 <th style=\"text-align: center;\">Id</th>
+                <th style=\"text-align: center;\">Producto</th>
                 <th style=\"text-align: center;\">Cantidad</th>
-                <th style=\"text-align: center;\">Status</th>
                 <th style=\"text-align: center;\">Fecha</th>
                 <th style=\"text-align: center;\">actions</th>
             </tr>
@@ -153,11 +153,11 @@ class __TwigTemplate_df55852dfe99bd34742192b94746df383276e4b1ac0d3dc740d5a155419
             echo "</td>
                 <td style=\"text-align: center;\">";
             // line 57
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["movimientos_almacen"], "Cantidad", array()), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["movimientos_almacen"], "IdProducto", array()), "html", null, true);
             echo "</td>
                 <td style=\"text-align: center;\">";
             // line 58
-            echo ((twig_get_attribute($this->env, $this->source, $context["movimientos_almacen"], "Status", array())) ? ("Yes") : ("No"));
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["movimientos_almacen"], "Cantidad", array()), "html", null, true);
             echo "</td>
                 <td style=\"text-align: center;\">";
             // line 59
@@ -167,11 +167,11 @@ class __TwigTemplate_df55852dfe99bd34742192b94746df383276e4b1ac0d3dc740d5a155419
                     <a href=\"";
             // line 61
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("movimientos_almacen_show", array("id" => twig_get_attribute($this->env, $this->source, $context["movimientos_almacen"], "id", array()))), "html", null, true);
-            echo "\">show</a>
+            echo "\">Detalles</a>
                     <a href=\"";
             // line 62
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("movimientos_almacen_edit", array("id" => twig_get_attribute($this->env, $this->source, $context["movimientos_almacen"], "id", array()))), "html", null, true);
-            echo "\">edit</a>
+            echo "\">Editar</a>
                 </td>
             </tr>
         ";
@@ -192,15 +192,9 @@ class __TwigTemplate_df55852dfe99bd34742192b94746df383276e4b1ac0d3dc740d5a155419
     </table>
   </div>
             </div>
-            <!-- Panel with: Expanding Rows-->
-          
-            <!-- DEMO - breaks used to extend container - DEMO--><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           </div>
         </section>
-    <a href=\"";
-        // line 79
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("movimientos_almacen_new");
-        echo "\">Create new</a>
+    
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -222,7 +216,7 @@ class __TwigTemplate_df55852dfe99bd34742192b94746df383276e4b1ac0d3dc740d5a155419
 
     public function getDebugInfo()
     {
-        return array (  202 => 79,  191 => 70,  182 => 66,  173 => 62,  169 => 61,  164 => 59,  160 => 58,  156 => 57,  152 => 56,  149 => 55,  144 => 54,  117 => 29,  108 => 28,  89 => 19,  73 => 5,  64 => 4,  46 => 3,  15 => 1,);
+        return array (  191 => 70,  182 => 66,  173 => 62,  169 => 61,  164 => 59,  160 => 58,  156 => 57,  152 => 56,  149 => 55,  144 => 54,  117 => 29,  108 => 28,  89 => 19,  73 => 5,  64 => 4,  46 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -273,8 +267,8 @@ class __TwigTemplate_df55852dfe99bd34742192b94746df383276e4b1ac0d3dc740d5a155419
         <thead>
             <tr>
                 <th style=\"text-align: center;\">Id</th>
+                <th style=\"text-align: center;\">Producto</th>
                 <th style=\"text-align: center;\">Cantidad</th>
-                <th style=\"text-align: center;\">Status</th>
                 <th style=\"text-align: center;\">Fecha</th>
                 <th style=\"text-align: center;\">actions</th>
             </tr>
@@ -283,12 +277,12 @@ class __TwigTemplate_df55852dfe99bd34742192b94746df383276e4b1ac0d3dc740d5a155419
         {% for movimientos_almacen in movimientos_almacens %}
             <tr>
                 <td style=\"text-align: center;\">{{ movimientos_almacen.id }}</td>
+                <td style=\"text-align: center;\">{{ movimientos_almacen.IdProducto }}</td>
                 <td style=\"text-align: center;\">{{ movimientos_almacen.Cantidad }}</td>
-                <td style=\"text-align: center;\">{{ movimientos_almacen.Status ? 'Yes' : 'No' }}</td>
                 <td style=\"text-align: center;\">{{ movimientos_almacen.Fecha ? movimientos_almacen.Fecha|date('Y-m-d') : '' }}</td>
                 <td style=\"text-align: center;\">
-                    <a href=\"{{ path('movimientos_almacen_show', {'id': movimientos_almacen.id}) }}\">show</a>
-                    <a href=\"{{ path('movimientos_almacen_edit', {'id': movimientos_almacen.id}) }}\">edit</a>
+                    <a href=\"{{ path('movimientos_almacen_show', {'id': movimientos_almacen.id}) }}\">Detalles</a>
+                    <a href=\"{{ path('movimientos_almacen_edit', {'id': movimientos_almacen.id}) }}\">Editar</a>
                 </td>
             </tr>
         {% else %}
@@ -300,12 +294,9 @@ class __TwigTemplate_df55852dfe99bd34742192b94746df383276e4b1ac0d3dc740d5a155419
     </table>
   </div>
             </div>
-            <!-- Panel with: Expanding Rows-->
-          
-            <!-- DEMO - breaks used to extend container - DEMO--><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           </div>
         </section>
-    <a href=\"{{ path('movimientos_almacen_new') }}\">Create new</a>
+    
 {% endblock %}
 ", "movimientos_almacen/index.html.twig", "C:\\xampp\\htdocs\\access\\templates\\movimientos_almacen\\index.html.twig");
     }
