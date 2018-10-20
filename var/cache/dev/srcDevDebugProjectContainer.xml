@@ -440,6 +440,13 @@
         <argument type="service" id=".service_locator.ychIlgF.App\Controller\HomeController"/>
       </call>
     </service>
+    <service id="App\Controller\MovimientosAlmacenController" class="App\Controller\MovimientosAlmacenController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.ychIlgF.App\Controller\MovimientosAlmacenController"/>
+      </call>
+    </service>
     <service id="App\Controller\MovimientosDepositosController" class="App\Controller\MovimientosDepositosController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -491,6 +498,9 @@
       <tag name="form.type"/>
     </service>
     <service id="App\Form\FamiliaType" class="App\Form\FamiliaType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\MovimientosAlmacenType" class="App\Form\MovimientosAlmacenType" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\MovimientosDepositos1Type" class="App\Form\MovimientosDepositos1Type" public="false" autowire="true" autoconfigure="true">
@@ -813,6 +823,7 @@
         <argument>App\Form\DetallesFacturaType</argument>
         <argument>App\Form\FacturasType</argument>
         <argument>App\Form\FamiliaType</argument>
+        <argument>App\Form\MovimientosAlmacenType</argument>
         <argument>App\Form\MovimientosDepositos1Type</argument>
         <argument>App\Form\MovimientosDepositosType</argument>
         <argument>App\Form\ProductosType</argument>
@@ -1047,7 +1058,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.DgAmzLV"/>
+      <argument type="service" id=".service_locator.cXaLOOi"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.http_foundation"/>
@@ -4596,6 +4607,9 @@
     <service id=".instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\HomeController" class="App\Controller\HomeController" public="false" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController" class="App\Controller\HomeController" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\HomeController" class="App\Controller\HomeController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\MovimientosAlmacenController" class="App\Controller\MovimientosAlmacenController" public="false" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MovimientosAlmacenController" class="App\Controller\MovimientosAlmacenController" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\MovimientosAlmacenController" class="App\Controller\MovimientosAlmacenController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\MovimientosDepositosController" class="App\Controller\MovimientosDepositosController" public="false" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MovimientosDepositosController" class="App\Controller\MovimientosDepositosController" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\MovimientosDepositosController" class="App\Controller\MovimientosDepositosController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4623,6 +4637,8 @@
     <service id=".abstract.instanceof.App\Form\FacturasType" class="App\Form\FacturasType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FamiliaType" class="App\Form\FamiliaType" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\FamiliaType" class="App\Form\FamiliaType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MovimientosAlmacenType" class="App\Form\MovimientosAlmacenType" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\MovimientosAlmacenType" class="App\Form\MovimientosAlmacenType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MovimientosDepositos1Type" class="App\Form\MovimientosDepositos1Type" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\MovimientosDepositos1Type" class="App\Form\MovimientosDepositos1Type" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MovimientosDepositosType" class="App\Form\MovimientosDepositosType" public="false" autowire="true" abstract="true"/>
@@ -4863,6 +4879,18 @@
         <argument key="familium" type="service" id=".errored..service_locator.Af7ADn2.App\Entity\Familia"/>
       </argument>
     </service>
+    <service id=".service_locator.qINb0kK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="movimientosAlmacenRepository" type="service" id="App\Repository\MovimientosAlmacenRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.A4AyGBH" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="movimientosAlmacen" type="service" id=".errored..service_locator.A4AyGBH.App\Entity\MovimientosAlmacen"/>
+      </argument>
+    </service>
     <service id=".service_locator.6BMcKXC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -4911,7 +4939,7 @@
         <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.qisnEBm" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.lyfnNDu" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AlmacenController::delete" type="service" id=".service_locator.GhCUbNg"/>
@@ -4934,6 +4962,10 @@
         <argument key="App\Controller\FamiliaController::edit" type="service" id=".service_locator.Af7ADn2"/>
         <argument key="App\Controller\FamiliaController::index" type="service" id=".service_locator.oTyE6Eq"/>
         <argument key="App\Controller\FamiliaController::show" type="service" id=".service_locator.Af7ADn2"/>
+        <argument key="App\Controller\MovimientosAlmacenController::delete" type="service" id=".service_locator.A4AyGBH"/>
+        <argument key="App\Controller\MovimientosAlmacenController::edit" type="service" id=".service_locator.A4AyGBH"/>
+        <argument key="App\Controller\MovimientosAlmacenController::index" type="service" id=".service_locator.qINb0kK"/>
+        <argument key="App\Controller\MovimientosAlmacenController::show" type="service" id=".service_locator.A4AyGBH"/>
         <argument key="App\Controller\MovimientosDepositosController::delete" type="service" id=".service_locator.wTK5wS5"/>
         <argument key="App\Controller\MovimientosDepositosController::edit" type="service" id=".service_locator.wTK5wS5"/>
         <argument key="App\Controller\MovimientosDepositosController::index" type="service" id=".service_locator.6BMcKXC"/>
@@ -4968,6 +5000,10 @@
         <argument key="App\Controller\FamiliaController:edit" type="service" id=".service_locator.Af7ADn2"/>
         <argument key="App\Controller\FamiliaController:index" type="service" id=".service_locator.oTyE6Eq"/>
         <argument key="App\Controller\FamiliaController:show" type="service" id=".service_locator.Af7ADn2"/>
+        <argument key="App\Controller\MovimientosAlmacenController:delete" type="service" id=".service_locator.A4AyGBH"/>
+        <argument key="App\Controller\MovimientosAlmacenController:edit" type="service" id=".service_locator.A4AyGBH"/>
+        <argument key="App\Controller\MovimientosAlmacenController:index" type="service" id=".service_locator.qINb0kK"/>
+        <argument key="App\Controller\MovimientosAlmacenController:show" type="service" id=".service_locator.A4AyGBH"/>
         <argument key="App\Controller\MovimientosDepositosController:delete" type="service" id=".service_locator.wTK5wS5"/>
         <argument key="App\Controller\MovimientosDepositosController:edit" type="service" id=".service_locator.wTK5wS5"/>
         <argument key="App\Controller\MovimientosDepositosController:index" type="service" id=".service_locator.6BMcKXC"/>
@@ -5041,7 +5077,7 @@
       <argument type="service" id="debug.argument_resolver.variadic.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.DgAmzLV" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.cXaLOOi" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="PUGX\AutocompleterBundle\Form\Type\AutocompleteType" type="service" id="pugx_autocompleter.autocomplete"/>
@@ -5052,6 +5088,7 @@
         <argument key="App\Form\DetallesFacturaType" type="service" id="App\Form\DetallesFacturaType"/>
         <argument key="App\Form\FacturasType" type="service" id="App\Form\FacturasType"/>
         <argument key="App\Form\FamiliaType" type="service" id="App\Form\FamiliaType"/>
+        <argument key="App\Form\MovimientosAlmacenType" type="service" id="App\Form\MovimientosAlmacenType"/>
         <argument key="App\Form\MovimientosDepositos1Type" type="service" id="App\Form\MovimientosDepositos1Type"/>
         <argument key="App\Form\MovimientosDepositosType" type="service" id="App\Form\MovimientosDepositosType"/>
         <argument key="App\Form\ProductosType" type="service" id="App\Form\ProductosType"/>
@@ -5246,7 +5283,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.qisnEBm"/>
+      <argument type="service" id=".service_locator.lyfnNDu"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
@@ -5299,6 +5336,11 @@
     </service>
     <service id=".service_locator.ychIlgF.App\Controller\HomeController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <argument>App\Controller\HomeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.ychIlgF" method="withContext"/>
+    </service>
+    <service id=".service_locator.ychIlgF.App\Controller\MovimientosAlmacenController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <argument>App\Controller\MovimientosAlmacenController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.ychIlgF" method="withContext"/>
     </service>
@@ -5381,6 +5423,7 @@
     <service id=".errored..service_locator.0fqA5K5.App\Entity\DetallesFactura" class="App\Entity\DetallesFactura"/>
     <service id=".errored..service_locator.YU.8.TJ.App\Entity\Facturas" class="App\Entity\Facturas"/>
     <service id=".errored..service_locator.Af7ADn2.App\Entity\Familia" class="App\Entity\Familia"/>
+    <service id=".errored..service_locator.A4AyGBH.App\Entity\MovimientosAlmacen" class="App\Entity\MovimientosAlmacen"/>
     <service id=".errored..service_locator.wTK5wS5.App\Entity\MovimientosDepositos" class="App\Entity\MovimientosDepositos"/>
     <service id=".errored..service_locator.MpabvJx.App\Entity\Productos" class="App\Entity\Productos"/>
     <service id=".errored..service_locator.ug26py1.App\Entity\Proveedores" class="App\Entity\Proveedores"/>
@@ -5709,7 +5752,7 @@
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.qisnEBm"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.lyfnNDu"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".service_locator.AoifO_3" alias=".2_ServiceLocator~UToOikd" public="false"/>

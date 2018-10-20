@@ -198,16 +198,25 @@ class __TwigTemplate_bb163a328b52f18955f0d143152f6cf76063133266996b0fe4f06c6e87c
         echo "\" ><span class=\"fa fa-cube\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Almacenes</span><span class=\"caret\"></span></a>
               
                 </li>
+
+
+
+                <li><a title=\"Movimientos\" href=\"";
+        // line 137
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("movimientos_almacen_index");
+        echo "\" ><span class=\"glyphicon glyphicon-export\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Movimientos Almacenes</span><span class=\"caret\"></span></a>
+              
+                </li>
                 
     <li><a title=\"Clientes\" href=\"";
-        // line 135
+        // line 141
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("facturas_index");
         echo "\" ><span class=\"fa fa-bookmark\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Facturas</span><span class=\"caret\"></span></a>
               
                 </li>
 
                 <li><a title=\"Clientes\" href=\"";
-        // line 139
+        // line 145
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("movimientos_depositos_index");
         echo "\" ><span class=\" fa fa-plus-square-o\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Depositos</span><span class=\"caret\"></span></a>
               
@@ -249,12 +258,12 @@ class __TwigTemplate_bb163a328b52f18955f0d143152f6cf76063133266996b0fe4f06c6e87c
         <!-- Start: Topbar-->
 
         ";
-        // line 178
+        // line 184
         $this->displayBlock('header', $context, $blocks);
-        // line 180
+        // line 186
         echo "        ";
         $this->displayBlock('body', $context, $blocks);
-        // line 183
+        // line 189
         echo "       
         <!-- Begin: Content-->
        
@@ -276,27 +285,27 @@ class __TwigTemplate_bb163a328b52f18955f0d143152f6cf76063133266996b0fe4f06c6e87c
 
 
     <script src=\"";
-        // line 203
+        // line 209
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("plugins/core.min.js"), "html", null, true);
         echo "\"></script>
     <!-- Theme Javascript-->
     <script src=\"";
-        // line 205
+        // line 211
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/utility/utility.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 206
+        // line 212
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/demo/demo.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 207
+        // line 213
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/main.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"https://fooplugins.github.io/FooTable/compiled/footable.min.js\"></script>
     <script type=\"text/javascript\" charset=\"utf8\" src=\"https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js\"></script>
 
     <script type=\"text/javascript\" src=\"";
-        // line 211
+        // line 217
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("apidatatable/sum.js"), "html", null, true);
         echo "\"></script>
 
@@ -390,9 +399,9 @@ class __TwigTemplate_bb163a328b52f18955f0d143152f6cf76063133266996b0fe4f06c6e87c
     </script>
 
     ";
-        // line 302
+        // line 308
         $this->displayBlock('addscript', $context, $blocks);
-        // line 304
+        // line 310
         echo "  </body>
 </html>";
         
@@ -440,7 +449,7 @@ class __TwigTemplate_bb163a328b52f18955f0d143152f6cf76063133266996b0fe4f06c6e87c
 
     }
 
-    // line 178
+    // line 184
     public function block_header($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -449,7 +458,7 @@ class __TwigTemplate_bb163a328b52f18955f0d143152f6cf76063133266996b0fe4f06c6e87c
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
-        // line 179
+        // line 185
         echo "        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -459,7 +468,7 @@ class __TwigTemplate_bb163a328b52f18955f0d143152f6cf76063133266996b0fe4f06c6e87c
 
     }
 
-    // line 180
+    // line 186
     public function block_body($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -468,7 +477,7 @@ class __TwigTemplate_bb163a328b52f18955f0d143152f6cf76063133266996b0fe4f06c6e87c
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 181
+        // line 187
         echo "
         ";
         
@@ -479,7 +488,7 @@ class __TwigTemplate_bb163a328b52f18955f0d143152f6cf76063133266996b0fe4f06c6e87c
 
     }
 
-    // line 302
+    // line 308
     public function block_addscript($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -488,7 +497,7 @@ class __TwigTemplate_bb163a328b52f18955f0d143152f6cf76063133266996b0fe4f06c6e87c
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "addscript"));
 
-        // line 303
+        // line 309
         echo "    ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -510,7 +519,7 @@ class __TwigTemplate_bb163a328b52f18955f0d143152f6cf76063133266996b0fe4f06c6e87c
 
     public function getDebugInfo()
     {
-        return array (  492 => 303,  483 => 302,  472 => 181,  463 => 180,  453 => 179,  444 => 178,  433 => 30,  424 => 29,  407 => 5,  396 => 304,  394 => 302,  300 => 211,  293 => 207,  289 => 206,  285 => 205,  280 => 203,  258 => 183,  255 => 180,  253 => 178,  211 => 139,  204 => 135,  197 => 131,  190 => 127,  183 => 123,  176 => 119,  169 => 115,  142 => 91,  112 => 64,  109 => 63,  81 => 32,  79 => 29,  64 => 17,  57 => 13,  52 => 11,  47 => 9,  40 => 5,  34 => 1,);
+        return array (  501 => 309,  492 => 308,  481 => 187,  472 => 186,  462 => 185,  453 => 184,  442 => 30,  433 => 29,  416 => 5,  405 => 310,  403 => 308,  309 => 217,  302 => 213,  298 => 212,  294 => 211,  289 => 209,  267 => 189,  264 => 186,  262 => 184,  220 => 145,  213 => 141,  206 => 137,  197 => 131,  190 => 127,  183 => 123,  176 => 119,  169 => 115,  142 => 91,  112 => 64,  109 => 63,  81 => 32,  79 => 29,  64 => 17,  57 => 13,  52 => 11,  47 => 9,  40 => 5,  34 => 1,);
     }
 
     public function getSourceContext()
@@ -646,6 +655,12 @@ class __TwigTemplate_bb163a328b52f18955f0d143152f6cf76063133266996b0fe4f06c6e87c
                 </li>
 
                 <li><a title=\"Clientes\" href=\"{{ path('almacen_index') }}\" ><span class=\"fa fa-cube\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Almacenes</span><span class=\"caret\"></span></a>
+              
+                </li>
+
+
+
+                <li><a title=\"Movimientos\" href=\"{{ path('movimientos_almacen_index') }}\" ><span class=\"glyphicon glyphicon-export\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Movimientos Almacenes</span><span class=\"caret\"></span></a>
               
                 </li>
                 

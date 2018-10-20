@@ -1,4 +1,88 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{% extends 'template.html.twig' %}
+
+{% block body %}
+<div class="mw1000 center-block">
+ <div class="admin-form theme-primary">
+                <div class="panel heading-border panel-primary">
+                  <div class="panel-body bg-light">
+
+
+ {{ form_start(form, {'attr': {'id': 'form-ui'}}) }}
+                 <div id="spy1" class="section-divider mb40"><span></span></div>
+		        	 <div class="row">
+                        <div class="col-md-4">
+                          <div class="section">
+                          	<label class="field">Seleccione el Producto</label>
+                            <label class="field">
+                              {{ form_widget(form.IdProducto, {'attr': {'class': 'form-control','placeholder':"Producto"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="section">
+                          	<label class="field">Cantidad</label>
+                            <label class="field">
+                               {{ form_widget(form.Cantidad, {'attr': {'class': 'form-control','placeholder':'Cantidad'}}) }}
+
+                          </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                          <div class="section">
+                          	<label>Seleccione el Almacen Origen</label>
+                            <label class="field">
+                               {{ form_widget(form.Origen, {'attr': {'class': 'form-control','placeholder':'Almacen de Origen'}}) }}
+
+                          </div>
+                        </div>
+                      </div>
+                 <div class="row">
+                    <div class="col-md-4">
+                      <div class="section">
+                        <label class="field">
+                          {{ form_widget(form.Fecha, {'attr': {'class': 'gui-input js-datepicker'}}) }}
+
+                       </label>
+                       </div>
+                    </div>
+                  <div class="col-md-4">
+                      <div class="section">
+                      	<label>Comentarios</label>
+                        <label class="field">
+                          {{ form_widget(form.Comentarios, {'attr': {'class': 'form-control'}}) }}
+
+                       </label>
+                       </div>
+                    </div>
+                     <div class="col-md-4">
+                      <div class="section">
+                      	<label>Almacen de Destino</label>
+                        <label class="field">
+                          {{ form_widget(form.Destino, {'attr': {'class': 'form-control'}}) }}
+
+                       </label>
+                       </div>
+                    </div>    
+					
+                   
+                    
+				</div>
+                     
+                      
+                          <button type="submit" class="btn btn-success" style="display: block;margin: auto;">{{ button_label|default('Guardar') }}</button>
+{{ form_widget(form.Status, {'attr': {hidden:'hidden'}}) }}
+{{ form_widget(form.IdCliente, {'attr': {hidden:'hidden'}}) }}
+
+ 
+
+{{ form_end(form) }} 
+
+
+</div>
+</div>
+</div>
+
+</div>
+{% endblock %}

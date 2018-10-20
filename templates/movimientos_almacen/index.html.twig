@@ -1,41 +1,80 @@
-{% extends 'base.html.twig' %}
+{% extends 'template.html.twig' %}
 
 {% block title %}MovimientosAlmacen index{% endblock %}
+{% block header %}
 
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Movimientos Almacen</a></li>                            
+              <li class="crumb-trail">Listado</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('movimientos_almacen_new') }}">Realizar Traslado</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+      {% endblock %}
 {% block body %}
-    <h1>MovimientosAlmacen index</h1>
+    <h1 style="text-align: center;" > <span  class="glyphicon glyphicon-export"></span> Movimientos Almacen</h1>
+        <section id="content" class="table-layout animated fadeIn">
+        <!-- begin: .tray-left-->
 
-    <table class="table">
+        <!-- begin: .tray-center-->
+        <div class="tray tray-center">
+        <!-- Panel with: Basic Footable-->
+
+        <!-- Panel with: Data Filter-->
+
+        <!-- Panel with: Pagination-->
+        <div id="spy3" class="panel">
+
+        <div class="panel-body pn">
+        <table class="table footableproductos">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Cantidad</th>
-                <th>Status</th>
-                <th>Fecha</th>
-                <th>Comentarios</th>
-                <th>actions</th>
+                <th style="text-align: center;">Id</th>
+                <th style="text-align: center;">Cantidad</th>
+                <th style="text-align: center;">Status</th>
+                <th style="text-align: center;">Fecha</th>
+                <th style="text-align: center;">actions</th>
             </tr>
         </thead>
         <tbody>
         {% for movimientos_almacen in movimientos_almacens %}
             <tr>
-                <td>{{ movimientos_almacen.id }}</td>
-                <td>{{ movimientos_almacen.Cantidad }}</td>
-                <td>{{ movimientos_almacen.Status ? 'Yes' : 'No' }}</td>
-                <td>{{ movimientos_almacen.Fecha ? movimientos_almacen.Fecha|date('Y-m-d') : '' }}</td>
-                <td>{{ movimientos_almacen.Comentarios }}</td>
-                <td>
+                <td style="text-align: center;">{{ movimientos_almacen.id }}</td>
+                <td style="text-align: center;">{{ movimientos_almacen.Cantidad }}</td>
+                <td style="text-align: center;">{{ movimientos_almacen.Status ? 'Yes' : 'No' }}</td>
+                <td style="text-align: center;">{{ movimientos_almacen.Fecha ? movimientos_almacen.Fecha|date('Y-m-d') : '' }}</td>
+                <td style="text-align: center;">
                     <a href="{{ path('movimientos_almacen_show', {'id': movimientos_almacen.id}) }}">show</a>
                     <a href="{{ path('movimientos_almacen_edit', {'id': movimientos_almacen.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6" style="text-align: center;">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
+  </div>
+            </div>
+            <!-- Panel with: Expanding Rows-->
+          
+            <!-- DEMO - breaks used to extend container - DEMO--><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          </div>
+        </section>
     <a href="{{ path('movimientos_almacen_new') }}">Create new</a>
 {% endblock %}
