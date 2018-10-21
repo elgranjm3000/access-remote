@@ -56,6 +56,16 @@ class Facturas
      */
     private $detallesFacturas;
 
+    /**
+     * @ORM\Column(type="integer",nullable=true)
+     */
+    private $dias;
+
+    /**
+     * @ORM\Column(type="string", length=2)
+     */
+    private $forma;
+
 
     public function __construct()
     {
@@ -205,6 +215,30 @@ class Facturas
                 $detallesFactura->setIdfactura(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDias(): ?int
+    {
+        return $this->dias;
+    }
+
+    public function setDias(int $dias): self
+    {
+        $this->dias = $dias;
+
+        return $this;
+    }
+
+    public function getForma(): ?string
+    {
+        return $this->forma;
+    }
+
+    public function setForma(string $forma): self
+    {
+        $this->forma = $forma;
 
         return $this;
     }

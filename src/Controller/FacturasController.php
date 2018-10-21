@@ -13,12 +13,110 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+//use \TCPDF;
+use App\Services\Pfactura;
 
 /**
  * @Route("/facturas")
  */
 class FacturasController extends AbstractController
 {
+
+
+ /**
+     * @Route("/factura_pdf/{id}", name="factura_pdf", methods="GET")
+     */
+    public function factura_pdf(FacturasRepository $facturasRepository,$id): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $datos = $entityManager->getRepository(Facturas::class)->find($id);
+
+    $html = $this->renderView(
+         'facturas/pdf.html.twig',array('datos'=>$datos)
+    );
+
+  
+    $this->pdfactura($html,$id);
+    }
+
+
+    public function pdfactura($html,$id){
+ global $numerofactura, $first_name,$nombres,$idcliente,$direccion,$telefono;
+
+   $entityManager = $this->getDoctrine()->getManager();
+        $datos = $entityManager->getRepository(Facturas::class)->find($id);
+      
+
+    $nombres = $datos->getIdcliente()->getNombre();
+    $direccion = $datos->getIdcliente()->getDireccion();
+    $numerofactura = $datos->getId();
+    $idcliente = $datos->getIdcliente()->getNit();
+    $telefono = $datos->getIdcliente()->getTelefonoMovil();
+
+        //set_time_limit(30); uncomment this line according to your needs
+        // If you are not in a controller, retrieve of some way the service container and then retrieve it
+        //$pdf = $this->container->get("white_october.tcpdf")->create('vertical', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        //if you are in a controlller use :
+//        $pdf = $this->get("white_october.tcpdf")->create('vertical', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+    $pagina = array("800","600");
+        $pdf = new Pfactura();
+     
+     
+        $pdf->SetAuthor('Factura');
+        $pdf->SetTitle('Facturacion');
+        $pdf->SetSubject('Our Code World Subject');
+        $pdf->setFontSubsetting(true);
+        $pdf->SetFont('helvetica', '', 11, '', true);
+        //$pdf->SetMargins(20,20,40, true);
+
+
+
+
+// set default monospaced font
+$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+// set margins
+$pdf->SetMargins(PDF_MARGIN_LEFT, 60, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+// set auto page breaks
+$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+// set image scale factor
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+        $pdf->AddPage();
+        
+        $filename = 'ourcodeworld_pdf_demo';
+        
+      //  $pdf->Image('/qr', 10, 10, 190, 200, '', 'http://www.tcpdf.org', '', false, 600);
+
+
+// set style for barcode
+$style = array(
+    'border' => true,
+    'vpadding' => 'auto',
+    'hpadding' => 'auto',
+    'fgcolor' => array(0,0,0),
+    'bgcolor' => false, //array(255,255,255)
+    'module_width' => 1, // width of a single module in points
+    'module_height' => 1 // height of a single module in points
+);
+
+// write RAW 2D Barcode
+
+
+
+
+
+
+$pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
+
+
+        $pdf->Output($filename.".pdf",'I'); // This will output the PDF as a response directly
+}
+
     /**
      * @Route("/", name="facturas_index", methods="GET")
      */

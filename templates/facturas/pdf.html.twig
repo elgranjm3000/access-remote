@@ -1,0 +1,42 @@
+<table border="1">
+	<tr style="background-color:greem">
+			<th>
+				Nombre de Producto
+			</th>
+			<th>
+				Cantidad
+			</th>
+			<th>
+				Precio U.
+			</th>
+			<th>
+				Total
+			</th>
+	</tr>
+
+{% set sumatoria = 0 %}
+{% for factura in datos.detallesFacturas %}
+{% set sumatoria = sumatoria + factura.total %}
+	<tr>
+		<td>
+			{{ factura.idproducto.nombre }}
+		</td>
+		<td style="text-align:center">
+			{{ factura.cantidad }}
+		</td>
+		<td style="text-align:center">
+			{{ factura.precio }}
+		</td>
+		<td style="text-align:center">
+			{{ factura.total }}
+		</td>
+	</tr>
+
+{% endfor %}
+<tfoot>
+<tr>
+		<td colspan="3" style="text-align:right">Total General:</td>
+		<td style="text-align:center">{{ sumatoria }}</td>
+</tr>
+</tfoot>
+</table>

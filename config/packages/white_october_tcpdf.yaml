@@ -1,0 +1,3 @@
+white_october_tcpdf:
+    tcpdf:
+        k_tcpdf_external_config: false  # the values set by this bundle will be ignored 
