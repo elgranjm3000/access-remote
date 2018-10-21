@@ -31,7 +31,7 @@
                         <div class="col-md-4">
                           <div class="section">
                             <label class="field">
-                              {{ form_widget(form.monto, {'attr': {'class': 'gui-input','placeholder':"monto" }}) }}
+                              {{ form_widget(form.monto, {'attr': {'class': 'gui-input','placeholder':"monto","max":pagare,"step":"any" }}) }}
 
                             </label>
                           </div>
@@ -52,7 +52,7 @@
                       
                       		 
                       
-                          <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+                          <button class="btn btn-success guardar">{{ button_label|default('Guardar') }}</button>
 
  
 

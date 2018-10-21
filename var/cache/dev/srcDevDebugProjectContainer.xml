@@ -2139,6 +2139,14 @@
         <argument>2048</argument>
       </call>
       <call method="addListener">
+        <argument>console.command</argument>
+        <argument type="collection">
+          <argument type="service" id="debug.debug_handlers_listener"/>
+          <argument>configure</argument>
+        </argument>
+        <argument>2048</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
           <argument type="service" id="router_listener"/>
@@ -4945,6 +4953,13 @@
         <argument key="movimientosDeposito" type="service" id=".errored..service_locator.wTK5wS5.App\Entity\MovimientosDepositos"/>
       </argument>
     </service>
+    <service id=".service_locator.UGPvOKO" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="movimientosDeposito" type="service" id=".errored..service_locator.UGPvOKO.App\Entity\MovimientosDepositos"/>
+        <argument key="movimientosDepositosRepository" type="service" id="App\Repository\MovimientosDepositosRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.lqzR2D3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -4981,7 +4996,7 @@
         <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.s4amZ_o" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.UcSXHtD" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AlmacenController::delete" type="service" id=".service_locator.GhCUbNg"/>
@@ -5010,8 +5025,9 @@
         <argument key="App\Controller\MovimientosAlmacenController::index" type="service" id=".service_locator.qINb0kK"/>
         <argument key="App\Controller\MovimientosAlmacenController::show" type="service" id=".service_locator.A4AyGBH"/>
         <argument key="App\Controller\MovimientosDepositosController::delete" type="service" id=".service_locator.wTK5wS5"/>
-        <argument key="App\Controller\MovimientosDepositosController::edit" type="service" id=".service_locator.wTK5wS5"/>
+        <argument key="App\Controller\MovimientosDepositosController::edit" type="service" id=".service_locator.UGPvOKO"/>
         <argument key="App\Controller\MovimientosDepositosController::index" type="service" id=".service_locator.6BMcKXC"/>
+        <argument key="App\Controller\MovimientosDepositosController::new" type="service" id=".service_locator.6BMcKXC"/>
         <argument key="App\Controller\MovimientosDepositosController::show" type="service" id=".service_locator.wTK5wS5"/>
         <argument key="App\Controller\ProductosController::delete" type="service" id=".service_locator.MpabvJx"/>
         <argument key="App\Controller\ProductosController::edit" type="service" id=".service_locator.MpabvJx"/>
@@ -5049,8 +5065,9 @@
         <argument key="App\Controller\MovimientosAlmacenController:index" type="service" id=".service_locator.qINb0kK"/>
         <argument key="App\Controller\MovimientosAlmacenController:show" type="service" id=".service_locator.A4AyGBH"/>
         <argument key="App\Controller\MovimientosDepositosController:delete" type="service" id=".service_locator.wTK5wS5"/>
-        <argument key="App\Controller\MovimientosDepositosController:edit" type="service" id=".service_locator.wTK5wS5"/>
+        <argument key="App\Controller\MovimientosDepositosController:edit" type="service" id=".service_locator.UGPvOKO"/>
         <argument key="App\Controller\MovimientosDepositosController:index" type="service" id=".service_locator.6BMcKXC"/>
+        <argument key="App\Controller\MovimientosDepositosController:new" type="service" id=".service_locator.6BMcKXC"/>
         <argument key="App\Controller\MovimientosDepositosController:show" type="service" id=".service_locator.wTK5wS5"/>
         <argument key="App\Controller\ProductosController:delete" type="service" id=".service_locator.MpabvJx"/>
         <argument key="App\Controller\ProductosController:edit" type="service" id=".service_locator.MpabvJx"/>
@@ -5327,7 +5344,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.s4amZ_o"/>
+      <argument type="service" id=".service_locator.UcSXHtD"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
@@ -5469,6 +5486,7 @@
     <service id=".errored..service_locator.Af7ADn2.App\Entity\Familia" class="App\Entity\Familia"/>
     <service id=".errored..service_locator.A4AyGBH.App\Entity\MovimientosAlmacen" class="App\Entity\MovimientosAlmacen"/>
     <service id=".errored..service_locator.wTK5wS5.App\Entity\MovimientosDepositos" class="App\Entity\MovimientosDepositos"/>
+    <service id=".errored..service_locator.UGPvOKO.App\Entity\MovimientosDepositos" class="App\Entity\MovimientosDepositos"/>
     <service id=".errored..service_locator.MpabvJx.App\Entity\Productos" class="App\Entity\Productos"/>
     <service id=".errored..service_locator.ug26py1.App\Entity\Proveedores" class="App\Entity\Proveedores"/>
     <service id=".service_locator.HKoUR8q" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5797,7 +5815,7 @@
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.s4amZ_o"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.UcSXHtD"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".service_locator.AoifO_3" alias=".2_ServiceLocator~.OSktso" public="false"/>

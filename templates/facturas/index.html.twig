@@ -29,6 +29,15 @@
           
 {% endblock %}
 {% block body %}
+{% for message in app.flashes('notice') %}
+  
+
+
+                <div class="alert alert-danger alert-dismissable">
+                  <button type="button" data-dismiss="alert" aria-hidden="true" class="close"></button><i class="fa fa-remove pr10"></i><a href="#" class="alert-link">{{ message }}</a> 
+                </div>
+    
+{% endfor %}
    <section id="content" class="table-layout animated fadeIn">
           <!-- begin: .tray-left-->
         

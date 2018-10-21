@@ -141,9 +141,19 @@ $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+ 
 
             
-      
+
+if($factura->getDias() > 0){
+            $fecha = $factura->getFecha()->format('Y-m-d');            
+            $dias = $factura->getDias();
+            $fecha_venci_noti= date("Y-m-d", strtotime("$fecha + $dias days"));
+            $factura->setFechavencimiento(new \DateTime($fecha_venci_noti));
+           
+}
+            
+
             $idcliente = $factura->getIdclientesrelacion();
             $ip=$this->getDoctrine()->getEntityManager();  
             $factura->setIdcliente($ip->getReference(Clientes::class,$idcliente));
@@ -212,6 +222,16 @@ $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+        if($factura->getDias() > 0){
+            $fecha = $factura->getFecha()->format('Y-m-d');            
+            $dias = $factura->getDias();
+            $fecha_venci_noti= date("Y-m-d", strtotime("$fecha + $dias days"));
+            $factura->setFechavencimiento(new \DateTime($fecha_venci_noti));
+           
+        }
+
             $this->getDoctrine()->getManager()->flush();
 
               $ip=$this->getDoctrine()->getEntityManager();  

@@ -2,6 +2,14 @@
 
 {% block title %}Listado de Productos{% endblock %}
 
+
+ {% block addcss %}
+<style type="text/css">
+.idancho{
+    width: 80px !important;
+}
+</style>
+{% endblock %}
   {% block header %}
 
         <header id="topbar" class="ph10">
@@ -45,7 +53,7 @@
         <table class="table footableproductos">
         <thead>
             <tr>
-                
+                <th class="idancho">Id</th>
                 <th>Nombre</th>
                 <th>Unidad/Medida</th>
                 <th>Familia</th>
@@ -58,7 +66,7 @@
         <tbody>
         {% for producto in productos %}
             <tr>
-                
+                <td>{{ producto.id }}</td>
                 <td>{{ producto.nombre }}</td>
                 <td>{{ producto.idmedidas.unidad }}</td>
                 <td>{{ producto.idfamilia.nombre }}</td>

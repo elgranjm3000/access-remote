@@ -2,6 +2,8 @@
 
 {% block title %}Editar Movimientos{% endblock %}
 
+
+
 {% block header %}
 
  <header id="topbar" class="ph10">
@@ -28,7 +30,8 @@
 <div class="content-header">
                 <h2><b class="text-primary">Editar Depositos</b>
                 </h2>
-              
+                              <h4><b>Cuentas por pagar: {{ pagare }}</b></h4>
+
               </div>
 {% endblock %}
 
@@ -39,3 +42,18 @@
 
     
 {% endblock %}
+    {% block addscript %}
+    <script type="text/javascript">
+      jQuery(document).ready(function () {
+
+        $( ".guardar" ).click(function() {
+var monto = {{pagare}};
+  if($("#movimientos_depositos1_monto").val() > monto){
+    alert("El monto que esta colocando es mayor a "+monto);
+  $("#movimientos_depositos1_monto").focus();
+  return false;
+}
+});
+        });
+    </script>
+    {% endblock %}

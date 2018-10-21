@@ -66,6 +66,11 @@ class Facturas
      */
     private $forma;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $fechavencimiento;
+
 
     public function __construct()
     {
@@ -239,6 +244,18 @@ class Facturas
     public function setForma(string $forma): self
     {
         $this->forma = $forma;
+
+        return $this;
+    }
+
+    public function getFechavencimiento(): ?\DateTimeInterface
+    {
+        return $this->fechavencimiento;
+    }
+
+    public function setFechavencimiento(\DateTimeInterface $fechavencimiento): self
+    {
+        $this->fechavencimiento = $fechavencimiento;
 
         return $this;
     }

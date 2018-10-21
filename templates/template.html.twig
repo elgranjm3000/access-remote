@@ -273,7 +273,7 @@
         "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
         },initComplete: function () {
-            this.api().columns(2).every( function () {
+            this.api().columns(3).every( function () {
                 var column = this;
                 var select = $('<select class="form-control"><option value=""></option></select>')
                     .appendTo( $(column.header()).empty() )
@@ -290,6 +290,22 @@
                 column.data().unique().sort().each( function ( d, j ) {
                     select.append( '<option value="'+d+'">'+d+'</option>' )
                 } );
+            } );
+
+            this.api().columns(0).every( function () {
+                var column = this;
+                var select = $('<input type="text" class="form-control"  placeholder="Id producto">')
+                    .appendTo( $(column.header()).empty() )
+                    .on( 'keyup change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search(  $(this).val() )
+                            .draw();
+                    } ); 
+          
             } );
         }
     });

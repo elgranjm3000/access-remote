@@ -6,6 +6,7 @@ use App\Entity\MovimientosDepositos;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class MovimientosDepositosType extends AbstractType
 {
@@ -13,7 +14,7 @@ class MovimientosDepositosType extends AbstractType
     {
         $builder
             ->add('fechaMovimiento')
-            ->add('monto')
+            ->add('monto', NumberType::class)
             ->add('banco')
             ->add('idfactura')
         ;
