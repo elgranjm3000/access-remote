@@ -45,7 +45,7 @@
    <table class="table footable" id="example">
         <thead>
             <tr>
-                <th>Id</th>
+                
                 <th>Nombre</th>
                 <th>Nit</th>                
                 <th>Correo</th>                                
@@ -65,14 +65,14 @@
         <tbody>
         {% for cliente in clientes %}
             <tr>
-                <td>{{ cliente.id }}</td>
+                
                 <td>{{ cliente.nombre }}</td>
                 <td>{{ cliente.nit }}</td>                
                 <td>{{ cliente.correo }}</td>
                 <td>{{ cliente.zona }}</td>
                 <td>{{ cliente.dpto }}</td>  
                 <td>{{ cliente.municipio }}</td>
-                <td>{{ cliente.direccion }}</td>  
+                <td>{{ cliente.direccion|raw }}</td>  
                 <td hidden="hidden">{{ cliente.contactoPrincipal }}</td>  
                 <td hidden="hidden">{{ cliente.fechaNacimiento ? cliente.fechaNacimiento|date('Y-m-d') : '' }}</td>
                 <td hidden="hidden">{{ cliente.comentarios }}</td>  

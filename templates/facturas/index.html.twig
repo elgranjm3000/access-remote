@@ -51,7 +51,7 @@
             <div id="spy3" class="panel">
              
               <div class="panel-body pn">
-    <table class="table footable">
+    <table class="table facturas">
         <thead>
             <tr>
                 <th>Nro de Factura</th>
@@ -89,3 +89,45 @@
 </div>
 </section>
 {% endblock %}
+
+
+    {% block addscript %}
+    <script type="text/javascript">
+          jQuery(document).ready(function () {
+
+$('.facturas').DataTable({
+           "bLengthChange":false,
+                  "bFilter":true,
+                  "bInfo":false,
+                  "bAutoWidth":false,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        },
+
+         dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'pdfHtml5',
+                attr: { 
+                  'class': 'btn btn-success',
+                },
+                text:'Imprimir PDF',
+                //orientation: 'landscape',
+                 //pageSize: 'LEGAL',
+                exportOptions: {
+                    columns: [ 0,1,2,3,4]
+                },
+                 download: 'open'
+                
+            }
+        ]
+
+
+
+    });
+
+
+
+   });
+    </script>
+    {% endblock %}
