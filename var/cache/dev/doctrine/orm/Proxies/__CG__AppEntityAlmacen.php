@@ -64,10 +64,10 @@ class Almacen extends \App\Entity\Almacen implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Almacen' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Almacen' . "\0" . 'nombre', '' . "\0" . 'App\\Entity\\Almacen' . "\0" . 'comentarios'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Almacen' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Almacen' . "\0" . 'nombre', '' . "\0" . 'App\\Entity\\Almacen' . "\0" . 'comentarios', '' . "\0" . 'App\\Entity\\Almacen' . "\0" . 'ingresos'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Almacen' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Almacen' . "\0" . 'nombre', '' . "\0" . 'App\\Entity\\Almacen' . "\0" . 'comentarios'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Almacen' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Almacen' . "\0" . 'nombre', '' . "\0" . 'App\\Entity\\Almacen' . "\0" . 'comentarios', '' . "\0" . 'App\\Entity\\Almacen' . "\0" . 'ingresos'];
     }
 
     /**
@@ -241,6 +241,39 @@ class Almacen extends \App\Entity\Almacen implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', []);
 
         return parent::__toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIngresos(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIngresos', []);
+
+        return parent::getIngresos();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addIngreso(\App\Entity\Ingresos $ingreso): \App\Entity\Almacen
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addIngreso', [$ingreso]);
+
+        return parent::addIngreso($ingreso);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeIngreso(\App\Entity\Ingresos $ingreso): \App\Entity\Almacen
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeIngreso', [$ingreso]);
+
+        return parent::removeIngreso($ingreso);
     }
 
 }

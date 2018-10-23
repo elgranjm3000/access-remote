@@ -10,6 +10,9 @@
 				Precio U.
 			</th>
 			<th>
+				Descuento
+			</th>
+			<th>
 				Total
 			</th>
 	</tr>
@@ -28,6 +31,9 @@
 			{{ factura.precio }}
 		</td>
 		<td style="text-align:center">
+			{{ factura.descuento }} %
+		</td>
+		<td style="text-align:center">
 			{{ factura.total }}
 		</td>
 	</tr>
@@ -35,7 +41,7 @@
 {% endfor %}
 <tfoot>
 <tr>
-		<td colspan="3" style="text-align:right">Total General:</td>
+		<td colspan="4" style="text-align:right">Total General:</td>
 		<td style="text-align:center">{{ sumatoria }}</td>
 </tr>
 </tfoot>

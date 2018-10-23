@@ -21,6 +21,7 @@ class DetallesFacturaType extends AbstractType
             ->add('comentarios')
             ->add('precio')
             ->add('total')
+            ->add('descuento')
             ->add('idproducto', EntityType::class, array(    
                         'class' => Productos::class,
                         'choice_label' => 'nombre',

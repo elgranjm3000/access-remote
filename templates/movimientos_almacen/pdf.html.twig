@@ -1,0 +1,56 @@
+<table border="1">
+	<tr style="background-color:greem">
+			<th>
+				Nombre de Producto
+			</th>
+			<th>
+				Entrada
+			</th>
+			<th>
+				Salida
+			</th>
+			<th>
+				Monto de Ingreso
+			</th>
+			<th>
+				Cuentas por cobrar
+			</th>
+			
+	</tr>
+
+{% set suma1  = 0 %}
+{% set suma2  = 0 %}
+{% for dato in datos %}
+	<tr>
+		<td>
+			{{ dato.nombre }}
+		</td>
+		<td style="text-align:center">
+			{{ dato.ingresos|ingresoproductos }}
+		</td>
+		<td style="text-align:center">
+			{{ dato.detallesFacturas|egresosproductos }}
+		</td>
+		<td style="text-align:center">
+			{{ dato.detallesFacturas|ingresomontos }}	
+		</td>
+		<td style="text-align:center">
+		{{ dato.detallesFacturas|cobrar }}	
+		</td>
+	</tr>
+{% set suma1 = suma1 + dato.detallesFacturas|ingresomontos %}
+{% set suma2 = suma2 + dato.detallesFacturas|cobrar %}
+
+{% endfor %}
+<tfoot>
+<tr>
+		<td colspan="4" style="text-align:right">Total general Ingreso:</td>
+		<td style="text-align:center">{{ suma1 }}</td>
+</tr>
+
+<tr>
+		<td colspan="4" style="text-align:right">Total general por Cuentas por cobrar:</td>
+		<td style="text-align:center">{{ suma2 }}</td>
+</tr>
+</tfoot>
+</table>

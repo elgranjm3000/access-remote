@@ -71,6 +71,7 @@
                                           <th>Producto</th>
                                           <th>Cantidad</th>
                                           <th>Precio</th>
+                                          <th>Descuento %</th>
                                           <th>Sub-Total</th>
                                           <th>Orden de Produccion</th>
                                           <th>Comentarios</th>
@@ -90,6 +91,7 @@
                                               <td>{{ productos.cantidad }}
                                                 <input type="hidden" value="{{ productos.cantidad }}" name="cantidad[]"></td>
                                               <td>{{ productos.precio }}<input type="hidden" value="{{ productos.precio }}" name="precio[]"></td>
+                                               <td>{{ productos.descuento }} <input type="hidden" value="{{ productos.descuento }}" name="descuento[]"></td>
                                               <td>{{ productos.total }}</td>
                                               <td>{{ productos.ordenPromocion }}
                                                 <input type="hidden" value="{{ productos.total }}" name="total[]">
@@ -167,11 +169,19 @@
           {{ form_widget(form1.precio, {'attr': {'class': 'gui-input precio','placeholder':"Precio","disabled":"disabled"}}) }}
   </div>
 
+<div class="form-group">
+  <label>Descuento %</label>
+          {{ form_widget(form1.descuento, {'attr': {'class': 'gui-input descuento','placeholder':"Descuento","disabled":"disabled"}}) }}
+  </div>
+
 
 <div class="form-group">
   <label>Sub-Total</label>
           {{ form_widget(form1.total, {'attr': {'class': 'gui-input total','placeholder':"Sub-Total","disabled":"disabled"}}) }}
   </div>
+
+
+
 
     
 {{ form_end(form1) }}

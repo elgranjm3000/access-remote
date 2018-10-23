@@ -1,0 +1,65 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Descuento{% endblock %}
+
+
+
+  {% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Descuento</a></li>                            
+              <li class="crumb-trail">Detalles</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('descuento_index') }}">Listado de Descuento</a></li>
+              <li class="active"><a href="{{ path('descuento_edit', {'id': descuento.id}) }}">Editar Descuento</a></li>
+              <li>{{ include('descuento/_delete_form.html.twig') }}</li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+      {% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <div class="panel">
+              <div class="panel-heading"><span class="panel-title"><span class="fa fa-info"></span>Detalles de clientes</span>
+                
+              </div>
+            </div>
+    <div id="spy1" class="row">
+<div class="col-sm-12">
+                <div class="panel">
+                  <div class="panel-body pn">
+                    
+                      <table class="table">
+        <tbody>
+          
+            <tr>
+                <th>Cantidad:</th>
+                <td>{{ descuento.cantidad }}</td>
+            </tr>
+            <tr>
+                <th>Porcentaje:</th>
+                <td>{{ descuento.porcentaje }}%</td>
+            </tr>
+        </tbody>
+     </table>
+               
+                </div>
+              </div>
+          </div>
+      </div>
+{% endblock %}

@@ -4,7 +4,7 @@
 
  {% block addcss %}
   <style type="text/css">
-    .precio,.total{
+    .precio,.total,.descuento{
       color:red !important;
     }
   </style>
@@ -76,11 +76,13 @@ $( "#facturas_forma input:radio" ).click(function() {
             var total = $(".total").val();
             var promocion = $(".promocion").val();
             var comentarios = $(".comentarios").val();
+            var porcentaje = $(".descuento").val();
 
                    t.row.add( [
                     $(".producto option:selected").text()+"<input type='hidden' value='"+productos+"' name='productos[]'>",
                     $(".cantidad").val()+"<input type='hidden' value='"+cantidad+"' name='cantidad[]'>",
                     $(".precio").val()+"<input type='hidden' value='"+precio+"' name='precio[]'>",
+                    $(".descuento").val()+"<input type='hidden' value='"+porcentaje+"' name='descuento[]'>",
                     $(".total").val(),
                     $(".promocion").val()+"<input type='hidden' value='"+promocion+"' name='promocion[]'>"+" "+"<input type='hidden' value='"+total+"' name='total[]'>",
                     $(".comentarios").val()+"<input type='hidden' value='"+comentarios+"' name='comentarios[]'>",
@@ -92,9 +94,9 @@ $( "#facturas_forma input:radio" ).click(function() {
                    $(".pedidos")[0].reset();
 
    var table = $('.footable').DataTable();
-  var datossuma =  table.column( 3 ).data().sum();
+  var datossuma =  table.column( 4 ).data().sum();
   console.log(datossuma);
-    $(".totales").html("Total: "+datossuma);
+    $(".totales").html("Total: "+datossuma.toFixed(2));
 
 
           });
@@ -103,8 +105,8 @@ $( "#facturas_forma input:radio" ).click(function() {
 
 
 
-
-
+var total = 0;
+var descuento = 0;
 
     $("#detalles_factura_idproducto").change(function() {
        $.get( "{{ path('buscarproducto') }}", { iditems:$(this).val()}).done(function( data ) {
@@ -112,18 +114,44 @@ $( "#facturas_forma input:radio" ).click(function() {
             if(data.length>0){ 
                   $(".precio").val(data[0]['precioventa']);         
 
-                  var total = data[0]['precioventa']*$(".cantidad").val();                
+                  total = data[0]['precioventa']*$(".cantidad").val();                
                   $(".total").val(total);
+                 $(".cantidad").change();
+              }
+              
+          });
+    });
+
+        $(".cantidad").change(function() {
+
+            var total = $(".precio").val()*$(".cantidad").val();                
+            $(".total").val(total);
+
+       $.get( "{{ path('buscardescuento') }}", { id:$(this).val()}).done(function( data ) {
+
+            if(data.length>0){ 
+              console.log("total "+$(".total").val());
+
+                  //$(".descuento").val(data[0]['porcentaje']);         
+                 var totaldescuento = (total*data[0]['porcentaje'])/100;
+                   descuento = $(".total").val()-totaldescuento;
+                  $(".descuento").val(data[0]['porcentaje']);         
+                  //var total = data[0]['precioventa']*$(".cantidad").val();                
+                  $(".total").val(descuento);
+
+              }else{
+                 $(".total").val(total);
+                $(".descuento").val(0);                         
               }
               
           });
     });
 
 
-    $(".cantidad").change(function() {
+    /*$(".cantidad").change(function() {
           var total = $(".precio").val()*$(".cantidad").val();                
           $(".total").val(total);
-    });
+    });*/
 
     var table = $('.footable').DataTable();
 
@@ -138,9 +166,9 @@ $( "#facturas_forma input:radio" ).click(function() {
 
 
       
-  var datossuma =  table.column( 3 ).data().sum();
+  var datossuma =  table.column( 4).data().sum();
   console.log(datossuma);
-    $(".totales").html("Total: "+datossuma);
+    $(".totales").html("Total: "+datossuma.toFixed(2));
 
           }
       });

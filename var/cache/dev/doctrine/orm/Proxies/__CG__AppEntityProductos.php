@@ -64,10 +64,10 @@ class Productos extends \App\Entity\Productos implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'nombre', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'costo', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'precioVenta', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'comentarios', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'cantidadPresentacion', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'idfamilia', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'idmedidas', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'brochure', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'detallesFacturas'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'nombre', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'costo', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'precioVenta', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'comentarios', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'cantidadPresentacion', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'idfamilia', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'idmedidas', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'brochure', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'detallesFacturas', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'ingresos'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'nombre', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'costo', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'precioVenta', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'comentarios', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'cantidadPresentacion', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'idfamilia', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'idmedidas', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'brochure', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'detallesFacturas'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'nombre', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'costo', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'precioVenta', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'comentarios', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'cantidadPresentacion', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'idfamilia', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'idmedidas', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'brochure', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'detallesFacturas', '' . "\0" . 'App\\Entity\\Productos' . "\0" . 'ingresos'];
     }
 
     /**
@@ -428,6 +428,39 @@ class Productos extends \App\Entity\Productos implements \Doctrine\ORM\Proxy\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeDetallesFactura', [$detallesFactura]);
 
         return parent::removeDetallesFactura($detallesFactura);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIngresos(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIngresos', []);
+
+        return parent::getIngresos();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addIngreso(\App\Entity\Ingresos $ingreso): \App\Entity\Productos
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addIngreso', [$ingreso]);
+
+        return parent::addIngreso($ingreso);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeIngreso(\App\Entity\Ingresos $ingreso): \App\Entity\Productos
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeIngreso', [$ingreso]);
+
+        return parent::removeIngreso($ingreso);
     }
 
 }

@@ -1,0 +1,42 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Nuevo registro{% endblock %}
+
+{% block header %}
+ <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="{{ path('descuento_index') }}">Descuento</a></li>                            
+              <li class="crumb-trail">Nuevo registro</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('descuento_index') }}">Listado de Descuento</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+<div class="content-header">
+                <h2><b class="text-primary">Agregar descuento</b>
+                </h2>
+              
+              </div>
+
+
+{% endblock %}
+
+
+
+{% block body %}
+    
+
+    {{ include('descuento/_form.html.twig') }}
+
+    
+{% endblock %}

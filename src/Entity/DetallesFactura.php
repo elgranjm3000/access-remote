@@ -51,6 +51,11 @@ class DetallesFactura
      */
     private $total;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $descuento;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +141,18 @@ class DetallesFactura
     public function setTotal(float $total): self
     {
         $this->total = $total;
+
+        return $this;
+    }
+
+    public function getDescuento(): ?float
+    {
+        return $this->descuento;
+    }
+
+    public function setDescuento(?float $descuento): self
+    {
+        $this->descuento = $descuento;
 
         return $this;
     }

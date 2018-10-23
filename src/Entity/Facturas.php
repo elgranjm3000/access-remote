@@ -71,11 +71,17 @@ class Facturas
      */
     private $fechavencimiento;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\MovimientosAlmacen", mappedBy="idfactura", cascade={"persist", "remove"})
+     */
+    private $movimientosAlmacens;
+
 
     public function __construct()
     {
         $this->movimientosdepositos = new ArrayCollection();
         $this->detallesFacturas = new ArrayCollection();
+        $this->movimientosAlmacens = new ArrayCollection();
     }
 
   
@@ -256,6 +262,37 @@ class Facturas
     public function setFechavencimiento(\DateTimeInterface $fechavencimiento): self
     {
         $this->fechavencimiento = $fechavencimiento;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MovimientosAlmacen[]
+     */
+    public function getMovimientosAlmacens(): Collection
+    {
+        return $this->movimientosAlmacens;
+    }
+
+    public function addMovimientosAlmacen(MovimientosAlmacen $movimientosAlmacen): self
+    {
+        if (!$this->movimientosAlmacens->contains($movimientosAlmacen)) {
+            $this->movimientosAlmacens[] = $movimientosAlmacen;
+            $movimientosAlmacen->setIdfactura($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMovimientosAlmacen(MovimientosAlmacen $movimientosAlmacen): self
+    {
+        if ($this->movimientosAlmacens->contains($movimientosAlmacen)) {
+            $this->movimientosAlmacens->removeElement($movimientosAlmacen);
+            // set the owning side to null (unless already changed)
+            if ($movimientosAlmacen->getIdfactura() === $this) {
+                $movimientosAlmacen->setIdfactura(null);
+            }
+        }
 
         return $this;
     }

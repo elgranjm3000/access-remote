@@ -1,0 +1,40 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Editar Descuento{% endblock %}
+
+
+{% block header %}
+
+ <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="{{ path('descuento_index') }}">Descuentos</a></li>                            
+              <li class="crumb-trail">Editar descuentos</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('descuento_index') }}">Listado de Descuentos</a></li>
+              <li>  {{ include('descuento/_delete_form.html.twig') }}</li>
+              
+            </ul>
+          </div>
+         
+        </header>
+
+<div class="content-header">
+                <h2><b class="text-primary">Editar Descuento</b>
+                </h2>
+                          
+
+              </div>
+{% endblock %}
+{% block body %}
+
+    {{ include('descuento/_form.html.twig', {'button_label': 'Actualizar'}) }}
+
+{% endblock %}

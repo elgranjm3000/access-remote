@@ -1,0 +1,49 @@
+{% extends 'template.html.twig' %}
+
+{% block body %}
+<div class="mw1000 center-block">
+ <div class="admin-form theme-primary">
+                <div class="panel heading-border panel-primary">
+                  <div class="panel-body bg-light">
+
+
+ {{ form_start(form, {'attr': {'id': 'form-ui','target':'_blank'}}) }}
+                 <div id="spy1" class="section-divider mb40"><span></span></div>
+		        	 <div class="row">
+                        <div class="col-md-6">
+                          <div class="section">
+                          	<label class="field">Desde</label>
+                            <label class="field">
+                              {{ form_widget(form.desde, {'attr': {'class': 'form-control js-datepicker','placeholder':"Desde"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="section">
+                          	<label class="field">Hasta</label>
+                            <label class="field">
+                               {{ form_widget(form.hasta, {'attr': {'class': 'form-control js-datepicker','placeholder':'Hasta'}}) }}
+
+                          </div>
+                        </div>
+
+
+                      </div>
+                 
+                     
+                      
+                          <button type="submit" class="btn btn-success" style="display: block;margin: auto;">Visualizar</button>
+
+
+ 
+
+{{ form_end(form) }} 
+
+
+</div>
+</div>
+</div>
+
+</div>
+{% endblock %}

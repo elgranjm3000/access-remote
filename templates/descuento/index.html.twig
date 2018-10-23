@@ -1,0 +1,76 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Descuento index{% endblock %}
+
+
+
+{% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Descuento</a></li>                            
+              <li class="crumb-trail">Listado</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('descuento_new') }}">Crear nuevo descuesto</a></li>
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+{% endblock %}
+
+
+{% block body %}
+   <section id="content" class="table-layout animated fadeIn">
+          <!-- begin: .tray-left-->
+        
+          <!-- begin: .tray-center-->
+          <div class="tray tray-center">
+            <!-- Panel with: Basic Footable-->
+          
+            <!-- Panel with: Data Filter-->
+     
+            <!-- Panel with: Pagination-->
+            <div id="spy3" class="panel">
+             
+              <div class="panel-body pn">
+    <table class="table footable">
+        <thead>
+            <tr>
+                <th>Cantidad</th>
+                <th>Porcentaje</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for descuento in descuentos %}
+            <tr>
+                <td>{{ descuento.cantidad }}</td>
+                <td>{{ descuento.porcentaje }}%</td>
+                <td>
+                    <a href="{{ path('descuento_show', {'id': descuento.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
+                    <a href="{{ path('descuento_edit', {'id': descuento.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+</div>
+</div>
+</section>
+{% endblock %}

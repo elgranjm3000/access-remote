@@ -124,6 +124,10 @@
               
                 </li>
 
+
+
+                </li>
+
                 <li><a title="Clientes" href="{{ path('familia_index') }}" ><span class="fa fa-users" aria-hidden="true"></span><span class="sidebar-title">Familia</span><span class="caret"></span></a>
               
                 </li>
@@ -132,7 +136,8 @@
               
                 </li>
 
-
+   <li><a title="Clientes" href="{{ path('ingresos_index') }}" ><span class="fa fa-product-hunt" aria-hidden="true"></span><span class="sidebar-title">Ingresar Productos</span><span class="caret"></span></a>
+              
 
                 <li><a title="Movimientos" href="{{ path('movimientos_almacen_index') }}" ><span class="glyphicon glyphicon-export" aria-hidden="true"></span><span class="sidebar-title">Movimientos Almacenes</span><span class="caret"></span></a>
               
@@ -142,7 +147,14 @@
               
                 </li>
 
+
+    <li><a title="Clientes" href="{{ path('descuento_index') }}" ><span class="fa fa-percent" aria-hidden="true"></span><span class="sidebar-title">Descuentos</span><span class="caret"></span></a>           </li>
+
                 <li><a title="Clientes" href="{{ path('movimientos_depositos_index') }}" ><span class=" fa fa-plus-square-o" aria-hidden="true"></span><span class="sidebar-title">Depositos</span><span class="caret"></span></a>
+              
+                </li>
+
+                <li><a title="Clientes" href="{{ path('inventario') }}" ><span class=" fa fa-plus-square-o" aria-hidden="true"></span><span class="sidebar-title">Control de Inventario</span><span class="caret"></span></a>
               
                 </li>
                 
@@ -266,6 +278,8 @@
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
         }
     });
+
+        
 
 
         $('.footableproductos').DataTable({

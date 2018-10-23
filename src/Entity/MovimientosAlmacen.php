@@ -18,13 +18,13 @@ class MovimientosAlmacen
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Productos")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $IdProducto;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Almacen")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $Destino;
 
@@ -34,12 +34,12 @@ class MovimientosAlmacen
     private $Origen;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $Cantidad;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $Status;
 
@@ -49,7 +49,7 @@ class MovimientosAlmacen
     private $IdCliente;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $Fecha;
 
@@ -57,6 +57,14 @@ class MovimientosAlmacen
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Comentarios;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Facturas", inversedBy="movimientosAlmacens")
+     */
+    private $idfactura;
+
+    protected $desde;
+    protected $hasta;
 
     public function getId(): ?int
     {
@@ -116,7 +124,7 @@ class MovimientosAlmacen
         return $this->Status;
     }
 
-    public function setStatus(?bool $Status): self
+    public function setStatus(?int $Status): self
     {
         $this->Status = $Status;
 
@@ -155,6 +163,45 @@ class MovimientosAlmacen
     public function setComentarios(?string $Comentarios): self
     {
         $this->Comentarios = $Comentarios;
+
+        return $this;
+    }
+
+    public function getIdfactura(): ?Facturas
+    {
+        return $this->idfactura;
+    }
+
+    public function setIdfactura(?Facturas $idfactura): self
+    {
+        $this->idfactura = $idfactura;
+
+        return $this;
+    }
+
+
+      public function getDesde()
+    {
+        return $this->desde;
+    }
+
+    public function setDesde($desde)
+    {
+        $this->desde = $desde;
+
+        return $this;
+    }
+
+
+
+      public function getHasta()
+    {
+        return $this->hasta;
+    }
+
+    public function setHasta($hasta)
+    {
+        $this->hasta = $hasta;
 
         return $this;
     }

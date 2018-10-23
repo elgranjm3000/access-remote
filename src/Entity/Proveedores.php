@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -40,6 +42,16 @@ class Proveedores
      * @ORM\Column(type="string", length=255)
      */
     private $telefonoParticular;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Ingresos", mappedBy="proveedor")
+     */
+    private $ingresos;
+
+    public function __construct()
+    {
+        $this->ingresos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,4 +117,40 @@ class Proveedores
 
         return $this;
     }
+
+    /**
+     * @return Collection|Ingresos[]
+     */
+    public function getIngresos(): Collection
+    {
+        return $this->ingresos;
+    }
+
+    public function addIngreso(Ingresos $ingreso): self
+    {
+        if (!$this->ingresos->contains($ingreso)) {
+            $this->ingresos[] = $ingreso;
+            $ingreso->setProveedor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIngreso(Ingresos $ingreso): self
+    {
+        if ($this->ingresos->contains($ingreso)) {
+            $this->ingresos->removeElement($ingreso);
+            // set the owning side to null (unless already changed)
+            if ($ingreso->getProveedor() === $this) {
+                $ingreso->setProveedor(null);
+            }
+        }
+
+        return $this;
+    }
+
+      public function __toString()
+   {
+      return strval($this->getId());
+   }
 }

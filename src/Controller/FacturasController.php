@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Facturas;
+use App\Entity\MovimientosAlmacen;
 use App\Entity\Clientes;
 use App\Entity\Productos;
 use App\Entity\DetallesFactura;
@@ -168,6 +169,7 @@ if($factura->getDias() > 0){
                 $lineaproducto->setComentarios($_POST["comentarios"][$i]);
                 $lineaproducto->setPrecio($_POST["precio"][$i]);
                 $lineaproducto->setTotal($_POST["total"][$i]);
+                $lineaproducto->setDescuento($_POST["descuento"][$i]);
                 $lineaproducto->setIdproducto($ip->getReference(Productos::class,$_POST["productos"][$i]));
                 $lineaproducto->setIdfactura($ip->getReference(Facturas::class,$idfactura));
                 $em = $this->getDoctrine()->getManager();
@@ -175,11 +177,20 @@ if($factura->getDias() > 0){
                 $em->flush();
             }
 
-
-
-
-
-            return $this->redirectToRoute('facturas_index');
+                $movimientos = new MovimientosAlmacen();
+                $movimientos->setIdfactura($ip->getReference(Facturas::class,$idfactura));
+                if($factura->getDias() > 0){
+                    $status = 3;
+                       $movimientos->setStatus($status);
+                }else{
+                    $status = 2;
+                    $movimientos->setStatus($status);
+                }
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($movimientos);
+                $em->flush();
+            //return $this->redirectToRoute('facturas_index');
+                  return $this->redirectToRoute('facturas_show', ['id' => $factura->getId()]);
         }
 
         return $this->render('facturas/new.html.twig', [
@@ -255,6 +266,7 @@ if($factura->getDias() > 0){
                 $lineaproducto->setComentarios($_POST["comentarios"][$i]);
                 $lineaproducto->setPrecio($_POST["precio"][$i]);
                 $lineaproducto->setTotal($_POST["total"][$i]);
+                $lineaproducto->setDescuento($_POST["descuento"][$i]);
                 $lineaproducto->setIdproducto($ip->getReference(Productos::class,$_POST["productos"][$i]));
                 $lineaproducto->setIdfactura($ip->getReference(Facturas::class,$factura));
                 $em = $this->getDoctrine()->getManager();
@@ -262,6 +274,29 @@ if($factura->getDias() > 0){
                 $em->flush();
             }
 
+
+
+//$movimientos = $this->getDoctrine()
+        //->getManager()->getRepository(MovimientosAlmacen::class)
+        //->findBy(['idfactura'=>$factura]);
+        $entityManager = $this->getDoctrine()->getManager();
+        $movimientos = $entityManager->getRepository(MovimientosAlmacen::class)->findByIdfactura($factura);
+
+        foreach ($movimientos as $value) {
+                if($factura->getDias() > 0){
+                    $status = 3;
+                       $value->setStatus($status);
+                }else{
+                    $status = 2;
+                    $value->setStatus($status);
+                }
+                $em = $this->getDoctrine()->getManager();
+                $em->flush();
+        }
+        
+
+                
+            
             return $this->redirectToRoute('facturas_show', ['id' => $factura->getId()]);
              //return $this->redirectToRoute('facturas_index');
         }

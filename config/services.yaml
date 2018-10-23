@@ -34,3 +34,8 @@ services:
  # the `white_october.tcpdf` service will be injected when a
     # `WhiteOctober\TCPDFBundle\Controller\TCPDFController` type-hint is detected
     WhiteOctober\TCPDFBundle\Controller\TCPDFController: '@white_october.tcpdf'
+    App\Twig\AppExtension:
+        public: false
+        arguments: 
+            ["@doctrine"]
+        tags: ['twig.extension']

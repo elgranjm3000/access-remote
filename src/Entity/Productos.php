@@ -67,9 +67,15 @@ class Productos
      */
     private $detallesFacturas;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Ingresos", mappedBy="productos")
+     */
+    private $ingresos;
+
     public function __construct()
     {
         $this->detallesFacturas = new ArrayCollection();
+        $this->ingresos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -218,6 +224,37 @@ class Productos
                 // set the owning side to null (unless already changed)
                 if ($detallesFactura->getIdproducto() === $this) {
                     $detallesFactura->setIdproducto(null);
+                }
+            }
+
+            return $this;
+        }
+
+        /**
+         * @return Collection|Ingresos[]
+         */
+        public function getIngresos(): Collection
+        {
+            return $this->ingresos;
+        }
+
+        public function addIngreso(Ingresos $ingreso): self
+        {
+            if (!$this->ingresos->contains($ingreso)) {
+                $this->ingresos[] = $ingreso;
+                $ingreso->setProductos($this);
+            }
+
+            return $this;
+        }
+
+        public function removeIngreso(Ingresos $ingreso): self
+        {
+            if ($this->ingresos->contains($ingreso)) {
+                $this->ingresos->removeElement($ingreso);
+                // set the owning side to null (unless already changed)
+                if ($ingreso->getProductos() === $this) {
+                    $ingreso->setProductos(null);
                 }
             }
 

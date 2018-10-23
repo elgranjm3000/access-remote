@@ -1,0 +1,80 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Ingresos de productos{% endblock %}
+
+{% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Ingresos</a></li>                            
+              <li class="crumb-trail">Listado</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('ingresos_new') }}">Ingresar Productos</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+{% endblock %}
+
+
+
+{% block body %}
+   <section id="content" class="table-layout animated fadeIn">
+          <!-- begin: .tray-left-->
+        
+          <!-- begin: .tray-center-->
+          <div class="tray tray-center">
+            <!-- Panel with: Basic Footable-->
+          
+            <!-- Panel with: Data Filter-->
+     
+            <!-- Panel with: Pagination-->
+            <div id="spy3" class="panel">
+             
+              <div class="panel-body pn">
+    <table class="table footable">
+        <thead>
+            <tr>
+                <th>Nombre de producto</th>
+                <th>Cantidad Ingresada</th>
+                <th>Fecha</th>
+                <th>Comentario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ingreso in ingresos %}
+            <tr>
+                <td>{{ ingreso.productos.nombre }}</td>
+                <td>{{ ingreso.cantidad }}</td>
+                <td>{{ ingreso.fecha ? ingreso.fecha|date('d/m/Y') : '' }}</td>
+                <td>{{ ingreso.comentario|raw }}</td>
+                <td>
+                    <a href="{{ path('ingresos_show', {'id': ingreso.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
+                    <a href="{{ path('ingresos_edit', {'id': ingreso.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+</div>
+</div>
+</section>
+{% endblock %}
