@@ -156,49 +156,54 @@ class __TwigTemplate_b72bec9640be537e121aecbd75a8013641a820a2da19de510c678a476a7
                 <th>Orden de Compra</th>
                 <th>Fecha</th>
                 <th>Comentarios</th>
+                <th>Total Factura</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         ";
-        // line 66
+        // line 67
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["facturas"]) || array_key_exists("facturas", $context) ? $context["facturas"] : (function () { throw new Twig_Error_Runtime('Variable "facturas" does not exist.', 66, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["facturas"]) || array_key_exists("facturas", $context) ? $context["facturas"] : (function () { throw new Twig_Error_Runtime('Variable "facturas" does not exist.', 67, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["factura"]) {
-            // line 67
+            // line 68
             echo "            <tr>
                 <td style=\"color:red\">";
-            // line 68
+            // line 69
             echo twig_escape_filter($this->env, sprintf("%08d", twig_get_attribute($this->env, $this->source, $context["factura"], "id", array())), "html", null, true);
             echo " </td>
                 <td>";
-            // line 69
+            // line 70
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["factura"], "reciboCaja", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 70
+            // line 71
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["factura"], "ordenCompra", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 71
+            // line 72
             echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, $context["factura"], "fecha", array())) ? (twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["factura"], "fecha", array()), "d/m/Y")) : ("")), "html", null, true);
             echo "</td>
                 <td>";
-            // line 72
+            // line 73
             echo twig_get_attribute($this->env, $this->source, $context["factura"], "comentarios", array());
             echo "</td>
+                <td>";
+            // line 74
+            echo twig_escape_filter($this->env, $this->extensions['App\Twig\AppExtension']->ingresomontoFilter(twig_get_attribute($this->env, $this->source, $context["factura"], "detallesFacturas", array())), "html", null, true);
+            echo " </td>
                 <td>
                     <a title=\"Detalles\" href=\"";
-            // line 74
+            // line 76
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("facturas_show", array("id" => twig_get_attribute($this->env, $this->source, $context["factura"], "id", array()))), "html", null, true);
             echo "\"><span class=\"glyphicon glyphicon-search\"></span></a>
                     <a title=\"Editar Factura\" href=\"";
-            // line 75
+            // line 77
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("facturas_edit", array("id" => twig_get_attribute($this->env, $this->source, $context["factura"], "id", array()), "cliente" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["factura"], "idcliente", array()), "id", array()))), "html", null, true);
             echo "\"><span class=\"glyphicon glyphicon-edit\"></span></a>
                     <a title=\"Crear deposito\" href=\"";
-            // line 76
+            // line 78
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("movimientos_depositos_new", array("deposito" => twig_get_attribute($this->env, $this->source, $context["factura"], "id", array()))), "html", null, true);
             echo "\"><span class=\"fa fa-file\"></span></a>
                 </td>
@@ -207,7 +212,7 @@ class __TwigTemplate_b72bec9640be537e121aecbd75a8013641a820a2da19de510c678a476a7
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 80
+            // line 82
             echo "            <tr>
                 <td colspan=\"6\">no records found</td>
             </tr>
@@ -216,8 +221,14 @@ class __TwigTemplate_b72bec9640be537e121aecbd75a8013641a820a2da19de510c678a476a7
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['factura'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 84
+        // line 86
         echo "        </tbody>
+        <tfoot>
+            <tr>
+                <td>Totales <span class=\"totales\"></span></td>
+            </tr>
+        </tfoot>
+    
   </table>
 
     </div>
@@ -233,7 +244,7 @@ class __TwigTemplate_b72bec9640be537e121aecbd75a8013641a820a2da19de510c678a476a7
 
     }
 
-    // line 94
+    // line 102
     public function block_addscript($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -242,9 +253,11 @@ class __TwigTemplate_b72bec9640be537e121aecbd75a8013641a820a2da19de510c678a476a7
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "addscript"));
 
-        // line 95
+        // line 103
         echo "    <script type=\"text/javascript\">
           jQuery(document).ready(function () {
+
+
 
 \$('.facturas').DataTable({
            \"bLengthChange\":false,
@@ -266,9 +279,10 @@ class __TwigTemplate_b72bec9640be537e121aecbd75a8013641a820a2da19de510c678a476a7
                 //orientation: 'landscape',
                  //pageSize: 'LEGAL',
                 exportOptions: {
-                    columns: [ 0,1,2,3,4]
+                    columns: [ 0,1,2,3,5]
                 },
-                 download: 'open'
+                 download: 'open',
+                 footer: true
                 
             }
         ]
@@ -278,6 +292,10 @@ class __TwigTemplate_b72bec9640be537e121aecbd75a8013641a820a2da19de510c678a476a7
     });
 
 
+  var table = \$('.facturas').DataTable();
+  var datossuma =  table.column( 5 ).data().sum();
+  console.log(datossuma);
+    \$(\".totales\").html(datossuma.toFixed(2));
 
    });
     </script>
@@ -302,7 +320,7 @@ class __TwigTemplate_b72bec9640be537e121aecbd75a8013641a820a2da19de510c678a476a7
 
     public function getDebugInfo()
     {
-        return array (  246 => 95,  237 => 94,  220 => 84,  211 => 80,  202 => 76,  198 => 75,  194 => 74,  189 => 72,  185 => 71,  181 => 70,  177 => 69,  173 => 68,  170 => 67,  165 => 66,  138 => 41,  128 => 37,  122 => 33,  118 => 32,  109 => 31,  90 => 22,  74 => 8,  65 => 7,  47 => 3,  15 => 1,);
+        return array (  257 => 103,  248 => 102,  225 => 86,  216 => 82,  207 => 78,  203 => 77,  199 => 76,  194 => 74,  190 => 73,  186 => 72,  182 => 71,  178 => 70,  174 => 69,  171 => 68,  166 => 67,  138 => 41,  128 => 37,  122 => 33,  118 => 32,  109 => 31,  90 => 22,  74 => 8,  65 => 7,  47 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -368,6 +386,7 @@ class __TwigTemplate_b72bec9640be537e121aecbd75a8013641a820a2da19de510c678a476a7
                 <th>Orden de Compra</th>
                 <th>Fecha</th>
                 <th>Comentarios</th>
+                <th>Total Factura</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -379,6 +398,7 @@ class __TwigTemplate_b72bec9640be537e121aecbd75a8013641a820a2da19de510c678a476a7
                 <td>{{ factura.ordenCompra }}</td>
                 <td>{{ factura.fecha ? factura.fecha|date('d/m/Y') : '' }}</td>
                 <td>{{ factura.comentarios|raw }}</td>
+                <td>{{ factura.detallesFacturas|ingresomontos }} </td>
                 <td>
                     <a title=\"Detalles\" href=\"{{ path('facturas_show', {'id': factura.id}) }}\"><span class=\"glyphicon glyphicon-search\"></span></a>
                     <a title=\"Editar Factura\" href=\"{{ path('facturas_edit', {'id': factura.id,'cliente':factura.idcliente.id}) }}\"><span class=\"glyphicon glyphicon-edit\"></span></a>
@@ -391,6 +411,12 @@ class __TwigTemplate_b72bec9640be537e121aecbd75a8013641a820a2da19de510c678a476a7
             </tr>
         {% endfor %}
         </tbody>
+        <tfoot>
+            <tr>
+                <td>Totales <span class=\"totales\"></span></td>
+            </tr>
+        </tfoot>
+    
   </table>
 
     </div>
@@ -403,6 +429,8 @@ class __TwigTemplate_b72bec9640be537e121aecbd75a8013641a820a2da19de510c678a476a7
     {% block addscript %}
     <script type=\"text/javascript\">
           jQuery(document).ready(function () {
+
+
 
 \$('.facturas').DataTable({
            \"bLengthChange\":false,
@@ -424,9 +452,10 @@ class __TwigTemplate_b72bec9640be537e121aecbd75a8013641a820a2da19de510c678a476a7
                 //orientation: 'landscape',
                  //pageSize: 'LEGAL',
                 exportOptions: {
-                    columns: [ 0,1,2,3,4]
+                    columns: [ 0,1,2,3,5]
                 },
-                 download: 'open'
+                 download: 'open',
+                 footer: true
                 
             }
         ]
@@ -436,6 +465,10 @@ class __TwigTemplate_b72bec9640be537e121aecbd75a8013641a820a2da19de510c678a476a7
     });
 
 
+  var table = \$('.facturas').DataTable();
+  var datossuma =  table.column( 5 ).data().sum();
+  console.log(datossuma);
+    \$(\".totales\").html(datossuma.toFixed(2));
 
    });
     </script>

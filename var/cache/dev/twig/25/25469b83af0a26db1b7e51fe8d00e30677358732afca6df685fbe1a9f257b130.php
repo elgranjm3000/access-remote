@@ -242,6 +242,31 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
         echo "\" ><span class=\" fa fa-plus-square-o\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Control de Inventario</span><span class=\"caret\"></span></a>
               
                 </li>
+
+                <li><a href=\"#\" class=\"accordion-toggle\"><span class=\"glyphicon glyphicon-fire\"></span><span class=\"sidebar-title\">Reportes</span><span class=\"caret\"></span></a>
+              <ul class=\"nav sub-nav\" style=\"\">
+                <li><a href=\"";
+        // line 163
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reportesventas");
+        echo "\">
+                  <span class=\"glyphicon glyphicon-modal-window\"></span>Ventas</a>
+                </li>
+                <li>
+                  <a href=\"";
+        // line 167
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reportesutilidadproductos");
+        echo "\">
+                    <span class=\"glyphicon glyphicon-modal-window\"></span>Utilidad</a>
+                </li>
+                <li>
+                  <a href=\"";
+        // line 171
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reportesclientes");
+        echo "\">
+                    <span class=\"glyphicon glyphicon-modal-window\"></span>Clientes y Vendedores</a>
+                </li>
+              </ul>
+            </li>
                 
                 
             
@@ -279,12 +304,12 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
         <!-- Start: Topbar-->
 
         ";
-        // line 196
+        // line 212
         $this->displayBlock('header', $context, $blocks);
-        // line 198
+        // line 214
         echo "        ";
         $this->displayBlock('body', $context, $blocks);
-        // line 201
+        // line 217
         echo "       
         <!-- Begin: Content-->
        
@@ -306,29 +331,26 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
 <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script> 
     <script src=\"";
-        // line 221
+        // line 237
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("plugins/core.min.js"), "html", null, true);
         echo "\"></script>
     <!-- Theme Javascript-->
     <script src=\"";
-        // line 223
+        // line 239
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/utility/utility.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 224
+        // line 240
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/demo/demo.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 225
+        // line 241
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/main.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"https://fooplugins.github.io/FooTable/compiled/footable.min.js\"></script>
     <script type=\"text/javascript\" charset=\"utf8\" src=\"https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js\"></script>
 
-    <script type=\"text/javascript\" src=\"";
-        // line 229
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("apidatatable/sum.js"), "html", null, true);
-        echo "\"></script>
+    
 
     <script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js\"></script>
 
@@ -340,6 +362,11 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 <script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js\"></script>
 <script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js\"></script>
 <link href=\"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css\" rel=\"stylesheet\" />
+
+<script type=\"text/javascript\" src=\"";
+        // line 258
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("apidatatable/sum.js"), "html", null, true);
+        echo "\"></script>
     <script type=\"text/javascript\">
       jQuery(document).ready(function () {
         \"use strict\";
@@ -378,6 +405,11 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
   
  \$('.js-datepicker').datepicker({
             format: 'yyyy-mm-dd'
+        });
+
+
+\$('.js-datepickertable').datepicker({
+            format: 'dd/mm/yyyy'
         });
 
         \$('.footable').DataTable({
@@ -477,9 +509,9 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
     </script>
 
     ";
-        // line 377
+        // line 400
         $this->displayBlock('addscript', $context, $blocks);
-        // line 379
+        // line 402
         echo "  </body>
 </html>";
         
@@ -527,7 +559,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
     }
 
-    // line 196
+    // line 212
     public function block_header($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -536,7 +568,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
-        // line 197
+        // line 213
         echo "        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -546,7 +578,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
     }
 
-    // line 198
+    // line 214
     public function block_body($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -555,7 +587,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 199
+        // line 215
         echo "
         ";
         
@@ -566,7 +598,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
     }
 
-    // line 377
+    // line 400
     public function block_addscript($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -575,7 +607,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "addscript"));
 
-        // line 378
+        // line 401
         echo "    ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -597,7 +629,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
     public function getDebugInfo()
     {
-        return array (  579 => 378,  570 => 377,  559 => 199,  550 => 198,  540 => 197,  531 => 196,  520 => 30,  511 => 29,  494 => 5,  483 => 379,  481 => 377,  330 => 229,  323 => 225,  319 => 224,  315 => 223,  310 => 221,  288 => 201,  285 => 198,  283 => 196,  241 => 157,  234 => 153,  229 => 151,  221 => 146,  214 => 142,  208 => 139,  201 => 135,  194 => 131,  183 => 123,  176 => 119,  169 => 115,  142 => 91,  112 => 64,  109 => 63,  81 => 32,  79 => 29,  64 => 17,  57 => 13,  52 => 11,  47 => 9,  40 => 5,  34 => 1,);
+        return array (  611 => 401,  602 => 400,  591 => 215,  582 => 214,  572 => 213,  563 => 212,  552 => 30,  543 => 29,  526 => 5,  515 => 402,  513 => 400,  368 => 258,  348 => 241,  344 => 240,  340 => 239,  335 => 237,  313 => 217,  310 => 214,  308 => 212,  264 => 171,  257 => 167,  250 => 163,  241 => 157,  234 => 153,  229 => 151,  221 => 146,  214 => 142,  208 => 139,  201 => 135,  194 => 131,  183 => 123,  176 => 119,  169 => 115,  142 => 91,  112 => 64,  109 => 63,  81 => 32,  79 => 29,  64 => 17,  57 => 13,  52 => 11,  47 => 9,  40 => 5,  34 => 1,);
     }
 
     public function getSourceContext()
@@ -761,6 +793,22 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
                 <li><a title=\"Clientes\" href=\"{{ path('inventario') }}\" ><span class=\" fa fa-plus-square-o\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Control de Inventario</span><span class=\"caret\"></span></a>
               
                 </li>
+
+                <li><a href=\"#\" class=\"accordion-toggle\"><span class=\"glyphicon glyphicon-fire\"></span><span class=\"sidebar-title\">Reportes</span><span class=\"caret\"></span></a>
+              <ul class=\"nav sub-nav\" style=\"\">
+                <li><a href=\"{{ path('reportesventas') }}\">
+                  <span class=\"glyphicon glyphicon-modal-window\"></span>Ventas</a>
+                </li>
+                <li>
+                  <a href=\"{{ path('reportesutilidadproductos') }}\">
+                    <span class=\"glyphicon glyphicon-modal-window\"></span>Utilidad</a>
+                </li>
+                <li>
+                  <a href=\"{{ path('reportesclientes') }}\">
+                    <span class=\"glyphicon glyphicon-modal-window\"></span>Clientes y Vendedores</a>
+                </li>
+              </ul>
+            </li>
                 
                 
             
@@ -830,7 +878,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
     <script type=\"text/javascript\" src=\"https://fooplugins.github.io/FooTable/compiled/footable.min.js\"></script>
     <script type=\"text/javascript\" charset=\"utf8\" src=\"https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js\"></script>
 
-    <script type=\"text/javascript\" src=\"{{ asset('apidatatable/sum.js') }}\"></script>
+    
 
     <script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js\"></script>
 
@@ -842,6 +890,8 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 <script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js\"></script>
 <script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js\"></script>
 <link href=\"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css\" rel=\"stylesheet\" />
+
+<script type=\"text/javascript\" src=\"{{ asset('apidatatable/sum.js') }}\"></script>
     <script type=\"text/javascript\">
       jQuery(document).ready(function () {
         \"use strict\";
@@ -880,6 +930,11 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
   
  \$('.js-datepicker').datepicker({
             format: 'yyyy-mm-dd'
+        });
+
+
+\$('.js-datepickertable').datepicker({
+            format: 'dd/mm/yyyy'
         });
 
         \$('.footable').DataTable({

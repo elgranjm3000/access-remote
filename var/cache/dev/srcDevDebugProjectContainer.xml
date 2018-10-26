@@ -534,6 +534,13 @@
         <argument type="service" id=".service_locator.ychIlgF.App\Controller\RegistrationController"/>
       </call>
     </service>
+    <service id="App\Controller\ReportesController" class="App\Controller\ReportesController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.ychIlgF.App\Controller\ReportesController"/>
+      </call>
+    </service>
     <service id="App\Controller\SecurityController" class="App\Controller\SecurityController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -2171,14 +2178,6 @@
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
-        <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
@@ -4720,6 +4719,9 @@
     <service id=".instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\RegistrationController" class="App\Controller\RegistrationController" public="false" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RegistrationController" class="App\Controller\RegistrationController" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\RegistrationController" class="App\Controller\RegistrationController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\ReportesController" class="App\Controller\ReportesController" public="false" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ReportesController" class="App\Controller\ReportesController" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ReportesController" class="App\Controller\ReportesController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\SecurityController" class="App\Controller\SecurityController" public="false" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5081,7 +5083,7 @@
         <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator._md4k9M" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.PDYAOAl" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AlmacenController::delete" type="service" id=".service_locator.GhCUbNg"/>
@@ -5131,6 +5133,9 @@
         <argument key="App\Controller\ProveedoresController::index" type="service" id=".service_locator.yfKiB9f"/>
         <argument key="App\Controller\ProveedoresController::show" type="service" id=".service_locator.ug26py1"/>
         <argument key="App\Controller\RegistrationController::register" type="service" id=".service_locator.cPEJcDm"/>
+        <argument key="App\Controller\ReportesController::clientes" type="service" id=".service_locator.ohh9a7M"/>
+        <argument key="App\Controller\ReportesController::utilidad" type="service" id=".service_locator.kFI1I3_"/>
+        <argument key="App\Controller\ReportesController::vendedor" type="service" id=".service_locator.kFI1I3_"/>
         <argument key="App\Controller\SecurityController::login" type="service" id=".service_locator.ypl2DZZ"/>
         <argument key="App\Controller\AlmacenController:delete" type="service" id=".service_locator.GhCUbNg"/>
         <argument key="App\Controller\AlmacenController:edit" type="service" id=".service_locator.GhCUbNg"/>
@@ -5179,6 +5184,9 @@
         <argument key="App\Controller\ProveedoresController:index" type="service" id=".service_locator.yfKiB9f"/>
         <argument key="App\Controller\ProveedoresController:show" type="service" id=".service_locator.ug26py1"/>
         <argument key="App\Controller\RegistrationController:register" type="service" id=".service_locator.cPEJcDm"/>
+        <argument key="App\Controller\ReportesController:clientes" type="service" id=".service_locator.ohh9a7M"/>
+        <argument key="App\Controller\ReportesController:utilidad" type="service" id=".service_locator.kFI1I3_"/>
+        <argument key="App\Controller\ReportesController:vendedor" type="service" id=".service_locator.kFI1I3_"/>
         <argument key="App\Controller\SecurityController:login" type="service" id=".service_locator.ypl2DZZ"/>
       </argument>
     </service>
@@ -5450,7 +5458,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator._md4k9M"/>
+      <argument type="service" id=".service_locator.PDYAOAl"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
@@ -5538,6 +5546,11 @@
     </service>
     <service id=".service_locator.ychIlgF.App\Controller\RegistrationController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <argument>App\Controller\RegistrationController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.ychIlgF" method="withContext"/>
+    </service>
+    <service id=".service_locator.ychIlgF.App\Controller\ReportesController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <argument>App\Controller\ReportesController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.ychIlgF" method="withContext"/>
     </service>
@@ -5933,7 +5946,7 @@
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator._md4k9M"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.PDYAOAl"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".service_locator.AoifO_3" alias=".2_ServiceLocator~.OSktso" public="false"/>
