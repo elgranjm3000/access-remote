@@ -5083,7 +5083,7 @@
         <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.PDYAOAl" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.XWLKL2e" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AlmacenController::delete" type="service" id=".service_locator.GhCUbNg"/>
@@ -5134,8 +5134,12 @@
         <argument key="App\Controller\ProveedoresController::show" type="service" id=".service_locator.ug26py1"/>
         <argument key="App\Controller\RegistrationController::register" type="service" id=".service_locator.cPEJcDm"/>
         <argument key="App\Controller\ReportesController::clientes" type="service" id=".service_locator.ohh9a7M"/>
+        <argument key="App\Controller\ReportesController::cobrar" type="service" id=".service_locator.fAmOCKw"/>
+        <argument key="App\Controller\ReportesController::productos" type="service" id=".service_locator.lqzR2D3"/>
+        <argument key="App\Controller\ReportesController::proveedores" type="service" id=".service_locator.rw17rhD"/>
         <argument key="App\Controller\ReportesController::utilidad" type="service" id=".service_locator.kFI1I3_"/>
         <argument key="App\Controller\ReportesController::vendedor" type="service" id=".service_locator.kFI1I3_"/>
+        <argument key="App\Controller\ReportesController::ventasfechas" type="service" id=".service_locator.kFI1I3_"/>
         <argument key="App\Controller\SecurityController::login" type="service" id=".service_locator.ypl2DZZ"/>
         <argument key="App\Controller\AlmacenController:delete" type="service" id=".service_locator.GhCUbNg"/>
         <argument key="App\Controller\AlmacenController:edit" type="service" id=".service_locator.GhCUbNg"/>
@@ -5185,8 +5189,12 @@
         <argument key="App\Controller\ProveedoresController:show" type="service" id=".service_locator.ug26py1"/>
         <argument key="App\Controller\RegistrationController:register" type="service" id=".service_locator.cPEJcDm"/>
         <argument key="App\Controller\ReportesController:clientes" type="service" id=".service_locator.ohh9a7M"/>
+        <argument key="App\Controller\ReportesController:cobrar" type="service" id=".service_locator.fAmOCKw"/>
+        <argument key="App\Controller\ReportesController:productos" type="service" id=".service_locator.lqzR2D3"/>
+        <argument key="App\Controller\ReportesController:proveedores" type="service" id=".service_locator.rw17rhD"/>
         <argument key="App\Controller\ReportesController:utilidad" type="service" id=".service_locator.kFI1I3_"/>
         <argument key="App\Controller\ReportesController:vendedor" type="service" id=".service_locator.kFI1I3_"/>
+        <argument key="App\Controller\ReportesController:ventasfechas" type="service" id=".service_locator.kFI1I3_"/>
         <argument key="App\Controller\SecurityController:login" type="service" id=".service_locator.ypl2DZZ"/>
       </argument>
     </service>
@@ -5458,7 +5466,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.PDYAOAl"/>
+      <argument type="service" id=".service_locator.XWLKL2e"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
@@ -5946,7 +5954,7 @@
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.PDYAOAl"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.XWLKL2e"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".service_locator.AoifO_3" alias=".2_ServiceLocator~.OSktso" public="false"/>

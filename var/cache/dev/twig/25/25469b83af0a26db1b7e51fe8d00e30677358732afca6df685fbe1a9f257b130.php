@@ -265,6 +265,31 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
         echo "\">
                     <span class=\"glyphicon glyphicon-modal-window\"></span>Clientes y Vendedores</a>
                 </li>
+
+                   <li>
+                  <a href=\"";
+        // line 176
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reportesproductos");
+        echo "\">
+                    <span class=\"glyphicon glyphicon-modal-window\"></span>Listado de Productos</a>
+                </li>
+
+                 <li>
+                  <a href=\"";
+        // line 181
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reportesproveedores");
+        echo "\">
+                    <span class=\"glyphicon glyphicon-modal-window\"></span>Listado de Proveedores</a>
+                </li>
+
+
+                 <li>
+                  <a href=\"";
+        // line 187
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reportesventasfechas");
+        echo "\">
+                    <span class=\"glyphicon glyphicon-modal-window\"></span>Listado de Ventas %</a>
+                </li>
               </ul>
             </li>
                 
@@ -304,12 +329,12 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
         <!-- Start: Topbar-->
 
         ";
-        // line 212
+        // line 228
         $this->displayBlock('header', $context, $blocks);
-        // line 214
+        // line 230
         echo "        ";
         $this->displayBlock('body', $context, $blocks);
-        // line 217
+        // line 233
         echo "       
         <!-- Begin: Content-->
        
@@ -331,20 +356,20 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
 <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script> 
     <script src=\"";
-        // line 237
+        // line 253
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("plugins/core.min.js"), "html", null, true);
         echo "\"></script>
     <!-- Theme Javascript-->
     <script src=\"";
-        // line 239
+        // line 255
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/utility/utility.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 240
+        // line 256
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/demo/demo.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 241
+        // line 257
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/main.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"https://fooplugins.github.io/FooTable/compiled/footable.min.js\"></script>
@@ -364,7 +389,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 <link href=\"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css\" rel=\"stylesheet\" />
 
 <script type=\"text/javascript\" src=\"";
-        // line 258
+        // line 274
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("apidatatable/sum.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\">
@@ -509,9 +534,9 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
     </script>
 
     ";
-        // line 400
+        // line 416
         $this->displayBlock('addscript', $context, $blocks);
-        // line 402
+        // line 418
         echo "  </body>
 </html>";
         
@@ -559,7 +584,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
     }
 
-    // line 212
+    // line 228
     public function block_header($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -568,7 +593,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
-        // line 213
+        // line 229
         echo "        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -578,7 +603,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
     }
 
-    // line 214
+    // line 230
     public function block_body($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -587,7 +612,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 215
+        // line 231
         echo "
         ";
         
@@ -598,7 +623,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
     }
 
-    // line 400
+    // line 416
     public function block_addscript($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -607,7 +632,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "addscript"));
 
-        // line 401
+        // line 417
         echo "    ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -629,7 +654,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
     public function getDebugInfo()
     {
-        return array (  611 => 401,  602 => 400,  591 => 215,  582 => 214,  572 => 213,  563 => 212,  552 => 30,  543 => 29,  526 => 5,  515 => 402,  513 => 400,  368 => 258,  348 => 241,  344 => 240,  340 => 239,  335 => 237,  313 => 217,  310 => 214,  308 => 212,  264 => 171,  257 => 167,  250 => 163,  241 => 157,  234 => 153,  229 => 151,  221 => 146,  214 => 142,  208 => 139,  201 => 135,  194 => 131,  183 => 123,  176 => 119,  169 => 115,  142 => 91,  112 => 64,  109 => 63,  81 => 32,  79 => 29,  64 => 17,  57 => 13,  52 => 11,  47 => 9,  40 => 5,  34 => 1,);
+        return array (  636 => 417,  627 => 416,  616 => 231,  607 => 230,  597 => 229,  588 => 228,  577 => 30,  568 => 29,  551 => 5,  540 => 418,  538 => 416,  393 => 274,  373 => 257,  369 => 256,  365 => 255,  360 => 253,  338 => 233,  335 => 230,  333 => 228,  289 => 187,  280 => 181,  272 => 176,  264 => 171,  257 => 167,  250 => 163,  241 => 157,  234 => 153,  229 => 151,  221 => 146,  214 => 142,  208 => 139,  201 => 135,  194 => 131,  183 => 123,  176 => 119,  169 => 115,  142 => 91,  112 => 64,  109 => 63,  81 => 32,  79 => 29,  64 => 17,  57 => 13,  52 => 11,  47 => 9,  40 => 5,  34 => 1,);
     }
 
     public function getSourceContext()
@@ -806,6 +831,22 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
                 <li>
                   <a href=\"{{ path('reportesclientes') }}\">
                     <span class=\"glyphicon glyphicon-modal-window\"></span>Clientes y Vendedores</a>
+                </li>
+
+                   <li>
+                  <a href=\"{{ path('reportesproductos') }}\">
+                    <span class=\"glyphicon glyphicon-modal-window\"></span>Listado de Productos</a>
+                </li>
+
+                 <li>
+                  <a href=\"{{ path('reportesproveedores') }}\">
+                    <span class=\"glyphicon glyphicon-modal-window\"></span>Listado de Proveedores</a>
+                </li>
+
+
+                 <li>
+                  <a href=\"{{ path('reportesventasfechas') }}\">
+                    <span class=\"glyphicon glyphicon-modal-window\"></span>Listado de Ventas %</a>
                 </li>
               </ul>
             </li>

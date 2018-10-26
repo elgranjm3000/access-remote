@@ -4,6 +4,7 @@ namespace App\Twig;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use App\Entity\DetallesFactura;
+use App\Entity\MovimientosDepositos;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\EntityManager;
 use Doctrine\DBAL\Connection;
@@ -31,6 +32,7 @@ class AppExtension extends AbstractExtension
             new TwigFilter('ingresoproductos', array($this, 'ingresosFilter')),
             new TwigFilter('ingresomontos', array($this, 'ingresomontoFilter')),
             new TwigFilter('cobrar', array($this, 'cobrarFilter')),
+            new TwigFilter('dias', array($this, 'diaspagadoFilter')),
 
         );
     }
@@ -103,6 +105,18 @@ private $doctrine;
         $contar = 0;
         foreach ($sumar as $value) {
             $contar = $contar + $value->getCantidad();
+        }
+
+        return $contar;
+    }
+
+
+      public function diaspagadoFilter($sumar)
+    {
+
+        $contar = 0;
+        foreach ($sumar as $value) {
+            $contar = $contar + $value->getMonto();
         }
 
         return $contar;
