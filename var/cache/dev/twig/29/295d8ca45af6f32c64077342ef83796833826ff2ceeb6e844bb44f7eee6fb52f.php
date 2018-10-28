@@ -37,7 +37,7 @@ class __TwigTemplate_61f4094822b63fa6446d3f4ba232ef3ec3b22b2967980d98c437d3835da
 
  ";
         // line 10
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 10, $this->source); })()), 'form_start', array("attr" => array("id" => "form-ui")));
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 10, $this->source); })()), 'form_start', array("attr" => array("id" => "form-ui", "novalidate" => "novalidate")));
         echo "
                  <div id=\"spy1\" class=\"section-divider mb40\"><span></span></div>
 \t\t        \t <div class=\"row\">
@@ -46,7 +46,7 @@ class __TwigTemplate_61f4094822b63fa6446d3f4ba232ef3ec3b22b2967980d98c437d3835da
                             <label class=\"field\">
                               ";
         // line 16
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 16, $this->source); })()), "username", array()), 'widget', array("attr" => array("class" => "gui-input", "placeholder" => "Username")));
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 16, $this->source); })()), "username", array()), 'row', array("attr" => array("class" => "gui-input", "placeholder" => "Username")));
         echo "
 
                             </label>
@@ -58,7 +58,7 @@ class __TwigTemplate_61f4094822b63fa6446d3f4ba232ef3ec3b22b2967980d98c437d3835da
                             <label class=\"field\">
                               ";
         // line 25
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 25, $this->source); })()), "plainPassword", array()), "first", array()), 'widget', array("attr" => array("class" => "gui-input ", "placeholder" => "Contraseña")));
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 25, $this->source); })()), "plainPassword", array()), "first", array()), 'row', array("attr" => array("class" => "gui-input ", "placeholder" => "Contraseña")));
         echo "
 
                             </label>
@@ -70,7 +70,7 @@ class __TwigTemplate_61f4094822b63fa6446d3f4ba232ef3ec3b22b2967980d98c437d3835da
                             <label class=\"field\">
                               ";
         // line 34
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 34, $this->source); })()), "plainPassword", array()), "second", array()), 'widget', array("attr" => array("class" => "gui-input ", "placeholder" => "Repetir contraseña")));
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 34, $this->source); })()), "plainPassword", array()), "second", array()), 'row', array("attr" => array("class" => "gui-input ", "placeholder" => "Repetir contraseña")));
         echo "
 
                             </label>
@@ -82,7 +82,7 @@ class __TwigTemplate_61f4094822b63fa6446d3f4ba232ef3ec3b22b2967980d98c437d3835da
                             <label class=\"field\">
                               ";
         // line 43
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 43, $this->source); })()), "email", array()), 'widget', array("attr" => array("class" => "gui-input ", "placeholder" => "Email")));
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 43, $this->source); })()), "email", array()), 'row', array("attr" => array("class" => "gui-input ", "placeholder" => "Email")));
         echo "
 
                             </label>
@@ -94,7 +94,7 @@ class __TwigTemplate_61f4094822b63fa6446d3f4ba232ef3ec3b22b2967980d98c437d3835da
                             <label class=\"field\">
                               ";
         // line 52
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 52, $this->source); })()), "roles", array()), 'widget', array("attr" => array("class" => "gui-input ", "placeholder" => "Roles")));
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 52, $this->source); })()), "roles", array()), 'row', array("attr" => array("class" => "gui-input ", "placeholder" => "Roles")));
         echo "
 
                             </label>
@@ -158,13 +158,13 @@ class __TwigTemplate_61f4094822b63fa6446d3f4ba232ef3ec3b22b2967980d98c437d3835da
                   <div class=\"panel-body bg-light\">
 
 
- {{ form_start(form, {'attr': {'id': 'form-ui'}}) }}
+ {{ form_start(form, {'attr': {'id': 'form-ui','novalidate': 'novalidate'}}) }}
                  <div id=\"spy1\" class=\"section-divider mb40\"><span></span></div>
 \t\t        \t <div class=\"row\">
                         <div class=\"col-md-12\">
                           <div class=\"section\">
                             <label class=\"field\">
-                              {{ form_widget(form.username, {'attr': {'class': 'gui-input','placeholder':\"Username\"}}) }}
+                              {{ form_row(form.username, {'attr': {'class': 'gui-input','placeholder':\"Username\"}}) }}
 
                             </label>
                           </div>
@@ -173,7 +173,7 @@ class __TwigTemplate_61f4094822b63fa6446d3f4ba232ef3ec3b22b2967980d98c437d3835da
                         <div class=\"col-md-12\">
                           <div class=\"section\">
                             <label class=\"field\">
-                              {{ form_widget(form.plainPassword.first, {'attr': {'class': 'gui-input ','placeholder':\"Contraseña\"}}) }}
+                              {{ form_row(form.plainPassword.first, {'attr': {'class': 'gui-input ','placeholder':\"Contraseña\"}}) }}
 
                             </label>
                           </div>
@@ -182,7 +182,7 @@ class __TwigTemplate_61f4094822b63fa6446d3f4ba232ef3ec3b22b2967980d98c437d3835da
                          <div class=\"col-md-12\">
                           <div class=\"section\">
                             <label class=\"field\">
-                              {{ form_widget(form.plainPassword.second, {'attr': {'class': 'gui-input ','placeholder':\"Repetir contraseña\"}}) }}
+                              {{ form_row(form.plainPassword.second, {'attr': {'class': 'gui-input ','placeholder':\"Repetir contraseña\"}}) }}
 
                             </label>
                           </div>
@@ -191,7 +191,7 @@ class __TwigTemplate_61f4094822b63fa6446d3f4ba232ef3ec3b22b2967980d98c437d3835da
                         <div class=\"col-md-12\">
                           <div class=\"section\">
                             <label class=\"field\">
-                              {{ form_widget(form.email, {'attr': {'class': 'gui-input ','placeholder':\"Email\"}}) }}
+                              {{ form_row(form.email, {'attr': {'class': 'gui-input ','placeholder':\"Email\"}}) }}
 
                             </label>
                           </div>
@@ -200,7 +200,7 @@ class __TwigTemplate_61f4094822b63fa6446d3f4ba232ef3ec3b22b2967980d98c437d3835da
                          <div class=\"col-md-12\">
                           <div class=\"section\">
                             <label class=\"field\">
-                              {{ form_widget(form.roles, {'attr': {'class': 'gui-input ','placeholder':\"Roles\"}}) }}
+                              {{ form_row(form.roles, {'attr': {'class': 'gui-input ','placeholder':\"Roles\"}}) }}
 
                             </label>
                           </div>

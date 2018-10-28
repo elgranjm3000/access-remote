@@ -7,9 +7,15 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+
 /**
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="Este email ya esta en uso."
+ * )
  */
 class User implements UserInterface, \Serializable
 {
@@ -27,11 +33,15 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=25, unique=true)
+     * @Assert\NotBlank(
+     *     message = "Valor requerido"
+     * )
      */
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="string", length=64)     
+     
      */
     private $password;
 
@@ -46,8 +56,9 @@ class User implements UserInterface, \Serializable
     private $isActive;
 
      /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank( message = "Valor requerido")
      * @Assert\Length(max=4096)
+ 
      */
     private $plainPassword;
 
@@ -57,7 +68,8 @@ class User implements UserInterface, \Serializable
     private $clientes;
 
    /**
-     * @ORM\Column(type="simple_array", length=20)     
+     * @ORM\Column(type="simple_array", length=20) 
+    * @Assert\Choice(choices={"ROLE_USER", "ROLE_ADMIN"}, message="Seleccione una opcion")
      */
     private $roles;
 

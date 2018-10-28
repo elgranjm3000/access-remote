@@ -12,7 +12,7 @@ class __TwigTemplate_0654879cb11866b58cbbe583b8ef58ad84903b2b21cdb4bd510e0299472
         $this->source = $this->getSourceContext();
 
         // line 2
-        $this->parent = $this->loadTemplate("base.html.twig", "@Twig/Exception/error403.html.twig", 2);
+        $this->parent = $this->loadTemplate("template.html.twig", "@Twig/Exception/error403.html.twig", 2);
         $this->blocks = array(
             'body' => array($this, 'block_body'),
         );
@@ -20,7 +20,7 @@ class __TwigTemplate_0654879cb11866b58cbbe583b8ef58ad84903b2b21cdb4bd510e0299472
 
     protected function doGetParent(array $context)
     {
-        return "base.html.twig";
+        return "template.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -50,15 +50,7 @@ class __TwigTemplate_0654879cb11866b58cbbe583b8ef58ad84903b2b21cdb4bd510e0299472
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 5
-        echo "    <h1>Acceso denegado</h1>
-
-    <p>
-        The requested page couldn't be located. Checkout for any URL
-        misspelling or <a href=\"";
-        // line 9
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
-        echo "\">return to the homepage</a>.
-    </p>
+        echo "    <h1>ACCESO DENEGADO</h1>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -80,21 +72,16 @@ class __TwigTemplate_0654879cb11866b58cbbe583b8ef58ad84903b2b21cdb4bd510e0299472
 
     public function getDebugInfo()
     {
-        return array (  59 => 9,  53 => 5,  44 => 4,  15 => 2,);
+        return array (  53 => 5,  44 => 4,  15 => 2,);
     }
 
     public function getSourceContext()
     {
         return new Twig_Source("{# templates/bundles/TwigBundle/Exception/error403.html.twig #}
-{% extends 'base.html.twig' %}
+{% extends 'template.html.twig' %}
 
 {% block body %}
-    <h1>Acceso denegado</h1>
-
-    <p>
-        The requested page couldn't be located. Checkout for any URL
-        misspelling or <a href=\"{{ path('login') }}\">return to the homepage</a>.
-    </p>
+    <h1>ACCESO DENEGADO</h1>
 {% endblock %}", "@Twig/Exception/error403.html.twig", "/var/www/html/access/templates/bundles/TwigBundle/Exception/error403.html.twig");
     }
 }
