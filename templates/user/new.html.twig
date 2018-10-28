@@ -1,0 +1,39 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Nuevo usuario{% endblock %}
+{% block header %}
+ <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="{{ path('user_index') }}">Usuario</a></li>                            
+              <li class="crumb-trail">Nuevo registro</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('user_index') }}">Listado de Usuario</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+<div class="content-header">
+                <h2><b class="text-primary">Agregar Usuarios</b>
+                </h2>
+              
+              </div>
+
+
+{% endblock %}
+
+{% block body %}
+    
+
+    {{ include('user/_form.html.twig') }}
+
+    
+{% endblock %}

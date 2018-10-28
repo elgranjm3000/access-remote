@@ -40,10 +40,16 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-         - { path: ^/proveedores, roles: ROLE_USER }
-         - { path: ^/clientes, roles: ROLE_USER }
-         - { path: ^/productos, roles: ROLE_USER }
-         - { path: ^/familia, roles: ROLE_USER }
-         - { path: ^/almacenes, roles: ROLE_USER }
-         - { path: ^/facturas, roles: ROLE_USER }
-         - { path: ^/movimientos, roles: ROLE_USER }
+         - { path: ^/proveedores, roles: ROLE_ADMIN }
+         - { path: ^/clientes, roles: ['ROLE_USER','ROLE_ADMIN'] }
+         - { path: ^/productos, roles: ROLE_ADMIN }
+         - { path: ^/familia, roles: ROLE_ADMIN }
+         - { path: ^/almacen, roles: ROLE_ADMIN }
+         - { path: ^/ingresos, roles: ROLE_ADMIN }
+         - { path: ^/facturas, roles: ['ROLE_USER','ROLE_ADMIN']}
+         - { path: ^/movimientos, roles: ROLE_ADMIN }
+         - { path: ^/descuento, roles: ROLE_ADMIN }
+         - { path: ^/reportes, roles: ['ROLE_USER','ROLE_ADMIN'] }
+         - { path: ^/descuentos, roles: ROLE_USER }
+         - { path: ^/user, roles: ROLE_ADMIN }
+         - { path: ^/user/show, roles: ['ROLE_USER','ROLE_ADMIN'] }

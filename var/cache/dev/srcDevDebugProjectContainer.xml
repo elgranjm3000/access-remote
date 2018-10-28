@@ -548,6 +548,13 @@
         <argument type="service" id=".service_locator.ychIlgF.App\Controller\SecurityController"/>
       </call>
     </service>
+    <service id="App\Controller\UserController" class="App\Controller\UserController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.ychIlgF.App\Controller\UserController"/>
+      </call>
+    </service>
     <service id="App\Form\AlmacenType" class="App\Form\AlmacenType" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -590,7 +597,13 @@
     <service id="App\Form\ProveedoresType" class="App\Form\ProveedoresType" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\User1Type" class="App\Form\User1Type" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\UserType" class="App\Form\UserType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\Userperfil1Type" class="App\Form\Userperfil1Type" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Repository\AlmacenRepository" class="App\Repository\AlmacenRepository" public="false" autowire="true" autoconfigure="true">
@@ -650,6 +663,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\ServiciosRepository" class="App\Repository\ServiciosRepository" public="false" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\User1Repository" class="App\Repository\User1Repository" public="false" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -920,7 +937,9 @@
         <argument>App\Form\MovimientosDepositosType</argument>
         <argument>App\Form\ProductosType</argument>
         <argument>App\Form\ProveedoresType</argument>
+        <argument>App\Form\User1Type</argument>
         <argument>App\Form\UserType</argument>
+        <argument>App\Form\Userperfil1Type</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type\EntityType</argument>
@@ -1150,7 +1169,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.2aT5_uI"/>
+      <argument type="service" id=".service_locator.EZsCAi5"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.http_foundation"/>
@@ -2906,7 +2925,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.QCXyBSy"/>
+      <argument type="service" id=".service_locator.Cj.qoOx"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -3314,7 +3333,7 @@
       <call method="add">
         <argument type="service" id=".security.request_matcher.KA4NFGc"/>
         <argument type="collection">
-          <argument>ROLE_USER</argument>
+          <argument>ROLE_ADMIN</argument>
         </argument>
         <argument>null</argument>
       </call>
@@ -3322,27 +3341,35 @@
         <argument type="service" id=".security.request_matcher.f2HSI7D"/>
         <argument type="collection">
           <argument>ROLE_USER</argument>
+          <argument>ROLE_ADMIN</argument>
         </argument>
         <argument>null</argument>
       </call>
       <call method="add">
         <argument type="service" id=".security.request_matcher.noSyi_3"/>
         <argument type="collection">
-          <argument>ROLE_USER</argument>
+          <argument>ROLE_ADMIN</argument>
         </argument>
         <argument>null</argument>
       </call>
       <call method="add">
         <argument type="service" id=".security.request_matcher.mUVMv8E"/>
         <argument type="collection">
-          <argument>ROLE_USER</argument>
+          <argument>ROLE_ADMIN</argument>
         </argument>
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id=".security.request_matcher.Mf1OjS7"/>
+        <argument type="service" id=".security.request_matcher.6Haqlqp"/>
         <argument type="collection">
-          <argument>ROLE_USER</argument>
+          <argument>ROLE_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.eJbKeUS"/>
+        <argument type="collection">
+          <argument>ROLE_ADMIN</argument>
         </argument>
         <argument>null</argument>
       </call>
@@ -3350,13 +3377,51 @@
         <argument type="service" id=".security.request_matcher.nwNFhRq"/>
         <argument type="collection">
           <argument>ROLE_USER</argument>
+          <argument>ROLE_ADMIN</argument>
         </argument>
         <argument>null</argument>
       </call>
       <call method="add">
         <argument type="service" id=".security.request_matcher.kpa.4iB"/>
         <argument type="collection">
+          <argument>ROLE_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.a4LJVdJ"/>
+        <argument type="collection">
+          <argument>ROLE_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.uFmRcMb"/>
+        <argument type="collection">
           <argument>ROLE_USER</argument>
+          <argument>ROLE_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.fkEgivw"/>
+        <argument type="collection">
+          <argument>ROLE_USER</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.qHD9EoC"/>
+        <argument type="collection">
+          <argument>ROLE_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.iDLRs6D"/>
+        <argument type="collection">
+          <argument>ROLE_USER</argument>
+          <argument>ROLE_ADMIN</argument>
         </argument>
         <argument>null</argument>
       </call>
@@ -3866,14 +3931,32 @@
     <service id=".security.request_matcher.mUVMv8E" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/familia</argument>
     </service>
-    <service id=".security.request_matcher.Mf1OjS7" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/almacenes</argument>
+    <service id=".security.request_matcher.6Haqlqp" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/almacen</argument>
+    </service>
+    <service id=".security.request_matcher.eJbKeUS" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/ingresos</argument>
     </service>
     <service id=".security.request_matcher.nwNFhRq" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/facturas</argument>
     </service>
     <service id=".security.request_matcher.kpa.4iB" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/movimientos</argument>
+    </service>
+    <service id=".security.request_matcher.a4LJVdJ" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/descuento</argument>
+    </service>
+    <service id=".security.request_matcher.uFmRcMb" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/reportes</argument>
+    </service>
+    <service id=".security.request_matcher.fkEgivw" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/descuentos</argument>
+    </service>
+    <service id=".security.request_matcher.qHD9EoC" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/user</argument>
+    </service>
+    <service id=".security.request_matcher.iDLRs6D" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/user/show</argument>
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
@@ -4209,6 +4292,10 @@
       <call method="addPath">
         <argument>/var/www/html/access/vendor/symfony/web-profiler-bundle/Resources/views</argument>
         <argument>!WebProfiler</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/html/access/templates/bundles/TwigBundle</argument>
+        <argument>Twig</argument>
       </call>
       <call method="addPath">
         <argument>/var/www/html/access/vendor/symfony/twig-bundle/Resources/views</argument>
@@ -4725,6 +4812,9 @@
     <service id=".instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\SecurityController" class="App\Controller\SecurityController" public="false" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\UserController" class="App\Controller\UserController" public="false" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserController" class="App\Controller\UserController" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\UserController" class="App\Controller\UserController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\AlmacenType" class="App\Form\AlmacenType" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\AlmacenType" class="App\Form\AlmacenType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ClientesType" class="App\Form\ClientesType" public="false" autowire="true" abstract="true"/>
@@ -4753,8 +4843,12 @@
     <service id=".abstract.instanceof.App\Form\ProductosType" class="App\Form\ProductosType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ProveedoresType" class="App\Form\ProveedoresType" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ProveedoresType" class="App\Form\ProveedoresType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\User1Type" class="App\Form\User1Type" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\User1Type" class="App\Form\User1Type" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UserType" class="App\Form\UserType" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\UserType" class="App\Form\UserType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\Userperfil1Type" class="App\Form\Userperfil1Type" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\Userperfil1Type" class="App\Form\Userperfil1Type" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AlmacenRepository" class="App\Repository\AlmacenRepository" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\AlmacenRepository" class="App\Repository\AlmacenRepository" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ClientesRepository" class="App\Repository\ClientesRepository" public="false" autowire="true" abstract="true"/>
@@ -4785,6 +4879,8 @@
     <service id=".abstract.instanceof.App\Repository\ProveedoresRepository" class="App\Repository\ProveedoresRepository" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ServiciosRepository" class="App\Repository\ServiciosRepository" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ServiciosRepository" class="App\Repository\ServiciosRepository" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\User1Repository" class="App\Repository\User1Repository" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\User1Repository" class="App\Repository\User1Repository" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Twig_ExtensionInterface.0.App\Twig\AppExtension" class="App\Twig\AppExtension" public="false" autowire="true" abstract="true"/>
     <service id=".instanceof.Twig\Extension\ExtensionInterface.0.App\Twig\AppExtension" class="App\Twig\AppExtension" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Twig\AppExtension" class="App\Twig\AppExtension" public="false" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5083,7 +5179,32 @@
         <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.XWLKL2e" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.VfVhme1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="authChecker" type="service" id="security.authorization_checker"/>
+      </argument>
+    </service>
+    <service id=".service_locator.cQeGiWP" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="user1Repository" type="service" id="App\Repository\User1Repository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.iuuVGtK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="user" type="service" id=".errored..service_locator.iuuVGtK.App\Entity\User"/>
+      </argument>
+    </service>
+    <service id=".service_locator.qzh.j69" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="passwordEncoder" type="service" id="security.user_password_encoder.generic"/>
+        <argument key="user" type="service" id=".errored..service_locator.qzh.j69.App\Entity\User"/>
+      </argument>
+    </service>
+    <service id=".service_locator.54Ofjm7" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AlmacenController::delete" type="service" id=".service_locator.GhCUbNg"/>
@@ -5140,7 +5261,14 @@
         <argument key="App\Controller\ReportesController::utilidad" type="service" id=".service_locator.kFI1I3_"/>
         <argument key="App\Controller\ReportesController::vendedor" type="service" id=".service_locator.kFI1I3_"/>
         <argument key="App\Controller\ReportesController::ventasfechas" type="service" id=".service_locator.kFI1I3_"/>
+        <argument key="App\Controller\SecurityController::admin" type="service" id=".service_locator.VfVhme1"/>
         <argument key="App\Controller\SecurityController::login" type="service" id=".service_locator.ypl2DZZ"/>
+        <argument key="App\Controller\UserController::delete" type="service" id=".service_locator.iuuVGtK"/>
+        <argument key="App\Controller\UserController::edit" type="service" id=".service_locator.qzh.j69"/>
+        <argument key="App\Controller\UserController::editperfil" type="service" id=".service_locator.qzh.j69"/>
+        <argument key="App\Controller\UserController::index" type="service" id=".service_locator.cQeGiWP"/>
+        <argument key="App\Controller\UserController::new" type="service" id=".service_locator.cPEJcDm"/>
+        <argument key="App\Controller\UserController::show" type="service" id=".service_locator.iuuVGtK"/>
         <argument key="App\Controller\AlmacenController:delete" type="service" id=".service_locator.GhCUbNg"/>
         <argument key="App\Controller\AlmacenController:edit" type="service" id=".service_locator.GhCUbNg"/>
         <argument key="App\Controller\AlmacenController:index" type="service" id=".service_locator.DQnPz.p"/>
@@ -5195,7 +5323,14 @@
         <argument key="App\Controller\ReportesController:utilidad" type="service" id=".service_locator.kFI1I3_"/>
         <argument key="App\Controller\ReportesController:vendedor" type="service" id=".service_locator.kFI1I3_"/>
         <argument key="App\Controller\ReportesController:ventasfechas" type="service" id=".service_locator.kFI1I3_"/>
+        <argument key="App\Controller\SecurityController:admin" type="service" id=".service_locator.VfVhme1"/>
         <argument key="App\Controller\SecurityController:login" type="service" id=".service_locator.ypl2DZZ"/>
+        <argument key="App\Controller\UserController:delete" type="service" id=".service_locator.iuuVGtK"/>
+        <argument key="App\Controller\UserController:edit" type="service" id=".service_locator.qzh.j69"/>
+        <argument key="App\Controller\UserController:editperfil" type="service" id=".service_locator.qzh.j69"/>
+        <argument key="App\Controller\UserController:index" type="service" id=".service_locator.cQeGiWP"/>
+        <argument key="App\Controller\UserController:new" type="service" id=".service_locator.cPEJcDm"/>
+        <argument key="App\Controller\UserController:show" type="service" id=".service_locator.iuuVGtK"/>
       </argument>
     </service>
     <service id=".service_locator.yQVjGlt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5255,7 +5390,7 @@
       <argument type="service" id="debug.argument_resolver.variadic.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.2aT5_uI" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.EZsCAi5" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="PUGX\AutocompleterBundle\Form\Type\AutocompleteType" type="service" id="pugx_autocompleter.autocomplete"/>
@@ -5274,14 +5409,16 @@
         <argument key="App\Form\MovimientosDepositosType" type="service" id="App\Form\MovimientosDepositosType"/>
         <argument key="App\Form\ProductosType" type="service" id="App\Form\ProductosType"/>
         <argument key="App\Form\ProveedoresType" type="service" id="App\Form\ProveedoresType"/>
+        <argument key="App\Form\User1Type" type="service" id="App\Form\User1Type"/>
         <argument key="App\Form\UserType" type="service" id="App\Form\UserType"/>
+        <argument key="App\Form\Userperfil1Type" type="service" id="App\Form\Userperfil1Type"/>
         <argument key="FOS\CKEditorBundle\Form\Type\CKEditorType" type="service" id="fos_ck_editor.form.type"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="service" id="form.type.form"/>
       </argument>
     </service>
-    <service id=".service_locator.QCXyBSy" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.Cj.qoOx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\AlmacenRepository" type="service" id="App\Repository\AlmacenRepository"/>
@@ -5299,6 +5436,7 @@
         <argument key="App\Repository\ProductosRepository" type="service" id="App\Repository\ProductosRepository"/>
         <argument key="App\Repository\ProveedoresRepository" type="service" id="App\Repository\ProveedoresRepository"/>
         <argument key="App\Repository\ServiciosRepository" type="service" id="App\Repository\ServiciosRepository"/>
+        <argument key="App\Repository\User1Repository" type="service" id="App\Repository\User1Repository"/>
       </argument>
     </service>
     <service id="security.logout.handler.csrf_token_clearing" class="Symfony\Component\Security\Http\Logout\CsrfTokenClearingLogoutHandler" public="false">
@@ -5466,7 +5604,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.XWLKL2e"/>
+      <argument type="service" id=".service_locator.54Ofjm7"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
@@ -5567,6 +5705,11 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.ychIlgF" method="withContext"/>
     </service>
+    <service id=".service_locator.ychIlgF.App\Controller\UserController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <argument>App\Controller\UserController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.ychIlgF" method="withContext"/>
+    </service>
     <service id=".service_locator.3nNxzEJ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5628,6 +5771,8 @@
     <service id=".errored..service_locator.UGPvOKO.App\Entity\MovimientosDepositos" class="App\Entity\MovimientosDepositos"/>
     <service id=".errored..service_locator.MpabvJx.App\Entity\Productos" class="App\Entity\Productos"/>
     <service id=".errored..service_locator.ug26py1.App\Entity\Proveedores" class="App\Entity\Proveedores"/>
+    <service id=".errored..service_locator.iuuVGtK.App\Entity\User" class="App\Entity\User"/>
+    <service id=".errored..service_locator.qzh.j69.App\Entity\User" class="App\Entity\User"/>
     <service id=".service_locator.HKoUR8q" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5954,7 +6099,7 @@
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.XWLKL2e"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.54Ofjm7"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".service_locator.AoifO_3" alias=".2_ServiceLocator~.OSktso" public="false"/>

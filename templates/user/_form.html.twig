@@ -1,0 +1,74 @@
+
+
+
+<div class="mw1000 center-block">
+ <div class="admin-form theme-primary">
+                <div class="panel heading-border panel-primary">
+                  <div class="panel-body bg-light">
+
+
+ {{ form_start(form, {'attr': {'id': 'form-ui'}}) }}
+                 <div id="spy1" class="section-divider mb40"><span></span></div>
+		        	 <div class="row">
+                        <div class="col-md-12">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.username, {'attr': {'class': 'gui-input','placeholder':"Username"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.plainPassword.first, {'attr': {'class': 'gui-input ','placeholder':"Contraseña"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                         <div class="col-md-12">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.plainPassword.second, {'attr': {'class': 'gui-input ','placeholder':"Repetir contraseña"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.email, {'attr': {'class': 'gui-input ','placeholder':"Email"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                         <div class="col-md-12">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.roles, {'attr': {'class': 'gui-input ','placeholder':"Roles"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+                      
+                      </div>
+
+
+
+                      
+                          <button type="submit" class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+
+ 
+
+		        </div>
+{{ form_end(form) }} 
+
+</div>
+</div>
+</div>
+
+</div>

@@ -1,0 +1,41 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Edit Usuario{% endblock %}
+
+
+{% block header %}
+
+ <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="{{ path('user_index') }}">Usuarios</a></li>                            
+              <li class="crumb-trail">Editar registro</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('user_index') }}">Listado de Usuarios</a></li>
+              <li>  {{ include('user/_delete_form.html.twig') }}</li>
+              
+            </ul>
+          </div>
+         
+        </header>
+
+<div class="content-header">
+                <h2><b class="text-primary">Editar Usuario</b>
+                </h2>
+              
+              </div>
+{% endblock %}
+
+{% block body %}
+    
+    {{ include('user/_form.html.twig', {'button_label': 'Actualizar'}) }}
+
+    
+{% endblock %}

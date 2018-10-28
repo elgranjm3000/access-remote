@@ -255,26 +255,28 @@ class __TwigTemplate_7f0f90cadc5007a0d466d80111e456ec9fcff3927286e658246abf0e793
             \"url\": \"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json\"
         },
         initComplete: function () {
-            this.api().columns(2).every( function () {
-                var column = this;
-                var select = \$('<select class=\"form-control\"><option value=\"\">Familia: </option></select>')
-                    .appendTo( \$(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = \$.fn.dataTable.util.escapeRegex(
-                            \$(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'\$' : '', true, false )
-                            .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value=\"'+d+'\">'+d+'</option>' )
-                } );
-            } );
+            
 
              
+              var div=\$('.dataTables_wrapper');
+
+         
+          div.find(\".dataTables_filter\").append('<br><label>Productos<select id=\"idfamilia\"><option value=\"\"></option></select></label>');
+            this.api().column(2).each(function () {
+                var column = this;
+                console.log(column);
+                \$('#idfamilia').on('change',function(){
+                var val=\$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'\$' : '', true, false )
+                            .draw();
+                });
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    \$(\"#idfamilia\").append( '<option value=\"'+d+'\">'+d+'</option>' )
+                } );
+
+            });
 
           
         },
@@ -518,26 +520,28 @@ setInterval(funcAvisa,1000);
             \"url\": \"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json\"
         },
         initComplete: function () {
-            this.api().columns(2).every( function () {
-                var column = this;
-                var select = \$('<select class=\"form-control\"><option value=\"\">Familia: </option></select>')
-                    .appendTo( \$(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = \$.fn.dataTable.util.escapeRegex(
-                            \$(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'\$' : '', true, false )
-                            .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value=\"'+d+'\">'+d+'</option>' )
-                } );
-            } );
+            
 
              
+              var div=\$('.dataTables_wrapper');
+
+         
+          div.find(\".dataTables_filter\").append('<br><label>Productos<select id=\"idfamilia\"><option value=\"\"></option></select></label>');
+            this.api().column(2).each(function () {
+                var column = this;
+                console.log(column);
+                \$('#idfamilia').on('change',function(){
+                var val=\$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'\$' : '', true, false )
+                            .draw();
+                });
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    \$(\"#idfamilia\").append( '<option value=\"'+d+'\">'+d+'</option>' )
+                } );
+
+            });
 
           
         },

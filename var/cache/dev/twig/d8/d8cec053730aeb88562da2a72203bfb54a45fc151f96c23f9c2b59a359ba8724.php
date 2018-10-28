@@ -52,7 +52,7 @@ class __TwigTemplate_e194f7c824afbf9f86b44fa5813d93500b1914b5e1444a83480dcc5c0a0
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Productos";
+        echo "Proveedores";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -250,26 +250,28 @@ class __TwigTemplate_e194f7c824afbf9f86b44fa5813d93500b1914b5e1444a83480dcc5c0a0
             \"url\": \"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json\"
         },
         initComplete: function () {
-            this.api().columns(0).every( function () {
-                var column = this;
-                var select = \$('<select class=\"form-control\"><option value=\"\">Proveedor: </option></select>')
-                    .appendTo( \$(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = \$.fn.dataTable.util.escapeRegex(
-                            \$(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'\$' : '', true, false )
-                            .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value=\"'+d+'\">'+d+'</option>' )
-                } );
-            } );
-
+     
              
+               var div=\$('.dataTables_wrapper');
+
+         
+          div.find(\".dataTables_filter\").append('<br><label>Proveedor<select id=\"idproveedor\"><option value=\"\"></option></select></label>');
+            this.api().column(0).each(function () {
+                var column = this;
+                console.log(column);
+                \$('#idproveedor').on('change',function(){
+                var val=\$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'\$' : '', true, false )
+                            .draw();
+                });
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    \$(\"#idproveedor\").append( '<option value=\"'+d+'\">'+d+'</option>' )
+                } );
+
+            });
+
 
           
         },
@@ -389,7 +391,7 @@ setInterval(funcAvisa,1000);
     {
         return new Twig_Source("{% extends 'template.html.twig' %}
 
-{% block title %}Productos{% endblock %}
+{% block title %}Proveedores{% endblock %}
 
 
 
@@ -510,26 +512,28 @@ setInterval(funcAvisa,1000);
             \"url\": \"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json\"
         },
         initComplete: function () {
-            this.api().columns(0).every( function () {
-                var column = this;
-                var select = \$('<select class=\"form-control\"><option value=\"\">Proveedor: </option></select>')
-                    .appendTo( \$(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = \$.fn.dataTable.util.escapeRegex(
-                            \$(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'\$' : '', true, false )
-                            .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value=\"'+d+'\">'+d+'</option>' )
-                } );
-            } );
-
+     
              
+               var div=\$('.dataTables_wrapper');
+
+         
+          div.find(\".dataTables_filter\").append('<br><label>Proveedor<select id=\"idproveedor\"><option value=\"\"></option></select></label>');
+            this.api().column(0).each(function () {
+                var column = this;
+                console.log(column);
+                \$('#idproveedor').on('change',function(){
+                var val=\$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'\$' : '', true, false )
+                            .draw();
+                });
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    \$(\"#idproveedor\").append( '<option value=\"'+d+'\">'+d+'</option>' )
+                } );
+
+            });
+
 
           
         },

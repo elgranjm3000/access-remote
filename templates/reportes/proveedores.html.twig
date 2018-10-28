@@ -1,6 +1,6 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Productos{% endblock %}
+{% block title %}Proveedores{% endblock %}
 
 
 
@@ -121,26 +121,28 @@ $('.facturas').DataTable({
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
         },
         initComplete: function () {
-            this.api().columns(0).every( function () {
-                var column = this;
-                var select = $('<select class="form-control"><option value="">Proveedor: </option></select>')
-                    .appendTo( $(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                } );
-            } );
-
+     
              
+               var div=$('.dataTables_wrapper');
+
+         
+          div.find(".dataTables_filter").append('<br><label>Proveedor<select id="idproveedor"><option value=""></option></select></label>');
+            this.api().column(0).each(function () {
+                var column = this;
+                console.log(column);
+                $('#idproveedor').on('change',function(){
+                var val=$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                });
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    $("#idproveedor").append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+
+            });
+
 
           
         },

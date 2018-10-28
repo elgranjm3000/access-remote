@@ -107,38 +107,28 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
        ";
         // line 63
         echo "        <ul class=\"nav navbar-nav navbar-right\">
-          <li><img src=\"";
+          <li><h1>Bienvenido ";
         // line 64
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/avatars/1.jpg"), "html", null, true);
-        echo "\" alt=\"avatar\"></li>
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 64, $this->source); })()), "user", array()), "username", array()), "html", null, true);
+        echo "</h1></li>
           <li class=\"dropdown menu-merge\"><a href=\"#\" data-toggle=\"dropdown\" class=\"dropdown-toggle fw600 p15\"><span class=\"fa fa-angle-down\"></span> </a>
             <ul role=\"menu\" class=\"dropdown-menu list-group dropdown-persist w250\">
-              <li class=\"dropdown-header clearfix\">
-                <div class=\"pull-left ml10\">
-                  <select id=\"user-status\">
-                    <optgroup label=\"Current Status:\">
-                      <option value=\"1-1\">Away</option>
-                      <option value=\"1-2\">Offline</option>
-                      <option value=\"1-3\" selected=\"selected\">Online</option>
-                    </optgroup>
-                  </select>
-                </div>
-                <div class=\"pull-right mr10\">
-                  <select id=\"user-role\">
-                    <optgroup label=\"Logged in As:\">
-                      <option value=\"1-1\">Client</option>
-                      <option value=\"1-2\">Editor</option>
-                      <option value=\"1-3\" selected=\"selected\">Admin</option>
-                    </optgroup>
-                  </select>
-                </div>
-              </li>
-              <li class=\"list-group-item\"><a href=\"#\" class=\"animated animated-short fadeInUp\"><span class=\"fa fa-envelope\"></span> Messages<span class=\"label label-warning\">2</span></a></li>
-              <li class=\"list-group-item\"><a href=\"#\" class=\"animated animated-short fadeInUp\"><span class=\"fa fa-user\"></span> Friends<span class=\"label label-warning\">6</span></a></li>
-              <li class=\"list-group-item\"><a href=\"#\" class=\"animated animated-short fadeInUp\"><span class=\"fa fa-bell\"></span> Notifications</a></li>
-              <li class=\"list-group-item\"><a href=\"#\" class=\"animated animated-short fadeInUp\"><span class=\"fa fa-gear\"></span> Settings</a></li>
+      
+            
+              <li class=\"list-group-item\"><a href=\"";
+        // line 69
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_edit_perfil", array("id" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 69, $this->source); })()), "user", array()), "id", array()))), "html", null, true);
+        echo "\" class=\"animated animated-short fadeInUp\"><span class=\"fa fa-user\"></span> Mi perfil</a></li>
+
+
+              <li class=\"list-group-item\"><a href=\"";
+        // line 72
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_index");
+        echo "\" class=\"animated animated-short fadeInUp\"><span class=\"fa fa-user\"></span> Usuarios </a></li>
+              
+             
               <li class=\"dropdown-footer\"><a href=\"";
-        // line 91
+        // line 75
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("security_logout");
         echo "\"><span class=\"fa fa-power-off pr5\"></span> Cerrar sistema</a></li>
             </ul>
@@ -165,21 +155,21 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
             
             
             <li><a title=\"Proveedores\" href=\"";
-        // line 115
+        // line 99
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("proveedores_index");
         echo "\" ><span class=\"fa fa-building\"></span><span class=\"sidebar-title\">Proveedores</span><span class=\"caret\"></span></a>
               
                 </li>
                 
                 <li><a title=\"Clientes\" href=\"";
-        // line 119
+        // line 103
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("clientes_index");
         echo "\" ><span class=\"fa fa-child\"></span><span class=\"sidebar-title\">Clientes</span><span class=\"caret\"></span></a>
               
                 </li>
 
                  <li><a title=\"Clientes\" href=\"";
-        // line 123
+        // line 107
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("productos_index");
         echo "\" ><span class=\"fa fa-product-hunt\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Productos</span><span class=\"caret\"></span></a>
               
@@ -190,34 +180,34 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
                 </li>
 
                 <li><a title=\"Clientes\" href=\"";
-        // line 131
+        // line 115
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("familia_index");
         echo "\" ><span class=\"fa fa-users\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Familia</span><span class=\"caret\"></span></a>
               
                 </li>
 
                 <li><a title=\"Clientes\" href=\"";
-        // line 135
+        // line 119
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("almacen_index");
         echo "\" ><span class=\"fa fa-cube\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Almacenes</span><span class=\"caret\"></span></a>
               
                 </li>
 
    <li><a title=\"Clientes\" href=\"";
-        // line 139
+        // line 123
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("ingresos_index");
         echo "\" ><span class=\"fa fa-product-hunt\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Ingresar Productos</span><span class=\"caret\"></span></a>
               
 
                 <li><a title=\"Movimientos\" href=\"";
-        // line 142
+        // line 126
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("movimientos_almacen_index");
         echo "\" ><span class=\"glyphicon glyphicon-export\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Movimientos Almacenes</span><span class=\"caret\"></span></a>
               
                 </li>
                 
     <li><a title=\"Clientes\" href=\"";
-        // line 146
+        // line 130
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("facturas_index");
         echo "\" ><span class=\"fa fa-bookmark\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Facturas</span><span class=\"caret\"></span></a>
               
@@ -225,19 +215,19 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
 
     <li><a title=\"Clientes\" href=\"";
-        // line 151
+        // line 135
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("descuento_index");
         echo "\" ><span class=\"fa fa-percent\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Descuentos</span><span class=\"caret\"></span></a>           </li>
 
                 <li><a title=\"Clientes\" href=\"";
-        // line 153
+        // line 137
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("movimientos_depositos_index");
         echo "\" ><span class=\" fa fa-plus-square-o\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Depositos</span><span class=\"caret\"></span></a>
               
                 </li>
 
                 <li><a title=\"Clientes\" href=\"";
-        // line 157
+        // line 141
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("inventario");
         echo "\" ><span class=\" fa fa-plus-square-o\" aria-hidden=\"true\"></span><span class=\"sidebar-title\">Control de Inventario</span><span class=\"caret\"></span></a>
               
@@ -246,21 +236,21 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
                 <li><a href=\"#\" class=\"accordion-toggle\"><span class=\"glyphicon glyphicon-fire\"></span><span class=\"sidebar-title\">Reportes</span><span class=\"caret\"></span></a>
               <ul class=\"nav sub-nav\" style=\"\">
                 <li><a href=\"";
-        // line 163
+        // line 147
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reportesventas");
         echo "\">
                   <span class=\"glyphicon glyphicon-modal-window\"></span>Ventas</a>
                 </li>
                 <li>
                   <a href=\"";
-        // line 167
+        // line 151
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reportesutilidadproductos");
         echo "\">
                     <span class=\"glyphicon glyphicon-modal-window\"></span>Utilidad</a>
                 </li>
                 <li>
                   <a href=\"";
-        // line 171
+        // line 155
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reportesclientes");
         echo "\">
                     <span class=\"glyphicon glyphicon-modal-window\"></span>Clientes y Vendedores</a>
@@ -268,7 +258,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
                    <li>
                   <a href=\"";
-        // line 176
+        // line 160
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reportesproductos");
         echo "\">
                     <span class=\"glyphicon glyphicon-modal-window\"></span>Listado de Productos</a>
@@ -276,7 +266,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
                  <li>
                   <a href=\"";
-        // line 181
+        // line 165
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reportesproveedores");
         echo "\">
                     <span class=\"glyphicon glyphicon-modal-window\"></span>Listado de Proveedores</a>
@@ -285,10 +275,18 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
                  <li>
                   <a href=\"";
-        // line 187
+        // line 171
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("reportesventasfechas");
         echo "\">
                     <span class=\"glyphicon glyphicon-modal-window\"></span>Listado de Ventas %</a>
+                </li>
+
+                  <li>
+                  <a href=\"";
+        // line 176
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cobrar");
+        echo "\">
+                    <span class=\"glyphicon glyphicon-modal-window\"></span>Cuentas por cobrar</a>
                 </li>
               </ul>
             </li>
@@ -329,12 +327,12 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
         <!-- Start: Topbar-->
 
         ";
-        // line 228
+        // line 217
         $this->displayBlock('header', $context, $blocks);
-        // line 230
+        // line 219
         echo "        ";
         $this->displayBlock('body', $context, $blocks);
-        // line 233
+        // line 222
         echo "       
         <!-- Begin: Content-->
        
@@ -356,20 +354,20 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
 <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script> 
     <script src=\"";
-        // line 253
+        // line 242
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("plugins/core.min.js"), "html", null, true);
         echo "\"></script>
     <!-- Theme Javascript-->
     <script src=\"";
-        // line 255
+        // line 244
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/utility/utility.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 256
+        // line 245
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/demo/demo.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 257
+        // line 246
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/main.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"https://fooplugins.github.io/FooTable/compiled/footable.min.js\"></script>
@@ -389,7 +387,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 <link href=\"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css\" rel=\"stylesheet\" />
 
 <script type=\"text/javascript\" src=\"";
-        // line 274
+        // line 263
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("apidatatable/sum.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\">
@@ -444,24 +442,8 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
                   \"bAutoWidth\":false,
         \"language\": {
             \"url\": \"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json\"
-        },
+        }
 
-         dom: 'Bfrtip',
-        buttons: [
-            {
-                extend: 'pdfHtml5',
-                attr: { 
-                  'class': 'btn btn-success',
-                },
-                text:'Imprimir PDF',
-                orientation: 'landscape',
-                 pageSize: 'LEGAL',
-                exportOptions: {
-                    columns: [ 0, 1, 2, 5,6,7,8,9,10,11 ]
-                }
-                
-            }
-        ]
 
 
 
@@ -534,9 +516,9 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
     </script>
 
     ";
-        // line 416
+        // line 389
         $this->displayBlock('addscript', $context, $blocks);
-        // line 418
+        // line 391
         echo "  </body>
 </html>";
         
@@ -584,7 +566,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
     }
 
-    // line 228
+    // line 217
     public function block_header($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -593,7 +575,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
-        // line 229
+        // line 218
         echo "        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -603,7 +585,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
     }
 
-    // line 230
+    // line 219
     public function block_body($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -612,7 +594,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 231
+        // line 220
         echo "
         ";
         
@@ -623,7 +605,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
     }
 
-    // line 416
+    // line 389
     public function block_addscript($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -632,7 +614,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "addscript"));
 
-        // line 417
+        // line 390
         echo "    ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -654,7 +636,7 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
 
     public function getDebugInfo()
     {
-        return array (  636 => 417,  627 => 416,  616 => 231,  607 => 230,  597 => 229,  588 => 228,  577 => 30,  568 => 29,  551 => 5,  540 => 418,  538 => 416,  393 => 274,  373 => 257,  369 => 256,  365 => 255,  360 => 253,  338 => 233,  335 => 230,  333 => 228,  289 => 187,  280 => 181,  272 => 176,  264 => 171,  257 => 167,  250 => 163,  241 => 157,  234 => 153,  229 => 151,  221 => 146,  214 => 142,  208 => 139,  201 => 135,  194 => 131,  183 => 123,  176 => 119,  169 => 115,  142 => 91,  112 => 64,  109 => 63,  81 => 32,  79 => 29,  64 => 17,  57 => 13,  52 => 11,  47 => 9,  40 => 5,  34 => 1,);
+        return array (  618 => 390,  609 => 389,  598 => 220,  589 => 219,  579 => 218,  570 => 217,  559 => 30,  550 => 29,  533 => 5,  522 => 391,  520 => 389,  391 => 263,  371 => 246,  367 => 245,  363 => 244,  358 => 242,  336 => 222,  333 => 219,  331 => 217,  287 => 176,  279 => 171,  270 => 165,  262 => 160,  254 => 155,  247 => 151,  240 => 147,  231 => 141,  224 => 137,  219 => 135,  211 => 130,  204 => 126,  198 => 123,  191 => 119,  184 => 115,  173 => 107,  166 => 103,  159 => 99,  132 => 75,  126 => 72,  120 => 69,  112 => 64,  109 => 63,  81 => 32,  79 => 29,  64 => 17,  57 => 13,  52 => 11,  47 => 9,  40 => 5,  34 => 1,);
     }
 
     public function getSourceContext()
@@ -722,33 +704,17 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
           </div>
         </form> #}
         <ul class=\"nav navbar-nav navbar-right\">
-          <li><img src=\"{{ asset('assets/img/avatars/1.jpg') }}\" alt=\"avatar\"></li>
+          <li><h1>Bienvenido {{ app.user.username }}</h1></li>
           <li class=\"dropdown menu-merge\"><a href=\"#\" data-toggle=\"dropdown\" class=\"dropdown-toggle fw600 p15\"><span class=\"fa fa-angle-down\"></span> </a>
             <ul role=\"menu\" class=\"dropdown-menu list-group dropdown-persist w250\">
-              <li class=\"dropdown-header clearfix\">
-                <div class=\"pull-left ml10\">
-                  <select id=\"user-status\">
-                    <optgroup label=\"Current Status:\">
-                      <option value=\"1-1\">Away</option>
-                      <option value=\"1-2\">Offline</option>
-                      <option value=\"1-3\" selected=\"selected\">Online</option>
-                    </optgroup>
-                  </select>
-                </div>
-                <div class=\"pull-right mr10\">
-                  <select id=\"user-role\">
-                    <optgroup label=\"Logged in As:\">
-                      <option value=\"1-1\">Client</option>
-                      <option value=\"1-2\">Editor</option>
-                      <option value=\"1-3\" selected=\"selected\">Admin</option>
-                    </optgroup>
-                  </select>
-                </div>
-              </li>
-              <li class=\"list-group-item\"><a href=\"#\" class=\"animated animated-short fadeInUp\"><span class=\"fa fa-envelope\"></span> Messages<span class=\"label label-warning\">2</span></a></li>
-              <li class=\"list-group-item\"><a href=\"#\" class=\"animated animated-short fadeInUp\"><span class=\"fa fa-user\"></span> Friends<span class=\"label label-warning\">6</span></a></li>
-              <li class=\"list-group-item\"><a href=\"#\" class=\"animated animated-short fadeInUp\"><span class=\"fa fa-bell\"></span> Notifications</a></li>
-              <li class=\"list-group-item\"><a href=\"#\" class=\"animated animated-short fadeInUp\"><span class=\"fa fa-gear\"></span> Settings</a></li>
+      
+            
+              <li class=\"list-group-item\"><a href=\"{{ path('user_edit_perfil', {'id': app.user.id}) }}\" class=\"animated animated-short fadeInUp\"><span class=\"fa fa-user\"></span> Mi perfil</a></li>
+
+
+              <li class=\"list-group-item\"><a href=\"{{ path ('user_index') }}\" class=\"animated animated-short fadeInUp\"><span class=\"fa fa-user\"></span> Usuarios </a></li>
+              
+             
               <li class=\"dropdown-footer\"><a href=\"{{path('security_logout')}}\"><span class=\"fa fa-power-off pr5\"></span> Cerrar sistema</a></li>
             </ul>
           </li>
@@ -847,6 +813,11 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
                  <li>
                   <a href=\"{{ path('reportesventasfechas') }}\">
                     <span class=\"glyphicon glyphicon-modal-window\"></span>Listado de Ventas %</a>
+                </li>
+
+                  <li>
+                  <a href=\"{{ path('cobrar') }}\">
+                    <span class=\"glyphicon glyphicon-modal-window\"></span>Cuentas por cobrar</a>
                 </li>
               </ul>
             </li>
@@ -985,24 +956,8 @@ class __TwigTemplate_5a30821d379b09423e0aa4efbd546d804823a3772a104df3c1ace93bb7d
                   \"bAutoWidth\":false,
         \"language\": {
             \"url\": \"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json\"
-        },
+        }
 
-         dom: 'Bfrtip',
-        buttons: [
-            {
-                extend: 'pdfHtml5',
-                attr: { 
-                  'class': 'btn btn-success',
-                },
-                text:'Imprimir PDF',
-                orientation: 'landscape',
-                 pageSize: 'LEGAL',
-                exportOptions: {
-                    columns: [ 0, 1, 2, 5,6,7,8,9,10,11 ]
-                }
-                
-            }
-        ]
 
 
 

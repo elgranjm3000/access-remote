@@ -52,7 +52,7 @@ class __TwigTemplate_17a9cec7ebacc194fae0fd8fbd84902292b4037a0ffceba265f32de21dd
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Facturas-Listados";
+        echo "Ventas listado";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -76,24 +76,13 @@ class __TwigTemplate_17a9cec7ebacc194fae0fd8fbd84902292b4037a0ffceba265f32de21dd
 
              <div class=\"topbar-left\">
             <ol class=\"breadcrumb\">
-              <li class=\"crumb-active\"><a href=\"#\">Facturas</a></li>                            
+              <li class=\"crumb-active\"><a href=\"#\">Ventas</a></li>                            
               <li class=\"crumb-trail\">Listado</li>
             </ol>
           </div>
           
         </header>
-         <header id=\"topbar\" class=\"ph10\">
-          <div class=\"topbar-left\">
-            <ul class=\"nav nav-list nav-list-topbar pull-left\">
-              <li class=\"active\"><a href=\"";
-        // line 22
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("clientes_index");
-        echo "\">Clientes</a></li>
-              
-            </ul>
-          </div>
-         
-        </header>
+       
           
           
 ";
@@ -105,7 +94,7 @@ class __TwigTemplate_17a9cec7ebacc194fae0fd8fbd84902292b4037a0ffceba265f32de21dd
 
     }
 
-    // line 31
+    // line 23
     public function block_body($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -114,17 +103,17 @@ class __TwigTemplate_17a9cec7ebacc194fae0fd8fbd84902292b4037a0ffceba265f32de21dd
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 32
+        // line 24
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 32, $this->source); })()), "flashes", array(0 => "notice"), "method"));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 24, $this->source); })()), "flashes", array(0 => "notice"), "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 33
+            // line 25
             echo "  
 
 
                 <div class=\"alert alert-danger alert-dismissable\">
                   <button type=\"button\" data-dismiss=\"alert\" aria-hidden=\"true\" class=\"close\"></button><i class=\"fa fa-remove pr10\"></i><a href=\"#\" class=\"alert-link\">";
-            // line 37
+            // line 29
             echo twig_escape_filter($this->env, $context["message"], "html", null, true);
             echo "</a> 
                 </div>
@@ -134,7 +123,7 @@ class __TwigTemplate_17a9cec7ebacc194fae0fd8fbd84902292b4037a0ffceba265f32de21dd
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 41
+        // line 33
         echo "   <section id=\"content\" class=\"table-layout animated fadeIn\">
           <!-- begin: .tray-left-->
         
@@ -178,44 +167,44 @@ class __TwigTemplate_17a9cec7ebacc194fae0fd8fbd84902292b4037a0ffceba265f32de21dd
         </thead>
         <tbody>
         ";
-        // line 83
+        // line 75
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["detalles_facturas"]) || array_key_exists("detalles_facturas", $context) ? $context["detalles_facturas"] : (function () { throw new Twig_Error_Runtime('Variable "detalles_facturas" does not exist.', 83, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["detalles_facturas"]) || array_key_exists("detalles_facturas", $context) ? $context["detalles_facturas"] : (function () { throw new Twig_Error_Runtime('Variable "detalles_facturas" does not exist.', 75, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["detalles_factura"]) {
-            // line 84
+            // line 76
             echo "            <tr>
          
                 <td>";
-            // line 86
+            // line 78
             echo twig_escape_filter($this->env, sprintf("%08d", twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["detalles_factura"], "idfactura", array()), "id", array())), "html", null, true);
             echo "</td>
                 <td>";
-            // line 87
+            // line 79
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["detalles_factura"], "idproducto", array()), "nombre", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 88
+            // line 80
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["detalles_factura"], "cantidad", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 89
+            // line 81
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["detalles_factura"], "precio", array()), "html", null, true);
             echo "</td>
                 <td class=\"montoingreso\">";
-            // line 90
+            // line 82
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["detalles_factura"], "total", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 91
+            // line 83
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["detalles_factura"], "idfactura", array()), "idcliente", array()), "idUsuario", array()), "username", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 92
+            // line 84
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["detalles_factura"], "idfactura", array()), "idcliente", array()), "nombre", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 93
+            // line 85
             echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["detalles_factura"], "idfactura", array()), "fecha", array())) ? (twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["detalles_factura"], "idfactura", array()), "fecha", array()), "d/m/Y")) : ("")), "html", null, true);
             echo "</td>
                 
@@ -224,7 +213,7 @@ class __TwigTemplate_17a9cec7ebacc194fae0fd8fbd84902292b4037a0ffceba265f32de21dd
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 97
+            // line 89
             echo "            <tr>
                 <td colspan=\"6\">no records found</td>
             </tr>
@@ -233,7 +222,7 @@ class __TwigTemplate_17a9cec7ebacc194fae0fd8fbd84902292b4037a0ffceba265f32de21dd
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['detalles_factura'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 101
+        // line 93
         echo "        </tbody>
         <tfoot>
             <tr>
@@ -256,7 +245,7 @@ class __TwigTemplate_17a9cec7ebacc194fae0fd8fbd84902292b4037a0ffceba265f32de21dd
 
     }
 
-    // line 117
+    // line 109
     public function block_addscript($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -265,7 +254,7 @@ class __TwigTemplate_17a9cec7ebacc194fae0fd8fbd84902292b4037a0ffceba265f32de21dd
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "addscript"));
 
-        // line 118
+        // line 110
         echo "    <script type=\"text/javascript\" src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("apidatatable/date_range.js"), "html", null, true);
         echo "\"></script>
@@ -290,62 +279,64 @@ class __TwigTemplate_17a9cec7ebacc194fae0fd8fbd84902292b4037a0ffceba265f32de21dd
             \"url\": \"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json\"
         },
         initComplete: function () {
-            this.api().columns(1).every( function () {
-                var column = this;
-                var select = \$('<select class=\"form-control\"><option value=\"\">Producto: </option></select>')
-                    .appendTo( \$(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = \$.fn.dataTable.util.escapeRegex(
-                            \$(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'\$' : '', true, false )
-                            .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value=\"'+d+'\">'+d+'</option>' )
-                } );
-            } );
+            
+           
+        var div=\$('.dataTables_wrapper');
 
-             this.api().columns(5).every( function () {
+          div.find(\".dataTables_filter\").append('<br><label>Productos<select id=\"idproducto\"><option value=\"\"></option></select></label>');
+            this.api().column(1).each(function () {
                 var column = this;
-                var select = \$('<select class=\"form-control\"><option value=\"\">Vendedor: </option></select>')
-                    .appendTo( \$(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = \$.fn.dataTable.util.escapeRegex(
-                            \$(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'\$' : '', true, false )
+                console.log(column);
+                \$('#idproducto').on('change',function(){
+                var val=\$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'\$' : '', true, false )
                             .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value=\"'+d+'\">'+d+'</option>' )
-                } );
-            } );
+                });
 
-              this.api().columns(6).every( function () {
-                var column = this;
-                var select = \$('<select class=\"form-control\"><option value=\"\">Cliente: </option></select>')
-                    .appendTo( \$(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = \$.fn.dataTable.util.escapeRegex(
-                            \$(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'\$' : '', true, false )
-                            .draw();
-                    } );
- 
                 column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value=\"'+d+'\">'+d+'</option>' )
+                    \$(\"#idproducto\").append( '<option value=\"'+d+'\">'+d+'</option>' )
                 } );
-            } );
+
+            });
+
+
+            div.find(\".dataTables_filter\").append('<br><label>Vendedor<select id=\"idvendedor\"><option value=\"\"></option></select></label>');
+            this.api().column(5).each(function () {
+                var column = this;
+                console.log(column);
+                \$('#idvendedor').on('change',function(){
+                var val=\$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'\$' : '', true, false )
+                            .draw();
+                });
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    \$(\"#idvendedor\").append( '<option value=\"'+d+'\">'+d+'</option>' )
+                } );
+
+            });
+
+
+            div.find(\".dataTables_filter\").append('<br><label>Cliente<select id=\"idcliente\"><option value=\"\"></option></select></label>');
+            this.api().column(6).each(function () {
+                var column = this;
+                console.log(column);
+                \$('#idcliente').on('change',function(){
+                var val=\$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'\$' : '', true, false )
+                            .draw();
+                });
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    \$(\"#idcliente\").append( '<option value=\"'+d+'\">'+d+'</option>' )
+                } );
+
+            });
+
+
 
           
         },
@@ -469,14 +460,14 @@ setInterval(funcAvisa,1000);
 
     public function getDebugInfo()
     {
-        return array (  269 => 118,  260 => 117,  237 => 101,  228 => 97,  219 => 93,  215 => 92,  211 => 91,  207 => 90,  203 => 89,  199 => 88,  195 => 87,  191 => 86,  187 => 84,  182 => 83,  138 => 41,  128 => 37,  122 => 33,  118 => 32,  109 => 31,  90 => 22,  74 => 8,  65 => 7,  47 => 3,  15 => 1,);
+        return array (  258 => 110,  249 => 109,  226 => 93,  217 => 89,  208 => 85,  204 => 84,  200 => 83,  196 => 82,  192 => 81,  188 => 80,  184 => 79,  180 => 78,  176 => 76,  171 => 75,  127 => 33,  117 => 29,  111 => 25,  107 => 24,  98 => 23,  74 => 8,  65 => 7,  47 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Twig_Source("{% extends 'template.html.twig' %}
 
-{% block title %}Facturas-Listados{% endblock %}
+{% block title %}Ventas listado{% endblock %}
 
 
 
@@ -486,21 +477,13 @@ setInterval(funcAvisa,1000);
 
              <div class=\"topbar-left\">
             <ol class=\"breadcrumb\">
-              <li class=\"crumb-active\"><a href=\"#\">Facturas</a></li>                            
+              <li class=\"crumb-active\"><a href=\"#\">Ventas</a></li>                            
               <li class=\"crumb-trail\">Listado</li>
             </ol>
           </div>
           
         </header>
-         <header id=\"topbar\" class=\"ph10\">
-          <div class=\"topbar-left\">
-            <ul class=\"nav nav-list nav-list-topbar pull-left\">
-              <li class=\"active\"><a href=\"{{ path('clientes_index') }}\">Clientes</a></li>
-              
-            </ul>
-          </div>
-         
-        </header>
+       
           
           
 {% endblock %}
@@ -613,62 +596,64 @@ setInterval(funcAvisa,1000);
             \"url\": \"//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json\"
         },
         initComplete: function () {
-            this.api().columns(1).every( function () {
-                var column = this;
-                var select = \$('<select class=\"form-control\"><option value=\"\">Producto: </option></select>')
-                    .appendTo( \$(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = \$.fn.dataTable.util.escapeRegex(
-                            \$(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'\$' : '', true, false )
-                            .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value=\"'+d+'\">'+d+'</option>' )
-                } );
-            } );
+            
+           
+        var div=\$('.dataTables_wrapper');
 
-             this.api().columns(5).every( function () {
+          div.find(\".dataTables_filter\").append('<br><label>Productos<select id=\"idproducto\"><option value=\"\"></option></select></label>');
+            this.api().column(1).each(function () {
                 var column = this;
-                var select = \$('<select class=\"form-control\"><option value=\"\">Vendedor: </option></select>')
-                    .appendTo( \$(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = \$.fn.dataTable.util.escapeRegex(
-                            \$(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'\$' : '', true, false )
+                console.log(column);
+                \$('#idproducto').on('change',function(){
+                var val=\$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'\$' : '', true, false )
                             .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value=\"'+d+'\">'+d+'</option>' )
-                } );
-            } );
+                });
 
-              this.api().columns(6).every( function () {
-                var column = this;
-                var select = \$('<select class=\"form-control\"><option value=\"\">Cliente: </option></select>')
-                    .appendTo( \$(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = \$.fn.dataTable.util.escapeRegex(
-                            \$(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'\$' : '', true, false )
-                            .draw();
-                    } );
- 
                 column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value=\"'+d+'\">'+d+'</option>' )
+                    \$(\"#idproducto\").append( '<option value=\"'+d+'\">'+d+'</option>' )
                 } );
-            } );
+
+            });
+
+
+            div.find(\".dataTables_filter\").append('<br><label>Vendedor<select id=\"idvendedor\"><option value=\"\"></option></select></label>');
+            this.api().column(5).each(function () {
+                var column = this;
+                console.log(column);
+                \$('#idvendedor').on('change',function(){
+                var val=\$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'\$' : '', true, false )
+                            .draw();
+                });
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    \$(\"#idvendedor\").append( '<option value=\"'+d+'\">'+d+'</option>' )
+                } );
+
+            });
+
+
+            div.find(\".dataTables_filter\").append('<br><label>Cliente<select id=\"idcliente\"><option value=\"\"></option></select></label>');
+            this.api().column(6).each(function () {
+                var column = this;
+                console.log(column);
+                \$('#idcliente').on('change',function(){
+                var val=\$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'\$' : '', true, false )
+                            .draw();
+                });
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    \$(\"#idcliente\").append( '<option value=\"'+d+'\">'+d+'</option>' )
+                } );
+
+            });
+
+
 
           
         },

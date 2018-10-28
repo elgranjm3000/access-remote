@@ -13,6 +13,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class User implements UserInterface, \Serializable
 {
+      public static $possibleRoles = array(
+        'ADMINISTRADOR' => 'ROLE_ADMIN',
+        'USUARIOS'  => 'ROLE_USER'
+       
+    );
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -51,6 +56,11 @@ class User implements UserInterface, \Serializable
      */
     private $clientes;
 
+   /**
+     * @ORM\Column(type="simple_array", length=20)     
+     */
+    private $roles;
+
     public function __construct()
     {
         $this->isActive = true;
@@ -87,9 +97,20 @@ class User implements UserInterface, \Serializable
     }
 
 
-    public function getRoles()
+   public function getRoles()
     {
-        return array('ROLE_USER');
+        //return array('ROLE_USER');
+       /* if (is_null($this->roles)) {
+            return [];
+        }*/
+        
+        //return array($this->roles);
+        return $this->roles;
+    }
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+        return $this;
     }
 
     public function eraseCredentials()

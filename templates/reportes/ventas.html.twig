@@ -1,6 +1,6 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Facturas-Listados{% endblock %}
+{% block title %}Ventas listado{% endblock %}
 
 
 
@@ -10,21 +10,13 @@
 
              <div class="topbar-left">
             <ol class="breadcrumb">
-              <li class="crumb-active"><a href="#">Facturas</a></li>                            
+              <li class="crumb-active"><a href="#">Ventas</a></li>                            
               <li class="crumb-trail">Listado</li>
             </ol>
           </div>
           
         </header>
-         <header id="topbar" class="ph10">
-          <div class="topbar-left">
-            <ul class="nav nav-list nav-list-topbar pull-left">
-              <li class="active"><a href="{{ path('clientes_index') }}">Clientes</a></li>
-              
-            </ul>
-          </div>
-         
-        </header>
+       
           
           
 {% endblock %}
@@ -137,62 +129,64 @@ $('.facturas').DataTable({
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
         },
         initComplete: function () {
-            this.api().columns(1).every( function () {
-                var column = this;
-                var select = $('<select class="form-control"><option value="">Producto: </option></select>')
-                    .appendTo( $(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                } );
-            } );
+            
+           
+        var div=$('.dataTables_wrapper');
 
-             this.api().columns(5).every( function () {
+          div.find(".dataTables_filter").append('<br><label>Productos<select id="idproducto"><option value=""></option></select></label>');
+            this.api().column(1).each(function () {
                 var column = this;
-                var select = $('<select class="form-control"><option value="">Vendedor: </option></select>')
-                    .appendTo( $(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
+                console.log(column);
+                $('#idproducto').on('change',function(){
+                var val=$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'$' : '', true, false )
                             .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                } );
-            } );
+                });
 
-              this.api().columns(6).every( function () {
-                var column = this;
-                var select = $('<select class="form-control"><option value="">Cliente: </option></select>')
-                    .appendTo( $(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
-                    } );
- 
                 column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                    $("#idproducto").append( '<option value="'+d+'">'+d+'</option>' )
                 } );
-            } );
+
+            });
+
+
+            div.find(".dataTables_filter").append('<br><label>Vendedor<select id="idvendedor"><option value=""></option></select></label>');
+            this.api().column(5).each(function () {
+                var column = this;
+                console.log(column);
+                $('#idvendedor').on('change',function(){
+                var val=$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                });
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    $("#idvendedor").append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+
+            });
+
+
+            div.find(".dataTables_filter").append('<br><label>Cliente<select id="idcliente"><option value=""></option></select></label>');
+            this.api().column(6).each(function () {
+                var column = this;
+                console.log(column);
+                $('#idcliente').on('change',function(){
+                var val=$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                });
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    $("#idcliente").append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+
+            });
+
+
 
           
         },

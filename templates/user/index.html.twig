@@ -1,0 +1,93 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Listado de Usuarios{% endblock %}
+  {% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Usuarios</a></li>                            
+              <li class="crumb-trail">Listado</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('user_new') }}">Crear nuevo usuario</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+      {% endblock %}
+
+
+
+{% block body %}
+          <section id="content" class="table-layout animated fadeIn">
+        <!-- begin: .tray-left-->
+
+        <!-- begin: .tray-center-->
+        <div class="tray tray-center">
+        <!-- Panel with: Basic Footable-->
+
+        <!-- Panel with: Data Filter-->
+
+        <!-- Panel with: Pagination-->
+        <div id="spy3" class="panel">
+
+        <div class="panel-body pn">
+        <table class="table footable">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users if user.username !=  app.user.username %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% for user in user.roles %}
+                        {% if user == 'ROLE_ADMIN' %}
+                           ADMINISTRADOR
+                        {% endif %}
+
+                        {% if user == 'ROLE_USER' %}
+                           USUARIO
+                        {% endif %}
+                    {% endfor %}
+                
+                </td>
+                <td>
+                    <a href="{{ path('user_show', {'id': user.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   </table>
+
+     </div>
+            </div>
+            <!-- Panel with: Expanding Rows-->
+          
+            <!-- DEMO - breaks used to extend container - DEMO--><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          </div>
+        </section>
+{% endblock %}

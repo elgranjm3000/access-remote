@@ -106,14 +106,8 @@ class __TwigTemplate_5386f8cdfe5991b196c6c7cffae24b11be2daba0e2de0ac0542cd0cca64
                   </div>
                 </div>
                 <div class=\"panel-footer clearfix\">
-                   <input type=\"hidden\" name=\"_target_path\" value=\"";
-        // line 66
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("proveedores_new");
-        echo "\" />
-      <input type=\"hidden\" name=\"_failure_path\" value=\"";
-        // line 67
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
-        echo "\" />
+                   <input type=\"hidden\" name=\"_target_path\" value=\"/administrator/admin\" />
+      <input type=\"hidden\" name=\"_failure_path\" value=\"login\" />
 
                   <button type=\"submit\" class=\"button btn-primary mr10 pull-right\">Ingresar</button>
                   ";
@@ -166,7 +160,7 @@ class __TwigTemplate_5386f8cdfe5991b196c6c7cffae24b11be2daba0e2de0ac0542cd0cca64
 
     public function getDebugInfo()
     {
-        return array (  127 => 86,  121 => 74,  115 => 67,  111 => 66,  94 => 52,  81 => 42,  75 => 38,  70 => 36,  65 => 33,  63 => 32,  50 => 21,  29 => 1,);
+        return array (  121 => 86,  115 => 74,  94 => 52,  81 => 42,  75 => 38,  70 => 36,  65 => 33,  63 => 32,  50 => 21,  29 => 1,);
     }
 
     public function getSourceContext()
@@ -236,8 +230,8 @@ class __TwigTemplate_5386f8cdfe5991b196c6c7cffae24b11be2daba0e2de0ac0542cd0cca64
                   </div>
                 </div>
                 <div class=\"panel-footer clearfix\">
-                   <input type=\"hidden\" name=\"_target_path\" value=\"{{ path('proveedores_new') }}\" />
-      <input type=\"hidden\" name=\"_failure_path\" value=\"{{ path('login') }}\" />
+                   <input type=\"hidden\" name=\"_target_path\" value=\"/administrator/admin\" />
+      <input type=\"hidden\" name=\"_failure_path\" value=\"login\" />
 
                   <button type=\"submit\" class=\"button btn-primary mr10 pull-right\">Ingresar</button>
                   {# <label class=\"switch ib switch-primary mt10\">

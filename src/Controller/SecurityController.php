@@ -7,6 +7,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 
 class SecurityController extends AbstractController
@@ -33,5 +34,27 @@ class SecurityController extends AbstractController
     public function logoutAction()
     {
         
+    }
+
+  /**
+     * @Route("/administrator/admin", name="admin")
+     */
+    public function admin(AuthorizationCheckerInterface $authChecker)
+    {
+     // $session = $request->getRoles();
+ if ($authChecker->isGranted('ROLE_USER')) {
+        
+            return $this->redirectToRoute('clientes_index');
+  
+    }
+  if ($authChecker->isGranted('ROLE_ADMIN')) {
+        
+            //return $this->render('admin/index.html.twig');
+            return $this->redirectToRoute('proveedores_index');
+            
+        }
+
+
+     
     }
 }

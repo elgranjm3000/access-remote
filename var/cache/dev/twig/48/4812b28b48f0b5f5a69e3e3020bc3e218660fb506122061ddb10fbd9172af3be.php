@@ -52,7 +52,7 @@ class __TwigTemplate_cdb4ead2a11830932bf492d2e3ca2571df6a2a577010ffb6b037ffc5ea4
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Facturas-Listados";
+        echo "Clientes";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -76,25 +76,13 @@ class __TwigTemplate_cdb4ead2a11830932bf492d2e3ca2571df6a2a577010ffb6b037ffc5ea4
 
              <div class=\"topbar-left\">
             <ol class=\"breadcrumb\">
-              <li class=\"crumb-active\"><a href=\"#\">Facturas</a></li>                            
-              <li class=\"crumb-trail\">Listado</li>
+              <li class=\"crumb-active\"><a href=\"#\">Clientes</a></li>                            
+              <li class=\"crumb-trail\">Reporte</li>
             </ol>
           </div>
           
         </header>
-         <header id=\"topbar\" class=\"ph10\">
-          <div class=\"topbar-left\">
-            <ul class=\"nav nav-list nav-list-topbar pull-left\">
-              <li class=\"active\"><a href=\"";
-        // line 22
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("clientes_index");
-        echo "\">Clientes</a></li>
-              
-            </ul>
-          </div>
-         
-        </header>
-          
+       
           
 ";
         
@@ -105,7 +93,7 @@ class __TwigTemplate_cdb4ead2a11830932bf492d2e3ca2571df6a2a577010ffb6b037ffc5ea4
 
     }
 
-    // line 31
+    // line 22
     public function block_body($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -114,17 +102,17 @@ class __TwigTemplate_cdb4ead2a11830932bf492d2e3ca2571df6a2a577010ffb6b037ffc5ea4
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 32
+        // line 23
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 32, $this->source); })()), "flashes", array(0 => "notice"), "method"));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 23, $this->source); })()), "flashes", array(0 => "notice"), "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 33
+            // line 24
             echo "  
 
 
                 <div class=\"alert alert-danger alert-dismissable\">
                   <button type=\"button\" data-dismiss=\"alert\" aria-hidden=\"true\" class=\"close\"></button><i class=\"fa fa-remove pr10\"></i><a href=\"#\" class=\"alert-link\">";
-            // line 37
+            // line 28
             echo twig_escape_filter($this->env, $context["message"], "html", null, true);
             echo "</a> 
                 </div>
@@ -134,7 +122,7 @@ class __TwigTemplate_cdb4ead2a11830932bf492d2e3ca2571df6a2a577010ffb6b037ffc5ea4
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 41
+        // line 32
         echo "   <section id=\"content\" class=\"table-layout animated fadeIn\">
           <!-- begin: .tray-left-->
         
@@ -150,7 +138,7 @@ class __TwigTemplate_cdb4ead2a11830932bf492d2e3ca2571df6a2a577010ffb6b037ffc5ea4
               <div class=\"panel-body pn\">
 
                 ";
-        // line 67
+        // line 58
         echo "
     <table class=\"table facturas\">
         <thead>
@@ -173,64 +161,64 @@ class __TwigTemplate_cdb4ead2a11830932bf492d2e3ca2571df6a2a577010ffb6b037ffc5ea4
         </thead>
         <tbody>
         ";
-        // line 88
+        // line 79
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["clientes"]) || array_key_exists("clientes", $context) ? $context["clientes"] : (function () { throw new Twig_Error_Runtime('Variable "clientes" does not exist.', 88, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["clientes"]) || array_key_exists("clientes", $context) ? $context["clientes"] : (function () { throw new Twig_Error_Runtime('Variable "clientes" does not exist.', 79, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["cliente"]) {
-            // line 89
+            // line 80
             echo "            <tr>
          
                 <td>";
-            // line 91
+            // line 82
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["cliente"], "nombre", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 92
+            // line 83
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["cliente"], "nit", array()), "html", null, true);
             echo "</td>                
                 <td>";
-            // line 93
+            // line 84
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["cliente"], "correo", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 94
+            // line 85
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["cliente"], "zona", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 95
+            // line 86
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["cliente"], "dpto", array()), "html", null, true);
             echo "</td>  
                 <td>";
-            // line 96
+            // line 87
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["cliente"], "municipio", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 97
+            // line 88
             echo twig_get_attribute($this->env, $this->source, $context["cliente"], "direccion", array());
             echo "</td>  
                 <td hidden=\"hidden\">";
-            // line 98
+            // line 89
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["cliente"], "contactoPrincipal", array()), "html", null, true);
             echo "</td>  
                 <td hidden=\"hidden\">";
-            // line 99
+            // line 90
             echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, $context["cliente"], "fechaNacimiento", array())) ? (twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["cliente"], "fechaNacimiento", array()), "Y-m-d")) : ("")), "html", null, true);
             echo "</td>
                 <td hidden=\"hidden\">";
-            // line 100
+            // line 91
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["cliente"], "comentarios", array()), "html", null, true);
             echo "</td>  
                 <td hidden=\"hidden\">";
-            // line 101
+            // line 92
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["cliente"], "telefonoMovil", array()), "html", null, true);
             echo "</td>  
                 <td hidden=\"hidden\">";
-            // line 102
+            // line 93
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["cliente"], "telefonoLocal", array()), "html", null, true);
             echo "</td>  
                 <td>";
-            // line 103
+            // line 94
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["cliente"], "idUsuario", array()), "username", array()), "html", null, true);
             echo "</td>
                 
@@ -239,7 +227,7 @@ class __TwigTemplate_cdb4ead2a11830932bf492d2e3ca2571df6a2a577010ffb6b037ffc5ea4
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 107
+            // line 98
             echo "            <tr>
                 <td colspan=\"6\">no records found</td>
             </tr>
@@ -248,7 +236,7 @@ class __TwigTemplate_cdb4ead2a11830932bf492d2e3ca2571df6a2a577010ffb6b037ffc5ea4
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cliente'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 111
+        // line 102
         echo "        </tbody>
         <tfoot>
             <tr>
@@ -271,7 +259,7 @@ class __TwigTemplate_cdb4ead2a11830932bf492d2e3ca2571df6a2a577010ffb6b037ffc5ea4
 
     }
 
-    // line 127
+    // line 118
     public function block_addscript($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -280,7 +268,7 @@ class __TwigTemplate_cdb4ead2a11830932bf492d2e3ca2571df6a2a577010ffb6b037ffc5ea4
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "addscript"));
 
-        // line 128
+        // line 119
         echo "    <script type=\"text/javascript\" src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("apidatatable/date_range.js"), "html", null, true);
         echo "\"></script>
@@ -448,14 +436,14 @@ setInterval(funcAvisa,1000);
 
     public function getDebugInfo()
     {
-        return array (  284 => 128,  275 => 127,  252 => 111,  243 => 107,  234 => 103,  230 => 102,  226 => 101,  222 => 100,  218 => 99,  214 => 98,  210 => 97,  206 => 96,  202 => 95,  198 => 94,  194 => 93,  190 => 92,  186 => 91,  182 => 89,  177 => 88,  154 => 67,  138 => 41,  128 => 37,  122 => 33,  118 => 32,  109 => 31,  90 => 22,  74 => 8,  65 => 7,  47 => 3,  15 => 1,);
+        return array (  272 => 119,  263 => 118,  240 => 102,  231 => 98,  222 => 94,  218 => 93,  214 => 92,  210 => 91,  206 => 90,  202 => 89,  198 => 88,  194 => 87,  190 => 86,  186 => 85,  182 => 84,  178 => 83,  174 => 82,  170 => 80,  165 => 79,  142 => 58,  126 => 32,  116 => 28,  110 => 24,  106 => 23,  97 => 22,  74 => 8,  65 => 7,  47 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Twig_Source("{% extends 'template.html.twig' %}
 
-{% block title %}Facturas-Listados{% endblock %}
+{% block title %}Clientes{% endblock %}
 
 
 
@@ -465,22 +453,13 @@ setInterval(funcAvisa,1000);
 
              <div class=\"topbar-left\">
             <ol class=\"breadcrumb\">
-              <li class=\"crumb-active\"><a href=\"#\">Facturas</a></li>                            
-              <li class=\"crumb-trail\">Listado</li>
+              <li class=\"crumb-active\"><a href=\"#\">Clientes</a></li>                            
+              <li class=\"crumb-trail\">Reporte</li>
             </ol>
           </div>
           
         </header>
-         <header id=\"topbar\" class=\"ph10\">
-          <div class=\"topbar-left\">
-            <ul class=\"nav nav-list nav-list-topbar pull-left\">
-              <li class=\"active\"><a href=\"{{ path('clientes_index') }}\">Clientes</a></li>
-              
-            </ul>
-          </div>
-         
-        </header>
-          
+       
           
 {% endblock %}
 {% block body %}

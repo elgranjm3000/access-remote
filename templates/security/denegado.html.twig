@@ -1,0 +1,69 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}ACCESO DENEGADO PARA ESTE MODULO{% endblock %}
+
+
+{% block body %}
+   {# <h1>Proveedores index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NombreEmpresa</th>
+                <th>Contacto</th>
+                <th>TelefonoMovil</th>
+                <th>TelefonoOfic</th>
+                <th>TelefonoParticular</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for proveedore in proveedores %}
+            <tr>
+                <td>{{ proveedore.id }}</td>
+                <td>{{ proveedore.nombreEmpresa }}</td>
+                <td>{{ proveedore.contacto }}</td>
+                <td>{{ proveedore.telefonoMovil }}</td>
+                <td>{{ proveedore.telefonoOfic }}</td>
+                <td>{{ proveedore.telefonoParticular }}</td>
+                <td>
+                    <a href="{{ path('proveedores_show', {'id': proveedore.id}) }}">show</a>
+                    <a href="{{ path('proveedores_edit', {'id': proveedore.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('proveedores_new') }}">Create new</a>
+    #}
+  <!-- Begin: Content-->
+        <section id="content" class="table-layout animated fadeIn">
+          <!-- begin: .tray-left-->
+        
+          <!-- begin: .tray-center-->
+          <div class="tray tray-center">
+            <!-- Panel with: Basic Footable-->
+          
+            <!-- Panel with: Data Filter-->
+     
+            <!-- Panel with: Pagination-->
+            <div id="spy3" class="panel">
+             
+              <div class="panel-body pn">
+                      <h1>ACCESO DENEGADO</h1>
+              </div>
+            </div>
+            <!-- Panel with: Expanding Rows-->
+          
+            
+          </div>
+        </section>
+{% endblock %}
+
+
