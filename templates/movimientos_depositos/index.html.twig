@@ -46,6 +46,7 @@
         <thead>
             <tr>
                 <th>Nro de Factura</th>
+                <th>Nro de deposito</th>
                 <th>Fecha de Movimiento</th>
                 <th>Monto</th>
                 <th>Banco</th>
@@ -56,6 +57,7 @@
         {% for movimientos_deposito in movimientos_depositos %}
             <tr>
                 <td style="color:red">{{ "%08d" | format(movimientos_deposito.facturas.id) }}</td>
+                <td>{{ movimientos_deposito.ndeposito }}</td>
                 <td>{{ movimientos_deposito.fechaMovimiento ? movimientos_deposito.fechaMovimiento|date('d/m/Y') : '' }}</td>
                 <td>{{ movimientos_deposito.monto }}</td>
                 <td>{{ movimientos_deposito.banco }}</td>

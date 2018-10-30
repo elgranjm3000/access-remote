@@ -1,0 +1,146 @@
+
+
+<div class="mw1000 center-block">
+ <div class="admin-form theme-primary">
+                <div class="panel heading-border panel-primary">
+                  <div class="panel-body bg-light">
+
+
+ {{ form_start(form, {'attr': {'id': 'form-ui'}}) }}
+                 <div id="spy1" class="section-divider mb40"><span></span></div>
+		        	 <div class="row">
+                        <div class="col-md-8">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.nombre, {'attr': {'class': 'gui-input','placeholder':"Nombre de producto"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                         <div class="col-md-4">
+                          <div class="section">
+                            <label class="field"><b>Precio de venta</b>
+                               {{ form_widget(form.precioVenta, {'attr': {'class': 'gui-input precioventa','placeholder':'Precio de venta','readonly':'readonly'}}) }}
+
+                          </div>
+                        </div>
+                      </div>
+
+ <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" title="Incluir productos de su preferencia">
+                                  <span class=" fa fa-plus-square-o" aria-hidden="true"></span> Agregar Productos a ensamblar
+                                </button>
+<table class="table footable">
+  <thead>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Precio de venta</th>
+      <th>Sub-Total</th>
+      <th>Accion</th>
+  </thead>
+  <tbody>
+    {% if ensambleslistado is defined %}
+    {% for ensambles in ensambleslistado %}
+      <tr>
+          <td>{{ ensambles.productoadd.nombre }}
+              <input type="hidden" value='{{ ensambles.productoadd.id }}' name="productos[]">
+              <input type="hidden" value='{{ ensambles.cantidad }}' name="cantidad[]">
+               <input type="hidden" value='{{ ensambles.subtotal }}' name="subtotal[]">
+               <input type="hidden" value='{{ ensambles.monto }}' name="precio[]">
+               <input type="hidden" value='{{ ensambles.id }}' name="idensamble[]" class="idensamble">
+          </td>
+          <td>{{ ensambles.cantidad }}                         
+          </td>
+          <td>{{ ensambles.monto }}</td>
+          <td>{{ ensambles.subtotal }}</td>          
+             <td><button type='button' class='btn btn-simple btn-danger btn-icon remove' title='Cancelar pedido'><span class='fa fa-remove'></span></button></td>
+      </tr>
+      {% endfor %}
+    {% endif %}
+  </tbody>
+</table> 
+  
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.comentarios, {'attr': {'class': 'gui-input','placeholder':"Comentarios"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+                        
+                      </div>
+
+                  
+
+                      
+                          <button type="submit" class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+
+ 
+
+		        </div>
+{{ form_end(form) }}
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Carga de Productos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+{#        <div class="form-group">
+            <label></label>
+            <input class="form-control" type="number" name="cantidad" id="cantidad" placeholder="Cantidad de producto">
+        </div>#}
+
+        {{ form_start(form1, {'attr': {'class': 'ensamble'}}) }}
+
+      <div class="form-group">
+          {{ form_widget(form1.idproducto, {'attr': {'class': 'gui-input producto form-control','placeholder':"COMENTARIOS"}}) }}
+
+        </div>
+
+        <div class="form-group">
+
+          {{ form_widget(form1.cantidad, {'attr': {'class': 'gui-input cantidad','placeholder':"Cantidad de producto"}}) }}
+        </div>
+      <div class="form-group">
+          {{ form_widget(form1.monto, {'attr': {'class': 'gui-input monto','placeholder':"Monto",'readonly':'readonly'}}) }}
+
+      </div>
+
+
+
+<div class="form-group">
+          {{ form_widget(form1.subtotal, {'attr': {'class': 'gui-input subtotal','placeholder':"subtotal",'readonly':'readonly'}}) }}
+  </div>
+
+
+    
+{{ form_end(form1) }}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary cerramodal" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary ingresar">Agregar Ensamble</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+
+</div>

@@ -31,6 +31,7 @@ class MovimientosDepositos1Type extends AbstractType
     'attr' => ['class' => 'js-datepicker'],
 ))
             ->add('monto', NumberType::class)
+             ->add('ndeposito')
             ->add('banco', ChoiceType::class, array(
     'choices'  => array(
         'Gyt Continental' => 'Gyt Continental',

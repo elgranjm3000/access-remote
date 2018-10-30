@@ -24,7 +24,7 @@ class Facturas
     private $reciboCaja;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $ordenCompra;
 
@@ -75,6 +75,16 @@ class Facturas
      * @ORM\OneToMany(targetEntity="App\Entity\MovimientosAlmacen", mappedBy="idfactura", cascade={"persist", "remove"})
      */
     private $movimientosAlmacens;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $numfactura;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $serie;
 
 
     public function __construct()
@@ -293,6 +303,30 @@ class Facturas
                 $movimientosAlmacen->setIdfactura(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNumfactura(): ?string
+    {
+        return $this->numfactura;
+    }
+
+    public function setNumfactura(string $numfactura): self
+    {
+        $this->numfactura = $numfactura;
+
+        return $this;
+    }
+
+    public function getSerie(): ?string
+    {
+        return $this->serie;
+    }
+
+    public function setSerie(string $serie): self
+    {
+        $this->serie = $serie;
 
         return $this;
     }

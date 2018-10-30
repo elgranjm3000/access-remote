@@ -57,14 +57,22 @@
       jQuery(document).ready(function (){
 
 $('#facturas_dias').removeAttr('required');
-       $("#facturas_dias").hide();
+$('#facturas_ordenCompra').removeAttr('required');
+$("#facturas_dias").hide();
+$("#facturas_ordenCompra").hide();
 
 $( "#facturas_forma input:radio" ).click(function() {
     if($(this).val() == "CR"){
        $("#facturas_dias").show();
+       $("#facturas_ordenCompra").show();
+
     }else{
       $ ("#facturas_dias"). prop ('selectedIndex', 0);
        $("#facturas_dias").hide();
+      $("#facturas_ordenCompra").empty();
+      $("#facturas_ordenCompra").hide();
+
+
     }
    });
       $( ".ingresar" ).click(function() {

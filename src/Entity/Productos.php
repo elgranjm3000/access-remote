@@ -19,29 +19,29 @@ class Productos
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $nombre;
 
     
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $costo;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $precioVenta;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $comentarios;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $cantidadPresentacion;
 
@@ -68,14 +68,33 @@ class Productos
     private $detallesFacturas;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Ingresos", mappedBy="productos")
+     * @ORM\OneToMany(targetEntity="App\Entity\Ingresos", mappedBy="productos",cascade={"persist", "remove"})
      */
     private $ingresos;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Ensamble", mappedBy="idproducto",cascade={"persist", "remove"})
+     */
+    private $ensambles;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $fechaensamble;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Ensamble", mappedBy="productoadd",cascade={"persist", "remove"})
+     */
+    private $emsablesaddproductos;
+
+  
 
     public function __construct()
     {
         $this->detallesFacturas = new ArrayCollection();
         $this->ingresos = new ArrayCollection();
+        $this->ensambles = new ArrayCollection();
+        $this->emsablesaddproductos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -260,4 +279,84 @@ class Productos
 
             return $this;
         }
+
+        
+
+        public function getFechaensamble(): ?\DateTimeInterface
+        {
+            return $this->fechaensamble;
+        }
+
+        public function setFechaensamble(?\DateTimeInterface $fechaensamble): self
+        {
+            $this->fechaensamble = $fechaensamble;
+
+            return $this;
+        }
+
+        /**
+         * @return Collection|Ensamble[]
+         */
+        public function getEnsambles(): Collection
+        {
+            return $this->ensambles;
+        }
+
+        public function addEnsamble(Ensamble $ensamble): self
+        {
+            if (!$this->ensambles->contains($ensamble)) {
+                $this->ensambles[] = $ensamble;
+                $ensamble->setIdproducto($this);
+            }
+
+            return $this;
+        }
+
+        public function removeEnsamble(Ensamble $ensamble): self
+        {
+            if ($this->ensambles->contains($ensamble)) {
+                $this->ensambles->removeElement($ensamble);
+                // set the owning side to null (unless already changed)
+                if ($ensamble->getIdproducto() === $this) {
+                    $ensamble->setIdproducto(null);
+                }
+            }
+
+            return $this;
+        }
+
+        /**
+         * @return Collection|Ensamble[]
+         */
+        public function getEmsablesaddproductos(): Collection
+        {
+            return $this->emsablesaddproductos;
+        }
+
+        public function addEmsablesaddproducto(Ensamble $emsablesaddproducto): self
+        {
+            if (!$this->emsablesaddproductos->contains($emsablesaddproducto)) {
+                $this->emsablesaddproductos[] = $emsablesaddproducto;
+                $emsablesaddproducto->setProductoadd($this);
+            }
+
+            return $this;
+        }
+
+        public function removeEmsablesaddproducto(Ensamble $emsablesaddproducto): self
+        {
+            if ($this->emsablesaddproductos->contains($emsablesaddproducto)) {
+                $this->emsablesaddproductos->removeElement($emsablesaddproducto);
+                // set the owning side to null (unless already changed)
+                if ($emsablesaddproducto->getProductoadd() === $this) {
+                    $emsablesaddproducto->setProductoadd(null);
+                }
+            }
+
+            return $this;
+        }
+
+
+
+       
 }

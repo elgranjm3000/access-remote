@@ -26,6 +26,7 @@
           <div class="topbar-left">
             <ul class="nav nav-list nav-list-topbar pull-left">
               <li class="active"><a href="{{ path('productos_new') }}">Crear nuevo producto</a></li>
+              <li class="active"><a href="{{ path('productos_new_ensamble') }}">Crear nuevo ensamble</a></li>
               
             </ul>
           </div>
@@ -66,18 +67,32 @@
         <tbody>
         {% for producto in productos %}
             <tr>
+                {% if producto.ensambles|length == 0  %}
                 <td>{{ producto.id }}</td>
                 <td>{{ producto.nombre }}</td>
                 <td>{{ producto.idmedidas.unidad }}</td>
                 <td>{{ producto.idfamilia.nombre }}</td>
                 <td>{{ producto.costo }}</td>
-                <td>{{ producto.precioVenta }}</td>
-                
+                <td>{{ producto.precioVenta }}</td>                
                 <td>{{ producto.cantidadPresentacion }}</td>
                 <td>
                     <a href="{{ path('productos_show', {'id': producto.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
                     <a href="{{ path('productos_edit', {'id': producto.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
                 </td>
+                {% else %}
+                    <td>{{ producto.id }}</td>
+                    <td>{{ producto.nombre }}</td>
+                    <td><B>EMSAMBLE</B></td>
+                    <td><B>EMSAMBLE</B></td>
+                    <td><B>EMSAMBLE</B></td>
+                    <td>{{ producto.precioVenta }}</td>
+                    <td><B>EMSAMBLE</B></td>
+                    <td>
+                                           <a href="{{ path('productos_show', {'id': producto.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
+                    <a href="{{ path('productos_edit_ensamble', {'id': producto.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                    </td>
+
+                {% endif %}
             </tr>
         {% else %}
             <tr>

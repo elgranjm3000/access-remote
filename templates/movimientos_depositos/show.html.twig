@@ -51,12 +51,12 @@
                       <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ movimientos_deposito.id }}</td>
+                <th>Numero de deposito</th>
+                <td>{{ movimientos_deposito.ndeposito }}</td>
             </tr>
             <tr>
                 <th>FechaMovimiento</th>
-                <td>{{ movimientos_deposito.fechaMovimiento ? movimientos_deposito.fechaMovimiento|date('Y-m-d') : '' }}</td>
+                <td>{{ movimientos_deposito.fechaMovimiento ? movimientos_deposito.fechaMovimiento|date('d/m/Y') : '' }}</td>
             </tr>
             <tr>
                 <th>Monto</th>

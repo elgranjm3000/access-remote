@@ -1,0 +1,15 @@
+{% block form_row %}
+{% spaceless %}
+    
+
+		{% if errors|length > 0 %}		
+        <div class="alert alert-danger" style="heigth:10px">
+            {% for error in errors %}
+                {{ error.message }}
+            {% endfor %}
+        </div>            
+        {% endif %}
+{{ form_label(form) }}    
+    {{ form_widget(form) }}
+{% endspaceless %}
+{% endblock form_row %}

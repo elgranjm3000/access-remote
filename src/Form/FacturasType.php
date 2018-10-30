@@ -63,6 +63,15 @@ class FacturasType extends AbstractType
                      'attr' => array('class' => 'formadepago'),
             ))
             ->add('reciboCaja')
+            ->add('numfactura')
+            ->add('serie', ChoiceType::class, array(
+                    'choices'  => array(
+                    'A' => 'A',
+                    'B' => 'B',
+                    'C' => 'C'                    
+                ),
+                    "placeholder"=>"SERIE"
+            ))
             ->add('idclientesrelacion',HiddenType::class)
             ->add('ordenCompra')
             ->add('fecha', DateType::class, array(

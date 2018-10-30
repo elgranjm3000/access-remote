@@ -43,6 +43,11 @@ class MovimientosDepositos
 
     protected $idfacturarelacion;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $ndeposito;
+
     
 
     public function getId(): ?int
@@ -137,6 +142,18 @@ class MovimientosDepositos
     public function setIdfacturarelacion($idfacturarelacion)
     {
         $this->idfacturarelacion = $idfacturarelacion;
+
+        return $this;
+    }
+
+    public function getNdeposito(): ?string
+    {
+        return $this->ndeposito;
+    }
+
+    public function setNdeposito(string $ndeposito): self
+    {
+        $this->ndeposito = $ndeposito;
 
         return $this;
     }

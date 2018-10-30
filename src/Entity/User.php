@@ -47,6 +47,11 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=254, unique=true)
+    * @Assert\NotBlank( message = "Valor requerido")
+     * @Assert\Email(
+     *     message = "El email '{{ value }}' no es valido. ",
+     *     checkMX = true
+     * )
      */
     private $email;
 
@@ -69,7 +74,7 @@ class User implements UserInterface, \Serializable
 
    /**
      * @ORM\Column(type="simple_array", length=20) 
-    * @Assert\Choice(choices={"ROLE_USER", "ROLE_ADMIN"}, message="Seleccione una opcion")
+    * @Assert\NotBlank( message = "Valor requerido")
      */
     private $roles;
 

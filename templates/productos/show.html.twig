@@ -18,7 +18,11 @@
           <div class="topbar-left">
             <ul class="nav nav-list nav-list-topbar pull-left">
               <li class="active"><a href="{{ path('productos_new') }}">Crear de Productos</a></li>
+               {% if producto.ensambles|length == 0  %}
               <li class="active"><a href="{{ path('productos_edit', {'id': producto.id}) }}">Editar Producto</a></li>
+              {% else %}
+              <li class="active"><a href="{{ path('productos_edit_ensamble', {'id': producto.id}) }}">Editar Producto</a></li>
+              {% endif %}
               <li>{{ include('productos/_delete_form.html.twig') }}</li>
               
             </ul>
@@ -42,6 +46,7 @@
                     
                       <table class="table">
         <tbody>
+        
             <tr>
                 <th>Id</th>
                 <td>{{ producto.id }}</td>
@@ -50,6 +55,7 @@
                 <th>Nombre</th>
                 <td>{{ producto.nombre }}</td>
             </tr>
+                {% if producto.ensambles|length == 0  %}
             <tr>
                 <th>Unidad de Medida</th>
                 <td>{{ producto.idmedidas.unidad }}</td>
@@ -74,6 +80,34 @@
                     <th>Familia</th>
                     <td>{{ producto.idfamilia.nombre }}</td>
             </tr>
+            {% else %}
+             <tr>
+                <th>Precio de venta</th>
+                <td>{{ producto.precioVenta }}</td>
+            </tr>
+            <tr>
+                <th>Comentarios</th>
+                <td>{{ producto.comentarios|raw }}</td>
+            </tr>
+                  <tr>
+                      <td colspan="4"><h1>PRODUCTOS ENSAMBLADOS</h1></td>
+                  </tr>
+                  <tr>
+                      <td>Producto</td>
+                      <td>Cantidad</td>
+                      <td>Monto</td>
+                      <td>Subtotal</td>
+                  </tr>
+
+                  {% for ensambles in producto.ensambles %}
+                  <tr>
+                      <td>{{ ensambles.productoadd.nombre  }}</td>
+                      <td>{{ ensambles.cantidad  }}</td>
+                      <td>{{ ensambles.monto  }}</td>
+                      <td>{{ ensambles.subtotal  }}</td>
+                  </tr>
+                  {% endfor %}
+            {% endif %}
         </tbody>
     </table>
                

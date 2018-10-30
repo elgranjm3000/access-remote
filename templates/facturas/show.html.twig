@@ -63,10 +63,23 @@
                 <th>Recibo Caja</th>
                 <td>{{ factura.reciboCaja }}</td>
             </tr>
+
+              {% if factura.forma == "CR" %}
             <tr>
                 <th>Orden de Compra</th>
                 <td>{{ factura.ordenCompra }}</td>
             </tr>
+  {% endif %}
+            <tr>
+                <th>Numero de factura</th>
+                <td>{{ factura.numfactura }}</td>
+            </tr>
+
+            <tr>
+                <th>Serie</th>
+                <td>{{ factura.serie }}</td>
+            </tr>
+
             <tr>
                 <th>Fecha</th>
                 <td>{{ factura.fecha ? factura.fecha|date('d/m/Y') : '' }}</td>

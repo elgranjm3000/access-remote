@@ -53,8 +53,9 @@
               <div class="panel-body pn">
     <table class="table facturas">
         <thead>
-            <tr>
-                <th>Nro de Factura</th>
+            <tr>                
+                <th>Num de factura</th>
+                <th>Serie</th>
                 <th>Recibo de Caja</th>
                 <th>Orden de Compra</th>
                 <th>Fecha</th>
@@ -65,10 +66,17 @@
         </thead>
         <tbody>
         {% for factura in facturas %}
-            <tr>
-                <td style="color:red">{{ "%08d" | format(factura.id) }} </td>
+            <tr>                
+                <td style="color:red">{{ "%08d" | format(factura.numfactura) }} </td>
+                <td>{{ factura.serie }}</td>
                 <td>{{ factura.reciboCaja }}</td>
-                <td>{{ factura.ordenCompra }}</td>
+                <td>
+                {% if factura.forma  == "CR" %}
+                    {{ factura.ordenCompra }}
+                {% else %}
+                    N/A
+                {% endif %}
+              </td>
                 <td>{{ factura.fecha ? factura.fecha|date('d/m/Y') : '' }}</td>
                 <td>{{ factura.comentarios|raw }}</td>
                 <td>{{ factura.detallesFacturas|ingresomontos }} </td>
@@ -139,7 +147,7 @@ $('.facturas').DataTable({
 
 
   var table = $('.facturas').DataTable();
-  var datossuma =  table.column( 5 ).data().sum();
+  var datossuma =  table.column( 6 ).data().sum();
   console.log(datossuma);
     $(".totales").html(datossuma.toFixed(2));
 

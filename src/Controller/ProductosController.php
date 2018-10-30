@@ -3,8 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Productos;
+use App\Entity\Ensamble;
 use App\Form\ProductosType;
+use App\Form\EnsambleType;
+use App\Form\Ensamble1Type;
 use App\Repository\ProductosRepository;
+use App\Repository\EnsambleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,12 +37,140 @@ class ProductosController extends AbstractController
         
         
     }
+
     /**
      * @Route("/", name="productos_index", methods="GET")
      */
     public function index(ProductosRepository $productosRepository): Response
     {
         return $this->render('productos/index.html.twig', ['productos' => $productosRepository->findAll()]);
+    }
+
+
+ /**
+     * @Route("/emsableremove", name="emsableremove", methods="GET")
+     */
+    public function emsableremove(Request $request)
+    {
+
+      
+        $entityManager = $this->getDoctrine();     
+        $tareas = $entityManager->getRepository(Ensamble::class)->find($_GET['id']);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($tareas);
+        $em->flush();
+        $localidad['precioventa'] =   "Eliminado";           
+        $generardatos[] = $localidad;         
+        
+        return new JsonResponse($generardatos);
+        
+        
+    }
+
+ /**
+     * @Route("/{id}/edit/ensamble", name="productos_edit_ensamble", methods="GET|POST")
+     */
+    public function editensamble(Request $request, Productos $producto): Response
+    {
+
+        $ensambleslistado = $this->getDoctrine()
+        ->getRepository(Ensamble::class)
+        ->findBy(['idproducto'=>$producto]);
+
+
+        $productosemsable = new Ensamble();
+        $form1 = $this->createForm(Ensamble1Type::class, $productosemsable);
+        $form1->handleRequest($request);
+      
+        $form = $this->createForm(EnsambleType::class, $producto);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+        $em = $this->getDoctrine()->getManager();
+
+        $dql_query = $em->createQuery("
+                                DELETE FROM App:Ensamble o
+                                WHERE                             
+                                o.idproducto = '".$producto."'
+        ");
+        $results = $dql_query->getResult();
+
+
+         $ip=$this->getDoctrine()->getEntityManager();  
+            
+
+            for ($i=0; $i < count($_POST["productos"]); $i++) { 
+                $productosemsable = new Ensamble();
+                $productosemsable->setCantidad($_POST["cantidad"][$i]);
+                $productosemsable->setMonto($_POST["precio"][$i]);
+                $productosemsable->setSubtotal($_POST["subtotal"][$i]);
+                $productosemsable->setIdproducto($ip->getReference(Productos::class,$producto));
+                $productosemsable->setProductoadd($ip->getReference(Productos::class,$_POST["productos"][$i]));
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($productosemsable);
+                $em->flush();
+            }
+
+            return $this->redirectToRoute('productos_index');
+
+
+        }
+
+        return $this->render('ensamble/edit.html.twig', [
+            'producto' => $producto,
+            'form' => $form->createView(),
+            'form1' => $form1->createView(),
+            'ensambleslistado' => $ensambleslistado
+        ]);
+    }
+
+    /**
+     * @Route("/ensable", name="productos_new_ensamble", methods="GET|POST")
+     */
+    public function newensamble(Request $request): Response
+    {
+
+        $productosemsable = new Ensamble();
+        $form1 = $this->createForm(Ensamble1Type::class, $productosemsable);
+        $form1->handleRequest($request);
+
+        $ensamble = new Productos();
+        $form = $this->createForm(EnsambleType::class, $ensamble);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) { 
+
+            $em = $this->getDoctrine()->getManager();
+            $fecha_actual= date("Y-m-d");            
+            
+            $ensamble->setFechaensamble(new \DateTime($fecha_actual));
+            $em->persist($ensamble);
+            $em->flush();
+            $ip=$this->getDoctrine()->getEntityManager();  
+            $idemsalbe = $ensamble->getId(); 
+
+            for ($i=0; $i < count($_POST["productos"]); $i++) { 
+                $productosemsable = new Ensamble();
+                $productosemsable->setCantidad($_POST["cantidad"][$i]);
+                $productosemsable->setMonto($_POST["precio"][$i]);
+                $productosemsable->setSubtotal($_POST["subtotal"][$i]);
+                $productosemsable->setIdproducto($ip->getReference(Productos::class,$idemsalbe));
+                $productosemsable->setProductoadd($ip->getReference(Productos::class,$_POST["productos"][$i]));
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($productosemsable);
+                $em->flush();
+            }
+
+            return $this->redirectToRoute('productos_index');
+        }
+
+        return $this->render('ensamble/new.html.twig', [
+            'ensamble' => $ensamble,
+            'form' => $form->createView(),
+            'form1' => $form1->createView(),
+           
+        ]);
     }
 
     /**
