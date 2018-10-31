@@ -46,7 +46,7 @@ class User implements UserInterface, \Serializable
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=254, unique=true)
+     * @ORM\Column(type="string", length=20, unique=true)
     * @Assert\NotBlank( message = "Valor requerido")
      * @Assert\Email(
      *     message = "El email '{{ value }}' no es valido. ",
