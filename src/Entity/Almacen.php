@@ -24,7 +24,7 @@ class Almacen
     private $nombre;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text",nullable=true)
      */
     private $comentarios;
 
@@ -32,6 +32,26 @@ class Almacen
      * @ORM\OneToMany(targetEntity="App\Entity\Ingresos", mappedBy="Almacen")
      */
     private $ingresos;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $contacto;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $telefono;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $correo;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $direccion;
 
     public function __construct()
     {
@@ -99,6 +119,54 @@ class Almacen
                 $ingreso->setAlmacen(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getContacto(): ?string
+    {
+        return $this->contacto;
+    }
+
+    public function setContacto(string $contacto): self
+    {
+        $this->contacto = $contacto;
+
+        return $this;
+    }
+
+    public function getTelefono(): ?string
+    {
+        return $this->telefono;
+    }
+
+    public function setTelefono(string $telefono): self
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    public function getCorreo(): ?string
+    {
+        return $this->correo;
+    }
+
+    public function setCorreo(string $correo): self
+    {
+        $this->correo = $correo;
+
+        return $this;
+    }
+
+    public function getDireccion(): ?string
+    {
+        return $this->direccion;
+    }
+
+    public function setDireccion(string $direccion): self
+    {
+        $this->direccion = $direccion;
 
         return $this;
     }

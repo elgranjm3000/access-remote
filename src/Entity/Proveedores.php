@@ -48,6 +48,11 @@ class Proveedores
      */
     private $ingresos;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $correo;
+
     public function __construct()
     {
         $this->ingresos = new ArrayCollection();
@@ -153,4 +158,16 @@ class Proveedores
    {
       return strval($this->getId());
    }
+
+      public function getCorreo(): ?string
+      {
+          return $this->correo;
+      }
+
+      public function setCorreo(string $correo): self
+      {
+          $this->correo = $correo;
+
+          return $this;
+      }
 }

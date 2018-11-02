@@ -18,6 +18,10 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class)
+            ->add('dpi')
+            ->add('telefono')
+            ->add('direccion')
+            ->add('contactoEmergencia')
             ->add('roles', ChoiceType::class, array(
                 'choices' => User::$possibleRoles,
                 'multiple' => true, 'expanded' => true

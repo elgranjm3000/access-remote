@@ -16,6 +16,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     fields={"email"},
  *     message="Este email ya esta en uso."
  * )
+ * @UniqueEntity(
+ *     fields={"username"},
+ *     message="Este username ya esta en uso."
+ * )
+ * @UniqueEntity(
+ *     fields={"dpi"},
+ *     message="Este DPI ya esta en uso."
+ * )
  */
 class User implements UserInterface, \Serializable
 {
@@ -46,7 +54,7 @@ class User implements UserInterface, \Serializable
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=20, unique=true)
+     * @ORM\Column(type="string", length=60, unique=true)
     * @Assert\NotBlank( message = "Valor requerido")
      * @Assert\Email(
      *     message = "El email '{{ value }}' no es valido. ",
@@ -77,6 +85,38 @@ class User implements UserInterface, \Serializable
     * @Assert\NotBlank( message = "Valor requerido")
      */
     private $roles;
+
+    /**
+     * @ORM\Column(type="string", length=11, unique=true)
+      * @Assert\NotBlank(
+     *     message = "Valor requerido"
+     * )
+     */
+    private $dpi;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+      * @Assert\NotBlank(
+     *     message = "Valor requerido"
+     * )
+     */
+    private $telefono;
+
+    /**
+     * @ORM\Column(type="text")
+      * @Assert\NotBlank(
+     *     message = "Valor requerido"
+     * )
+     */
+    private $direccion;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+      * @Assert\NotBlank(
+     *     message = "Valor requerido"
+     * )
+     */
+    private $contactoEmergencia;
 
     public function __construct()
     {
@@ -236,4 +276,52 @@ class User implements UserInterface, \Serializable
    {
       return strval($this->getId());
    }
+
+     public function getDpi(): ?string
+     {
+         return $this->dpi;
+     }
+
+     public function setDpi(string $dpi): self
+     {
+         $this->dpi = $dpi;
+
+         return $this;
+     }
+
+     public function getTelefono(): ?string
+     {
+         return $this->telefono;
+     }
+
+     public function setTelefono(string $telefono): self
+     {
+         $this->telefono = $telefono;
+
+         return $this;
+     }
+
+     public function getDireccion(): ?string
+     {
+         return $this->direccion;
+     }
+
+     public function setDireccion(string $direccion): self
+     {
+         $this->direccion = $direccion;
+
+         return $this;
+     }
+
+     public function getContactoEmergencia(): ?string
+     {
+         return $this->contactoEmergencia;
+     }
+
+     public function setContactoEmergencia(string $contactoEmergencia): self
+     {
+         $this->contactoEmergencia = $contactoEmergencia;
+
+         return $this;
+     }
 }

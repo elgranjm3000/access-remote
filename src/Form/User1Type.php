@@ -16,6 +16,10 @@ class User1Type extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('dpi')
+            ->add('telefono')
+            ->add('direccion')
+            ->add('contactoEmergencia')
             ->add('username', TextType::class, array(
             'required' => true)
         )

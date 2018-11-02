@@ -19,11 +19,39 @@
                             </label>
                           </div>
                         </div>
-
-                        <div class="col-md-12">
+                        <div class="col-md-4">
                           <div class="section">
-                            <label class="field">Comentarios
-                              {{ form_widget(form.comentarios, {'attr': {'class': 'gui-input ','placeholder':"Comentarios"}}) }}
+                            <label class="field">
+                              {{ form_widget(form.contacto, {'attr': {'class': 'gui-input ','placeholder':"Contacto"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+                       
+
+                        <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.telefono, {'attr': {'class': 'gui-input ','placeholder':"Telefono"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.correo, {'attr': {'class': 'gui-input ','placeholder':"Correo"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+
+                         <div class="col-md-12">
+                          <div class="section">
+                            <label class="field">Direccion
+                              {{ form_widget(form.direccion, {'attr': {'class': 'gui-input ','placeholder':"Comentarios"}}) }}
 
                             </label>
                           </div>
@@ -31,7 +59,16 @@
                       
                       </div>
 
+<div class="row">
+   <div class="col-md-12">
+                          <div class="section">
+                            <label class="field">Notas
+                              {{ form_widget(form.comentarios, {'attr': {'class': 'gui-input ','placeholder':"Comentarios"}}) }}
 
+                            </label>
+                          </div>
+                        </div>
+</div>
 
                       
                           <button type="submit" class="btn btn-success">{{ button_label|default('Guardar') }}</button>

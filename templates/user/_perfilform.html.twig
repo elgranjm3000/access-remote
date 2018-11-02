@@ -6,16 +6,64 @@
                 <div class="panel heading-border panel-primary">
                   <div class="panel-body bg-light">
 
+{% form_theme form 'form/fields.html.twig' %}
 
  {{ form_start(form, {'attr': {'id': 'form-ui'}}) }}
                  <div id="spy1" class="section-divider mb40"><span></span></div>
 		        	 <div class="row">
+
+
+<div class="col-md-12">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_row(form.dpi, {'attr': {'class': 'gui-input','placeholder':"DPI"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+
+                             <div class="col-md-12">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_row(form.email, {'attr': {'class': 'gui-input','placeholder':"DPI"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_row(form.telefono, {'attr': {'class': 'gui-input','placeholder':"Telefono"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_row(form.direccion, {'attr': {'class': 'gui-input','placeholder':"Direccion"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_row(form.contactoEmergencia, {'attr': {'class': 'gui-input','placeholder':"Contacto emergencia"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
                         
 
                         <div class="col-md-12">
                           <div class="section">
                             <label class="field">
-                              {{ form_widget(form.plainPassword.first, {'attr': {'class': 'gui-input ','placeholder':"Contraseña"}}) }}
+                              {{ form_row(form.plainPassword.first, {'attr': {'class': 'gui-input ','placeholder':"Contraseña"}}) }}
 
                             </label>
                           </div>
@@ -24,7 +72,7 @@
                          <div class="col-md-12">
                           <div class="section">
                             <label class="field">
-                              {{ form_widget(form.plainPassword.second, {'attr': {'class': 'gui-input ','placeholder':"Repetir contraseña"}}) }}
+                              {{ form_row(form.plainPassword.second, {'attr': {'class': 'gui-input ','placeholder':"Repetir contraseña"}}) }}
 
                             </label>
                           </div>

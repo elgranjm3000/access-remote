@@ -46,6 +46,11 @@ class Ingresos
      */
     private $comentario;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $vencimiento;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +124,18 @@ class Ingresos
     public function setComentario(string $comentario): self
     {
         $this->comentario = $comentario;
+
+        return $this;
+    }
+
+    public function getVencimiento(): ?\DateTimeInterface
+    {
+        return $this->vencimiento;
+    }
+
+    public function setVencimiento(\DateTimeInterface $vencimiento): self
+    {
+        $this->vencimiento = $vencimiento;
 
         return $this;
     }

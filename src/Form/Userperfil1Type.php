@@ -9,12 +9,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+
 
 class Userperfil1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder            
+        $builder   
+            ->add('email', EmailType::class)
+            ->add('dpi')
+            ->add('telefono')
+            ->add('direccion')
+            ->add('contactoEmergencia')         
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'Contraseña'),

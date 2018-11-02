@@ -47,7 +47,9 @@
             <tr>
                 
                 <th>Nombre</th>
-                <th>Comentarios</th>
+                <th>Contacto</th>
+                <th>Telefono</th>
+                <th>Correo</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -56,7 +58,9 @@
             <tr>
                 
                 <td>{{ almacen.nombre }}</td>
-                <td>{{ almacen.comentarios|raw }}</td>
+                <td>{{ almacen.contacto }}</td>
+                <td>{{ almacen.telefono }}</td>
+                <td>{{ almacen.correo }}</td>
                 <td>
                     <a href="{{ path('almacen_show', {'id': almacen.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
                     <a href="{{ path('almacen_edit', {'id': almacen.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>

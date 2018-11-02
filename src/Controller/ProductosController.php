@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Productos;
+use App\Entity\Ingresos;
 use App\Entity\Ensamble;
 use App\Form\ProductosType;
 use App\Form\EnsambleType;
@@ -20,6 +21,32 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class ProductosController extends AbstractController
 {
 
+
+
+
+    /**
+     * @Route("/disponibilidad", name="disponibilidad", methods="GET")
+     */
+    public function disponibilidad(Request $request)
+    {
+
+        $cantidad = $_GET["cantidad"];
+        $productos = $_GET["producto"];
+        $generardatos = array();
+        $entityManager = $this->getDoctrine();     
+        $tareas = $entityManager->getRepository(Ingresos::class)->findBy(['productos'=>$productos]);
+        $suma = 0;
+        foreach ($tareas as  $value) {
+                $suma = $suma + $value->getCantidad();  
+                $localidad['cantidad'] =   $suma;           
+                $generardatos[] = $localidad;
+        }
+         
+        
+        return new JsonResponse($generardatos);
+        
+        
+    }
     /**
      * @Route("/buscarproducto", name="buscarproducto", methods="GET")
      */

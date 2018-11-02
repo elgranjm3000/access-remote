@@ -90,8 +90,8 @@
                 <th>Contacto</th>
                 <th>TelefonoMovil</th>
                 <th>TelefonoOfic</th>
-                <th>TelefonoParticular</th>
-                <th>actions</th>
+                <th>Correo</th>
+                <th>Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -102,7 +102,7 @@
                 <td>{{ proveedore.contacto }}</td>
                 <td>{{ proveedore.telefonoMovil }}</td>
                 <td>{{ proveedore.telefonoOfic }}</td>
-                <td>{{ proveedore.telefonoParticular }}</td>
+                <td>{{ proveedore.correo }}</td>
                 <td>
                     <a href="{{ path('proveedores_show', {'id': proveedore.id}) }}" title="Visualizar" ><span class="glyphicon glyphicon-search"></span></a>
                     <a href="{{ path('proveedores_edit', {'id': proveedore.id}) }}" title="Editar"><span class="glyphicon glyphicon-edit"></span></a>

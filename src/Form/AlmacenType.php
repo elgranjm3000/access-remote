@@ -14,6 +14,12 @@ class AlmacenType extends AbstractType
     {
         $builder
             ->add('nombre')
+            ->add('contacto')
+            ->add('telefono')
+            ->add('correo')
+            ->add('direccion', CKEditorType::class, array(
+                        'config' => array('toolbar' => 'basic'),
+                ))
             ->add('comentarios', CKEditorType::class, array(
                         'config' => array('toolbar' => 'basic'),
                 ))

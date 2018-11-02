@@ -29,6 +29,15 @@ class IngresosType extends AbstractType
     // adds a class that can be selected in JavaScript
     'attr' => ['class' => 'js-datepicker'],
 ))
+                        ->add('vencimiento', DateType::class, array(
+    'widget' => 'single_text',
+
+    // prevents rendering it as type="date", to avoid HTML5 date pickers
+    'html5' => false,
+
+    // adds a class that can be selected in JavaScript
+    'attr' => ['class' => 'js-datepicker'],
+))
             ->add('comentario', CKEditorType::class, array(
                         'config' => array('toolbar' => 'basic'),
                 ))

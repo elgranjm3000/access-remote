@@ -62,10 +62,39 @@ var descuento = 0;
            });
     });
 
+
+
+
+
+
       $(".cantidad").change(function() {
 
+          var producto =  $("#ensamble1_idproducto").val();
+          var cantidad = $(this).val();
             var total = $(".monto").val()*$(".cantidad").val();                
             $(".subtotal").val(total);
+
+            if(cantidad > 0){
+        $.get( "{{ path('disponibilidad') }}", { producto:producto,cantidad:cantidad}).done(function( data ) {
+
+            if(data.length == 0){ 
+               $(".cantidad").val('');
+                    $(".cantidad").focus();
+                toastr.error( "Producto <b>"+ $(".producto option:selected").text()+ '</b> No hay producto disponible');
+                
+              }else{
+                
+                  if(cantidad > data[0]['cantidad']){
+                    $(".cantidad").val('');
+                    $(".cantidad").focus();
+                    toastr.error( "Debe colocar una cantidad menor a "+ data[0]['cantidad']);
+                    
+                  }
+              }
+              
+           });
+      }
+
     });
 
       $( ".ingresar" ).click(function() {

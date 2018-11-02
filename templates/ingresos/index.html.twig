@@ -48,7 +48,7 @@
             <tr>
                 <th>Nombre de producto</th>
                 <th>Cantidad Ingresada</th>
-                <th>Fecha</th>
+                <th>Fecha de vencimiento</th>
                 <th>Comentario</th>
                 <th>Acciones</th>
             </tr>
@@ -58,7 +58,7 @@
             <tr>
                 <td>{{ ingreso.productos.nombre }}</td>
                 <td>{{ ingreso.cantidad }}</td>
-                <td>{{ ingreso.fecha ? ingreso.fecha|date('d/m/Y') : '' }}</td>
+                <td>{{ ingreso.vencimiento ? ingreso.vencimiento|date('d/m/Y') : '' }}</td>
                 <td>{{ ingreso.comentario|raw }}</td>
                 <td>
                     <a href="{{ path('ingresos_show', {'id': ingreso.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
