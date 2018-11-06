@@ -61,6 +61,7 @@
                 <th>Costo</th>
                 <th>Precio de Venta</th>                
                 <th>Cantidad de Presentacion</th>
+                <th>Foto</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -75,6 +76,13 @@
                 <td>{{ producto.costo }}</td>
                 <td>{{ producto.precioVenta }}</td>                
                 <td>{{ producto.cantidadPresentacion }}</td>
+                <td> 
+{% if producto.brochure == "" %} 
+{% else %}
+                    <img id="output" class="img-responsive" {% if producto.brochure != "" %} src="{{ asset('uploads/brochures') }}/{{producto.brochure}}" {% endif %}/>
+                    {% endif %}
+
+</td>
                 <td>
                     <a href="{{ path('productos_show', {'id': producto.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
                     <a href="{{ path('productos_edit', {'id': producto.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
@@ -87,6 +95,14 @@
                     <td><B>EMSAMBLE</B></td>
                     <td>{{ producto.precioVenta }}</td>
                     <td><B>EMSAMBLE</B></td>
+
+                     <td> 
+{% if producto.brochure == "" %} 
+{% else %}
+                    <img id="output" class="img-responsive" {% if producto.brochure != "" %} src="{{ asset('uploads/brochures') }}/{{producto.brochure}}" {% endif %}/>
+                    {% endif %}
+
+</td>
                     <td>
                                            <a href="{{ path('productos_show', {'id': producto.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
                     <a href="{{ path('productos_edit_ensamble', {'id': producto.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>

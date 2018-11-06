@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductosRepository")
@@ -87,7 +88,14 @@ class Productos
      */
     private $emsablesaddproductos;
 
-  
+      /**
+     * @Assert\File(
+     *     maxSize = "1024k",
+     *     maxSizeMessage = "Votre fichier est trop gros ({{ size }}). La taille maximum autorisée est : {{ limit }}"
+     * )
+     */
+   protected $archivo;
+
 
     public function __construct()
     {
@@ -206,11 +214,11 @@ class Productos
     public function setBrochure($brochure)
     {
 
-      if($brochure != "" ){
+     
         $this->brochure = $brochure;
 
         return $this;
-      }
+      
     }
 
         public function __toString()
@@ -356,6 +364,17 @@ class Productos
             return $this;
         }
 
+  public function getArchivo(): ?string
+    {
+        return $this->archivo;
+    }
+
+    public function setArchivo(string $archivo): self
+    {
+        $this->archivo = $archivo;
+
+        return $this;
+    }
 
 
        
