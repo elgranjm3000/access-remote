@@ -110,6 +110,10 @@
             {% endif %}
         </tbody>
     </table>
+    {% if producto.brochure == "" %} 
+{% else %}
+                    <img id="output" class="img-responsive" {% if producto.brochure != "" %} src="{{ asset('uploads/brochures') }}/{{producto.brochure}}" {% endif %}/>
+                    {% endif %}
                
                 </div>
               </div>

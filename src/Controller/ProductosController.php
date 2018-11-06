@@ -280,8 +280,7 @@ class ProductosController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-echo $producto->getBrochure();
-exit;
+
 
   if($producto->getBrochure()==null){
             //    echo "no hay";
