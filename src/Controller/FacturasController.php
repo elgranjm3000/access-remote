@@ -50,7 +50,7 @@ class FacturasController extends AbstractController
 
     $nombres = $datos->getIdcliente()->getNombre();
     $direccion = $datos->getIdcliente()->getDireccion();
-    $numerofactura = $datos->getId();
+    $numerofactura = $datos->getNumfactura();
     $idcliente = $datos->getIdcliente()->getNit();
     $telefono = $datos->getIdcliente()->getTelefonoMovil();
 
