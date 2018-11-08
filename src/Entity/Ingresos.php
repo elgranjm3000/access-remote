@@ -42,7 +42,7 @@ class Ingresos
     private $fecha;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text",nullable=true)
      */
     private $comentario;
 

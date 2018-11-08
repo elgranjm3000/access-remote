@@ -155,7 +155,7 @@ class FrameworkExtension extends Extension
         // translator will be used and everything will still work as expected.
         if ($this->isConfigEnabled($container, $config['translator']) || $this->isConfigEnabled($container, $config['form']) || $this->isConfigEnabled($container, $config['validation'])) {
             if (!class_exists('Symfony\Component\Translation\Translator') && $this->isConfigEnabled($container, $config['translator'])) {
-                throw new LogicException('Translation support cannot be enabled as the Translation component is not installed.');
+                throw new LogicException('Translation support cannot be enabled as the Translation component is not installed. Try running "composer require symfony/translation".');
             }
 
             if (class_exists(Translator::class)) {
@@ -208,7 +208,7 @@ class FrameworkExtension extends Extension
 
         if ($this->isConfigEnabled($container, $config['form'])) {
             if (!class_exists('Symfony\Component\Form\Form')) {
-                throw new LogicException('Form support cannot be enabled as the Form component is not installed.');
+                throw new LogicException('Form support cannot be enabled as the Form component is not installed. Try running "composer require symfony/form".');
             }
 
             $this->formConfigEnabled = true;
@@ -228,7 +228,7 @@ class FrameworkExtension extends Extension
 
         if ($this->isConfigEnabled($container, $config['assets'])) {
             if (!class_exists('Symfony\Component\Asset\Package')) {
-                throw new LogicException('Asset support cannot be enabled as the Asset component is not installed.');
+                throw new LogicException('Asset support cannot be enabled as the Asset component is not installed. Try running "composer require symfony/asset".');
             }
 
             $this->registerAssetsConfiguration($config['assets'], $container, $loader);
@@ -236,10 +236,17 @@ class FrameworkExtension extends Extension
 
         if ($this->isConfigEnabled($container, $config['templating'])) {
             if (!class_exists('Symfony\Component\Templating\PhpEngine')) {
-                throw new LogicException('Templating support cannot be enabled as the Templating component is not installed.');
+                throw new LogicException('Templating support cannot be enabled as the Templating component is not installed. Try running "composer require symfony/templating".');
             }
 
             $this->registerTemplatingConfiguration($config['templating'], $container, $loader);
+        }
+
+        if ($this->messengerConfigEnabled = $this->isConfigEnabled($container, $config['messenger'])) {
+            $this->registerMessengerConfiguration($config['messenger'], $container, $loader, $config['serializer'], $config['validation']);
+        } else {
+            $container->removeDefinition('console.command.messenger_consume_messages');
+            $container->removeDefinition('console.command.messenger_debug');
         }
 
         $this->registerValidationConfiguration($config['validation'], $container, $loader);
@@ -257,7 +264,7 @@ class FrameworkExtension extends Extension
 
         if ($this->isConfigEnabled($container, $config['serializer'])) {
             if (!class_exists('Symfony\Component\Serializer\Serializer')) {
-                throw new LogicException('Serializer support cannot be enabled as the Serializer component is not installed.');
+                throw new LogicException('Serializer support cannot be enabled as the Serializer component is not installed. Try running "composer require symfony/serializer-pack".');
             }
 
             $this->registerSerializerConfiguration($config['serializer'], $container, $loader);
@@ -271,16 +278,9 @@ class FrameworkExtension extends Extension
             $this->registerLockConfiguration($config['lock'], $container, $loader);
         }
 
-        if ($this->messengerConfigEnabled = $this->isConfigEnabled($container, $config['messenger'])) {
-            $this->registerMessengerConfiguration($config['messenger'], $container, $loader, $config['serializer'], $config['validation']);
-        } else {
-            $container->removeDefinition('console.command.messenger_consume_messages');
-            $container->removeDefinition('console.command.messenger_debug');
-        }
-
         if ($this->isConfigEnabled($container, $config['web_link'])) {
             if (!class_exists(HttpHeaderSerializer::class)) {
-                throw new LogicException('WebLink support cannot be enabled as the WebLink component is not installed.');
+                throw new LogicException('WebLink support cannot be enabled as the WebLink component is not installed. Try running "composer require symfony/weblink".');
             }
 
             $loader->load('web_link.xml');
@@ -476,7 +476,7 @@ class FrameworkExtension extends Extension
         }
 
         if (!class_exists(Workflow\Workflow::class)) {
-            throw new LogicException('Workflow support cannot be enabled as the Workflow component is not installed.');
+            throw new LogicException('Workflow support cannot be enabled as the Workflow component is not installed. Try running "composer require symfony/workflow".');
         }
 
         $loader->load('workflow.xml');
@@ -607,11 +607,11 @@ class FrameworkExtension extends Extension
                 }
 
                 if (!class_exists(ExpressionLanguage::class)) {
-                    throw new LogicException('Cannot guard workflows as the ExpressionLanguage component is not installed.');
+                    throw new LogicException('Cannot guard workflows as the ExpressionLanguage component is not installed. Try running "composer require symfony/expression-language".');
                 }
 
                 if (!class_exists(Security::class)) {
-                    throw new LogicException('Cannot guard workflows as the Security component is not installed.');
+                    throw new LogicException('Cannot guard workflows as the Security component is not installed. Try running "composer require symfony/security".');
                 }
 
                 $eventName = sprintf('workflow.%s.guard.%s', $name, $transitionName);
@@ -769,10 +769,8 @@ class FrameworkExtension extends Extension
         if ($config['formats']) {
             $loader->load('request.xml');
 
-            $container
-                ->getDefinition('request.add_request_formats_listener')
-                ->replaceArgument(0, $config['formats'])
-            ;
+            $listener = $container->getDefinition('request.add_request_formats_listener');
+            $listener->replaceArgument(0, $config['formats']);
         }
     }
 
@@ -1043,7 +1041,7 @@ class FrameworkExtension extends Extension
         }
 
         if (!class_exists('Symfony\Component\Validator\Validation')) {
-            throw new LogicException('Validation support cannot be enabled as the Validator component is not installed.');
+            throw new LogicException('Validation support cannot be enabled as the Validator component is not installed. Try running "composer require symfony/validator".');
         }
 
         if (!isset($config['email_validation_mode'])) {
