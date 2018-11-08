@@ -51,6 +51,15 @@
                           </div>
                         </div>
 
+
+                            <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                               {{ form_widget(form.forma, {'attr': {'class': 'gui-input','placeholder':'ORDEN DE COMPRA'}}) }}
+
+                          </div>
+                        </div>
+
                         <div class="col-md-4">
                           <div class="section">
                             <label class="field">
@@ -61,13 +70,7 @@
                         </div>
 
 
-                        <div class="col-md-4">
-                          <div class="section">
-                            <label class="field">
-                               {{ form_widget(form.forma, {'attr': {'class': 'gui-input','placeholder':'ORDEN DE COMPRA'}}) }}
-
-                          </div>
-                        </div>
+                    
 
                         
                         <div class="col-md-4">
@@ -195,7 +198,8 @@
           {{ form_widget(form1.cantidad, {'attr': {'class': 'gui-input cantidad','placeholder':"Cantidad de producto"}}) }}
         </div>
       <div class="form-group">
-          {{ form_widget(form1.ordenPromocion, {'attr': {'class': 'gui-input promocion','placeholder':"Orden Promocion"}}) }}
+        <label>Orden de Produccion</label>
+          {{ form_widget(form1.ordenPromocion, {'attr': {'class': 'gui-input promocion','placeholder':"Orden de produccion","disabled":"disabled"}}) }}
 
       </div>
 

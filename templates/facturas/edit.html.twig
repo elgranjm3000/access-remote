@@ -4,7 +4,7 @@
 
  {% block addcss %}
   <style type="text/css">
-    .precio,.total,.descuento{
+    .precio,.total,.descuento,.promocion{
       color:red !important;
     }
   </style>
@@ -53,8 +53,12 @@
      jQuery(document).ready(function (){
 $('#facturas_dias').removeAttr('required');
 $("#facturas_dias").hide();
+$('#facturas_reciboCaja').hide();
+
 $("#facturas_ordenCompra").hide();
 $('#facturas_ordenCompra').removeAttr('required');
+$('#facturas_reciboCaja').removeAttr('required');
+
 
 var forma = $( "#facturas_forma input:checked" ).val();
 console.log(forma);
@@ -62,11 +66,15 @@ if(forma == "CR"){
        $("#facturas_dias").show();
        $("#facturas_ordenCompra").show();
 
+
     }else{
       $ ("#facturas_dias"). prop ('selectedIndex', 0);
        $("#facturas_dias").hide();
        $("#facturas_ordenCompra").hide();
        $("#facturas_ordenCompra").empty();
+       $('#facturas_reciboCaja').hide();
+      $('#facturas_reciboCaja').empty();
+
 
     }
 
@@ -76,11 +84,16 @@ $( "#facturas_forma input:radio" ).click(function() {
     if($(this).val() == "CR"){
        $("#facturas_dias").show();
          $("#facturas_ordenCompra").show();
+                $('#facturas_reciboCaja').show();
+
     }else{
       $("#facturas_dias").prop ('selectedIndex', 0);
       $("#facturas_dias").hide();
       $("#facturas_ordenCompra").hide();
       $("#facturas_ordenCompra").empty();
+      $('#facturas_reciboCaja').hide();
+      $('#facturas_reciboCaja').empty();
+
 
     }
    });
@@ -102,6 +115,17 @@ var table = $('.footable').DataTable()
             var promocion = $(".promocion").val();
             var comentarios = $(".comentarios").val();
              var porcentaje = $(".descuento").val();
+
+             if (cantidad == 0 || cantidad == '')
+            {
+             toastr.error( "Debe ingresar cantidad valida de producto");
+              return false;
+            }
+             if (comentarios == '')
+            {
+             toastr.error( "Ingrese un comentario en su factura");
+              return false;
+            }
 
 
                    t.row.add( [
@@ -139,10 +163,12 @@ var table = $('.footable').DataTable()
 
             if(data.length>0){ 
                   $(".precio").val(data[0]['precioventa']);         
+                  produccion = data[0]['produccion'];
 
                   var total = data[0]['precioventa']*$(".cantidad").val();                
                   $(".total").val(total);
-                                   $(".cantidad").change();
+                  $(".cantidad").change();
+                  $(".promocion").val(produccion);
 
               }
               
@@ -152,6 +178,9 @@ var table = $('.footable').DataTable()
 
     
         $(".cantidad").change(function() {
+
+             var producto =  $(".producto").val();
+            var cantidad =  $(this).val();
 
             var total = $(".precio").val()*$(".cantidad").val();                
             $(".total").val(total);
@@ -164,7 +193,8 @@ var table = $('.footable').DataTable()
                   //$(".descuento").val(data[0]['porcentaje']);         
                  var totaldescuento = (total*data[0]['porcentaje'])/100;
                    descuento = $(".total").val()-totaldescuento;
-                  $(".descuento").val(data[0]['porcentaje']);         
+                  $(".descuento").val(data[0]['porcentaje']);   
+
                   //var total = data[0]['precioventa']*$(".cantidad").val();                
                   $(".total").val(descuento);
 
@@ -174,6 +204,28 @@ var table = $('.footable').DataTable()
               }
               
           });
+
+
+        if(cantidad > 0){
+        $.get( "{{ path('disponibilidad') }}", { producto:producto,cantidad:cantidad}).done(function( data ) {
+
+            if(data.length == 0){ 
+               $(".cantidad").val('');
+                    $(".cantidad").focus();
+                toastr.error( "Producto <b>"+ $(".producto option:selected").text()+ '</b> No hay producto disponible');
+                
+              }else{
+                
+                  if(cantidad > data[0]['cantidad']){
+                    $(".cantidad").val('');
+                    $(".cantidad").focus();
+                    toastr.error( "Debe colocar una cantidad menor a "+ data[0]['cantidad']);
+                    
+                  }
+              }
+              
+           });
+      }
     });
 
 
