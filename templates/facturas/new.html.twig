@@ -101,6 +101,14 @@ $( "#facturas_forma input:radio" ).click(function() {
               return false;
             }
 
+             if (porcentaje == '')
+            {
+             toastr.error( "Ingrese valor en porcentaje");
+              return false;
+            }
+
+
+
                    t.row.add( [
                     $(".producto option:selected").text()+"<input type='hidden' value='"+productos+"' name='productos[]'>",
                     $(".cantidad").val()+"<input type='hidden' value='"+cantidad+"' name='cantidad[]'>",
@@ -148,6 +156,20 @@ var descuento = 0;
           });
     });
 
+
+
+        $(".descuento").change(function() {
+           var total = $(".precio").val()*$(".cantidad").val();
+           $(".total").val(total);
+
+           if($(this).val()>0){
+              var totaldescuento = (total*$(this).val())/100;
+              var descuento = $(".total").val()-totaldescuento;
+              $(".total").val(descuento);
+            }
+
+
+           });
         $(".cantidad").change(function() {
 
               var producto =  $(".producto").val();

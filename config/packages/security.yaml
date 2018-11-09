@@ -42,6 +42,9 @@ security:
     access_control:
          - { path: ^/proveedores, roles: ROLE_ADMIN }
          - { path: ^/clientes, roles: ['ROLE_USER','ROLE_ADMIN'] }
+         - { path: ^/productos/buscarproducto, roles: ['ROLE_USER','ROLE_ADMIN'] }
+         - { path: ^/productos/disponibilidad, roles: ['ROLE_USER','ROLE_ADMIN'] }
+         - { path: ^/descuento/buscardescuento, roles: ['ROLE_USER','ROLE_ADMIN'] }
          - { path: ^/productos, roles: ROLE_ADMIN }
          - { path: ^/familia, roles: ROLE_ADMIN }
          - { path: ^/almacen, roles: ROLE_ADMIN }
