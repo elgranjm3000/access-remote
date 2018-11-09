@@ -74,8 +74,20 @@
          
                 <td>{{ producto.nombre }}</td>
                 <td>{{ producto.precioVenta }}</td>                
-                <td>{{ producto.idfamilia.nombre }}</td>
-                <td>{{ producto.ingresos|ingresoproductos }}</td>
+                <td>
+                  {% if producto.idfamilia != NULL %}
+                          {{ producto.idfamilia.nombre }}
+                  {% else %}
+                      Ensamblado
+                  {% endif %}                
+                </td>
+                <td>
+                    {% set existente = 0 %}
+                    {% for existencia in producto.agruparproductos %}
+                        {% set existente = existente + existencia.cantidad %}
+                    {% endfor %}
+                    {{ existente }}
+                </td>
                       </tr>
       {% endif %}
                 

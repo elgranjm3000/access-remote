@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Productos;
 use App\Entity\Ingresos;
+use App\Entity\Agruparproducto;
 use App\Entity\Ensamble;
 use App\Form\ProductosType;
 use App\Form\EnsambleType;
@@ -34,7 +35,7 @@ class ProductosController extends AbstractController
         $productos = $_GET["producto"];
         $generardatos = array();
         $entityManager = $this->getDoctrine();     
-        $tareas = $entityManager->getRepository(Ingresos::class)->findBy(['productos'=>$productos]);
+        $tareas = $entityManager->getRepository(Agruparproducto::class)->findBy(['idproducto'=>$productos]);
         $suma = 0;
         foreach ($tareas as  $value) {
                 $suma = $suma + $value->getCantidad();  

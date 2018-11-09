@@ -5,11 +5,13 @@ namespace App\Controller;
 use App\Entity\Facturas;
 use App\Entity\MovimientosAlmacen;
 use App\Entity\Clientes;
+use App\Entity\Agruparproducto;
 use App\Entity\Productos;
 use App\Entity\DetallesFactura;
 use App\Form\FacturasType;
 use App\Form\DetallesFacturaType;
 use App\Repository\FacturasRepository;
+use App\Repository\AgruparproductoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -129,7 +131,7 @@ $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 
     /**
      * @Route("/new/{cliente}", name="facturas_new", methods="GET|POST")
      */
-    public function new(Request $request,$cliente): Response
+    public function new(Request $request,$cliente,AgruparproductoRepository $agruparproductoRepository): Response
     {
 
         $productos = new DetallesFactura();
@@ -175,6 +177,28 @@ if($factura->getDias() > 0){
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($lineaproducto);
                 $em->flush();
+
+            $productos = $_POST["productos"][$i];
+            $cantidadnueva = $_POST["cantidad"][$i];
+
+            $agrupar = $agruparproductoRepository->findBy(["idproducto"=>$productos]);
+            
+            if(count($agrupar) > 0 ){                
+                foreach ($agrupar as $key) {
+                    $actual =  $key->getCantidad();
+                    $idagrupar = $key->getId();
+                }
+                $post = $this->getDoctrine()->getManager()->getRepository(Agruparproducto::class)->find($idagrupar);
+                $cantidadtotal = $actual - $cantidadnueva;
+                $em = $this->getDoctrine()->getManager();
+                $post->setCantidad($cantidadtotal);
+                $em->persist($post);
+                $em->flush();
+            }
+
+
+
+
             }
 
                 $movimientos = new MovimientosAlmacen();
@@ -217,7 +241,7 @@ if($factura->getDias() > 0){
     /**
      * @Route("/{id}/{cliente}/edit", name="facturas_edit", methods="GET|POST")
      */
-    public function edit(Request $request, Facturas $factura,$cliente): Response
+    public function edit(Request $request, Facturas $factura,$cliente,AgruparproductoRepository $agruparproductoRepository): Response
     {
 
 
@@ -247,9 +271,32 @@ if($factura->getDias() > 0){
 
               $ip=$this->getDoctrine()->getEntityManager();  
 
+              foreach ($productosfacturados as $key) {
+            
+            $productos = $key->getIdproducto();;
+            $cantidadnueva = $key->getCantidad();;
 
-   $em = $this->getDoctrine()->getManager();
 
+            $agrupar = $agruparproductoRepository->findBy(["idproducto"=>$productos]);
+            
+            if(count($agrupar) > 0 ){                
+                foreach ($agrupar as $key) {
+                    $actual =  $key->getCantidad();
+                    $idagrupar = $key->getId();
+                }
+                $post = $this->getDoctrine()->getManager()->getRepository(Agruparproducto::class)->find($idagrupar);
+                $cantidadtotal = $actual + $cantidadnueva;
+                $em = $this->getDoctrine()->getManager();
+                $post->setCantidad($cantidadtotal);
+                $em->persist($post);
+                $em->flush();
+            }
+
+
+            }//finaliza el foreach
+
+
+        $em = $this->getDoctrine()->getManager();
         $dql_query = $em->createQuery("
                                 DELETE FROM App:DetallesFactura o
                                 WHERE                             
@@ -272,6 +319,25 @@ if($factura->getDias() > 0){
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($lineaproducto);
                 $em->flush();
+
+
+            $productos = $_POST["productos"][$i];
+            $cantidadnueva = $_POST["cantidad"][$i];
+
+            $agrupar = $agruparproductoRepository->findBy(["idproducto"=>$productos]);
+            
+            if(count($agrupar) > 0 ){                
+                foreach ($agrupar as $key) {
+                    $actual =  $key->getCantidad();
+                    $idagrupar = $key->getId();
+                }
+                $post = $this->getDoctrine()->getManager()->getRepository(Agruparproducto::class)->find($idagrupar);
+                $cantidadtotal = $actual - $cantidadnueva;
+                $em = $this->getDoctrine()->getManager();
+                $post->setCantidad($cantidadtotal);
+                $em->persist($post);
+                $em->flush();
+            }
             }
 
 

@@ -96,6 +96,11 @@ class Productos
      */
    protected $archivo;
 
+   /**
+    * @ORM\OneToMany(targetEntity="App\Entity\Agruparproducto", mappedBy="idproducto")
+    */
+   private $agruparproductos;
+
 
     public function __construct()
     {
@@ -103,6 +108,7 @@ class Productos
         $this->ingresos = new ArrayCollection();
         $this->ensambles = new ArrayCollection();
         $this->emsablesaddproductos = new ArrayCollection();
+        $this->agruparproductos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -372,6 +378,37 @@ class Productos
     public function setArchivo(string $archivo): self
     {
         $this->archivo = $archivo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Agruparproducto[]
+     */
+    public function getAgruparproductos(): Collection
+    {
+        return $this->agruparproductos;
+    }
+
+    public function addAgruparproducto(Agruparproducto $agruparproducto): self
+    {
+        if (!$this->agruparproductos->contains($agruparproducto)) {
+            $this->agruparproductos[] = $agruparproducto;
+            $agruparproducto->setIdproducto($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAgruparproducto(Agruparproducto $agruparproducto): self
+    {
+        if ($this->agruparproductos->contains($agruparproducto)) {
+            $this->agruparproductos->removeElement($agruparproducto);
+            // set the owning side to null (unless already changed)
+            if ($agruparproducto->getIdproducto() === $this) {
+                $agruparproducto->setIdproducto(null);
+            }
+        }
 
         return $this;
     }
