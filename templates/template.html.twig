@@ -96,15 +96,16 @@
             
             <li class="sidebar-label pt35"></li>
             
-            
-            <li><a title="Proveedores" href="{{ path('proveedores_index') }}" ><span class="fa fa-building"></span><span class="sidebar-title">Proveedores</span><span class="caret"></span></a>
-              
+            {% if is_granted('ROLE_ADMIN') %}
+            <li><a title="Proveedores" href="{{ path('proveedores_index') }}" ><span class="fa fa-building"></span><span class="sidebar-title">Proveedores</span><span class="caret"></span></a>             
                 </li>
-                
-                <li><a title="Clientes" href="{{ path('clientes_index') }}" ><span class="fa fa-child"></span><span class="sidebar-title">Clientes</span><span class="caret"></span></a>
-              
+            {% endif %}
+           
+                <li><a title="Clientes" href="{{ path('clientes_index') }}" ><span class="fa fa-child"></span><span class="sidebar-title">Clientes</span><span class="caret"></span></a>              
                 </li>
+           
 
+             {% if is_granted('ROLE_ADMIN') %}
                  <li><a title="Clientes" href="{{ path('productos_index') }}" ><span class="fa fa-product-hunt" aria-hidden="true"></span><span class="sidebar-title">Productos</span><span class="caret"></span></a>
               
                 </li>
@@ -127,17 +128,20 @@
                 <li><a title="Movimientos" href="{{ path('movimientos_almacen_index') }}" ><span class="glyphicon glyphicon-export" aria-hidden="true"></span><span class="sidebar-title">Movimientos Almacenes</span><span class="caret"></span></a>
               
                 </li>
-                
+          {% endif %}   
     <li><a title="Clientes" href="{{ path('facturas_index') }}" ><span class="fa fa-bookmark" aria-hidden="true"></span><span class="sidebar-title">Facturas</span><span class="caret"></span></a>
               
                 </li>
 
 
+
+  {% if is_granted('ROLE_ADMIN') %}
     <li><a title="Clientes" href="{{ path('descuento_index') }}" ><span class="fa fa-percent" aria-hidden="true"></span><span class="sidebar-title">Descuentos</span><span class="caret"></span></a>           </li>
 
                 <li><a title="Clientes" href="{{ path('movimientos_depositos_index') }}" ><span class=" fa fa-plus-square-o" aria-hidden="true"></span><span class="sidebar-title">Depositos</span><span class="caret"></span></a>
               
                 </li>
+      {% endif %}   
 
 {#                <li><a title="Clientes" href="{{ path('inventario') }}" ><span class=" fa fa-plus-square-o" aria-hidden="true"></span><span class="sidebar-title">Control de Inventario</span><span class="caret"></span></a>
               
@@ -145,6 +149,8 @@
 
                 <li><a href="#" class="accordion-toggle"><span class="glyphicon glyphicon-fire"></span><span class="sidebar-title">Reportes</span><span class="caret"></span></a>
               <ul class="nav sub-nav" style="">
+                  {% if is_granted('ROLE_ADMIN') %}
+
                 <li><a href="{{ path('reportesventas') }}">
                   <span class="glyphicon glyphicon-modal-window"></span>Ventas</a>
                 </li>
@@ -156,12 +162,15 @@
                   <a href="{{ path('reportesclientes') }}">
                     <span class="glyphicon glyphicon-modal-window"></span>Clientes y Vendedores</a>
                 </li>
-
+                  {% endif %}
                    <li>
+                  
                   <a href="{{ path('reportesproductos') }}">
                     <span class="glyphicon glyphicon-modal-window"></span>Listado de Productos</a>
                 </li>
 
+
+              {% if is_granted('ROLE_ADMIN') %}
                  <li>
                   <a href="{{ path('reportesproveedores') }}">
                     <span class="glyphicon glyphicon-modal-window"></span>Listado de Proveedores</a>
@@ -172,11 +181,14 @@
                   <a href="{{ path('reportesventasfechas') }}">
                     <span class="glyphicon glyphicon-modal-window"></span>Listado de Ventas %</a>
                 </li>
+                {% endif %}
 
+                {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USERA') %}
                   <li>
                   <a href="{{ path('cobrar') }}">
                     <span class="glyphicon glyphicon-modal-window"></span>Cuentas por cobrar</a>
                 </li>
+                {% endif %}
               </ul>
             </li>
                 

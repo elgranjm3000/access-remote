@@ -75,7 +75,7 @@ class ClientesController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="clientes_delete", methods="DELETE")
+     * @Route("/delete{id}", name="clientes_delete", methods="DELETE")
      */
     public function delete(Request $request, Clientes $cliente): Response
     {

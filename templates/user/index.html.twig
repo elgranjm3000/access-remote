@@ -62,8 +62,12 @@
                            ADMINISTRADOR
                         {% endif %}
 
-                        {% if user == 'ROLE_USER' %}
-                           USUARIO
+                        {% if user == 'ROLE_USERA' %}
+                           USUARIO A
+                        {% endif %}
+
+                        {% if user == 'ROLE_USERB' %}
+                           USUARIO B
                         {% endif %}
                     {% endfor %}
                 

@@ -42,7 +42,13 @@ class SecurityController extends AbstractController
     public function admin(AuthorizationCheckerInterface $authChecker)
     {
      // $session = $request->getRoles();
- if ($authChecker->isGranted('ROLE_USER')) {
+ if ($authChecker->isGranted('ROLE_USERA')) {
+        
+            return $this->redirectToRoute('clientes_index');
+  
+    }
+
+    if ($authChecker->isGranted('ROLE_USERB')) {
         
             return $this->redirectToRoute('clientes_index');
   

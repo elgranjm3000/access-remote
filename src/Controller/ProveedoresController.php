@@ -20,6 +20,8 @@ class ProveedoresController extends AbstractController
      */
     public function index(ProveedoresRepository $proveedoresRepository): Response
     {
+
+        
         return $this->render('proveedores/index.html.twig', ['proveedores' => $proveedoresRepository->findAll()]);
     }
 

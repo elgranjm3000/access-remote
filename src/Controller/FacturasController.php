@@ -33,9 +33,9 @@ class FacturasController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $datos = $entityManager->getRepository(Facturas::class)->find($id);
-
+        $iva =  $this->getParameter('iva');
     $html = $this->renderView(
-         'facturas/pdf.html.twig',array('datos'=>$datos)
+         'facturas/pdf.html.twig',array('datos'=>$datos,'iva'=>$iva)
     );
 
   
@@ -378,7 +378,7 @@ if($factura->getDias() > 0){
     }
 
     /**
-     * @Route("/{id}", name="facturas_delete", methods="DELETE")
+     * @Route("/delete/{id}", name="facturas_delete", methods="DELETE")
      */
     public function delete(Request $request, Facturas $factura): Response
     {

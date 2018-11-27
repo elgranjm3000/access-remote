@@ -87,7 +87,7 @@ class UserController extends AbstractController
 
 
    /**
-     * @Route("/{id}/perfil", name="user_edit_perfil", methods="GET|POST")
+     * @Route("/perfil/{id}", name="user_edit_perfil", methods="GET|POST")
      */
     public function editperfil(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
     {

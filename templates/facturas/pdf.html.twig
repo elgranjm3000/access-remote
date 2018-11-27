@@ -41,8 +41,13 @@
 {% endfor %}
 <tfoot>
 <tr>
+		<td colspan="4" style="text-align:right">Iva {{ iva }}%</td>
+		{% set ivap = sumatoria*iva/100  %}
+		<td style="text-align:center">{{ ivap }}</td>
+</tr>
+<tr>
 		<td colspan="4" style="text-align:right">Total General:</td>
-		<td style="text-align:center">{{ sumatoria }}</td>
+		<td style="text-align:center">{{ sumatoria+ivap }}</td>
 </tr>
 </tfoot>
 </table>
