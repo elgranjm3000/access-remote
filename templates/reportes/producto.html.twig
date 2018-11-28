@@ -69,7 +69,6 @@
         <tbody>
         {% for producto in productos %}
 
-        {% if producto.ingresos|ingresoproductos > 0 %}
             <tr>
          
                 <td>{{ producto.nombre }}</td>
@@ -89,7 +88,6 @@
                     {{ existente }}
                 </td>
                       </tr>
-      {% endif %}
                 
       
         {% else %}
