@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 //use \TCPDF;
 use App\Services\Pfactura;
-
+use App\Services\NumeroALetras;
 /**
  * @Route("/facturas")
  */
@@ -31,6 +31,8 @@ class FacturasController extends AbstractController
      */
     public function factura_pdf(FacturasRepository $facturasRepository,$id): Response
     {
+
+
         $entityManager = $this->getDoctrine()->getManager();
         $datos = $entityManager->getRepository(Facturas::class)->find($id);
         $iva =  $this->getParameter('iva');
@@ -71,7 +73,7 @@ class FacturasController extends AbstractController
         $pdf->SetSubject('Our Code World Subject');
         $pdf->setFontSubsetting(true);
         $pdf->SetFont('helvetica', '', 11, '', true);
-        //$pdf->SetMargins(20,20,40, true);
+        $pdf->SetMargins(10,20,10, true);
 
 
 
@@ -80,8 +82,8 @@ class FacturasController extends AbstractController
 $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
 // set margins
-$pdf->SetMargins(PDF_MARGIN_LEFT, 60, PDF_MARGIN_RIGHT);
-$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+$pdf->SetMargins(PDF_MARGIN_LEFT, 70, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(25);
 $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 // set auto page breaks
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
@@ -114,7 +116,7 @@ $style = array(
 
 
 
-$pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
+$pdf->writeHTMLCell($w = 0, $h = 60, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
 
 
         $pdf->Output($filename.".pdf",'I'); // This will output the PDF as a response directly

@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use App\Entity\Ingresos;
+use App\Services\NumeroALetras;
 
 
 class AppExtension extends AbstractExtension
@@ -26,6 +27,7 @@ class AppExtension extends AbstractExtension
     public function getFilters()
     {
         return array(
+            new TwigFilter('montoletras', array($this, 'letrasFilter')),
             new TwigFilter('price', array($this, 'priceFilter')),
             new TwigFilter('buscador', array($this, 'nuevoFilter')),
             new TwigFilter('egresosproductos', array($this, 'egresosFilter')),
@@ -60,7 +62,7 @@ private $doctrine;
     public function priceFilter($number, $decimals = 0, $decPoint = '.', $thousandsSep = ',')
     {
         $price = number_format($number, $decimals, $decPoint, $thousandsSep);
-        $price = '$'.$price;
+        $price = $price;
 
         return $price;
     }
@@ -69,7 +71,7 @@ private $doctrine;
     public function nuevoFilter($number, $decimals = 0, $decPoint = '.', $thousandsSep = ',')
     {
         $price = number_format($number, $decimals, $decPoint, $thousandsSep);
-        $price = 'Bs'.$price;
+        $price = 'Q'.$price;
 
         return $price;
     }
@@ -144,5 +146,12 @@ private $doctrine;
         }
 
         return $total;
+    }
+
+    public function letrasFilter($number)
+    {
+        $letras = NumeroALetras::convertir($number,'QUETZALES','centimos');
+
+        return $letras;
     }
 }

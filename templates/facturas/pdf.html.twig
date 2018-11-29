@@ -1,53 +1,66 @@
-<table border="1">
-	<tr style="background-color:greem">
+<table>
+	<tr>
 			<th>
-				Nombre de Producto
+			
 			</th>
 			<th>
-				Cantidad
+			
 			</th>
 			<th>
-				Precio U.
+			
 			</th>
 			<th>
-				Descuento
+			
 			</th>
-			<th>
-				Total
-			</th>
+			
 	</tr>
 
 {% set sumatoria = 0 %}
 {% for factura in datos.detallesFacturas %}
 {% set sumatoria = sumatoria + factura.total %}
 	<tr>
+		
+		<td style="text-align:center">
+			{{ factura.cantidad }}
+		</td>
 		<td>
 			{{ factura.idproducto.nombre }}
 		</td>
 		<td style="text-align:center">
-			{{ factura.cantidad }}
-		</td>
+			{{ factura.precio|buscador(2, ',', '.') }}
+		</td>		
 		<td style="text-align:center">
-			{{ factura.precio }}
-		</td>
-		<td style="text-align:center">
-			{{ factura.descuento }} %
-		</td>
-		<td style="text-align:center">
-			{{ factura.total }}
+			{{ factura.total|buscador(2, ',', '.') }}
 		</td>
 	</tr>
 
 {% endfor %}
 <tfoot>
 <tr>
-		<td colspan="4" style="text-align:right">Iva {{ iva }}%</td>
+		<td colspan="3" style="text-align:right"></td>
 		{% set ivap = sumatoria*iva/100  %}
-		<td style="text-align:center">{{ ivap }}</td>
+		<td style="text-align:center"></td>
 </tr>
 <tr>
-		<td colspan="4" style="text-align:right">Total General:</td>
-		<td style="text-align:center">{{ sumatoria+ivap }}</td>
+		<td colspan="3" style="text-align:right"></td>
+		{% set ivap = sumatoria*iva/100  %}
+		<td style="text-align:center"></td>
 </tr>
+<tr>
+		<td colspan="3" style="text-align:right">Total Factura:</td>
+		{% set sumatoriatotal = sumatoria+ivap %}
+		<td style="text-align:center">{{ sumatoriatotal|buscador(2, ',', '.') }}</td>
+
+</tr>
+
+<tr>
+		<td colspan="3" style="text-align:right"></td>	
+		<td style="text-align:center"></td>
+</tr>
+	<tr>
+		{% set montoletra =  sumatoriatotal|price(2, '.', '') %}
+
+	<td colspan="3">TOTAL EN LETRAS: {{ montoletra|montoletras }}</td>
+	</tr>
 </tfoot>
 </table>

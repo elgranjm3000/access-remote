@@ -1,5 +1,50 @@
 [
     {
+        "name": "arielcr/numero-a-letras",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/arielcr/numero-a-letras.git",
+            "reference": "df3e5504b477059e290faecad3004ee79f4406a4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/arielcr/numero-a-letras/zipball/df3e5504b477059e290faecad3004ee79f4406a4",
+            "reference": "df3e5504b477059e290faecad3004ee79f4406a4",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4"
+        },
+        "time": "2017-03-14T01:51:35+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "NumeroALetras": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ariel Orozco",
+                "email": "bassplayer85@gmail.com",
+                "homepage": "http://arielorozco.com"
+            }
+        ],
+        "description": "Convierte un número a su valor correspondiente en letras.",
+        "homepage": "https://github.com/arielcr/numero-a-letras",
+        "keywords": [
+            "convertir",
+            "letras",
+            "numero"
+        ]
+    },
+    {
         "name": "doctrine/annotations",
         "version": "v1.6.0",
         "version_normalized": "1.6.0.0",

@@ -4,8 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c185d76d85a213c6df964b0e785264e7",
+    "content-hash": "2e95cceb23e6232faa0d2d0cdcad4bb7",
     "packages": [
+        {
+            "name": "arielcr/numero-a-letras",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arielcr/numero-a-letras.git",
+                "reference": "df3e5504b477059e290faecad3004ee79f4406a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arielcr/numero-a-letras/zipball/df3e5504b477059e290faecad3004ee79f4406a4",
+                "reference": "df3e5504b477059e290faecad3004ee79f4406a4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "NumeroALetras": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ariel Orozco",
+                    "email": "bassplayer85@gmail.com",
+                    "homepage": "http://arielorozco.com"
+                }
+            ],
+            "description": "Convierte un número a su valor correspondiente en letras.",
+            "homepage": "https://github.com/arielcr/numero-a-letras",
+            "keywords": [
+                "convertir",
+                "letras",
+                "numero"
+            ],
+            "time": "2017-03-14T01:51:35+00:00"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.6.0",
@@ -6192,7 +6235,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "arielcr/numero-a-letras": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -498,6 +498,13 @@ class ComposerStaticInite636396b04629a6494bf67ee6735ac83
                 0 => __DIR__ . '/..' . '/ocramius/proxy-manager/src',
             ),
         ),
+        'N' => 
+        array (
+            'NumeroALetras' => 
+            array (
+                0 => __DIR__ . '/..' . '/arielcr/numero-a-letras/src',
+            ),
+        ),
         'D' => 
         array (
             'Doctrine\\DBAL\\' => 

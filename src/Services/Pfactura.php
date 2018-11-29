@@ -10,45 +10,44 @@ class Pfactura extends TCPDF {
  global $numerofactura, $first_name,$nombres,$idcliente,$direccion,$telefono;
 
 $factura = str_pad($numerofactura, 5, "0", STR_PAD_LEFT);  // produce "-=-=-Alien"
-$fecha = date("d-m-Y H:i");
+$fecha = date("d/m/Y");
        
 $html = <<<EOF
 <style>   
-    div.test {       
-        border-style: solid solid solid solid;
-        border-width: 2px 2px 2px 2px;                
-        width:10px;
-
-    }
+   
 </style>
 
-<table>
-    <tr>
-        
-        <td style="text-align:center">
-                    <div class="test">        
-                            <b>FACTURA</b><br>                            
-                            <b>N° $factura</b>
-                    </div>
-        </td>
-    </tr>
-</table>
 
 
 <br />
 <table>
         <tr>
-            <td>Cliente :</td>
-            <td colspan="3" style="color:red">$nombres</td>
+       
+            <td colspan="3" style="text-align:center">$nombres</td>
+            <td colspan="3" style="text-align:right">$fecha</td>
+             
         </tr>
         <tr>
-            <td>NIT:</td>
-            <td colspan="3" style="color:red">$idcliente</td>
+            <td colspan="3" style="text-align:left"></td>
+            <td colspan="3" style="text-align:right"></td>
+        </tr>
+        <tr>            
+            <td colspan="3" style="text-align:center">$idcliente</td>
+            <td colspan="3" style="text-align:right">$fecha</td>
+        </tr>
+
+        <tr>
+            <td colspan="3" style="text-align:left"></td>
+            <td colspan="3" style="text-align:right"></td>
         </tr>
         
          <tr>
-            <td>Telefono: </td>
-            <td style="color:red">$telefono</td>
+            <td colspan="6" style="text-align:center">
+
+               <div class="test">                                    
+                            $direccion
+                    </div>
+                </td>
             
         </tr>
 </table>
