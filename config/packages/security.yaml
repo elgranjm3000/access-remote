@@ -61,3 +61,4 @@ security:
          - { path: ^/user/perfil, roles: ROLE_USERA }
          - { path: ^/user, roles: ROLE_ADMIN }
          - { path: ^/user/show, roles: ['ROLE_USERB','ROLE_USERA','ROLE_ADMIN'] }
+         - { path: ^/metas, roles: ['ROLE_USERB','ROLE_USERA','ROLE_ADMIN'] }

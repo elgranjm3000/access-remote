@@ -24,7 +24,7 @@
          
         </header>
           
-          
+ 
 {% endblock %}
 
 
@@ -42,7 +42,9 @@
             <div id="spy3" class="panel">
              
               <div class="panel-body pn">
-   <table class="table footable" id="example">
+                <div class="table-responsive">
+                  
+   <table class="table table-bordered mbn footable" id="example">
         <thead>
             <tr>
                 
@@ -82,6 +84,8 @@
                     <a title="Detalles clientes" data-toggle="tooltip" href="{{ path('clientes_show', {'id': cliente.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
                     <a data-toggle="tooltip" title="Editar cliente" href="{{ path('clientes_edit', {'id': cliente.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
                      <a data-toggle="tooltip" title="Crear facturas" href="{{ path('facturas_new', {'cliente': cliente.id}) }}"><span class="glyphicon glyphicon-tasks "></span></a>
+
+                    <a data-toggle="tooltip" title="Crear Cotizacion" href="{{ path('presupuesto_new', {'cliente': cliente.id}) }}"><span class=" glyphicon glyphicon-subtitles"></span></a>
                 </td>
             </tr>
         {% else %}
@@ -91,6 +95,7 @@
         {% endfor %}
         </tbody>
     </table>
+  </div>
 
     </div>
 </div>

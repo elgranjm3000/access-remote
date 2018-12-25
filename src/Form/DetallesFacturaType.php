@@ -17,6 +17,7 @@ class DetallesFacturaType extends AbstractType
     {
         $builder
             ->add('cantidad')
+            ->add('cantidadactual')
             ->add('ordenPromocion')
             ->add('comentarios')
             ->add('precio')

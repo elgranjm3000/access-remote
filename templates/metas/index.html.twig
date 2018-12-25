@@ -1,0 +1,88 @@
+{% extends 'template.html.twig' %}
+
+{% block title %} Metas de vendedor{% endblock %}
+
+{% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Metas</a></li>                            
+              <li class="crumb-trail">Vendedores</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('metas_new') }}">Agregar Metas</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+{% endblock %}
+{% block body %}
+{% for message in app.flashes('notice') %}
+  
+
+
+                <div class="alert alert-success alert-dismissable">
+                  <button type="button" data-dismiss="alert" aria-hidden="true" class="close"></button><i class="fa fa-remove pr10"></i><a href="#" class="alert-link">{{ message }}</a> 
+                </div>
+    
+{% endfor %}
+   <section id="content" class="table-layout animated fadeIn">
+          <!-- begin: .tray-left-->
+        
+          <!-- begin: .tray-center-->
+          <div class="tray tray-center">
+            <!-- Panel with: Basic Footable-->
+          
+            <!-- Panel with: Data Filter-->
+     
+            <!-- Panel with: Pagination-->
+            <div id="spy3" class="panel">
+             
+              <div class="panel-body pn">
+<div class="table-responsive">
+
+    <table class="table table-bordered mbn footable">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Desde</th>
+                <th>Hasta</th>
+                <th>Metas a vender</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for meta in metas %}
+            <tr>
+                <td>{{ meta.usuario.username }}</td>
+                <td>{{ meta.desde ? meta.desde|date('d/m/Y') : '' }}</td>
+                <td>{{ meta.hasta ? meta.hasta|date('d/m/Y') : ''}}</td>
+                <td>{{ meta.montoventas }}</td>
+                <td>
+                    <a title="Detalles" href="{{ path('metas_show', {'id': meta.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
+                    <a title="Editar" href="{{ path('metas_edit', {'id': meta.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    </div>
+</div>
+</div>
+</section>
+{% endblock %}

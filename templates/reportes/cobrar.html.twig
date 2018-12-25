@@ -56,15 +56,18 @@
 </div>
 </div>
 <br>
+      <div class="table-responsive">    
 
-    <table class="table facturas">
+    <table class="table table-bordered mbn facturas">
         <thead>
             <tr>
                 
                 <th>FECHA</th>
-                <th>NUMER DE FACTURA</th>
+                <th>NUMERO DE FACTURA</th>
                 <th>CLIENTE</th>
-                <th>SUB TOTAL</th>
+                <th>TOTAL A PAGAR</th>
+                <th>DEPOSITOS</th>
+                <th>POR PAGAR</th>
                 <th>FECHA A PAGAR</th>
                 <th>DIAS CARTERA</th>
                 <th>DIAS DE CREDITO</th>
@@ -75,14 +78,35 @@
         <tbody>
         {% for factura in facturas %}
 
+
+        {% set diferencia =  date( factura.fechavencimiento ).diff(date('now')) %}
+        {% set diasRestantes = diferencia.days %}
+        {% if diasRestantes == 1 %}
+            {% set diastotal = 1 %}
+        {% else %}
+                    {% set diastotal = diasRestantes %}
+        {% endif %}
+
         {% if factura.forma == "CR" %}
             <tr>
                 <td>{{ factura.fecha ? factura.fecha|date('d/m/Y') : ''  }}</td>         
-                <td>{{ "%08d" | format(factura.id) }}</td>
+                <td>{{ "%08d" | format(factura.numfactura) }}</td>
                 <td>{{ factura.idcliente.nombre }}</td>
                 <td>{{ factura.detallesFacturas|ingresomontos }}</td>
+                <td>
+                    {% set totaldepositos = 0 %}
+                    {% for depositos in factura.movimientosdepositos %}
+                      {% set totaldepositos = totaldepositos + depositos.monto %}
+                    {% endfor %}
+                    {{ totaldepositos }}
+                </td>
+                <td>
+                      {% set total = factura.detallesFacturas|ingresomontos %}
+                      {% set cobrar = total - totaldepositos %}
+                      {{ cobrar }}
+                </td>
                  <td>{{ factura.fecha ? factura.fechavencimiento|date('d/m/Y') : ''  }}</td>        
-                  <td>{{ factura.movimientosdepositos|dias }}</td>
+                  <td>{{ diastotal }}</td>
                      <td>{{ factura.dias }}</td>
         {% endif %}
 
@@ -100,7 +124,7 @@
         </tfoot>
     
   </table>
-
+</div>
     </div>
 </div>
 </div>

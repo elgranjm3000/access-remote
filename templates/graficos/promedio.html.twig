@@ -1,0 +1,106 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Ventas por usuarios{% endblock %}
+
+{% block header %}
+
+ <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Graficos</a></li>
+              <li class="crumb-trail">Metas</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="#">Graficos</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+
+<div class="content-header">
+                <h2><b class="text-primary">Control de graficos</b>
+                </h2>
+              
+              </div>
+{% endblock %}
+
+{% block body %}
+<div id="p6" class="panel">
+                    <div class="panel-heading"><span class="panel-title">Control de promedios</span></div>
+                    <div class="panel-body pn">
+                      <div class="row table-layout">
+                        <div class="col-xs-12 va-m">
+                          <div id="usuarios" style="width: 100%; height:400px; margin: 0 auto"></div>
+                        </div>
+                       
+                      </div>
+                    </div>
+                  
+                  </div>
+
+{% endblock %}
+
+{% block addscript %}
+      <script type="text/javascript">
+      jQuery(document).ready(function () {
+
+        
+       /* demoHighCharts.init();*/
+        
+        // Init plugins for ".calendar-widget"
+        // plugins: FullCalendar
+        //
+          var highColors = [bgInfo, bgPrimary, bgSuccess, bgWarning,
+            bgDanger, bgSuccess, bgSystem, bgDark
+        ];
+        var usuarios = $('#usuarios');
+                  
+                    if (usuarios.length) {
+                        $('#usuarios').highcharts({
+                         chart: {
+    						type: 'column'
+  						},
+					  title: {
+					    text: 'Graficos'
+					  },
+					  subtitle: {
+					    text: 'Promedio total'
+					  },
+					  xAxis: {
+					   
+					  },
+					  yAxis: {
+					    min: 0,
+					    title: {
+					      text: 'ganancias'
+					    }
+					  },
+				  tooltip: {
+				    headerFormat: '<span style="font-size:10px"></span><table>',
+				    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+				      '<td style="padding:0"><b>{point.y:.1f} Promedio</b></td></tr>',
+				    footerFormat: '</table>',
+				    shared: true,
+				    useHTML: true
+				  },
+				  plotOptions: {
+				    column: {
+				      pointPadding: 0.2,
+				      borderWidth: 0
+				    }
+				  },
+						  series: {{ series|raw() }}
+                    });
+                    }
+
+     
+      });
+    </script>
+    {% endblock %}

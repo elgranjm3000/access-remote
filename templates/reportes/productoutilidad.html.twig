@@ -74,15 +74,19 @@
         <tbody>
         {% for detalles_factura in detalles_facturas %}
             <tr>
-              {% set utilidad = detalles_factura.precio - detalles_factura.idproducto.costo %}
+              {% set preciounitario = detalles_factura.precio/iva  %}
+
+              {% set utilidad = preciounitario- detalles_factura.idproducto.costo %}
               {% set extendida = utilidad * detalles_factura.cantidad  %}
+                            {% set linea = utilidad/detalles_factura.precio %}
+
                 <td>{{ detalles_factura.idproducto.nombre }}</td>
                 <td>{{ detalles_factura.cantidad }}</td>
-                <td>{{ detalles_factura.precio }}</td>
+                <td>{{  preciounitario|number_format(2, '.', ',') }}</td>
                 <td>{{ detalles_factura.idproducto.costo }}</td>
-                <td>{{ utilidad }}</td>
-                <td>{{ extendida }}</td>  
-                <td>{{ utilidad/detalles_factura.precio }}</td>     
+                <td>{{ utilidad|number_format(2, '.', ',') }}</td>
+                <td>{{ extendida|number_format(2, '.', ',') }}</td>  
+                <td>{{ linea|number_format(2, '.', ',') }}</td>     
                 <td>{{detalles_factura.idfactura.fecha ? detalles_factura.idfactura.fecha|date('d/m/Y') : ''  }}</td>
                 <td>{{ detalles_factura.idfactura.idcliente.nombre }}</td>
                 <td>{{ detalles_factura.idfactura.idcliente.idUsuario.username }}</td>

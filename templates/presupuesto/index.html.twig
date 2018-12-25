@@ -1,0 +1,141 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Cotizadores-Listados{% endblock %}
+
+
+
+{% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Cotizadores</a></li>                            
+              <li class="crumb-trail">Listado</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('clientes_index') }}">Clientes</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+{% endblock %}
+{% block body %}
+{% for message in app.flashes('notice') %}
+  
+
+
+                <div class="alert alert-danger alert-dismissable">
+                  <button type="button" data-dismiss="alert" aria-hidden="true" class="close"></button><i class="fa fa-remove pr10"></i><a href="#" class="alert-link">{{ message }}</a> 
+                </div>
+    
+{% endfor %}
+   <section id="content" class="table-layout animated fadeIn">
+          <!-- begin: .tray-left-->
+        
+          <!-- begin: .tray-center-->
+          <div class="tray tray-center">
+            <!-- Panel with: Basic Footable-->
+          
+            <!-- Panel with: Data Filter-->
+     
+            <!-- Panel with: Pagination-->
+            <div id="spy3" class="panel">
+             
+              <div class="panel-body pn">
+<div class="table-responsive">
+
+    <table class="table table-bordered mbn facturas">
+        <thead>
+            <tr>                
+                <th>Fecha</th>
+                <th>Comentarios</th>
+                <th>Total Presupuesto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for factura in facturas %}
+            <tr>                
+                <td>{{ factura.fecha ? factura.fecha|date('d/m/Y') : '' }}</td>
+                <td>{{ factura.comentarios|raw }}</td>
+                <td>{{ factura.detallesFacturas|ingresomontos }} </td>
+                <td>
+                    <a title="Detalles" href="{{ path('cotizador_show', {'id': factura.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
+                    
+                    <a title="Editar Cotizador" href="{{ path('cotizador_edit', {'id': factura.id,'cliente':factura.idcliente.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                   
+
+                    <a href="{{ path('facturas_edit', {'id': factura.id,'cliente':factura.idcliente.id}) }}" title="Aprobar"><span class="glyphicon glyphicon-paste"></span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        
+    
+  </table>
+</div>
+    </div>
+</div>
+</div>
+</section>
+{% endblock %}
+
+
+    {% block addscript %}
+    <script type="text/javascript">
+          jQuery(document).ready(function () {
+
+
+
+$('.facturas').DataTable({
+           "bLengthChange":false,
+                  "bFilter":true,
+                  "bInfo":false,
+                  "bAutoWidth":false,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        },
+
+         dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'pdfHtml5',
+                attr: { 
+                  'class': 'btn btn-success',
+                },
+                text:'Imprimir PDF',
+                //orientation: 'landscape',
+                 //pageSize: 'LEGAL',
+                exportOptions: {
+                    columns: [ 0,1,2,3,5]
+                },
+                 download: 'open',
+                 footer: true
+                
+            }
+        ]
+
+
+
+    });
+
+
+  
+    //$(".totales").html(datossuma.toFixed(2));
+
+   });
+    </script>
+    {% endblock %}

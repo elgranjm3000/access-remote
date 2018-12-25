@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('metas_delete', {'id': meta.id}) }}" onsubmit="return confirm('¿Desea eliminar este registro?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ meta.id) }}">
+    <button class="btn btn-danger">Eliminar</button>
+</form>

@@ -18,6 +18,7 @@
 {% set sumatoria = 0 %}
 {% for factura in datos.detallesFacturas %}
 {% set sumatoria = sumatoria + factura.total %}
+{% set preciounitario = factura.total/factura.cantidad %}
 	<tr>
 		
 		<td style="text-align:center">
@@ -27,7 +28,7 @@
 			{{ factura.idproducto.nombre }}
 		</td>
 		<td style="text-align:center">
-			{{ factura.precio|buscador(2, ',', '.') }}
+			{{ preciounitario|buscador(2, ',', '.') }}
 		</td>		
 		<td style="text-align:center">
 			{{ factura.total|buscador(2, ',', '.') }}
@@ -49,7 +50,7 @@
 <tr>
 		<td colspan="3" style="text-align:right">Total Factura:</td>
 		{% set sumatoriatotal = sumatoria+ivap %}
-		<td style="text-align:center">{{ sumatoriatotal|buscador(2, ',', '.') }}</td>
+		<td style="text-align:center">{{ sumatoria|buscador(2, ',', '.') }}</td>
 
 </tr>
 
@@ -58,9 +59,9 @@
 		<td style="text-align:center"></td>
 </tr>
 	<tr>
-		{% set montoletra =  sumatoriatotal|price(2, '.', '') %}
+		{% set montoletra =  sumatoria|price(2, '.', '') %}
 
-	<td colspan="3">TOTAL EN LETRAS: {{ montoletra|montoletras }}</td>
+	<td colspan="3" style="text-align:right">TOTAL EN LETRAS: {{ montoletra|montoletras }}</td>
 	</tr>
 </tfoot>
 </table>

@@ -1,0 +1,127 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Detalles - Cotizacion{% endblock %}
+
+  {% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Cotizador</a></li>                            
+              <li class="crumb-trail">Detalles</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('cotizador_index') }}">Listado de Prespuesto</a></li>
+              <li class="active"><a href="{{ path('cotizador_edit', {'id': factura.id,'cliente':factura.idcliente.id}) }}">Editar Presupuesto</a></li>
+  
+ <li class="active" ><a target="_blank"  href="{{ path('cotizacion_pdf', {'id': factura.id}) }}">Imprimir Presupuesto</a></li>
+              
+              <li>{{ include('presupuesto/_delete_form.html.twig') }}</li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+      {% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <div class="panel">
+          
+            </div>
+    <div id="spy1" class="row">
+<div class="col-sm-12">
+                <div class="panel">
+                  <div class="panel-body pn">
+                    
+                      <table class="table">
+        <tbody>
+         
+
+          
+         
+            <tr>
+                <th>Serie</th>
+                <td>{{ factura.serie }}</td>
+            </tr>
+
+            <tr>
+                <th>Fecha</th>
+                <td>{{ factura.fecha ? factura.fecha|date('d/m/Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Comentarios</th>
+                <td>{{ factura.comentarios|raw }}</td>
+            </tr>
+        </tbody>
+   </table>
+               
+                </div>
+              </div>
+          </div>
+      </div>
+</div>
+
+   <table class="table footable" id="data">
+                                  <thead>
+                                        <tr>
+                                          <th>Producto</th>
+                                          <th>Cantidad</th>
+                                          <th>Precio</th>
+                                          <th>Sub-Total</th>
+                                          <th>Orden de Produccion</th>
+                                          <th>Comentarios</th>
+                                        </tr>
+                                  </thead>
+                                  <tbody>
+                                    {% if productosfacturados is defined %}
+                                          
+                                            {% for productos in productosfacturados %}
+                                            <tr>
+                                              <td>{{ productos.idproducto.nombre }}
+                                                <input type="hidden" value='{{ productos.idproducto.id }}' name="productos[]">
+
+                                                <input type="hidden" value='{{ productos.id }}' name="'idproducto[]" class="idproducto">
+                                              </td>
+                                              <td>{{ productos.cantidad }}
+                                                <input type="hidden" value="{{ productos.cantidad }}" name="cantidad[]"></td>
+                                              <td>{{ productos.precio }}<input type="hidden" value="{{ productos.precio }}" name="precio[]"></td>
+                                              <td>{{ productos.total }}</td>
+                                              <td>{{ productos.ordenPromocion }}
+                                                <input type="hidden" value="{{ productos.total }}" name="total[]">
+                                                <input type="hidden" value="{{ productos.ordenPromocion }}" name="promocion[]"></td>
+                                              <td>{{ productos.comentarios }}
+                                                <input type="hidden" value="{{ productos.comentarios }}" name="comentarios[]"></td>
+                                             
+                                            </tr>
+                                            {% endfor %}
+                                          
+                                    {% endif %}
+                                  </tbody>
+                                </table>
+<h1>Sub-Total: <label class="totales" style="color:red"></label></h1>
+{% endblock %}
+
+{% block addscript %}
+  <script type="text/javascript">
+
+jQuery(document).ready(function (){
+        var table = $('.footable').DataTable();
+
+    var datossuma =  table.column( 3 ).data().sum();
+    $(".totales").html(datossuma.toFixed(2));
+
+          
+      
+});
+  </script>
+{% endblock %}

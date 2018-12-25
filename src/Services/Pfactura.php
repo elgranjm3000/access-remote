@@ -7,7 +7,7 @@ class Pfactura extends TCPDF {
 
    //Page header
     public function Header() {
- global $numerofactura, $first_name,$nombres,$idcliente,$direccion,$telefono;
+ global $numerofactura, $first_name,$nombres,$idcliente,$direccion,$telefono,$fechavencimiento;
 
 $factura = str_pad($numerofactura, 5, "0", STR_PAD_LEFT);  // produce "-=-=-Alien"
 $fecha = date("d/m/Y");
@@ -33,7 +33,7 @@ $html = <<<EOF
         </tr>
         <tr>            
             <td colspan="3" style="text-align:center">$idcliente</td>
-            <td colspan="3" style="text-align:right">$fecha</td>
+            <td colspan="3" style="text-align:right">$fechavencimiento</td>
         </tr>
 
         <tr>
@@ -53,7 +53,7 @@ $html = <<<EOF
 </table>
 
 EOF;
-
+        $this->SetFont('courier', '', 10, '', true);
 // output the HTML content
 $this->writeHTML($html);
 

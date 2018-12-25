@@ -1,0 +1,190 @@
+
+{#{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}#}
+
+
+<div class="mw1000 center-block">
+ <div class="admin-form theme-primary">
+                <div class="panel heading-border panel-primary">
+                  <div class="panel-body bg-light">
+
+
+ {{ form_start(form, {'attr': {'id': 'form-ui'}}) }}
+
+  {{ form_widget(form.idclientesrelacion, {'attr': {'class': 'gui-input','placeholder':"RECIBO CAJA",'value': cliente }}) }}
+
+                 <div id="spy1" class="section-divider mb40"><span></span></div>
+		        	 <div class="row">
+
+
+
+                      <div class="col-md-4">
+                          <div class="section">
+                            <label class="field">
+                              {{ form_widget(form.fecha, {'attr': {'class': 'gui-input js-datepicker','placeholder':"FECHA"}}) }}
+
+                            </label>
+                          </div>
+                        </div>
+
+                      </div>
+
+                   
+
+                <div class="row">
+                          <div class="col-md-12">
+                            <div class="section">
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" title="Incluir productos de su preferencia">
+                                  <span class=" fa fa-plus-square-o" aria-hidden="true"></span> Agregar Productos
+                                </button>
+                                <label class="btn btn-danger totales animated animated-short fadeInUp" >Total: 0</label>
+                                <table class="table footable" id="data">
+                                  <thead>
+                                        <tr>
+                                          <th>Producto</th>
+                                          <th>Cantidad</th>
+                                          <th>Precio</th>
+                                          <th>Descuento %</th>
+                                          <th>Sub-Total</th>
+                                          <th>Orden de Produccion</th>
+                                          <th>Comentarios</th>
+                                          <th>Accion</th>                                          
+                                        </tr>
+                                  </thead>
+                                  <tbody>
+                                    {% if productosfacturados is defined %}
+                                          
+                                            {% for productos in productosfacturados %}
+                                            <tr>
+                                              <td>{{ productos.idproducto.nombre }}
+                                                <input type="hidden" value='{{ productos.idproducto.id }}' name="productos[]">
+
+                                                <input type="hidden" value='{{ productos.id }}' name="'idproducto[]" class="idproducto">
+                                              </td>
+                                              <td>{{ productos.cantidad }}
+                                                <input type="hidden" value="{{ productos.cantidad }}" name="cantidad[]"></td>
+                                              <td>{{ productos.precio }}<input type="hidden" value="{{ productos.precio }}" name="precio[]"></td>
+                                               <td>{{ productos.descuento }} <input type="hidden" value="{{ productos.descuento }}" name="descuento[]"></td>
+                                              <td>{{ productos.total }}</td>
+                                              <td>{{ productos.ordenPromocion }}
+                                                <input type="hidden" value="{{ productos.total }}" name="total[]">
+                                                <input type="hidden" value="{{ productos.ordenPromocion }}" name="promocion[]"></td>
+                                              <td>{{ productos.comentarios }}
+                                                <input type="hidden" value="{{ productos.comentarios }}" name="comentarios[]"></td>
+                                              <td><button type='button' class='btn btn-simple btn-danger btn-icon remove' title='Cancelar pedido'><span class='fa fa-remove'></span></button></td>
+                                            </tr>
+                                            {% endfor %}
+                                          
+                                    {% endif %}
+                                  </tbody>
+                                </table>
+                          </div>  
+                          </div>
+                      </div>
+
+
+                      <div class="row">
+                      		<div class="col-md-12">
+                      			<div class="section">
+                            		<label class="field">
+                              		{{ form_widget(form.comentarios, {'attr': {'class': 'gui-input','placeholder':"COMENTARIOS"}}) }}
+                            		</label>
+                          </div>	
+                      		</div>
+                      </div>
+                      
+                      		 
+                      
+                          <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+
+		        
+{{ form_end(form) }} 
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Carga de Productos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+{#        <div class="form-group">
+            <label></label>
+            <input class="form-control" type="number" name="cantidad" id="cantidad" placeholder="Cantidad de producto">
+        </div>#}
+
+        {{ form_start(form1, {'attr': {'class': 'pedidos'}}) }}
+
+      <div class="form-group">
+          {{ form_widget(form1.idproducto, {'attr': {'class': 'gui-input producto form-control','placeholder':"COMENTARIOS"}}) }}
+
+        </div>
+
+        <div class="form-group">
+                    <label>Productos disponible</label>        
+
+          {{ form_widget(form1.cantidadactual, {'attr': {'class': 'gui-input cantidadactual form-control','placeholder':"CANTIDAD ACTUAL","disabled":"disabled"}}) }}
+
+        </div>
+
+        <div class="form-group">
+
+          {{ form_widget(form1.cantidad, {'attr': {'class': 'gui-input cantidad','placeholder':"Cantidad de producto"}}) }}
+        </div>
+      <div class="form-group">
+        <label>Orden de Produccion</label>
+          {{ form_widget(form1.ordenPromocion, {'attr': {'class': 'gui-input promocion','placeholder':"Orden de produccion","disabled":"disabled"}}) }}
+
+      </div>
+
+<div class="form-group">
+          {{ form_widget(form1.comentarios, {'attr': {'class': 'gui-input comentarios','placeholder':"Comentarios"}}) }}
+  </div>
+
+  <div class="form-group">
+  <label>Precio de venta</label>  
+          {{ form_widget(form1.precio, {'attr': {'class': 'gui-input precio','placeholder':"Precio","disabled":"disabled"}}) }}
+  </div>
+
+<div class="form-group">
+  <label>Descuento %</label>
+
+  {% if is_granted('ROLE_ADMIN') %} 
+        {{ form_widget(form1.descuento, {'attr': {'class': 'gui-input descuento','placeholder':"Descuento"}}) }}
+  {% else %}
+          {{ form_widget(form1.descuento, {'attr': {'class': 'gui-input descuento','placeholder':"Descuento","disabled":"disabled"}}) }}
+{% endif %}          
+  </div>
+
+
+<div class="form-group">
+  <label>Sub-Total</label>
+          {{ form_widget(form1.total, {'attr': {'class': 'gui-input total','placeholder':"Sub-Total","disabled":"disabled"}}) }}
+  </div>
+
+
+
+
+    
+{{ form_end(form1) }}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary cerramodal" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary ingresar">Agregar a factura</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>

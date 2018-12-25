@@ -58,7 +58,12 @@ class ProductosController extends AbstractController
         $entityManager = $this->getDoctrine();     
         $tareas = $entityManager->getRepository(Productos::class)->find($_GET['iditems']);
         $localidad['precioventa'] =   $tareas->getprecioVenta();   
-        $localidad['produccion'] = $tareas->getId();        
+        $localidad['produccion'] = $tareas->getId();  
+        foreach ($tareas->getAgruparproductos() as $key ) {
+                   $localidad['disponibilidad'] = $key->getCantidad();
+              }      
+        
+        
         $generardatos[] = $localidad;
          
         

@@ -4,7 +4,7 @@
 
  {% block addcss %}
   <style type="text/css">
-    .precio,.total,.descuento,.promocion{
+    .precio,.total,.descuento,.promocion,.cantidadactual{
       color:red !important;
     }
   </style>
@@ -123,8 +123,8 @@ var table = $('.footable').DataTable()
             }
              if (comentarios == '')
             {
-             toastr.error( "Ingrese un comentario en su factura");
-              return false;
+           /*  toastr.error( "Ingrese un comentario en su factura");
+              return false;*/
             }
 
                if (porcentaje == '')
@@ -171,11 +171,14 @@ var table = $('.footable').DataTable()
             if(data.length>0){ 
                   $(".precio").val(data[0]['precioventa']);         
                   produccion = data[0]['produccion'];
+                  cantidadactual =  data[0]['disponibilidad'];
+
 
                   var total = data[0]['precioventa']*$(".cantidad").val();                
                   $(".total").val(total);
                   $(".cantidad").change();
                   $(".promocion").val(produccion);
+                  $(".cantidadactual").val(cantidadactual);
 
               }
               

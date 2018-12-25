@@ -4,7 +4,7 @@
 
  {% block addcss %}
   <style type="text/css">
-    .precio,.total,.descuento,.promocion{
+    .precio,.total,.descuento,.promocion,.cantidadactual{
       color:red !important;
     }
   </style>
@@ -97,8 +97,8 @@ $( "#facturas_forma input:radio" ).click(function() {
             }
              if (comentarios == '')
             {
-             toastr.error( "Ingrese un comentario en su factura");
-              return false;
+             /*toastr.error( "Ingrese un comentario en su factura");
+              return false;*/
             }
 
              if (porcentaje == '')
@@ -148,8 +148,10 @@ var descuento = 0;
 
                   total = data[0]['precioventa']*$(".cantidad").val();  
                   produccion = data[0]['produccion'];
+                  cantidadactual =  data[0]['disponibilidad'];
                   $(".total").val(total);
                   $(".promocion").val(produccion);
+                  $(".cantidadactual").val(cantidadactual);
                  $(".cantidad").change();
               }
               
@@ -219,6 +221,8 @@ var descuento = 0;
 
 
     });
+
+
 
 
     /*$(".cantidad").change(function() {

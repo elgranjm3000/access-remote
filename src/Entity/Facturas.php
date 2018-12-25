@@ -34,7 +34,7 @@ class Facturas
     private $fecha;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100,nullable=true)
      */
     private $comentarios;
 
@@ -62,7 +62,7 @@ class Facturas
     private $dias;
 
     /**
-     * @ORM\Column(type="string", length=2)
+     * @ORM\Column(type="string", length=2,nullable=true)
      */
     private $forma;
 
@@ -77,15 +77,22 @@ class Facturas
     private $movimientosAlmacens;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=60,nullable=true)
      */
     private $numfactura;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $serie;
 
+    /**
+     * @ORM\Column(type="string", length=1)
+     */
+    private $tipofactura;
+
+
+    
 
     public function __construct()
     {
@@ -327,6 +334,30 @@ class Facturas
     public function setSerie(string $serie): self
     {
         $this->serie = $serie;
+
+        return $this;
+    }
+
+    public function getCantidadactual(): ?int
+    {
+        return $this->cantidadactual;
+    }
+
+    public function setCantidadactual(int $cantidadactual): self
+    {
+        $this->cantidadactual = $cantidadactual;
+
+        return $this;
+    }
+
+    public function getTipofactura(): ?string
+    {
+        return $this->tipofactura;
+    }
+
+    public function setTipofactura(string $tipofactura): self
+    {
+        $this->tipofactura = $tipofactura;
 
         return $this;
     }

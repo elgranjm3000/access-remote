@@ -31,7 +31,7 @@ class MovimientosDepositosController extends AbstractController
     {
          $entityManager = $this->getDoctrine()->getManager();
         $datos = $entityManager->getRepository(Facturas::class)->find($deposito);
-              if($datos->getForma() == "CC"){
+           /*   if($datos->getForma() == "CC"){
             $this->addFlash(
             'notice',
             'Opcion no habilitada para forma de pago A CONTADO'
@@ -40,7 +40,7 @@ class MovimientosDepositosController extends AbstractController
 
 
             return $this->redirectToRoute('facturas_index');
-        }
+        }*/
 
  //$valores = $movimientosDepositosRepository->count(array("facturas"=>$deposito));
         $valores = $movimientosDepositosRepository->findOneByFacturas($deposito);

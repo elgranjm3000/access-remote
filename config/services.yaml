@@ -7,6 +7,7 @@ parameters:
     locale: 'en'
     brochures_directory: '%kernel.project_dir%/uploads/brochures'
     iva: 12
+    ivareversa: 1.12
 
 
 services:

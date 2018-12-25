@@ -27,6 +27,7 @@
     <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <script src="js/html5shiv.min.js"></script>
         <![endif]-->
+
  {% block addcss %}
 
         {% endblock %}
@@ -134,6 +135,11 @@
                 </li>
 
 
+        <li><a title="Clientes" href="{{ path('cotizador_index') }}" ><span class="glyphicon glyphicon-menu-right " aria-hidden="true"></span><span class="sidebar-title">Cotizador</span><span class="caret"></span></a>
+              
+                </li>
+
+
 
   {% if is_granted('ROLE_ADMIN') %}
     <li><a title="Clientes" href="{{ path('descuento_index') }}" ><span class="fa fa-percent" aria-hidden="true"></span><span class="sidebar-title">Descuentos</span><span class="caret"></span></a>           </li>
@@ -188,16 +194,31 @@
                   <a href="{{ path('cobrar') }}">
                     <span class="glyphicon glyphicon-modal-window"></span>Cuentas por cobrar</a>
                 </li>
-                {% endif %}
+
+                 <li>
+                  <a href="{{ path('reportesinventario') }}">
+                    <span class="glyphicon glyphicon-modal-window"></span>Reporte de inventario a contabilidad</a>
+                    {% endif %}
+                
+           
               </ul>
-            </li>
-                
-                
-            
+               </li>
+                <li><a href="{{ path('metas_index') }}" ><span class="glyphicon glyphicon-bookmark"></span><span class="sidebar-title">Metas</span><span class="caret"></span></a></li>
              
-               
+              <li><a href="#" class="accordion-toggle"><span class="  glyphicon glyphicon-list-alt"></span><span class="sidebar-title">Graficos</span><span class="caret"></span></a>
+              <ul class="nav sub-nav" style="">
+                 
+
+                <li><a href="{{ path('metas_graficos') }}">
+                  <span class=" glyphicon glyphicon-tag"></span>Venta por mes</a>
+                </li>
+                
+                <li><a href="{{ path('metas_ganacias') }}">
+                  <span class=" glyphicon glyphicon-tag"></span>Ganancias en promedio</a>
+                </li>
               </ul>
-            </li>
+               </li>
+           
             <li class="sidebar-label pt35"></li>
             
            
@@ -306,7 +327,7 @@
           }
         });
 
- $("body").removeClass("sb-l-m");
+/* $("body").removeClass("sb-l-m");*/
 
 
   
@@ -327,9 +348,6 @@ $('.js-datepickertable').datepicker({
         "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
         }
-
-
-
 
     });
 
@@ -398,7 +416,11 @@ $('.producto').select2();
 
       });
     </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+        <script src="{{ asset('assets/js/demo/charts/highcharts.js') }}"></script>
+
 
     {% block addscript %}
     {% endblock %}

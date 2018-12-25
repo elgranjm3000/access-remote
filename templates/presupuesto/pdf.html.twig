@@ -1,0 +1,69 @@
+
+
+<table border="1" >
+	<tr>
+			<th style="text-align:center">
+				No
+			</th>
+			<th style="text-align:center">
+				Descripciòn
+			</th>
+			<th style="text-align:center">
+				Cantidad
+			</th>
+			<th style="text-align:center">
+				Presentacion
+			</th>
+			<th style="text-align:center" >Precio Unitario</th>
+			<th style="text-align:center">Precio Total</th>
+			
+	</tr>
+
+{% set sumatoria = 0 %}
+{% set contar = 0 %}
+
+{% for factura in datos.detallesFacturas %}
+{% set sumatoria = sumatoria + factura.total %}
+{% set contar = contar + 1 %}
+
+{% set preciounitario = factura.total/factura.cantidad %}
+	<tr>
+
+		<td>{{ contar }}</td>				
+		<td>
+			{{ factura.idproducto.nombre }}
+		</td>
+		<td style="text-align:center">
+			{{ factura.cantidad }}{{ factura.idproducto.idmedidas.unidad }}
+		</td>
+		<td style="text-align:center">{{ factura.idproducto.cantidadPresentacion }}</td>
+		<td style="text-align:center">
+			{{ preciounitario|buscador(2, ',', '.') }}
+		</td>		
+		<td style="text-align:center">
+			{{ factura.total|buscador(2, ',', '.') }}
+		</td>
+	</tr>
+
+{% endfor %}
+
+</table>
+
+<p>Condiciones de oferta {{ datos.comentarios|raw }}</p>
+
+
+<ul>
+	<li>Precio en Quetzales </li>
+    <li> Precio incluye IVA</li>
+    <li> Forma de pago: En efectivo</li>
+    <li> Oferta sujeta a disponibilidad y confirmación final</li>
+    <li> Validez de la oferta: 10 días</li>
+    <li> Forma de Entrega: Si el pedido es mayor de Q500 y dentro de perímetro de la capital, se ofrece reparto a domicilio sin cargo adicional. Si fuera menor se puede recoger en nuestras oficinas. </li>
+</ul>
+<p>Agradecemos su preferencia a nuestros productos, y esperando suplir sus necesidades,
+A su servicio,
+</p>
+<p>{{ datos.idcliente.idUsuario.username }} - {{ datos.idcliente.idUsuario.email }}<br>
+ventas@lamyaproducts.com<br>
+Tel: 2335-5261 / 2361-6018<br>
+          40789188</p>

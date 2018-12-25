@@ -1,0 +1,294 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Editar  Facturas{% endblock %}
+
+ {% block addcss %}
+  <style type="text/css">
+    .precio,.total,.descuento,.promocion,.cantidadactual{
+      color:red !important;
+    }
+  </style>
+{% endblock %}
+{% block header %}
+
+ <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="{{ path('facturas_index') }}">Presupuesto</a></li>                            
+              <li class="crumb-trail">Editar registro</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('cotizador_index') }}">Listado de presupuesto</a></li>
+              <li>  {{ include('presupuesto/_delete_form.html.twig') }}</li>
+              <li class="active" ><a target="_blank"  href="{{ path('factura_pdf', {'id': factura.id}) }}">Imprimir Presupuesto</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+
+<div class="content-header">
+                <h2><b class="text-primary">Editar Facturas</b>
+                </h2>
+              
+              </div>
+{% endblock %}
+
+{% block body %}
+  
+
+    {{ include('presupuesto/_form.html.twig', {'button_label': 'Actualizar'}) }}
+
+  
+{% endblock %}
+{% block addscript %}
+
+<script type="text/javascript">
+     jQuery(document).ready(function (){
+$('#facturas_dias').removeAttr('required');
+$("#facturas_dias").hide();
+$('#facturas_reciboCaja').hide();
+
+$("#facturas_ordenCompra").hide();
+$('#facturas_ordenCompra').removeAttr('required');
+$('#facturas_reciboCaja').removeAttr('required');
+
+
+var forma = $( "#facturas_forma input:checked" ).val();
+console.log(forma);
+if(forma == "CR"){
+       $("#facturas_dias").show();
+       $("#facturas_ordenCompra").show();
+
+
+    }else{
+      $ ("#facturas_dias"). prop ('selectedIndex', 0);
+       $("#facturas_dias").hide();
+       $("#facturas_ordenCompra").hide();
+       $("#facturas_ordenCompra").empty();
+       $('#facturas_reciboCaja').hide();
+      $('#facturas_reciboCaja').empty();
+
+
+    }
+
+
+
+$( "#facturas_forma input:radio" ).click(function() {
+    if($(this).val() == "CR"){
+       $("#facturas_dias").show();
+         $("#facturas_ordenCompra").show();
+                $('#facturas_reciboCaja').show();
+
+    }else{
+      $("#facturas_dias").prop ('selectedIndex', 0);
+      $("#facturas_dias").hide();
+      $("#facturas_ordenCompra").hide();
+      $("#facturas_ordenCompra").empty();
+      $('#facturas_reciboCaja').hide();
+      $('#facturas_reciboCaja').empty();
+
+
+    }
+   });
+
+
+
+var table = $('.footable').DataTable()
+ var datossuma =  table.column( 4 ).data().sum();
+  console.log(datossuma);
+    $(".totales").html("Total: "+datossuma.toFixed(2));
+
+      $( ".ingresar" ).click(function() {
+          var t = $('.footable').DataTable();
+
+            var productos =  $(".producto").val();
+            var cantidad =  $(".cantidad").val();
+            var precio = $(".precio").val();
+            var total = $(".total").val();
+            var promocion = $(".promocion").val();
+            var comentarios = $(".comentarios").val();
+             var porcentaje = $(".descuento").val();
+
+             if (cantidad == 0 || cantidad == '')
+            {
+             toastr.error( "Debe ingresar cantidad valida de producto");
+              return false;
+            }
+             if (comentarios == '')
+            {
+           /*  toastr.error( "Ingrese un comentario en su factura");
+              return false;*/
+            }
+
+               if (porcentaje == '')
+            {
+             toastr.error( "Ingrese valor en porcentaje");
+              return false;
+            }
+
+
+
+                   t.row.add( [
+                    $(".producto option:selected").text()+"<input type='hidden' value='"+productos+"' name='productos[]'>",
+                    $(".cantidad").val()+"<input type='hidden' value='"+cantidad+"' name='cantidad[]'>",
+                    $(".precio").val()+"<input type='hidden' value='"+precio+"' name='precio[]'>",
+                      $(".descuento").val()+"<input type='hidden' value='"+porcentaje+"' name='descuento[]'>",
+                    $(".total").val(),
+                    $(".promocion").val()+"<input type='hidden' value='"+promocion+"' name='promocion[]'>"+" "+"<input type='hidden' value='"+total+"' name='total[]'>",
+                    $(".comentarios").val()+"<input type='hidden' value='"+comentarios+"' name='comentarios[]'>",
+                     "<button type='button' class='btn btn-simple btn-danger btn-icon remove' title='Cancelar pedido'><span class='fa fa-remove'></span></button>"
+                  ] ).draw( false );
+
+
+                   $(".cerramodal").click();
+                   $(".pedidos")[0].reset();
+
+   var table = $('.footable').DataTable();
+  var datossuma =  table.column( 4 ).data().sum();
+  console.log(datossuma);
+    $(".totales").html("Total: "+datossuma.toFixed(2));
+
+
+          });
+
+
+
+
+
+
+
+
+    $("#detalles_factura_idproducto").change(function() {
+       $.get( "{{ path('buscarproducto') }}", { iditems:$(this).val()}).done(function( data ) {
+
+            if(data.length>0){ 
+                  $(".precio").val(data[0]['precioventa']);         
+                  produccion = data[0]['produccion'];
+                  cantidadactual =  data[0]['disponibilidad'];
+
+
+                  var total = data[0]['precioventa']*$(".cantidad").val();                
+                  $(".total").val(total);
+                  $(".cantidad").change();
+                  $(".promocion").val(produccion);
+                  $(".cantidadactual").val(cantidadactual);
+
+              }
+              
+          });
+    });
+
+
+
+
+        $(".descuento").change(function() {
+           var total = $(".precio").val()*$(".cantidad").val();
+           $(".total").val(total);
+
+           if($(this).val()>0){
+              var totaldescuento = (total*$(this).val())/100;
+              var descuento = $(".total").val()-totaldescuento;
+              $(".total").val(descuento);
+            }
+
+
+           });
+    
+        $(".cantidad").change(function() {
+
+             var producto =  $(".producto").val();
+            var cantidad =  $(this).val();
+
+            var total = $(".precio").val()*$(".cantidad").val();                
+            $(".total").val(total);
+
+       $.get( "{{ path('buscardescuento') }}", { id:$(this).val()}).done(function( data ) {
+
+            if(data.length>0){ 
+              console.log("total "+$(".total").val());
+
+                  //$(".descuento").val(data[0]['porcentaje']);         
+                 var totaldescuento = (total*data[0]['porcentaje'])/100;
+                   descuento = $(".total").val()-totaldescuento;
+                  $(".descuento").val(data[0]['porcentaje']);   
+
+                  //var total = data[0]['precioventa']*$(".cantidad").val();                
+                  $(".total").val(descuento);
+
+              }else{
+                 $(".total").val(total);
+                $(".descuento").val(0);                         
+              }
+              
+          });
+
+
+        if(cantidad > 0){
+        $.get( "{{ path('disponibilidad') }}", { producto:producto,cantidad:cantidad}).done(function( data ) {
+
+            if(data.length == 0){ 
+               $(".cantidad").val('');
+                    $(".cantidad").focus();
+                toastr.error( "Producto <b>"+ $(".producto option:selected").text()+ '</b> No hay producto disponible');
+                
+              }else{
+                
+                  if(cantidad > data[0]['cantidad']){
+                    $(".cantidad").val('');
+                    $(".cantidad").focus();
+                    toastr.error( "Debe colocar una cantidad menor a "+ data[0]['cantidad']);
+                    
+                  }
+              }
+              
+           });
+      }
+    });
+
+
+    var table = $('.footable').DataTable();
+
+    $('.footable tbody').on('click', '.remove', function () {
+
+      var r = confirm("¿Desea quitar este registro?");
+      if(r == true){
+            var btn = this;
+            $tr = $(this).closest('tr');
+            var data = table.row($tr).data();          
+            table.row($(btn).parents('tr')).remove().draw(false);
+            var idfound =  $tr.find("td:eq(0)").find(".idproducto").val();
+if(idfound > 0){
+
+
+ $.ajax({      
+      
+      url:   '{{ url('detallesproductosremove') }}',
+     type: "GET",
+      data: { id : idfound },    
+      beforeSend: function () {
+      },
+      success:  function (response) {
+        
+      }
+    }); 
+
+}
+
+  var datossuma =  table.column( 4 ).data().sum();
+  
+    $(".totales").html("Total: "+datossuma.toFixed(2));
+
+          }
+      });
+
+      });
+
+</script>
+{% endblock %}

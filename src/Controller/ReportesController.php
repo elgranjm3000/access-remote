@@ -41,6 +41,16 @@ class ReportesController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/reportes/inventarios", name="reportesinventario")
+     */
+    public function inventarios(DetallesFacturaRepository $detallesFacturaRepository)
+    {
+        return $this->render('reportes/inventario.html.twig', [
+            'detalles_facturas' => $detallesFacturaRepository->findAll(),
+        ]);
+    }
+
 
 
 
@@ -49,8 +59,10 @@ class ReportesController extends AbstractController
      */
     public function utilidad(DetallesFacturaRepository $detallesFacturaRepository)
     {
+                $iva =  $this->getParameter('ivareversa');
+
         return $this->render('reportes/productoutilidad.html.twig', [
-            'detalles_facturas' => $detallesFacturaRepository->findAll(),
+            'detalles_facturas' => $detallesFacturaRepository->findAll(),'iva'=>$iva
         ]);
     }
 

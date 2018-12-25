@@ -119,10 +119,16 @@ class User implements UserInterface, \Serializable
      */
     private $contactoEmergencia;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Metas", mappedBy="usuario")
+     */
+    private $metas;
+
     public function __construct()
     {
         $this->isActive = true;
         $this->clientes = new ArrayCollection();
+        $this->metas = new ArrayCollection();
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
     }
@@ -322,6 +328,37 @@ class User implements UserInterface, \Serializable
      public function setContactoEmergencia(string $contactoEmergencia): self
      {
          $this->contactoEmergencia = $contactoEmergencia;
+
+         return $this;
+     }
+
+     /**
+      * @return Collection|Metas[]
+      */
+     public function getMetas(): Collection
+     {
+         return $this->metas;
+     }
+
+     public function addMeta(Metas $meta): self
+     {
+         if (!$this->metas->contains($meta)) {
+             $this->metas[] = $meta;
+             $meta->setUsuario($this);
+         }
+
+         return $this;
+     }
+
+     public function removeMeta(Metas $meta): self
+     {
+         if ($this->metas->contains($meta)) {
+             $this->metas->removeElement($meta);
+             // set the owning side to null (unless already changed)
+             if ($meta->getUsuario() === $this) {
+                 $meta->setUsuario(null);
+             }
+         }
 
          return $this;
      }

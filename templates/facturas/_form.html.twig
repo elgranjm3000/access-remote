@@ -194,6 +194,13 @@
         </div>
 
         <div class="form-group">
+                    <label>Productos disponible</label>        
+
+          {{ form_widget(form1.cantidadactual, {'attr': {'class': 'gui-input cantidadactual form-control','placeholder':"CANTIDAD ACTUAL","disabled":"disabled"}}) }}
+
+        </div>
+
+        <div class="form-group">
 
           {{ form_widget(form1.cantidad, {'attr': {'class': 'gui-input cantidad','placeholder':"Cantidad de producto"}}) }}
         </div>

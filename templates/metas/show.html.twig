@@ -1,0 +1,64 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Metas Detalles {% endblock %}
+{% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Metas</a></li>                            
+              <li class="crumb-trail">Detalles</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="{{ path('metas_index') }}">Listado de Metas</a></li>
+              <li class="active"><a href="{{ path('metas_edit', {'id': meta.id}) }}">Editar Metas</a></li>
+              <li>{{ include('metas/_delete_form.html.twig') }}</li>
+              
+            </ul>
+          </div>
+         
+        </header>
+          
+          
+      {% endblock %}
+{% block body %}
+<div class="container">
+    <div class="panel">
+              <div class="panel-heading"><span class="panel-title"><span class="fa fa-info"></span>Detalles de Metas</span>
+                
+              </div>
+            </div>
+    <div id="spy1" class="row">
+<div class="col-sm-12">
+                <div class="panel">
+                  <div class="panel-body pn">
+    <table class="table">
+        <tbody>
+          
+            <tr>
+                <th>Desde</th>
+                <td>{{ meta.desde ? meta.desde|date('d/m/Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Hasta</th>
+                <td>{{ meta.hasta ? meta.hasta|date('d/m/Y') : ''}}</td>
+            </tr>
+            <tr>
+                <th>Montoventas</th>
+                <td>{{ meta.montoventas }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+             
+                </div>
+              </div>
+          </div>
+      </div>
+{% endblock %}

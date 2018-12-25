@@ -37,7 +37,7 @@ class DetallesFactura
     private $ordenPromocion;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text",nullable=true)
      */
     private $comentarios;
 
@@ -55,6 +55,13 @@ class DetallesFactura
      * @ORM\Column(type="float", nullable=true)
      */
     private $descuento;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $cantidadactual;
+    
+    
 
     public function getId(): ?int
     {
@@ -153,6 +160,18 @@ class DetallesFactura
     public function setDescuento(?float $descuento): self
     {
         $this->descuento = $descuento;
+
+        return $this;
+    }
+
+    public function getCantidadactual(): ?int
+    {
+        return $this->cantidadactual;
+    }
+
+    public function setCantidadactual(int $cantidadactual): self
+    {
+        $this->cantidadactual = $cantidadactual;
 
         return $this;
     }
