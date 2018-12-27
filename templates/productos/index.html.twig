@@ -58,7 +58,10 @@
                 <th>Nombre</th>
                 <th>Unidad/Medida</th>
                 <th>Familia</th>
-                <th>Costo</th>
+                {% if is_granted('ROLE_FACTURA') or is_granted('ROLE_ALMACEN')%}
+                {% else %}
+                    <th>Costo</th>
+                {% endif %}
                 <th>Precio de Venta</th>                
                 <th>Cantidad de Presentacion</th>
                 <th>Foto</th>
@@ -73,7 +76,10 @@
                 <td>{{ producto.nombre }}</td>
                 <td>{{ producto.idmedidas.unidad }}</td>
                 <td>{{ producto.idfamilia.nombre }}</td>
+                {% if is_granted('ROLE_FACTURA') or is_granted('ROLE_ALMACEN')%}
+                {% else %}
                 <td>{{ producto.costo }}</td>
+                {% endif %}
                 <td>{{ producto.precioVenta }}</td>                
                 <td>{{ producto.cantidadPresentacion }}</td>
                 <td> 

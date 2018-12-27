@@ -9,13 +9,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/clientes")
  */
 class ClientesController extends AbstractController
 {
-    /**
+    /**     
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS')")
      * @Route("/", name="clientes_index", methods="GET")
      */
     public function index(ClientesRepository $clientesRepository): Response
@@ -23,7 +26,8 @@ class ClientesController extends AbstractController
         return $this->render('clientes/index.html.twig', ['clientes' => $clientesRepository->findAll()]);
     }
 
-    /**
+    /**    
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')")
      * @Route("/new", name="clientes_new", methods="GET|POST")
      */
     public function new(Request $request): Response
@@ -46,7 +50,8 @@ class ClientesController extends AbstractController
         ]);
     }
 
-    /**
+    /**    
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA') or is_granted('ROLE_ALMACEN') or is_granted('ROLE_VENTAS')")
      * @Route("/{id}", name="clientes_show", methods="GET")
      */
     public function show(Clientes $cliente): Response
@@ -54,7 +59,8 @@ class ClientesController extends AbstractController
         return $this->render('clientes/show.html.twig', ['cliente' => $cliente]);
     }
 
-    /**
+    /**    
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_VENTAS')")
      * @Route("/{id}/edit", name="clientes_edit", methods="GET|POST")
      */
     public function edit(Request $request, Clientes $cliente): Response
@@ -75,6 +81,7 @@ class ClientesController extends AbstractController
     }
 
     /**
+     * @Security("has_role('ROLE_ADMIN')")
      * @Route("/delete{id}", name="clientes_delete", methods="DELETE")
      */
     public function delete(Request $request, Clientes $cliente): Response

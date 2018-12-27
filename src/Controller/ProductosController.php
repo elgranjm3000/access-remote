@@ -16,6 +16,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
+
 /**
  * @Route("/productos")
  */
@@ -26,6 +30,7 @@ class ProductosController extends AbstractController
 
 
     /**
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_ALMACEN')")
      * @Route("/disponibilidad", name="disponibilidad", methods="GET")
      */
     public function disponibilidad(Request $request)
@@ -48,7 +53,8 @@ class ProductosController extends AbstractController
         
         
     }
-    /**
+    /**    
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_ALMACEN')")
      * @Route("/buscarproducto", name="buscarproducto", methods="GET")
      */
     public function buscarproducto(Request $request)
@@ -72,7 +78,8 @@ class ProductosController extends AbstractController
         
     }
 
-    /**
+    /**     
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_ALMACEN')")
      * @Route("/", name="productos_index", methods="GET")
      */
     public function index(ProductosRepository $productosRepository): Response
@@ -81,7 +88,8 @@ class ProductosController extends AbstractController
     }
 
 
- /**
+    /**
+     * @Security("is_granted('ROLE_ADMIN')")
      * @Route("/emsableremove", name="emsableremove", methods="GET")
      */
     public function emsableremove(Request $request)
@@ -101,7 +109,8 @@ class ProductosController extends AbstractController
         
     }
 
- /**
+    /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA') or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}/edit/ensamble", name="productos_edit_ensamble", methods="GET|POST")
      */
     public function editensamble(Request $request, Productos $producto): Response
@@ -160,6 +169,7 @@ class ProductosController extends AbstractController
     }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ALMACEN')")
      * @Route("/ensable", name="productos_new_ensamble", methods="GET|POST")
      */
     public function newensamble(Request $request): Response
@@ -208,6 +218,7 @@ class ProductosController extends AbstractController
     }
 
     /**
+     * @Security("has_role('ROLE_ADMIN')")
      * @Route("/new", name="productos_new", methods="GET|POST")
      */
     public function new(Request $request): Response
@@ -269,6 +280,7 @@ class ProductosController extends AbstractController
     }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}", name="productos_show", methods="GET")
      */
     public function show(Productos $producto): Response
@@ -277,6 +289,7 @@ class ProductosController extends AbstractController
     }
 
     /**
+    * @Security("has_role('ROLE_ADMIN')")
      * @Route("/{id}/edit", name="productos_edit", methods="GET|POST")
      */
     public function edit(Request $request, Productos $producto): Response
@@ -332,6 +345,7 @@ class ProductosController extends AbstractController
     }
 
     /**
+     * @Security("has_role('ROLE_ADMIN')")
      * @Route("/{id}", name="productos_delete", methods="DELETE")
      */
     public function delete(Request $request, Productos $producto): Response

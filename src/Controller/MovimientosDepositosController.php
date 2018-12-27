@@ -10,13 +10,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 /**
  * @Route("/movimientos/depositos")
  */
 class MovimientosDepositosController extends AbstractController
 {
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/", name="movimientos_depositos_index", methods="GET")
      */
     public function index(MovimientosDepositosRepository $movimientosDepositosRepository): Response
@@ -25,6 +27,7 @@ class MovimientosDepositosController extends AbstractController
     }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/new/{deposito}", name="movimientos_depositos_new", methods="GET|POST")
      */
     public function new(Request $request,$deposito,MovimientosDepositosRepository $movimientosDepositosRepository): Response
@@ -99,6 +102,7 @@ class MovimientosDepositosController extends AbstractController
     }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}/{deposito}", name="movimientos_depositos_show", methods="GET")
      */
     public function show(MovimientosDepositos $movimientosDeposito,$deposito): Response
@@ -107,6 +111,7 @@ class MovimientosDepositosController extends AbstractController
     }
 
     /**
+      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}/{deposito}/edit", name="movimientos_depositos_edit", methods="GET|POST")
      */
     public function edit(Request $request, MovimientosDepositos $movimientosDeposito,$deposito,MovimientosDepositosRepository $movimientosDepositosRepository): Response
@@ -167,6 +172,7 @@ class MovimientosDepositosController extends AbstractController
     }
 
     /**
+      * @Security("is_granted('ROLE_ADMIN')")
      * @Route("/{id}", name="movimientos_depositos_delete", methods="DELETE")
      */
     public function delete(Request $request, MovimientosDepositos $movimientosDeposito): Response

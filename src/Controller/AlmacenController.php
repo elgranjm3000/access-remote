@@ -9,13 +9,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 /**
  * @Route("/almacen")
  */
 class AlmacenController extends AbstractController
 {
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_ALMACEN')")
      * @Route("/", name="almacen_index", methods="GET")
      */
     public function index(AlmacenRepository $almacenRepository): Response
@@ -24,6 +26,7 @@ class AlmacenController extends AbstractController
     }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN')")
      * @Route("/new", name="almacen_new", methods="GET|POST")
      */
     public function new(Request $request): Response
@@ -47,6 +50,7 @@ class AlmacenController extends AbstractController
     }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}", name="almacen_show", methods="GET")
      */
     public function show(Almacen $almacen): Response
@@ -55,6 +59,7 @@ class AlmacenController extends AbstractController
     }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA') or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}/edit", name="almacen_edit", methods="GET|POST")
      */
     public function edit(Request $request, Almacen $almacen): Response
@@ -75,6 +80,7 @@ class AlmacenController extends AbstractController
     }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN')")
      * @Route("/{id}", name="almacen_delete", methods="DELETE")
      */
     public function delete(Request $request, Almacen $almacen): Response

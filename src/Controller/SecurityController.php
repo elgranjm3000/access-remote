@@ -48,7 +48,7 @@ class SecurityController extends AbstractController
   
     }
 
-    if ($authChecker->isGranted('ROLE_USERB')) {
+    if ($authChecker->isGranted('ROLE_VENTAS')) {
         
             return $this->redirectToRoute('clientes_index');
   

@@ -1,0 +1,155 @@
+<?php
+
+use Symfony\Component\Routing\RequestContext;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
+use Psr\Log\LoggerInterface;
+
+/**
+ * This class has been auto-generated
+ * by the Symfony Routing Component.
+ */
+class srcDevDebugProjectContainerUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerator
+{
+    private static $declaredRoutes;
+    private $defaultLocale;
+
+    public function __construct(RequestContext $context, LoggerInterface $logger = null, string $defaultLocale = null)
+    {
+        $this->context = $context;
+        $this->logger = $logger;
+        $this->defaultLocale = $defaultLocale;
+        if (null === self::$declaredRoutes) {
+            self::$declaredRoutes = array(
+        'almacen_index' => array(array(), array('_controller' => 'App\\Controller\\AlmacenController::index'), array(), array(array('text', '/almacen/')), array(), array()),
+        'almacen_new' => array(array(), array('_controller' => 'App\\Controller\\AlmacenController::new'), array(), array(array('text', '/almacen/new')), array(), array()),
+        'almacen_show' => array(array('id'), array('_controller' => 'App\\Controller\\AlmacenController::show'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/almacen')), array(), array()),
+        'almacen_edit' => array(array('id'), array('_controller' => 'App\\Controller\\AlmacenController::edit'), array(), array(array('text', '/edit'), array('variable', '/', '[^/]++', 'id'), array('text', '/almacen')), array(), array()),
+        'almacen_delete' => array(array('id'), array('_controller' => 'App\\Controller\\AlmacenController::delete'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/almacen')), array(), array()),
+        'clientes_index' => array(array(), array('_controller' => 'App\\Controller\\ClientesController::index'), array(), array(array('text', '/clientes/')), array(), array()),
+        'clientes_new' => array(array(), array('_controller' => 'App\\Controller\\ClientesController::new'), array(), array(array('text', '/clientes/new')), array(), array()),
+        'clientes_show' => array(array('id'), array('_controller' => 'App\\Controller\\ClientesController::show'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/clientes')), array(), array()),
+        'clientes_edit' => array(array('id'), array('_controller' => 'App\\Controller\\ClientesController::edit'), array(), array(array('text', '/edit'), array('variable', '/', '[^/]++', 'id'), array('text', '/clientes')), array(), array()),
+        'clientes_delete' => array(array('id'), array('_controller' => 'App\\Controller\\ClientesController::delete'), array(), array(array('variable', '', '[^/]++', 'id'), array('text', '/clientes/delete')), array(), array()),
+        'buscardescuento' => array(array(), array('_controller' => 'App\\Controller\\DescuentoController::buscardescuento'), array(), array(array('text', '/descuento/buscardescuento')), array(), array()),
+        'descuento_index' => array(array(), array('_controller' => 'App\\Controller\\DescuentoController::index'), array(), array(array('text', '/descuento/')), array(), array()),
+        'descuento_new' => array(array(), array('_controller' => 'App\\Controller\\DescuentoController::new'), array(), array(array('text', '/descuento/new')), array(), array()),
+        'descuento_show' => array(array('id'), array('_controller' => 'App\\Controller\\DescuentoController::show'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/descuento')), array(), array()),
+        'descuento_edit' => array(array('id'), array('_controller' => 'App\\Controller\\DescuentoController::edit'), array(), array(array('text', '/edit'), array('variable', '/', '[^/]++', 'id'), array('text', '/descuento')), array(), array()),
+        'descuento_delete' => array(array('id'), array('_controller' => 'App\\Controller\\DescuentoController::delete'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/descuento')), array(), array()),
+        'detallesproductosremove' => array(array(), array('_controller' => 'App\\Controller\\DetallesFacturaController::buscarproducto'), array(), array(array('text', '/detalles/factura/detallesproductosremove')), array(), array()),
+        'detalles_factura_search' => array(array(), array('_format' => 'json', '_controller' => 'App\\Controller\\DetallesFacturaController::searchAuthor'), array(), array(array('text', '/detalles/factura/search')), array(), array()),
+        'detalles_factura_searchauthor' => array(array(), array('_format' => 'json', '_controller' => 'App\\Controller\\DetallesFacturaController::getAuthor'), array(), array(array('text', '/detalles/factura/search/author')), array(), array()),
+        'detalles_factura_index' => array(array(), array('_controller' => 'App\\Controller\\DetallesFacturaController::index'), array(), array(array('text', '/detalles/factura/')), array(), array()),
+        'detalles_factura_new' => array(array(), array('_controller' => 'App\\Controller\\DetallesFacturaController::new'), array(), array(array('text', '/detalles/factura/new')), array(), array()),
+        'detalles_factura_show' => array(array('id'), array('_controller' => 'App\\Controller\\DetallesFacturaController::show'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/detalles/factura')), array(), array()),
+        'detalles_factura_edit' => array(array('id'), array('_controller' => 'App\\Controller\\DetallesFacturaController::edit'), array(), array(array('text', '/edit'), array('variable', '/', '[^/]++', 'id'), array('text', '/detalles/factura')), array(), array()),
+        'detalles_factura_delete' => array(array('id'), array('_controller' => 'App\\Controller\\DetallesFacturaController::delete'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/detalles/factura')), array(), array()),
+        'cotizador_index' => array(array(), array('_controller' => 'App\\Controller\\FacturasController::indexpresupuesto'), array(), array(array('text', '/facturas/cotizador')), array(), array()),
+        'cotizacion_pdf' => array(array('id'), array('_controller' => 'App\\Controller\\FacturasController::cotizacion_pdf'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/facturas/cotizacion_pdf')), array(), array()),
+        'factura_pdf' => array(array('id'), array('_controller' => 'App\\Controller\\FacturasController::factura_pdf'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/facturas/factura_pdf')), array(), array()),
+        'facturas_index' => array(array(), array('_controller' => 'App\\Controller\\FacturasController::index'), array(), array(array('text', '/facturas/')), array(), array()),
+        'facturas_new' => array(array('cliente'), array('_controller' => 'App\\Controller\\FacturasController::new'), array(), array(array('variable', '/', '[^/]++', 'cliente'), array('text', '/facturas/new')), array(), array()),
+        'facturas_show' => array(array('id'), array('_controller' => 'App\\Controller\\FacturasController::show'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/facturas')), array(), array()),
+        'facturas_edit' => array(array('id', 'cliente'), array('_controller' => 'App\\Controller\\FacturasController::edit'), array(), array(array('text', '/edit'), array('variable', '/', '[^/]++', 'cliente'), array('variable', '/', '[^/]++', 'id'), array('text', '/facturas')), array(), array()),
+        'facturas_delete' => array(array('id'), array('_controller' => 'App\\Controller\\FacturasController::delete'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/facturas/delete')), array(), array()),
+        'presupuesto_new' => array(array('cliente'), array('_controller' => 'App\\Controller\\FacturasController::newpresupuesto'), array(), array(array('variable', '/', '[^/]++', 'cliente'), array('text', '/facturas/new/presupuesto')), array(), array()),
+        'cotizador_show' => array(array('id'), array('_controller' => 'App\\Controller\\FacturasController::cotizadorshow'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/facturas/cotizador')), array(), array()),
+        'cotizador_edit' => array(array('id', 'cliente'), array('_controller' => 'App\\Controller\\FacturasController::editcotizador'), array(), array(array('text', '/edit/cotizador'), array('variable', '/', '[^/]++', 'cliente'), array('variable', '/', '[^/]++', 'id'), array('text', '/facturas')), array(), array()),
+        'familia_index' => array(array(), array('_controller' => 'App\\Controller\\FamiliaController::index'), array(), array(array('text', '/familia/')), array(), array()),
+        'familia_new' => array(array(), array('_controller' => 'App\\Controller\\FamiliaController::new'), array(), array(array('text', '/familia/new')), array(), array()),
+        'familia_show' => array(array('id'), array('_controller' => 'App\\Controller\\FamiliaController::show'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/familia')), array(), array()),
+        'familia_edit' => array(array('id'), array('_controller' => 'App\\Controller\\FamiliaController::edit'), array(), array(array('text', '/edit'), array('variable', '/', '[^/]++', 'id'), array('text', '/familia')), array(), array()),
+        'familia_delete' => array(array('id'), array('_controller' => 'App\\Controller\\FamiliaController::delete'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/familia')), array(), array()),
+        'home' => array(array(), array('_controller' => 'App\\Controller\\HomeController::index'), array(), array(array('text', '/')), array(), array()),
+        'ingresos_index' => array(array(), array('_controller' => 'App\\Controller\\IngresosController::index'), array(), array(array('text', '/ingresos/')), array(), array()),
+        'ingresos_new' => array(array(), array('_controller' => 'App\\Controller\\IngresosController::new'), array(), array(array('text', '/ingresos/new')), array(), array()),
+        'ingresos_show' => array(array('id'), array('_controller' => 'App\\Controller\\IngresosController::show'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/ingresos')), array(), array()),
+        'ingresos_edit' => array(array('id'), array('_controller' => 'App\\Controller\\IngresosController::edit'), array(), array(array('text', '/edit'), array('variable', '/', '[^/]++', 'id'), array('text', '/ingresos')), array(), array()),
+        'ingresos_delete' => array(array('id'), array('_controller' => 'App\\Controller\\IngresosController::delete'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/ingresos')), array(), array()),
+        'metas_graficos' => array(array(), array('_controller' => 'App\\Controller\\MetasController::graficos'), array(), array(array('text', '/metas/graficos')), array(), array()),
+        'metas_ganacias' => array(array(), array('_controller' => 'App\\Controller\\MetasController::graficosganancias'), array(), array(array('text', '/metas/ganancias')), array(), array()),
+        'metas_promedios' => array(array(), array('_controller' => 'App\\Controller\\MetasController::graficospromedios'), array(), array(array('text', '/metas/promedio')), array(), array()),
+        'metas_index' => array(array(), array('_controller' => 'App\\Controller\\MetasController::index'), array(), array(array('text', '/metas/')), array(), array()),
+        'metas_new' => array(array(), array('_controller' => 'App\\Controller\\MetasController::new'), array(), array(array('text', '/metas/new')), array(), array()),
+        'metas_show' => array(array('id'), array('_controller' => 'App\\Controller\\MetasController::show'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/metas')), array(), array()),
+        'metas_edit' => array(array('id'), array('_controller' => 'App\\Controller\\MetasController::edit'), array(), array(array('text', '/edit'), array('variable', '/', '[^/]++', 'id'), array('text', '/metas')), array(), array()),
+        'metas_delete' => array(array('id'), array('_controller' => 'App\\Controller\\MetasController::delete'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/metas')), array(), array()),
+        'inventario' => array(array(), array('_controller' => 'App\\Controller\\MovimientosAlmacenController::inventario'), array(), array(array('text', '/movimientos/almacen/inventario')), array(), array()),
+        'movimientos_almacen_index' => array(array(), array('_controller' => 'App\\Controller\\MovimientosAlmacenController::index'), array(), array(array('text', '/movimientos/almacen/')), array(), array()),
+        'movimientos_almacen_new' => array(array(), array('_controller' => 'App\\Controller\\MovimientosAlmacenController::new'), array(), array(array('text', '/movimientos/almacen/new')), array(), array()),
+        'movimientos_almacen_show' => array(array('id'), array('_controller' => 'App\\Controller\\MovimientosAlmacenController::show'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/movimientos/almacen')), array(), array()),
+        'movimientos_almacen_edit' => array(array('id'), array('_controller' => 'App\\Controller\\MovimientosAlmacenController::edit'), array(), array(array('text', '/edit'), array('variable', '/', '[^/]++', 'id'), array('text', '/movimientos/almacen')), array(), array()),
+        'movimientos_almacen_delete' => array(array('id'), array('_controller' => 'App\\Controller\\MovimientosAlmacenController::delete'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/movimientos/almacen')), array(), array()),
+        'movimientos_depositos_index' => array(array(), array('_controller' => 'App\\Controller\\MovimientosDepositosController::index'), array(), array(array('text', '/movimientos/depositos/')), array(), array()),
+        'movimientos_depositos_new' => array(array('deposito'), array('_controller' => 'App\\Controller\\MovimientosDepositosController::new'), array(), array(array('variable', '/', '[^/]++', 'deposito'), array('text', '/movimientos/depositos/new')), array(), array()),
+        'movimientos_depositos_show' => array(array('id', 'deposito'), array('_controller' => 'App\\Controller\\MovimientosDepositosController::show'), array(), array(array('variable', '/', '[^/]++', 'deposito'), array('variable', '/', '[^/]++', 'id'), array('text', '/movimientos/depositos')), array(), array()),
+        'movimientos_depositos_edit' => array(array('id', 'deposito'), array('_controller' => 'App\\Controller\\MovimientosDepositosController::edit'), array(), array(array('text', '/edit'), array('variable', '/', '[^/]++', 'deposito'), array('variable', '/', '[^/]++', 'id'), array('text', '/movimientos/depositos')), array(), array()),
+        'movimientos_depositos_delete' => array(array('id'), array('_controller' => 'App\\Controller\\MovimientosDepositosController::delete'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/movimientos/depositos')), array(), array()),
+        'disponibilidad' => array(array(), array('_controller' => 'App\\Controller\\ProductosController::disponibilidad'), array(), array(array('text', '/productos/disponibilidad')), array(), array()),
+        'buscarproducto' => array(array(), array('_controller' => 'App\\Controller\\ProductosController::buscarproducto'), array(), array(array('text', '/productos/buscarproducto')), array(), array()),
+        'productos_index' => array(array(), array('_controller' => 'App\\Controller\\ProductosController::index'), array(), array(array('text', '/productos/')), array(), array()),
+        'emsableremove' => array(array(), array('_controller' => 'App\\Controller\\ProductosController::emsableremove'), array(), array(array('text', '/productos/emsableremove')), array(), array()),
+        'productos_edit_ensamble' => array(array('id'), array('_controller' => 'App\\Controller\\ProductosController::editensamble'), array(), array(array('text', '/edit/ensamble'), array('variable', '/', '[^/]++', 'id'), array('text', '/productos')), array(), array()),
+        'productos_new_ensamble' => array(array(), array('_controller' => 'App\\Controller\\ProductosController::newensamble'), array(), array(array('text', '/productos/ensable')), array(), array()),
+        'productos_new' => array(array(), array('_controller' => 'App\\Controller\\ProductosController::new'), array(), array(array('text', '/productos/new')), array(), array()),
+        'productos_show' => array(array('id'), array('_controller' => 'App\\Controller\\ProductosController::show'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/productos')), array(), array()),
+        'productos_edit' => array(array('id'), array('_controller' => 'App\\Controller\\ProductosController::edit'), array(), array(array('text', '/edit'), array('variable', '/', '[^/]++', 'id'), array('text', '/productos')), array(), array()),
+        'productos_delete' => array(array('id'), array('_controller' => 'App\\Controller\\ProductosController::delete'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/productos')), array(), array()),
+        'proveedores_index' => array(array(), array('_controller' => 'App\\Controller\\ProveedoresController::index'), array(), array(array('text', '/proveedores/')), array(), array()),
+        'proveedores_new' => array(array(), array('_controller' => 'App\\Controller\\ProveedoresController::new'), array(), array(array('text', '/proveedores/new')), array(), array()),
+        'proveedores_show' => array(array('id'), array('_controller' => 'App\\Controller\\ProveedoresController::show'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/proveedores')), array(), array()),
+        'proveedores_edit' => array(array('id'), array('_controller' => 'App\\Controller\\ProveedoresController::edit'), array(), array(array('text', '/edit'), array('variable', '/', '[^/]++', 'id'), array('text', '/proveedores')), array(), array()),
+        'proveedores_delete' => array(array('id'), array('_controller' => 'App\\Controller\\ProveedoresController::delete'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/proveedores')), array(), array()),
+        'user_registration' => array(array(), array('_controller' => 'App\\Controller\\RegistrationController::register'), array(), array(array('text', '/register')), array(), array()),
+        'reportes' => array(array(), array('_controller' => 'App\\Controller\\ReportesController::index'), array(), array(array('text', '/reportes')), array(), array()),
+        'reportesventas' => array(array(), array('_controller' => 'App\\Controller\\ReportesController::vendedor'), array(), array(array('text', '/reportes/ventas')), array(), array()),
+        'reportesinventario' => array(array(), array('_controller' => 'App\\Controller\\ReportesController::inventarios'), array(), array(array('text', '/reportes/inventarios')), array(), array()),
+        'reportesutilidadproductos' => array(array(), array('_controller' => 'App\\Controller\\ReportesController::utilidad'), array(), array(array('text', '/reportes/utilidad/productos')), array(), array()),
+        'reportesclientes' => array(array(), array('_controller' => 'App\\Controller\\ReportesController::clientes'), array(), array(array('text', '/reportes/clientes')), array(), array()),
+        'reportesproductos' => array(array(), array('_controller' => 'App\\Controller\\ReportesController::productos'), array(), array(array('text', '/reportes/productos')), array(), array()),
+        'reportesproveedores' => array(array(), array('_controller' => 'App\\Controller\\ReportesController::proveedores'), array(), array(array('text', '/reportes/proveedores')), array(), array()),
+        'reportesventasfechas' => array(array(), array('_controller' => 'App\\Controller\\ReportesController::ventasfechas'), array(), array(array('text', '/reportes/ventasfechas')), array(), array()),
+        'cobrar' => array(array(), array('_controller' => 'App\\Controller\\ReportesController::cobrar'), array(), array(array('text', '/reportes/cobrar')), array(), array()),
+        'login' => array(array(), array('_controller' => 'App\\Controller\\SecurityController::login'), array(), array(array('text', '/login')), array(), array()),
+        'security_logout' => array(array(), array('_controller' => 'App\\Controller\\SecurityController::logoutAction'), array(), array(array('text', '/logout')), array(), array()),
+        'admin' => array(array(), array('_controller' => 'App\\Controller\\SecurityController::admin'), array(), array(array('text', '/administrator/admin')), array(), array()),
+        'user_index' => array(array(), array('_controller' => 'App\\Controller\\UserController::index'), array(), array(array('text', '/user/')), array(), array()),
+        'user_new' => array(array(), array('_controller' => 'App\\Controller\\UserController::new'), array(), array(array('text', '/user/new')), array(), array()),
+        'user_show' => array(array('id'), array('_controller' => 'App\\Controller\\UserController::show'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/user')), array(), array()),
+        'user_edit' => array(array('id'), array('_controller' => 'App\\Controller\\UserController::edit'), array(), array(array('text', '/edit'), array('variable', '/', '[^/]++', 'id'), array('text', '/user')), array(), array()),
+        'user_edit_perfil' => array(array('id'), array('_controller' => 'App\\Controller\\UserController::editperfil'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/user/perfil')), array(), array()),
+        'user_delete' => array(array('id'), array('_controller' => 'App\\Controller\\UserController::delete'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/user')), array(), array()),
+        '_twig_error_test' => array(array('code', '_format'), array('_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'), array('code' => '\\d+'), array(array('variable', '.', '[^/]++', '_format'), array('variable', '/', '\\d+', 'code'), array('text', '/_error')), array(), array()),
+        '_wdt' => array(array('token'), array('_controller' => 'web_profiler.controller.profiler::toolbarAction'), array(), array(array('variable', '/', '[^/]++', 'token'), array('text', '/_wdt')), array(), array()),
+        '_profiler_home' => array(array(), array('_controller' => 'web_profiler.controller.profiler::homeAction'), array(), array(array('text', '/_profiler/')), array(), array()),
+        '_profiler_search' => array(array(), array('_controller' => 'web_profiler.controller.profiler::searchAction'), array(), array(array('text', '/_profiler/search')), array(), array()),
+        '_profiler_search_bar' => array(array(), array('_controller' => 'web_profiler.controller.profiler::searchBarAction'), array(), array(array('text', '/_profiler/search_bar')), array(), array()),
+        '_profiler_phpinfo' => array(array(), array('_controller' => 'web_profiler.controller.profiler::phpinfoAction'), array(), array(array('text', '/_profiler/phpinfo')), array(), array()),
+        '_profiler_search_results' => array(array('token'), array('_controller' => 'web_profiler.controller.profiler::searchResultsAction'), array(), array(array('text', '/search/results'), array('variable', '/', '[^/]++', 'token'), array('text', '/_profiler')), array(), array()),
+        '_profiler_open_file' => array(array(), array('_controller' => 'web_profiler.controller.profiler::openAction'), array(), array(array('text', '/_profiler/open')), array(), array()),
+        '_profiler' => array(array('token'), array('_controller' => 'web_profiler.controller.profiler::panelAction'), array(), array(array('variable', '/', '[^/]++', 'token'), array('text', '/_profiler')), array(), array()),
+        '_profiler_router' => array(array('token'), array('_controller' => 'web_profiler.controller.router::panelAction'), array(), array(array('text', '/router'), array('variable', '/', '[^/]++', 'token'), array('text', '/_profiler')), array(), array()),
+        '_profiler_exception' => array(array('token'), array('_controller' => 'web_profiler.controller.exception::showAction'), array(), array(array('text', '/exception'), array('variable', '/', '[^/]++', 'token'), array('text', '/_profiler')), array(), array()),
+        '_profiler_exception_css' => array(array('token'), array('_controller' => 'web_profiler.controller.exception::cssAction'), array(), array(array('text', '/exception.css'), array('variable', '/', '[^/]++', 'token'), array('text', '/_profiler')), array(), array()),
+    );
+        }
+    }
+
+    public function generate($name, $parameters = array(), $referenceType = self::ABSOLUTE_PATH)
+    {
+        $locale = $parameters['_locale']
+            ?? $this->context->getParameter('_locale')
+            ?: $this->defaultLocale;
+
+        if (null !== $locale && (self::$declaredRoutes[$name.'.'.$locale][1]['_canonical_route'] ?? null) === $name) {
+            unset($parameters['_locale']);
+            $name .= '.'.$locale;
+        } elseif (!isset(self::$declaredRoutes[$name])) {
+            throw new RouteNotFoundException(sprintf('Unable to generate a URL for the named route "%s" as such route does not exist.', $name));
+        }
+
+        list($variables, $defaults, $requirements, $tokens, $hostTokens, $requiredSchemes) = self::$declaredRoutes[$name];
+
+        return $this->doGenerate($variables, $defaults, $requirements, $tokens, $parameters, $name, $referenceType, $hostTokens, $requiredSchemes);
+    }
+}

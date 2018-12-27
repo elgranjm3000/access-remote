@@ -12,13 +12,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 /**
  * @Route("/ingresos")
  */
 class IngresosController extends AbstractController
 {
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_ALMACEN')")
      * @Route("/", name="ingresos_index", methods="GET")
      */
     public function index(IngresosRepository $ingresosRepository): Response
@@ -27,6 +29,7 @@ class IngresosController extends AbstractController
     }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA') or is_granted('ROLE_ALMACEN')")
      * @Route("/new", name="ingresos_new", methods="GET|POST")
      */
     public function new(Request $request, AgruparproductoRepository $agruparproductoRepository): Response
@@ -78,6 +81,7 @@ class IngresosController extends AbstractController
     }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}", name="ingresos_show", methods="GET")
      */
     public function show(Ingresos $ingreso): Response
@@ -86,6 +90,7 @@ class IngresosController extends AbstractController
     }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}/edit", name="ingresos_edit", methods="GET|POST")
      */
     public function edit(Request $request, Ingresos $ingreso): Response
@@ -106,6 +111,7 @@ class IngresosController extends AbstractController
     }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA') or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}", name="ingresos_delete", methods="DELETE")
      */
     public function delete(Request $request, Ingresos $ingreso,AgruparproductoRepository $agruparproductoRepository): Response

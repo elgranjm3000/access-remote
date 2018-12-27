@@ -16,11 +16,13 @@ use App\Repository\ClientesRepository;
 use App\Repository\ProductosRepository;
 use App\Repository\IngresosRepository;
 use App\Repository\ProveedoresRepository;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class ReportesController extends AbstractController
 {
     /**
+     * @Security("is_granted('ROLE_ADMIN')")
      * @Route("/reportes", name="reportes")
      */
     public function index()
@@ -32,6 +34,7 @@ class ReportesController extends AbstractController
 
 
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA') or is_granted('ROLE_ALMACEN') or is_granted('ROLE_VENTAS')")
      * @Route("/reportes/ventas", name="reportesventas")
      */
     public function vendedor(DetallesFacturaRepository $detallesFacturaRepository)
@@ -42,6 +45,7 @@ class ReportesController extends AbstractController
     }
 
      /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ALMACEN')")
      * @Route("/reportes/inventarios", name="reportesinventario")
      */
     public function inventarios(DetallesFacturaRepository $detallesFacturaRepository)
@@ -55,6 +59,7 @@ class ReportesController extends AbstractController
 
 
     /**
+     * @Security("is_granted('ROLE_ADMIN')")
      * @Route("/reportes/utilidad/productos", name="reportesutilidadproductos")
      */
     public function utilidad(DetallesFacturaRepository $detallesFacturaRepository)
@@ -68,6 +73,7 @@ class ReportesController extends AbstractController
 
 
      /**
+     * @Security("is_granted('ROLE_ADMIN')")
      * @Route("/reportes/clientes", name="reportesclientes")
      */
     public function clientes(ClientesRepository $clientesRepository)
@@ -78,6 +84,7 @@ class ReportesController extends AbstractController
     }
 
      /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS')")
      * @Route("/reportes/productos", name="reportesproductos")
      */
     public function productos(ProductosRepository $productosRepository)
@@ -100,6 +107,7 @@ class ReportesController extends AbstractController
 
 
      /**
+     * @Security("is_granted('ROLE_ADMIN')")
      * @Route("/reportes/ventasfechas", name="reportesventasfechas")
      */
     public function ventasfechas(DetallesFacturaRepository $detallesFacturaRepository)
@@ -111,6 +119,7 @@ class ReportesController extends AbstractController
 
 
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')")
      * @Route("/reportes/cobrar", name="cobrar")
      */
     public function cobrar(FacturasRepository $facturasRepository)

@@ -29,8 +29,9 @@ class User implements UserInterface, \Serializable
 {
       public static $possibleRoles = array(
         'ADMINISTRADOR' => 'ROLE_ADMIN',
-        'USUARIO A'  => 'ROLE_USERA',
-        'USUARIO B'  => 'ROLE_USERB'
+        'FACTURACION' =>'ROLE_FACTURA',
+        'ALMACEN' =>'ROLE_ALMACEN',
+        'VENTAS' =>'ROLE_VENTAS',
        
     );
     /**

@@ -39,26 +39,5 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
-    access_control:
-         - { path: ^/proveedores, roles: ROLE_ADMIN }
-         - { path: ^/clientes/delete, roles: 'ROLE_ADMIN' }
-         - { path: ^/facturas/delete, roles: 'ROLE_ADMIN' }
-         - { path: ^/clientes, roles: ['ROLE_USERA','ROLE_USERB','ROLE_ADMIN'] }
-         - { path: ^/productos/buscarproducto, roles: ['ROLE_USERB','ROLE_USERA','ROLE_ADMIN'] }
-         - { path: ^/productos/disponibilidad, roles: ['ROLE_USERB','ROLE_USERA','ROLE_ADMIN'] }
-         - { path: ^/descuento/buscardescuento, roles: ['ROLE_USERB','ROLE_USERA','ROLE_ADMIN'] }
-         - { path: ^/productos, roles: ROLE_ADMIN }
+    access_control:         
          - { path: ^/familia, roles: ROLE_ADMIN }
-         - { path: ^/almacen, roles: ROLE_ADMIN }
-         - { path: ^/ingresos, roles: ROLE_ADMIN }
-         - { path: ^/facturas, roles: ['ROLE_USERB','ROLE_USERA','ROLE_ADMIN']}
-         - { path: ^/movimientos, roles: ROLE_ADMIN }
-         - { path: ^/descuento, roles: ROLE_ADMIN }
-         - { path: ^/reportes/productos, roles: ['ROLE_USERB','ROLE_USERA','ROLE_ADMIN'] }
-         - { path: ^/reportes/cobrar, roles: ['ROLE_USERA','ROLE_ADMIN'] }
-         - { path: ^/reportes, roles: ROLE_ADMIN }
-         - { path: ^/descuentos, roles: ROLE_USERA }
-         - { path: ^/user/perfil, roles: ROLE_USERA }
-         - { path: ^/user, roles: ROLE_ADMIN }
-         - { path: ^/user/show, roles: ['ROLE_USERB','ROLE_USERA','ROLE_ADMIN'] }
-         - { path: ^/metas, roles: ['ROLE_USERB','ROLE_USERA','ROLE_ADMIN'] }

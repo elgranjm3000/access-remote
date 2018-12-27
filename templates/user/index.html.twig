@@ -62,12 +62,15 @@
                            ADMINISTRADOR
                         {% endif %}
 
-                        {% if user == 'ROLE_USERA' %}
-                           USUARIO A
+                        {% if user == 'ROLE_FACTURA' %}
+                           FACTURA
                         {% endif %}
 
-                        {% if user == 'ROLE_USERB' %}
-                           USUARIO B
+                        {% if user == 'ROLE_VENTAS' %}
+                           VENTAS
+                        {% endif %}
+                        {% if user == 'ROLE_ALMACEN' %}
+                           ALMACEN
                         {% endif %}
                     {% endfor %}
                 

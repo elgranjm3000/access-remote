@@ -21,6 +21,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Services\Pfactura;
 use App\Services\Pcotizacion;
 use App\Services\NumeroALetras;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 /**
  * @Route("/facturas")
  */
@@ -28,6 +31,7 @@ class FacturasController extends AbstractController
 {
 
       /**
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/cotizador", name="cotizador_index", methods="GET")
      */
     public function indexpresupuesto(FacturasRepository $facturasRepository): Response
@@ -38,6 +42,7 @@ class FacturasController extends AbstractController
 
 
 /**
+   * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/cotizacion_pdf/{id}", name="cotizacion_pdf", methods="GET")
      */
     public function cotizacion_pdf(FacturasRepository $facturasRepository,$id): Response
@@ -142,7 +147,8 @@ $pdf->writeHTMLCell($w = 0, $h = 60, $x = '', $y = '', $html, $border = 0, $ln =
         $pdf->Output($filename.".pdf",'I'); // This will output the PDF as a response directly
 }
 
- /**
+    /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/factura_pdf/{id}", name="factura_pdf", methods="GET")
      */
     public function factura_pdf(FacturasRepository $facturasRepository,$id): Response
@@ -246,6 +252,7 @@ $pdf->writeHTMLCell($w = 0, $h = 60, $x = '', $y = '', $html, $border = 0, $ln =
 }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/", name="facturas_index", methods="GET")
      */
     public function index(FacturasRepository $facturasRepository): Response
@@ -253,7 +260,8 @@ $pdf->writeHTMLCell($w = 0, $h = 60, $x = '', $y = '', $html, $border = 0, $ln =
         return $this->render('facturas/index.html.twig', ['facturas' => $facturasRepository->findByTipofactura("F")]);
     }
 
-    /**
+    /**     
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/new/{cliente}", name="facturas_new", methods="GET|POST")
      */
     public function new(Request $request,$cliente,AgruparproductoRepository $agruparproductoRepository): Response
@@ -359,7 +367,8 @@ if($factura->getDias() > 0){
         ]);
     }
 
-    /**
+    /**     
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}", name="facturas_show", methods="GET")
      */
     public function show(Facturas $factura): Response
@@ -372,6 +381,7 @@ if($factura->getDias() > 0){
     }
 
     /**
+     * @Security("has_role('ROLE_ADMIN')")
      * @Route("/{id}/{cliente}/edit", name="facturas_edit", methods="GET|POST")
      */
     public function edit(Request $request, Facturas $factura,$cliente,AgruparproductoRepository $agruparproductoRepository): Response
@@ -517,6 +527,7 @@ if($factura->getDias() > 0){
     }
 
     /**
+     * @Security("has_role('ROLE_ADMIN')")
      * @Route("/delete/{id}", name="facturas_delete", methods="DELETE")
      */
     public function delete(Request $request, Facturas $factura): Response
@@ -532,6 +543,7 @@ if($factura->getDias() > 0){
 
 
       /**
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/new/presupuesto/{cliente}", name="presupuesto_new", methods="GET|POST")
      */
     public function newpresupuesto(Request $request,$cliente,AgruparproductoRepository $agruparproductoRepository): Response
@@ -604,6 +616,7 @@ if($factura->getDias() > 0){
     }
 
      /**
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/cotizador/{id}", name="cotizador_show", methods="GET")
      */
     public function cotizadorshow(Facturas $factura): Response

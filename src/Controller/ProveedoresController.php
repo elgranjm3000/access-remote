@@ -9,13 +9,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 /**
  * @Route("/proveedores")
  */
 class ProveedoresController extends AbstractController
 {
-    /**
+    /**    
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_ALMACEN')")
      * @Route("/", name="proveedores_index", methods="GET")
      */
     public function index(ProveedoresRepository $proveedoresRepository): Response
@@ -25,7 +29,8 @@ class ProveedoresController extends AbstractController
         return $this->render('proveedores/index.html.twig', ['proveedores' => $proveedoresRepository->findAll()]);
     }
 
-    /**
+    /**     
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_ALMACEN')")
      * @Route("/new", name="proveedores_new", methods="GET|POST")
      */
     public function new(Request $request): Response
@@ -49,6 +54,7 @@ class ProveedoresController extends AbstractController
     }
 
     /**
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_ALMACEN')")    
      * @Route("/{id}", name="proveedores_show", methods="GET")
      */
     public function show(Proveedores $proveedore): Response
@@ -57,6 +63,7 @@ class ProveedoresController extends AbstractController
     }
 
     /**
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}/edit", name="proveedores_edit", methods="GET|POST")
      */
     public function edit(Request $request, Proveedores $proveedore): Response
@@ -77,6 +84,7 @@ class ProveedoresController extends AbstractController
     }
 
     /**
+     * @Security("has_role('ROLE_ADMIN')")
      * @Route("/{id}", name="proveedores_delete", methods="DELETE")
      */
     public function delete(Request $request, Proveedores $proveedore): Response
