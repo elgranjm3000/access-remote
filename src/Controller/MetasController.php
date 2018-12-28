@@ -29,8 +29,46 @@ class MetasController extends AbstractController
      */
     public function graficos(User1Repository $user1Repository, FacturasRepository $facturasRepository, Request $request): Response
     {
+$meses = array("","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 
-    $mesactual = date("m");    
+
+    $mesactual = date("m");   
+
+$total1 = array();
+$total2 = array();
+for($i = 1; $i<=12; $i++) 
+{
+       $sql = "SELECT detalles_factura.total as total,detalles_factura.precio as precio,productos.costo as costo FROM facturas INNER JOIN detalles_factura ON facturas.id = detalles_factura.idfactura_id INNER JOIN clientes ON facturas.idcliente_id = clientes.id INNER JOIN app_users ON app_users.id = clientes.id_usuario_id INNER JOIN productos ON productos.id = detalles_factura.idproducto_id  where month(facturas.fecha) = '$i' and facturas.tipofactura = 'F'";   
+
+        $stmt = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+
+                $sumtotal = 0;
+                $utilidadvalor = 0;
+                    foreach ($result as $key) {  
+                        $iva =  $this->getParameter('ivareversa');
+                       $sumtotal = $sumtotal + $key["total"];
+                       $preciounitario = $key["precio"]/$iva;
+                       $utilidadvalor1 = $preciounitario - $key["costo"];
+                       $utilidadvalor = $utilidadvalor + $utilidadvalor1;
+                     
+                    }
+                    $metas = 0;
+                $sql = "SELECT montoventas as suma from metas where month(desde) = '$i'";
+                $stmt = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+                    foreach ($result as $key) {  
+                        $metas = $metas + floatval($key["suma"]);
+                    }
+                    $fecha = date("Y")."-".$i."-".date("d");
+                      $total1[] = array("fecha"=>$meses[$i],"valor"=>$sumtotal,'utilidad'=>$utilidadvalor,'metas'=>$metas);
+                      
+     
+}
+
+
 
   if ($request->isMethod('POST')) {
     $mesactual = $_POST["valormes"];
@@ -85,7 +123,7 @@ $metas = array();
  
 
         
-return $this->render('graficos/index.html.twig', ['user' => $user1Repository->findAll(),'facturas'=>$facturasRepository->findAll(),'usuariostotal'=>json_encode($usuarios),'ganacias'=>json_encode($ganacias),'utilidad'=>json_encode($utilidad),'metas'=>json_encode($metas)]);
+return $this->render('graficos/index.html.twig', ['user' => $user1Repository->findAll(),'facturas'=>$facturasRepository->findAll(),'usuariostotal'=>json_encode($usuarios),'ganacias'=>json_encode($ganacias),'utilidad'=>json_encode($utilidad),'metas'=>json_encode($metas),'totalventas'=>$total1]);
     }
 
      /**
@@ -96,7 +134,7 @@ return $this->render('graficos/index.html.twig', ['user' => $user1Repository->fi
     {
            
 
-
+$meses = array("","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
              $usuario = $user1Repository->findAll();
             $facturas = $facturasRepository->findAll();
     
@@ -128,8 +166,35 @@ $valores = array();
             $totalgeneral = $generardatos;
          /* echo json_encode($totalgeneral);
           exit;*/
+            $totales = array();
+            $usuario = $user1Repository->findAll();
+            foreach ($usuario as $value) {  
+                $usuario = $value->getUsername();             
+               $idprincipal = $value->getId();
+               for($i=1;$i<=12;$i++){
+                  $contar1 = 0;
+                  $promedio1 = 0;
+            
+            $sql = "SELECT  count(facturas.id) as cantidad, sum(detalles_factura.total) as total FROM facturas INNER JOIN detalles_factura ON facturas.id = detalles_factura.idfactura_id INNER JOIN clientes ON facturas.idcliente_id = clientes.id INNER JOIN app_users ON app_users.id = clientes.id_usuario_id  where month(facturas.fecha) = '$i' and facturas.tipofactura = 'F' and  app_users.id =  $idprincipal";
+            $stmt = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+                    foreach ($result as $key) {  
+                     if($key["cantidad"] > 0){
+                        $contar1 = $contar1 + 1;
+                        $promedio1 = $promedio1 + $key["total"];
+                    }
+                       
+                    }
+                
+                $totales[] = array("usuario"=>$usuario,"mes"=>$meses[$i],"totalventas"=>$contar1,"promedio"=>$promedio1);
+              
+
+            }
+           }
+
         
-return $this->render('graficos/ganancias.html.twig', ['user' => $user1Repository->findAll(),'facturas'=>$facturasRepository->findAll(),'series'=>json_encode($totalgeneral)]);
+return $this->render('graficos/ganancias.html.twig', ['user' => $user1Repository->findAll(),'facturas'=>$facturasRepository->findAll(),'series'=>json_encode($totalgeneral),'totales'=>$totales]);
     }
 
     /**

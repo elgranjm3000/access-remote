@@ -32,6 +32,27 @@
 {% endblock %}
 
 {% block body %}
+<table  class="table table-bordered mbn footable2">    
+  <thead>
+      <tr>
+          <td>MES</td>
+          <TD>VENDEDOR</TD>
+          <TD>TOTAL VENTAS</TD>
+          <TD>TOTAL GANACIAS</TD>          
+      </tr>
+  </thead>
+  <tbody>
+    {% for ventas in totales%}
+      <tr>     
+        <td>{{ventas.mes}}</td>
+        <td>{{ventas.usuario }}</td>
+        <td>{{ventas.totalventas|number_format(2, '.', ',') }}</td>
+        <td>{{ventas.promedio|number_format(2, '.', ',') }}</td>         
+      </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
 <div id="p6" class="panel">
                     <div class="panel-heading"><span class="panel-title">Control de promedios</span></div>
                     <div class="panel-body pn">
@@ -48,6 +69,8 @@
 {% endblock %}
 
 {% block addscript %}
+ <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
       <script type="text/javascript">
       jQuery(document).ready(function () {
 

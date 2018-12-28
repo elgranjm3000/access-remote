@@ -351,6 +351,89 @@ $('.js-datepickertable').datepicker({
 
     });
 
+    $('.footable1').DataTable({
+           "bLengthChange":false,
+                  "bFilter":false,
+                  "bInfo":false,
+                  "bAutoWidth":false,
+                    "order": [],
+                      "paging": false,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        },
+         dom: 'Bfrtip',
+        buttons: [           
+            { 
+              extend: 'excelHtml5', 
+              footer: true,
+               attr: { 
+                  'class': 'btn btn-success',
+                },
+                text:'Excel',
+                exportOptions: {
+                    columns: ':visible',
+                    search: 'applied',
+                    order: 'applied'
+              }
+
+             }
+        ]
+
+    });
+
+
+
+    $('.footable2').DataTable({
+           "bLengthChange":false,
+                  "bFilter":true,
+                  "bInfo":false,
+                  "bAutoWidth":false,
+                    "order": [],
+                      "paging": true,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        },
+        initComplete: function () {
+            this.api().columns(0).every( function () {
+                var column = this;
+                var select = $('<select class="form-control"><option value=""></option></select>')
+                    .appendTo( $(column.header()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+
+
+        },
+         dom: 'Bfrtip',
+        buttons: [           
+            { 
+              extend: 'excelHtml5', 
+              footer: true,
+               attr: { 
+                  'class': 'btn btn-success',
+                },
+                text:'Excel',
+                exportOptions: {
+                    columns: ':visible',
+                    search: 'applied',
+                    order: 'applied'
+              }
+
+             }
+        ]
+
+    });
  $('.familia').DataTable({
            "bLengthChange":false,
                   "bFilter":true,
