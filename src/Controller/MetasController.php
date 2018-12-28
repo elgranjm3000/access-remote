@@ -13,7 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 /**
  * @Route("/metas")
  */
@@ -23,45 +24,72 @@ class MetasController extends AbstractController
 
 
     /**
-     * @Route("/graficos", name="metas_graficos", methods="GET")
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
+     * @Route("/graficos", name="metas_graficos",  methods="GET|POST")
      */
-    public function graficos(User1Repository $user1Repository, FacturasRepository $facturasRepository): Response
+    public function graficos(User1Repository $user1Repository, FacturasRepository $facturasRepository, Request $request): Response
     {
+
+    $mesactual = date("m");    
+
+  if ($request->isMethod('POST')) {
+    $mesactual = $_POST["valormes"];
+    
+  }
+
+$categoria = array();
+$ganacias = array();
+$utilidad = array();
+$metas = array();
             $usuario = $user1Repository->findAll();
             $facturas = $facturasRepository->findAll();
             foreach ($usuario as $value) {
-               $localidad['name'] = $value->getUsername();
+               $categoria[] = $value->getUsername();
                $idprincipal = $value->getId();
-
-$localidad["data"] = array();
-            for($i=1;$i<=12;$i++){
-                  $contar = 0;
  
-                $sql = "SELECT sum(detalles_factura.total) as total FROM facturas INNER JOIN detalles_factura ON facturas.id = detalles_factura.idfactura_id INNER JOIN clientes ON facturas.idcliente_id = clientes.id INNER JOIN app_users ON app_users.id = clientes.id_usuario_id  where month(facturas.fecha) = '$i' and app_users.id = $idprincipal and facturas.tipofactura = 'F'";         
+                $sql = "SELECT detalles_factura.total as total,detalles_factura.precio as precio,productos.costo as costo FROM facturas INNER JOIN detalles_factura ON facturas.id = detalles_factura.idfactura_id INNER JOIN clientes ON facturas.idcliente_id = clientes.id INNER JOIN app_users ON app_users.id = clientes.id_usuario_id INNER JOIN productos ON productos.id = detalles_factura.idproducto_id  where month(facturas.fecha) = '$mesactual' and app_users.id = $idprincipal and facturas.tipofactura = 'F'";         
                 $stmt = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
                 $stmt->execute();
                 $result = $stmt->fetchAll();
 
-                    foreach ($result as $key) {                        
-                       
-                        $contar = $contar + $key["total"];
+                $sumtotal = 0;
+                $utilidadvalor = 0;
+                    foreach ($result as $key) {  
+                        $iva =  $this->getParameter('ivareversa');
+                       $sumtotal = $sumtotal + $key["total"];
+                       $preciounitario = $key["precio"]/$iva;
+                       $utilidadvalor1 = $preciounitario - $key["costo"];
+                       $utilidadvalor = $utilidadvalor + $utilidadvalor1;
+                      
                        
                     }
-                $localidad["data"][] = array($i-1,$contar);
+
+                    $sql = "SELECT SUM(montoventas) as suma from metas where month(desde) = '$mesactual' and usuario_id = $idprincipal";
+                      $stmt = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+                    foreach ($result as $key) {  
+                        $metas[] = floatval($key["suma"]);
+                    }
+
+
+                      $ganacias[] = floatval($sumtotal);
+                      $utilidad[] = floatval($utilidadvalor);
 
             }
-                $generardatos[] = $localidad;
+      
+      $usuarios = $categoria;
 
-            }
-      $totalgeneral = $generardatos;
-          /*echo json_encode($totalgeneral);
-          exit;*/
+    
+
+ 
 
         
-return $this->render('graficos/index.html.twig', ['user' => $user1Repository->findAll(),'facturas'=>$facturasRepository->findAll(),'series'=>json_encode($totalgeneral)]);
+return $this->render('graficos/index.html.twig', ['user' => $user1Repository->findAll(),'facturas'=>$facturasRepository->findAll(),'usuariostotal'=>json_encode($usuarios),'ganacias'=>json_encode($ganacias),'utilidad'=>json_encode($utilidad),'metas'=>json_encode($metas)]);
     }
 
      /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/ganancias", name="metas_ganacias", methods="GET")
      */
     public function graficosganancias(User1Repository $user1Repository, FacturasRepository $facturasRepository): Response
@@ -105,6 +133,7 @@ return $this->render('graficos/ganancias.html.twig', ['user' => $user1Repository
     }
 
     /**
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/promedio", name="metas_promedios", methods="GET")
      */
     public function graficospromedios(User1Repository $user1Repository, FacturasRepository $facturasRepository): Response
@@ -136,6 +165,7 @@ return $this->render('graficos/promedio.html.twig', ['user' => $user1Repository-
     }
 
     /**
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/", name="metas_index", methods="GET")
      */
     public function index(MetasRepository $metasRepository): Response
@@ -144,6 +174,7 @@ return $this->render('metas/index.html.twig', ['metas' => $metasRepository->find
     }
 
     /**
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/new", name="metas_new", methods="GET|POST")
      */
     public function new(Request $request): Response
@@ -182,6 +213,7 @@ return $this->render('metas/index.html.twig', ['metas' => $metasRepository->find
     }
 
     /**
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}/edit", name="metas_edit", methods="GET|POST")
      */
     public function edit(Request $request, Metas $meta): Response
@@ -202,6 +234,7 @@ return $this->render('metas/index.html.twig', ['metas' => $metasRepository->find
     }
 
     /**
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}", name="metas_delete", methods="DELETE")
      */
     public function delete(Request $request, Metas $meta): Response

@@ -32,11 +32,34 @@
 {% endblock %}
 
 {% block body %}
+
 <div id="p6" class="panel">
-                    <div class="panel-heading"><span class="panel-title">Column Graph</span></div>
+
+
+                    <div class="panel-heading"><span class="panel-title">Column Graph</span>          </div>
                     <div class="panel-body pn">
+
                       <div class="row table-layout">
                         <div class="col-xs-12 va-m">
+                           <form method="post" class="form-control" style="margin-bottom:80px">
+                            <label>Seleccione el mes</label>
+                            <select class="form-control" name="valormes">
+                                <option value="1">Enero</option>
+                                <option value="2">Febrero</option>
+                                <option value="3">Marzo</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Mayo</option>
+                                <option value="6">Junio</option>
+                                <option value="7">Julio</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Septiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="12">Diciembre</option>
+                            </select>
+                            <input type="submit" name="buscar" value="Ver" class="btn btn-success">
+                            </form>
+          
                           <div id="usuarios" style="width: 100%; height:400px; margin: 0 auto"></div>
                         </div>
                        
@@ -74,21 +97,7 @@
 					    text: 'Vendedores respecto a la ventas'
 					  },
 					  xAxis: {
-					    categories: [
-                 'ENERO',
-                 'FEBRERO',
-                 'MARZO',
-                 'ABRIL',
-                 'MAYO',
-                 'JUNIO',
-                 'JULIO',
-                 'AGOSTO',
-                 'SEPTIEMBRE',
-                 'OCTUBRE',
-                 'NOVIEMBRE',
-                 'DICIEMBRE'
-                 
-        ],
+					    categories: {{ usuariostotal|raw() }},
         crosshair: true
 					  },
 					  yAxis: {
@@ -111,7 +120,24 @@
 				      borderWidth: 0
 				    }
 				  },
-						  series: {{ series|raw() }}
+						  series: [{
+                  name: 'Ganancias',
+                  data: {{ ganacias|raw() }}
+                },{
+                  name: 'Utilidad',
+                  data: {{ utilidad|raw() }}
+                },
+                 {
+        type: 'spline',
+        name: 'Metas',
+        data: {{ metas|raw() }},
+        marker: {
+            lineWidth: 2,
+            lineColor: Highcharts.getOptions().colors[3],
+            fillColor: 'white'
+        }
+    }
+                ]
                     });
                     }
 
