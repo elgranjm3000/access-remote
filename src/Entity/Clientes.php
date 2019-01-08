@@ -48,6 +48,8 @@ class Clientes
      */
     private $fechaNacimiento;
 
+    
+
     /**
      * @ORM\Column(type="text")
      */
@@ -87,6 +89,11 @@ class Clientes
      * @ORM\OneToMany(targetEntity="App\Entity\Facturas", mappedBy="idcliente", cascade={"persist", "remove"})
      */
     private $facturas;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $ingreso;
 
     public function __construct()
     {
@@ -288,4 +295,16 @@ class Clientes
     {
         return $this->nombre;
     }
+
+     public function getIngreso(): ?\DateTimeInterface
+     {
+         return $this->ingreso;
+     }
+
+     public function setIngreso(\DateTimeInterface $ingreso): self
+     {
+         $this->ingreso = $ingreso;
+
+         return $this;
+     }
 }

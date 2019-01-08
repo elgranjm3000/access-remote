@@ -38,6 +38,9 @@ class ClientesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+             $fecha= date("Y-m-d");
+            $cliente->setIngreso(new \DateTime($fecha));
             $em->persist($cliente);
             $em->flush();
 

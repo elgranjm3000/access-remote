@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Metas;
 use App\Entity\User;
+use App\Entity\Clientes;
 use App\Form\MetasType;
 use App\Repository\MetasRepository;
 use App\Repository\User1Repository;
 use App\Repository\FacturasRepository;
+use App\Repository\ClientesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -312,4 +314,79 @@ return $this->render('metas/index.html.twig', ['metas' => $metasRepository->find
 
         return $this->redirectToRoute('metas_index');
     }
+
+
+    /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
+     * @Route("/cliente/crecimiento", name="metas_crecimientos", methods="GET")
+     */
+    public function graficoscrecimiento(User1Repository $user1Repository, FacturasRepository $facturasRepository,ClientesRepository $clientesRepository): Response
+    {
+           
+                $categorias = array();
+                $activos = array();
+                $nuevos = array();
+                $tasa = array();
+                $inactivo = array();
+                $ratio = array();
+                $valores = array();
+                $crecimiento = array();
+                $sql = "SELECT  count(*) as cantidad, year(fecha) as anno FROM facturas GROUP BY anno";
+                $stmt = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+
+                    foreach ($result as $key) {  
+                        $anno = $key["anno"];
+                        $categorias[] = $key["anno"];
+                        $nuevos[] = floatval($key["cantidad"]);
+                        $calculonuevo = floatval($key["cantidad"]);
+                        $activosgeneral = 0;
+                        $sqlactivosbuscar = "SELECT * from facturas WHERE year(fecha) = $anno GROUP BY idcliente_id ";
+                            $stmt1 = $this->getDoctrine()->getManager()->getConnection()->prepare($sqlactivosbuscar);
+                            $stmt1->execute();
+                            $result1 = $stmt1->fetchAll();
+                            foreach ($result1 as $totalactivo) {
+                                $activosgeneral = $activosgeneral + 1;
+                            }
+                            $activos[] = floatval($activosgeneral);
+                            $activocalculo = $calculonuevo/$activosgeneral;
+                            $tasa[] = $activocalculo;
+
+                            $clientes = $clientesRepository->findAll();
+                            $diaactual = date("Y-m-d");
+                            $suminactivo = 0;
+                            foreach ($clientes as $key) {
+                                    $idclientes = $key->getId();
+                                    $sqlinactivos = "SELECT fecha, year(fecha) as anno, TIMESTAMPDIFF(MONTH, fecha, '$diaactual' ) as meses FROM facturas where idcliente_id = ".$idclientes ." order by fecha DESC LIMIT 1";
+                                     $stmt2 = $this->getDoctrine()->getManager()->getConnection()->prepare($sqlinactivos);
+                                     $stmt2->execute();
+                                    $result2 = $stmt2->fetchAll();
+                               
+
+                                       
+                                        foreach ($result2 as $k) {
+                                          
+                                            if(floatval($k["meses"]) > 3 ){
+                                                $suminactivo = $suminactivo + 1;
+                                            }
+                                        }
+                              
+                            }
+
+                            $inactivo[] = $suminactivo; 
+                            $ratiovalor = $suminactivo/$activosgeneral;
+                            $ratio[] = $suminactivo/$activosgeneral;
+                            $crecimientovalor = $activocalculo-$ratiovalor;
+                            $crecimiento[] = $activocalculo-$ratiovalor;
+
+                $valores[] = array("anno"=>$anno,"activos"=>$activosgeneral,"nuevos"=>$calculonuevo,"inactivo"=>$suminactivo,"tasa"=>$activocalculo,"ratio"=>$ratiovalor,"crecimiento"=>$crecimientovalor);
+
+                    }
+                   
+       
+                   
+            return $this->render('graficos/crecimiento.html.twig',['categorias'=>json_encode($categorias),'activos'=>json_encode($activos),'nuevos'=>json_encode($nuevos),'tasa'=> json_encode($tasa),'inactivo'=> json_encode($inactivo),'ratio'=> json_encode($ratio),'crecimiento'=>json_encode($crecimiento),"tabla"=>$valores]);
+    }
+
 }

@@ -107,7 +107,7 @@
            
 
              {% if is_granted('ROLE_ADMIN') %}
-                 <li><a title="Clientes" href="{{ path('productos_index') }}" ><span class="fa fa-product-hunt" aria-hidden="true"></span><span class="sidebar-title">Productos</span><span class="caret"></span></a>
+                 <li><a title="Productos" href="{{ path('productos_index') }}" ><span class="fa fa-product-hunt" aria-hidden="true"></span><span class="sidebar-title">Productos</span><span class="caret"></span></a>
               
                 </li>
 
@@ -115,36 +115,36 @@
 
                 </li>
 
-                <li><a title="Clientes" href="{{ path('familia_index') }}" ><span class="fa fa-users" aria-hidden="true"></span><span class="sidebar-title">Familia</span><span class="caret"></span></a>
+                <li><a title="Familia" href="{{ path('familia_index') }}" ><span class="fa fa-users" aria-hidden="true"></span><span class="sidebar-title">Familia</span><span class="caret"></span></a>
               
                 </li>
 
-                <li><a title="Clientes" href="{{ path('almacen_index') }}" ><span class="fa fa-cube" aria-hidden="true"></span><span class="sidebar-title">Almacenes</span><span class="caret"></span></a>
+                <li><a title="Almacenes" href="{{ path('almacen_index') }}" ><span class="fa fa-cube" aria-hidden="true"></span><span class="sidebar-title">Almacenes</span><span class="caret"></span></a>
               
                 </li>
 
-   <li><a title="Clientes" href="{{ path('ingresos_index') }}" ><span class="fa fa-product-hunt" aria-hidden="true"></span><span class="sidebar-title">Ingresar Productos</span><span class="caret"></span></a>
+   <li><a title="Ingreso de productos" href="{{ path('ingresos_index') }}" ><span class="fa fa-product-hunt" aria-hidden="true"></span><span class="sidebar-title">Ingresar Productos</span><span class="caret"></span></a>
               
 
-                <li><a title="Movimientos" href="{{ path('movimientos_almacen_index') }}" ><span class="glyphicon glyphicon-export" aria-hidden="true"></span><span class="sidebar-title">Movimientos Almacenes</span><span class="caret"></span></a>
+                <li><a title="Movimientos de almacen" href="{{ path('movimientos_almacen_index') }}" ><span class="glyphicon glyphicon-export" aria-hidden="true"></span><span class="sidebar-title">Movimientos Almacenes</span><span class="caret"></span></a>
               
                 </li>
           {% endif %}   
-    <li><a title="Clientes" href="{{ path('facturas_index') }}" ><span class="fa fa-bookmark" aria-hidden="true"></span><span class="sidebar-title">Facturas</span><span class="caret"></span></a>
+    <li><a title="Facturas" href="{{ path('facturas_index') }}" ><span class="fa fa-bookmark" aria-hidden="true"></span><span class="sidebar-title">Facturas</span><span class="caret"></span></a>
               
                 </li>
 
 
-        <li><a title="Clientes" href="{{ path('cotizador_index') }}" ><span class="glyphicon glyphicon-menu-right " aria-hidden="true"></span><span class="sidebar-title">Cotizador</span><span class="caret"></span></a>
+        <li><a title="Cotizador" href="{{ path('cotizador_index') }}" ><span class="glyphicon glyphicon-menu-right " aria-hidden="true"></span><span class="sidebar-title">Cotizador</span><span class="caret"></span></a>
               
                 </li>
 
 
 
   {% if is_granted('ROLE_ADMIN') %}
-    <li><a title="Clientes" href="{{ path('descuento_index') }}" ><span class="fa fa-percent" aria-hidden="true"></span><span class="sidebar-title">Descuentos</span><span class="caret"></span></a>           </li>
+    <li><a title="Descuentos" href="{{ path('descuento_index') }}" ><span class="fa fa-percent" aria-hidden="true"></span><span class="sidebar-title">Descuentos</span><span class="caret"></span></a>           </li>
 
-                <li><a title="Clientes" href="{{ path('movimientos_depositos_index') }}" ><span class=" fa fa-plus-square-o" aria-hidden="true"></span><span class="sidebar-title">Depositos</span><span class="caret"></span></a>
+                <li><a title="Movimientos" href="{{ path('movimientos_depositos_index') }}" ><span class=" fa fa-plus-square-o" aria-hidden="true"></span><span class="sidebar-title">Depositos</span><span class="caret"></span></a>
               
                 </li>
       {% endif %}   
@@ -215,6 +215,10 @@
                 
                 <li><a href="{{ path('metas_ganacias') }}">
                   <span class=" glyphicon glyphicon-tag"></span>Ganancias en promedio</a>
+                </li>
+
+                <li><a href="{{ path('metas_crecimientos') }}">
+                  <span class=" glyphicon glyphicon-tag"></span>Crecimiento por clientes</a>
                 </li>
               </ul>
                </li>

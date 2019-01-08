@@ -1,0 +1,199 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Ventas por usuarios{% endblock %}
+
+{% block header %}
+
+ <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Graficos</a></li>
+              <li class="crumb-trail">Metas</li>
+            </ol>
+          </div>
+          
+        </header>
+         <header id="topbar" class="ph10">
+          <div class="topbar-left">
+            <ul class="nav nav-list nav-list-topbar pull-left">
+              <li class="active"><a href="#">Graficos</a></li>
+              
+            </ul>
+          </div>
+         
+        </header>
+
+<div class="content-header">
+                <h2><b class="text-primary">Crecimiento por clientes</b>
+                </h2>
+              
+              </div>
+{% endblock %}
+
+{% block body %}
+<table  class="table table-bordered mbn footable">    
+  <thead>
+      <tr>
+          <td>AÑO</td>        
+          {% for valores in tabla %}
+            <td>{{ valores.anno}}</td>
+          {% endfor %}
+      </tr>
+  </thead>
+  <tbody>
+
+          <tr>
+        <td>Clientes nuevos</td>
+         {% for valores in tabla %}
+            <td>{{ valores.nuevos}}</td>
+          {% endfor %}
+    </tr>
+    
+    <tr>
+        <td>Clientes totales activo</td>
+         {% for valores in tabla %}
+            <td>{{ valores.activos}}</td>
+          {% endfor %}
+    </tr>
+
+    <tr>
+        <td>Clientes que no compraron</td>
+         {% for valores in tabla %}
+            <td>{{ valores.inactivo}}</td>
+          {% endfor %}
+    </tr>
+
+
+  <tr>
+        <td>Tasa de adquisicion</td>
+         {% for valores in tabla %}
+            <td>{{ valores.tasa}}</td>
+          {% endfor %}
+    </tr>
+
+      <tr>
+        <td>Ratio de perdida</td>
+         {% for valores in tabla %}
+            <td>{{ valores.ratio}}</td>
+          {% endfor %}
+    </tr>
+
+      <tr>
+        <td>Crecimiento</td>
+         {% for valores in tabla %}
+            <td>{{ valores.crecimiento}}</td>
+          {% endfor %}
+    </tr>
+
+{#    {% for ventas in totales%}
+      <tr>     
+        <td>{{ventas.mes}}</td>
+        <td>{{ventas.usuario }}</td>
+        <td>{{ventas.totalventas|number_format(2, '.', ',') }}</td>
+        <td>{{ventas.promedio|number_format(2, '.', ',') }}</td>         
+      </tr>
+    {% endfor %}#}
+    </tbody>
+</table>
+
+<div id="p6" class="panel">
+                    <div class="panel-heading"><span class="panel-title">Control de promedios</span></div>
+                    <div class="panel-body pn">
+                      <div class="row table-layout">
+                        <div class="col-xs-12 va-m">
+                          <div id="usuarios" style="width: 100%; height:400px; margin: 0 auto"></div>
+                        </div>
+                       
+                      </div>
+                    </div>
+                  
+                  </div>
+
+{% endblock %}
+
+{% block addscript %}
+ <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+      <script type="text/javascript">
+      jQuery(document).ready(function () {
+
+        
+       /* demoHighCharts.init();*/
+        
+        // Init plugins for ".calendar-widget"
+        // plugins: FullCalendar
+        //
+          var highColors = [bgInfo, bgPrimary, bgSuccess, bgWarning,
+            bgDanger, bgSuccess, bgSystem, bgDark
+        ];
+        var usuarios = $('#usuarios');
+                  
+                    if (usuarios.length) {
+                        $('#usuarios').highcharts({
+                        chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Grafico de crecimiento con clientes'
+    },
+    
+    xAxis: {
+        categories: {{ categorias|raw() }},
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Totales'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Clientes totales activos',
+        data: {{ activos|raw() }}
+    },{
+      name: 'Clientes totales nuevos',
+        data: {{ nuevos|raw() }}
+      },
+      {
+      name: 'Tasa de adquisicion',
+        data: {{ tasa|raw() }}
+      },{
+        name: 'Clientes que no compraron',
+        data: {{ inactivo|raw() }}
+      },{
+        name: 'Ratio de perdidas',
+        data: {{ ratio|raw() }}
+      }
+      ,{
+          type: 'spline',
+        name: 'Crecimiento',
+        data: {{ crecimiento|raw() }}, marker: {
+            lineWidth: 2,
+            lineColor: Highcharts.getOptions().colors[3],
+            fillColor: 'white'
+        }
+      }
+      ]
+                        
+                    });
+                    }
+
+     
+      });
+    </script>
+    {% endblock %}

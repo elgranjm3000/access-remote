@@ -53,6 +53,18 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('clientes_index');
   
     }
+
+    if ($authChecker->isGranted('ROLE_FACTURA')  ) {
+        
+            return $this->redirectToRoute('clientes_index');
+  
+    }
+
+    if ($authChecker->isGranted('ROLE_ALMACEN') ) {
+        
+            return $this->redirectToRoute('metas_graficos');
+  
+    }
   if ($authChecker->isGranted('ROLE_ADMIN')) {
         
             //return $this->render('admin/index.html.twig');
