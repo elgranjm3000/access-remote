@@ -389,4 +389,135 @@ return $this->render('metas/index.html.twig', ['metas' => $metasRepository->find
             return $this->render('graficos/crecimiento.html.twig',['categorias'=>json_encode($categorias),'activos'=>json_encode($activos),'nuevos'=>json_encode($nuevos),'tasa'=> json_encode($tasa),'inactivo'=> json_encode($inactivo),'ratio'=> json_encode($ratio),'crecimiento'=>json_encode($crecimiento),"tabla"=>$valores]);
     }
 
+
+    /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
+     * @Route("/cliente/mantenimiento", name="metas_mantenimientos", methods="GET")
+     */
+    public function graficosmantenimiento(User1Repository $user1Repository, FacturasRepository $facturasRepository,ClientesRepository $clientesRepository): Response
+    {
+           
+                $categorias = array();
+                $activos = array();
+                $nuevos = array();
+                $tasa = array();
+                $inactivo = array();
+                $ratio = array();
+                $valores = array();
+                $crecimiento = array();
+
+                for ($i=1; $i <= 4 ; $i++) {
+                    $annoactual = 2018;
+                        if($i == 1){
+                            $meses = "ENERO,FEBRERO,MARZO";
+                        } 
+                        if($i == 2){
+                            $meses = "ABRIL,MAYO,JUNIO";
+                        } 
+                        if($i == 3){
+                            $meses = "JULIO,AGOSTO,SEPTIEMBRE";
+                        }
+                        if($i == 4){
+                            $meses = "OCTUBRE,NOVIEMBRE,DICIEMBRE";
+                        }  
+                      $categorias[] = $meses;
+                     $sql = "SELECT  count(*) as cantidad, QUARTER(ingreso) as trimestre FROM clientes  where QUARTER(ingreso) = ".$i;
+                    $stmt = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
+                    $stmt->execute();
+                    $result = $stmt->fetchAll();
+                    foreach ($result as $key) {  
+                        $nuevos[] = floatval($key["cantidad"]);
+                         $calculonuevo = floatval($key["cantidad"]);
+                       }
+                       $activosgeneral = 0;
+                       $sqlactivosbuscar = "SELECT QUARTER(fecha) from facturas WHERE year(fecha) = ".$annoactual." and QUARTER(fecha) >= ".$i." GROUP BY idcliente_id ";
+                            $stmt1 = $this->getDoctrine()->getManager()->getConnection()->prepare($sqlactivosbuscar);
+                            $stmt1->execute();
+                            $result1 = $stmt1->fetchAll();
+                            foreach ($result1 as $totalactivo) {
+                                $activosgeneral = $activosgeneral + 1;
+                            }
+                            $activos[] = floatval($activosgeneral);
+
+                     $clientes = $clientesRepository->findAll();
+                            $diaactual = date("Y-m-d");
+                            $suminactivo = 0;
+                            foreach ($clientes as $key) {
+                                    $idclientes = $key->getId();
+                                    $sqlinactivos = "SELECT fecha, year(fecha) as anno, TIMESTAMPDIFF(MONTH, fecha, '$diaactual' ) as meses, QUARTER(fecha) FROM facturas where idcliente_id = ".$idclientes ."  and TIMESTAMPDIFF(MONTH, fecha,'$diaactual' ) >= 3 order by fecha DESC LIMIT 1 ";
+                                     $stmt2 = $this->getDoctrine()->getManager()->getConnection()->prepare($sqlinactivos);
+                                     $stmt2->execute();
+                                    $result2 = $stmt2->fetchAll();
+                               
+
+                                       
+                                        foreach ($result2 as $k) {
+                                          
+                                                $suminactivo = $suminactivo + 1;
+                                            
+                                        }
+                              
+                             
+                            }
+                              $inactivo[] = $suminactivo; 
+                           
+
+                }
+
+        
+
+               $email = "SELECT clientes.nombre as nombre, clientes.contacto_principal, clientes.telefono_local, clientes.correo, facturas.fecha, year(facturas.fecha) as anno, TIMESTAMPDIFF(MONTH, facturas.fecha,'$diaactual' ) as meses, QUARTER(facturas.fecha),facturas.idcliente_id,app_users.id,clientes.id_usuario_id,app_users.username FROM facturas INNER JOIN clientes ON clientes.id = facturas.idcliente_id INNER JOIN app_users ON app_users.id = clientes.id_usuario_id where TIMESTAMPDIFF(MONTH, facturas.fecha,'$diaactual' ) >= 3 GROUP by facturas.idcliente_id ORDER by facturas.fecha asc";
+
+
+                $stmtemail = $this->getDoctrine()->getManager()->getConnection()->prepare($email);
+                $stmtemail->execute();
+                $emailsend = $stmtemail->fetchAll();
+                $emailenviar = array();
+                foreach ($emailsend as $key ) {
+                    $emailenviar[] = array("nombre"=>$key["nombre"]);
+                }
+                   
+     
+                   
+            return $this->render('graficos/mantenimiento.html.twig',['categorias'=>json_encode($categorias),'activos'=>json_encode($activos),'nuevos'=>json_encode($nuevos),'tasa'=> json_encode($tasa),'inactivo'=> json_encode($inactivo),'ratio'=> json_encode($ratio),'crecimiento'=>json_encode($crecimiento),"tabla"=>$valores,'emailsend' =>$emailsend]);
+    }
+
+   /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
+     * @Route("/cliente/email", name="correo", methods="POST")
+     */
+    public function correo(\Swift_Mailer $mailer)
+{
+    $asunto = $_POST["asunto"];
+
+    $message = (new \Swift_Message($asunto))
+        ->setFrom('admin@wiu.tqm.mybluehost.me')
+        ->setTo($_POST["correo"])
+        ->setBody(
+            $this->renderView(
+                // templates/emails/registration.html.twig
+                'emails/registration.html.twig',
+                array('name' => $_POST["mensaje"])
+            ),
+            'text/html'
+        )
+        /*
+         * If you also want to include a plaintext version of the message
+        ->addPart(
+            $this->renderView(
+                'emails/registration.txt.twig',
+                array('name' => $name)
+            ),
+            'text/plain'
+        )
+        */
+    ;
+
+    $mailer->send($message);
+
+    echo json_encode($_POST["correo"]);
+    exit;
+
+}
+
 }

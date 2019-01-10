@@ -220,6 +220,10 @@
                 <li><a href="{{ path('metas_crecimientos') }}">
                   <span class=" glyphicon glyphicon-tag"></span>Crecimiento por clientes</a>
                 </li>
+
+                 <li><a href="{{ path('metas_mantenimientos') }}">
+                  <span class=" glyphicon glyphicon-tag"></span>Crecimiento por trimestre</a>
+                </li>
               </ul>
                </li>
            
@@ -380,7 +384,15 @@ $('.js-datepickertable').datepicker({
                     order: 'applied'
               }
 
-             }
+             },
+
+              {
+                extend: 'alert',
+                text: 'Enviar email',
+                attr: { 
+                  'class': 'sendemail btn btn-success',
+                },
+            }
         ]
 
     });
@@ -438,6 +450,15 @@ $('.js-datepickertable').datepicker({
         ]
 
     });
+ 
+
+    $.fn.dataTable.ext.buttons.alert = {
+    className: 'buttons-alert',
+ 
+    action: function ( e, dt, node, config ) {
+        $("#buttonmodal").click();
+    }
+};
  $('.familia').DataTable({
            "bLengthChange":false,
                   "bFilter":true,
@@ -498,7 +519,6 @@ $('.js-datepickertable').datepicker({
 
 $('.producto').select2();
 
-       
 
 
       });
