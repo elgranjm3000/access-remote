@@ -106,19 +106,19 @@
                 </li>
            
 
-             {% if is_granted('ROLE_ADMIN') %}
+            
                  <li><a title="Productos" href="{{ path('productos_index') }}" ><span class="fa fa-product-hunt" aria-hidden="true"></span><span class="sidebar-title">Productos</span><span class="caret"></span></a>
               
                 </li>
 
 
-
+ {% if is_granted('ROLE_ADMIN') %}
                 </li>
 
                 <li><a title="Familia" href="{{ path('familia_index') }}" ><span class="fa fa-users" aria-hidden="true"></span><span class="sidebar-title">Familia</span><span class="caret"></span></a>
-              
+           
                 </li>
-
+{% endif %}  
                 <li><a title="Almacenes" href="{{ path('almacen_index') }}" ><span class="fa fa-cube" aria-hidden="true"></span><span class="sidebar-title">Almacenes</span><span class="caret"></span></a>
               
                 </li>
@@ -129,7 +129,7 @@
                 <li><a title="Movimientos de almacen" href="{{ path('movimientos_almacen_index') }}" ><span class="glyphicon glyphicon-export" aria-hidden="true"></span><span class="sidebar-title">Movimientos Almacenes</span><span class="caret"></span></a>
               
                 </li>
-          {% endif %}   
+          
     <li><a title="Facturas" href="{{ path('facturas_index') }}" ><span class="fa fa-bookmark" aria-hidden="true"></span><span class="sidebar-title">Facturas</span><span class="caret"></span></a>
               
                 </li>

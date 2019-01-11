@@ -232,7 +232,7 @@ return $this->render('graficos/promedio.html.twig', ['user' => $user1Repository-
     }
 
     /**
-    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
+    * @Security("is_granted('ROLE_ADMIN')")
      * @Route("/", name="metas_index", methods="GET")
      */
     public function index(MetasRepository $metasRepository): Response
@@ -272,6 +272,7 @@ return $this->render('metas/index.html.twig', ['metas' => $metasRepository->find
     }
 
     /**
+    * @Security("is_granted('ROLE_ADMIN') ")
      * @Route("/{id}", name="metas_show", methods="GET")
      */
     public function show(Metas $meta): Response
@@ -280,7 +281,7 @@ return $this->render('metas/index.html.twig', ['metas' => $metasRepository->find
     }
 
     /**
-    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
+    * @Security("is_granted('ROLE_ADMIN') ")
      * @Route("/{id}/edit", name="metas_edit", methods="GET|POST")
      */
     public function edit(Request $request, Metas $meta): Response
@@ -301,7 +302,7 @@ return $this->render('metas/index.html.twig', ['metas' => $metasRepository->find
     }
 
     /**
-    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
+    * @Security("is_granted('ROLE_ADMIN')")
      * @Route("/{id}", name="metas_delete", methods="DELETE")
      */
     public function delete(Request $request, Metas $meta): Response
@@ -489,15 +490,16 @@ return $this->render('metas/index.html.twig', ['metas' => $metasRepository->find
     public function correo(\Swift_Mailer $mailer)
 {
     $asunto = $_POST["asunto"];
-
+    $mensaje = $_POST["mensaje"];
+    $correo = $_POST["correo"];
     $message = (new \Swift_Message($asunto))
         ->setFrom('admin@wiu.tqm.mybluehost.me')
-        ->setTo($_POST["correo"])
+        ->setTo($correo)
         ->setBody(
             $this->renderView(
                 // templates/emails/registration.html.twig
                 'emails/registration.html.twig',
-                array('name' => $_POST["mensaje"])
+                array('name' => $mensaje)
             ),
             'text/html'
         )
@@ -515,9 +517,8 @@ return $this->render('metas/index.html.twig', ['metas' => $metasRepository->find
 
     $mailer->send($message);
 
-    echo json_encode($_POST["correo"]);
-    exit;
 
+   return new JsonResponse($correo);
 }
 
 }

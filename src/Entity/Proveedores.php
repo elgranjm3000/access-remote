@@ -39,7 +39,7 @@ class Proveedores
     private $telefonoOfic;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $telefonoParticular;
 

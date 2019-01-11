@@ -116,14 +116,14 @@
                   var body = $("#message-text").val();
                  // console.log( 'Data in index: '+index+' is: '+value );
                  console.log(value);
-                toastr.success("El mensaje fue enviado a " + value);
+              
                 $.ajax( {
                     type: "POST",
                     url: "{{ path('correo') }}",
                     data: {"asunto":asunto, "correo":value,"mensaje":body},
                     success: function( response ) {
                     console.log( response );
-                    /*toastr.success("El mensaje fue enviado");*/
+                    toastr.success("El mensaje fue enviado a "+response);
                    /* $(".cerrar").click();
                     setTimeout("location.reload()", 5000);*/
 

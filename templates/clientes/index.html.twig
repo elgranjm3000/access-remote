@@ -49,17 +49,12 @@
             <tr>
                 
                 <th>Nombre</th>
-                <th>Nit</th>                
-                <th>Correo</th>                                
-                <th>Zona</th>
-                <th>Dpto</th>
-                <th>Mcipio.</th>
-                <th>Dir.</th>
-                <th hidden="hidden">Contacto</th>
-                <th hidden="hidden">F.Nac.</th>
-                <th hidden="hidden">Notas</th>
-                <th>Movil</th>                
-                <th hidden="hidden">Local</th>                                
+                <th>Nit</th>    
+                <th>Vendedor</th>   
+                <th>Contacto Principal</th>         
+                <th>Correo</th>                     
+                <th>Telefono Movil</th>
+                <th>Direcciòn</th>                             
                 <th>Acciones</th>
               
             </tr>
@@ -70,16 +65,11 @@
                 
                 <td>{{ cliente.nombre }}</td>
                 <td>{{ cliente.nit }}</td>                
+                <td>{{ cliente.idUsuario.username }}</td> 
+                <td>{{ cliente.contactoPrincipal }}</td>
                 <td>{{ cliente.correo }}</td>
-                <td>{{ cliente.zona }}</td>
-                <td>{{ cliente.dpto }}</td>  
-                <td>{{ cliente.municipio }}</td>
+                <td>{{ cliente.telefonoMovil }}</td>
                 <td>{{ cliente.direccion|raw }}</td>  
-                <td hidden="hidden">{{ cliente.contactoPrincipal }}</td>  
-                <td hidden="hidden">{{ cliente.fechaNacimiento ? cliente.fechaNacimiento|date('Y-m-d') : '' }}</td>
-                <td hidden="hidden">{{ cliente.comentarios }}</td>  
-                <td>{{ cliente.telefonoMovil }}</td>  
-                <td hidden="hidden">{{ cliente.telefonoLocal }}</td>  
                 <td>
                     <a title="Detalles clientes" data-toggle="tooltip" href="{{ path('clientes_show', {'id': cliente.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
                     <a data-toggle="tooltip" title="Editar cliente" href="{{ path('clientes_edit', {'id': cliente.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>

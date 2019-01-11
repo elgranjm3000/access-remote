@@ -76,7 +76,7 @@
          
                 <td>{{ "%08d" | format(detalles_factura.idproducto.id) }}</td>
                 <td>{{ detalles_factura.idproducto.nombre }}</td>
-                <td>{{ detalles_factura.precio }}</td>
+                <td>{{ detalles_factura.idproducto.costo }}</td>
                 <td>{{ detalles_factura.cantidadactual }}</td>
                  <td>{{ detalles_factura.cantidad }}</td>
                 <td>{{detalles_factura.idfactura.fecha ? detalles_factura.idfactura.fecha|date('d/m/Y') : ''  }}</td>

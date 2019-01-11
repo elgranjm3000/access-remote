@@ -218,7 +218,7 @@ class ProductosController extends AbstractController
     }
 
     /**
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_ADMIN') or is_granted('ROLE_ALMACEN')")
      * @Route("/new", name="productos_new", methods="GET|POST")
      */
     public function new(Request $request): Response
@@ -289,7 +289,7 @@ class ProductosController extends AbstractController
     }
 
     /**
-    * @Security("has_role('ROLE_ADMIN')")
+    * @Security("has_role('ROLE_ADMIN') or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}/edit", name="productos_edit", methods="GET|POST")
      */
     public function edit(Request $request, Productos $producto): Response
