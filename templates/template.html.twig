@@ -96,6 +96,30 @@
             <li class="sidebar-label pt35"></li>
             
             <li class="sidebar-label pt35"></li>
+
+
+                <li><a title="Graficos" href="#" class="accordion-toggle"><span class="  glyphicon glyphicon-list-alt"></span><span class="sidebar-title">Graficos</span><span class="caret"></span></a>
+              <ul class="nav sub-nav" style="">
+                 
+
+                <li><a href="{{ path('metas_graficos') }}">
+                  <span class=" glyphicon glyphicon-tag"></span>Venta por mes</a>
+                </li>
+                
+                <li><a href="{{ path('metas_ganacias') }}">
+                  <span class=" glyphicon glyphicon-tag"></span>Ganancias en promedio</a>
+                </li>
+
+                <li><a href="{{ path('metas_crecimientos') }}">
+                  <span class=" glyphicon glyphicon-tag"></span>Crecimiento por clientes</a>
+                </li>
+
+                 <li><a href="{{ path('metas_mantenimientos') }}">
+                  <span class=" glyphicon glyphicon-tag"></span>Crecimiento por trimestre</a>
+                </li>
+              </ul>
+               </li>
+
             
             {% if is_granted('ROLE_ADMIN') %}
             <li><a title="Proveedores" href="{{ path('proveedores_index') }}" ><span class="fa fa-building"></span><span class="sidebar-title">Proveedores</span><span class="caret"></span></a>             
@@ -153,6 +177,7 @@
               
                 </li>#}
 
+
                 <li><a href="#" class="accordion-toggle"><span class="glyphicon glyphicon-fire"></span><span class="sidebar-title">Reportes</span><span class="caret"></span></a>
               <ul class="nav sub-nav" style="">
                   {% if is_granted('ROLE_ADMIN') %}
@@ -205,27 +230,7 @@
                </li>
                 <li><a href="{{ path('metas_index') }}" ><span class="glyphicon glyphicon-bookmark"></span><span class="sidebar-title">Metas</span><span class="caret"></span></a></li>
              
-              <li><a href="#" class="accordion-toggle"><span class="  glyphicon glyphicon-list-alt"></span><span class="sidebar-title">Graficos</span><span class="caret"></span></a>
-              <ul class="nav sub-nav" style="">
-                 
-
-                <li><a href="{{ path('metas_graficos') }}">
-                  <span class=" glyphicon glyphicon-tag"></span>Venta por mes</a>
-                </li>
-                
-                <li><a href="{{ path('metas_ganacias') }}">
-                  <span class=" glyphicon glyphicon-tag"></span>Ganancias en promedio</a>
-                </li>
-
-                <li><a href="{{ path('metas_crecimientos') }}">
-                  <span class=" glyphicon glyphicon-tag"></span>Crecimiento por clientes</a>
-                </li>
-
-                 <li><a href="{{ path('metas_mantenimientos') }}">
-                  <span class=" glyphicon glyphicon-tag"></span>Crecimiento por trimestre</a>
-                </li>
-              </ul>
-               </li>
+              
            
             <li class="sidebar-label pt35"></li>
             
