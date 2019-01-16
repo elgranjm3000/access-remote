@@ -533,6 +533,22 @@ if($factura->getDias() > 0){
     public function delete(Request $request, Facturas $factura): Response
     {
         if ($this->isCsrfTokenValid('delete'.$factura->getId(), $request->request->get('_token'))) {
+
+     foreach ($factura->getDetallesFacturas() as $nuevo){
+               $cantidad = $nuevo->getCantidad();
+
+        foreach ($nuevo->getIdproducto()->getAgruparproductos() as $value) {
+            $idstock = $value->getId();
+        $idcantidaactual = $value->getCantidad()+$cantidad;
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $entityManager->getRepository(Agruparproducto::class)->find($idstock);
+        $product->setCantidad($idcantidaactual);
+        $entityManager->flush();
+        }
+     }
+    
+
+
             $em = $this->getDoctrine()->getManager();
             $em->remove($factura);
             $em->flush();

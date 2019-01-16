@@ -83,7 +83,7 @@
                 <td>{% set existencia = detalles_factura.cantidadactual-detalles_factura.cantidad %}
                   {{ existencia }}
                 </td>
-                <td>{{ detalles_factura.precio*existencia }}</td>
+                <td>{{ existencia-detalles_factura.idproducto.costo }}</td>
 
 
             </tr>

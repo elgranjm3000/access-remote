@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\DetallesFactura;
+use App\Entity\Agruparproducto;
+
 use App\Form\DetallesFacturaType;
 use App\Repository\DetallesFacturaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,6 +30,17 @@ class DetallesFacturaController extends AbstractController
       
         $entityManager = $this->getDoctrine();     
         $tareas = $entityManager->getRepository(DetallesFactura::class)->find($_GET['id']);
+        $cantidad = $tareas->getCantidad();
+        foreach ($tareas->getIdproducto()->getAgruparproductos() as $value) {
+        $idstock = $value->getId();
+        $idcantidaactual = $value->getCantidad()+$cantidad;
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $entityManager->getRepository(Agruparproducto::class)->find($idstock);
+        $product->setCantidad($idcantidaactual);
+        $entityManager->flush();
+        }
+
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($tareas);
         $em->flush();

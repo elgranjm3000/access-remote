@@ -79,7 +79,7 @@
         {% for factura in facturas %}
 
         {% set diapasado =  date( factura.fecha ).diff(date('now')) %}
-        {% set diferencia =  date( factura.fechavencimiento ).diff(date('now')) %}
+        {% set diferencia =  date( 'now' ).diff(date(factura.fechavencimiento )) %}
         {% set diasRestantes = diferencia.days %}
         {% if diasRestantes == 1 %}
             {% set diastotal = 1 %}
@@ -106,7 +106,14 @@
                       {{ cobrar }}
                 </td>
                  <td>{{ factura.fecha ? factura.fechavencimiento|date('d/m/Y') : ''  }}</td>        
-                  <td>Dias pasado: <b>{{ diapasado.days }}</b><br> Dias restante: <b> {{ diasRestantes  }}</b></td>
+                  <td>
+{% if factura.fechavencimiento|date('Y-m-d') < "now"|date("Y-m-d")   %}
+    -{{ diasRestantes  }}
+{% else %}
+    +{{ diasRestantes  }}
+{% endif %}
+
+                   </td>
                      <td>{{ factura.dias }}</td>
         {% endif %}
 

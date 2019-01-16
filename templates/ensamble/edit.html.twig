@@ -56,6 +56,15 @@ var total = 0;
 var descuento = 0;
  var table = $('.footable').DataTable();
 
+  var datossuma =  table.column( 3 ).data().sum();
+  var cantidad = table.column(1).data().sum();
+  console.log(cantidad);
+  $(".cantidadtotales").html("total de ensamble:  "+cantidad);
+  $(".costototal").html("Costo Total de Producto:  "+datossuma);
+  var unidad = datossuma/cantidad;
+   $(".unidad").html("Costo por unidad:  "+unidad.toFixed(2));
+
+
     $("#ensamble1_idproducto").change(function() {
        $.get( "{{ path('buscarproducto') }}", { iditems:$(this).val()}).done(function( data ) {
 
@@ -102,6 +111,14 @@ var descuento = 0;
   console.log(precio);
     $(".precioventa").val(precio.toFixed(2));  
 
+ var datossuma =  table.column( 3 ).data().sum();
+  var cantidad = table.column(1).data().sum();
+  console.log(cantidad);
+  $(".cantidadtotales").html("total de ensamble:  "+cantidad);
+  $(".costototal").html("Costo Total de Producto:  "+datossuma);
+  var unidad = datossuma/cantidad;
+   $(".unidad").html("Costo por unidad:  "+unidad.toFixed(2));
+
 
           });
 
@@ -138,6 +155,15 @@ if(idfound > 0){
   var precio = datossuma/table.column( 1 ).data().sum()
   console.log(precio);
     $(".precioventa").val(precio.toFixed(2));  
+
+     var datossuma =  table.column( 3 ).data().sum();
+  var cantidad = table.column(1).data().sum();
+  console.log(cantidad);
+  $(".cantidadtotales").html("total de ensamble:  "+cantidad);
+  $(".costototal").html("Costo Total de Producto:  "+datossuma);
+  var unidad = datossuma/cantidad;
+   $(".unidad").html("Costo por unidad:  "+unidad.toFixed(2));
+
 
 
           }
