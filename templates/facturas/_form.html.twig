@@ -137,6 +137,8 @@
                                               <td>{{ productos.total }}</td>
                                               <td>{{ productos.ordenPromocion }}
                                                 <input type="hidden" value="{{ productos.total }}" name="total[]">
+                                                <input type="hidden" value="{{ productos.precioreal }}" name="precioreal[]">
+
                                                 <input type="hidden" value="{{ productos.ordenPromocion }}" name="promocion[]"></td>
                                               <td>{{ productos.comentarios }}
                                                 <input type="hidden" value="{{ productos.comentarios }}" name="comentarios[]"></td>
@@ -188,6 +190,10 @@
 
         {{ form_start(form1, {'attr': {'class': 'pedidos'}}) }}
 
+
+ {{ form_widget(form1.precioreal, {'attr': {'class': 'gui-input precioreal form-control','placeholder':"COMENTARIOS"}}) }}
+
+
       <div class="form-group">
           {{ form_widget(form1.idproducto, {'attr': {'class': 'gui-input producto form-control','placeholder':"COMENTARIOS"}}) }}
 
@@ -216,7 +222,12 @@
 
   <div class="form-group">
   <label>Precio de venta</label>  
-          {{ form_widget(form1.precio, {'attr': {'class': 'gui-input precio','placeholder':"Precio","disabled":"disabled"}}) }}
+          {{ form_widget(form1.precio, {'attr': {'class': 'gui-input precio','placeholder':"Precio"}}) }}
+  </div>
+
+    <div class="form-group">
+  <label>Utilidad</label>  
+          {{ form_widget(form1.utilidad, {'attr': {'class': 'gui-input utilidad','placeholder':"Precio","disabled":"disabled","value":"0"}}) }}
   </div>
 
 <div class="form-group">

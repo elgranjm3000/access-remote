@@ -62,7 +62,13 @@ class DetallesFactura
      */
     private $cantidadactual;
     
-    
+     private $utilidad;
+
+      /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+
+     private $precioreal;
 
     public function getId(): ?int
     {
@@ -173,6 +179,30 @@ class DetallesFactura
     public function setCantidadactual(int $cantidadactual): self
     {
         $this->cantidadactual = $cantidadactual;
+
+        return $this;
+    }
+
+    public function getUtilidad()
+    {
+        return $this->utilidad;
+    }
+
+    public function setUtilidad($utilidad)
+    {
+        $this->utilidad = $utilidad;
+
+        return $this;
+    }
+
+    public function getPrecioreal()
+    {
+        return $this->precioreal;
+    }
+
+    public function setPrecioreal($precioreal)
+    {
+        $this->precioreal = $precioreal;
 
         return $this;
     }

@@ -4,7 +4,7 @@
 
  {% block addcss %}
   <style type="text/css">
-    .precio,.total,.descuento,.promocion,.cantidadactual{
+    .precio,.total,.descuento,.promocion,.cantidadactual,.utilidad{
       color:red !important;
     }
   </style>
@@ -88,7 +88,14 @@ $( "#facturas_forma input:radio" ).click(function() {
             var promocion = $(".promocion").val();
             var comentarios = $(".comentarios").val();
             var porcentaje = $(".descuento").val();
+            var precioreal = $(".precioreal").val();
 
+
+        if (precio == 0 || precio == '')
+            {
+             toastr.error( "Debe ingresar precio valido");
+              return false;
+            }
 
             if (cantidad == 0 || cantidad == '')
             {
@@ -115,7 +122,7 @@ $( "#facturas_forma input:radio" ).click(function() {
                     $(".precio").val()+"<input type='hidden' value='"+precio+"' name='precio[]'>",
                     $(".descuento").val()+"<input type='hidden' value='"+porcentaje+"' name='descuento[]'>",
                     $(".total").val(),
-                    $(".promocion").val()+"<input type='hidden' value='"+promocion+"' name='promocion[]'>"+" "+"<input type='hidden' value='"+total+"' name='total[]'>",
+                    $(".promocion").val()+"<input type='hidden' value='"+promocion+"' name='promocion[]'>"+" "+"<input type='hidden' value='"+total+"' name='total[]'><input type='hidden' value='"+precioreal+"' name='precioreal[]'>",
                     $(".comentarios").val()+"<input type='hidden' value='"+comentarios+"' name='comentarios[]'>",
                      "<button type='button' class='btn btn-simple btn-danger btn-icon remove' title='Cancelar pedido'><span class='fa fa-remove'></span></button>"
                   ] ).draw( false );
@@ -139,12 +146,35 @@ $( "#facturas_forma input:radio" ).click(function() {
 var total = 0;
 var descuento = 0;
 
+$(".precio").change(function() {
+  console.log($(this).val());
+    console.log($(".precioreal").val());
+var precioreal = $(".precioreal").val();
+var precio = $(this).val();
+  if(parseFloat(precio) < parseFloat(precioreal) ){
+    $(this).val('');
+      toastr.error( 'El valor no puede se menor a precio de venta');
+      $(this).focus();
+      return false;
+
+  }else{
+  var total = parseFloat($(".precio").val())*parseFloat($(".cantidad").val());                
+  $(".total").val(total);
+  var suma = parseFloat($(".precioreal").val())+parseFloat($(".precio").val());
+   $(".utilidad").val(suma)
+ }
+ });
+
     $("#detalles_factura_idproducto").change(function() {
        $.get( "{{ path('buscarproducto') }}", { iditems:$(this).val()}).done(function( data ) {
 
             if(data.length>0){ 
               console.log(data);
-                  $(".precio").val(data[0]['precioventa']);         
+
+                  $(".precio").val(data[0]['precioventa']);
+
+                  $(".precioreal").val(data[0]['precioventa']);         
+         
 
                   total = data[0]['precioventa']*$(".cantidad").val();  
                   produccion = data[0]['produccion'];
@@ -152,6 +182,8 @@ var descuento = 0;
                   $(".total").val(total);
                   $(".promocion").val(produccion);
                   $(".cantidadactual").val(cantidadactual);
+                   var suma = parseFloat($(".precioreal").val())+parseFloat($(".precio").val());
+                 $(".utilidad").val(suma)
                  $(".cantidad").change();
               }
               
@@ -204,7 +236,7 @@ var descuento = 0;
             if(data.length == 0){ 
                $(".cantidad").val('');
                     $(".cantidad").focus();
-                toastr.error( "Producto <b>"+ $(".producto option:selected").text()+ '</b> No hay producto disponible');
+                toastr.error( "Producto <b> "+ $(".producto option:selected").text()+ '</b> No hay producto disponible');
                 
               }else{
                 

@@ -74,6 +74,7 @@ class FacturasType extends AbstractType
             ))
             ->add('idclientesrelacion',HiddenType::class)
             ->add('ordenCompra')
+             
             ->add('fecha', DateType::class, array(
     'widget' => 'single_text',
 

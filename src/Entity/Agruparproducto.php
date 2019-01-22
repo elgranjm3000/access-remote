@@ -26,6 +26,11 @@ class Agruparproducto
      */
     private $cantidad;
 
+     /**
+     * @ORM\Column(type="date",nullable=true)
+     */
+    private $ingresofecha;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -58,4 +63,16 @@ class Agruparproducto
    {
       return strval($this->getId());
    }
+
+         public function getIngresofecha(): ?\DateTimeInterface
+         {
+             return $this->ingresofecha;
+         }
+
+         public function setIngresofecha(\DateTimeInterface $ingresofecha): self
+         {
+             $this->ingresofecha = $ingresofecha;
+
+             return $this;
+         }
 }

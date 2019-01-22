@@ -115,6 +115,7 @@ var table = $('.footable').DataTable()
             var promocion = $(".promocion").val();
             var comentarios = $(".comentarios").val();
              var porcentaje = $(".descuento").val();
+            var precioreal = $(".precioreal").val();
 
              if (cantidad == 0 || cantidad == '')
             {
@@ -132,6 +133,11 @@ var table = $('.footable').DataTable()
              toastr.error( "Ingrese valor en porcentaje");
               return false;
             }
+            if (precio == 0 || precio == '')
+            {
+             toastr.error( "Debe ingresar precio valido");
+              return false;
+            }
 
 
 
@@ -141,7 +147,7 @@ var table = $('.footable').DataTable()
                     $(".precio").val()+"<input type='hidden' value='"+precio+"' name='precio[]'>",
                       $(".descuento").val()+"<input type='hidden' value='"+porcentaje+"' name='descuento[]'>",
                     $(".total").val(),
-                    $(".promocion").val()+"<input type='hidden' value='"+promocion+"' name='promocion[]'>"+" "+"<input type='hidden' value='"+total+"' name='total[]'>",
+                    $(".promocion").val()+"<input type='hidden' value='"+promocion+"' name='promocion[]'>"+" "+"<input type='hidden' value='"+total+"' name='total[]'><input type='hidden' value='"+precioreal+"' name='precioreal[]'>",
                     $(".comentarios").val()+"<input type='hidden' value='"+comentarios+"' name='comentarios[]'>",
                      "<button type='button' class='btn btn-simple btn-danger btn-icon remove' title='Cancelar pedido'><span class='fa fa-remove'></span></button>"
                   ] ).draw( false );
@@ -161,9 +167,25 @@ var table = $('.footable').DataTable()
 
 
 
+$(".precio").change(function() {
+  console.log($(this).val());
+    console.log($(".precioreal").val());
+var precioreal = $(".precioreal").val();
+var precio = $(this).val();
+  if(parseFloat(precio) < parseFloat(precioreal) ){
+    $(this).val('');
+      toastr.error( 'El valor no puede se menor a precio de venta');
+      $(this).focus();
+      return false;
 
+  }else{
+  var total = parseFloat($(".precio").val())*parseFloat($(".cantidad").val());                
+  $(".total").val(total);
+  var suma = parseFloat($(".precioreal").val())+parseFloat($(".precio").val());
+   $(".utilidad").val(suma)
+ }
 
-
+     });
 
     $("#detalles_factura_idproducto").change(function() {
        $.get( "{{ path('buscarproducto') }}", { iditems:$(this).val()}).done(function( data ) {
@@ -172,14 +194,17 @@ var table = $('.footable').DataTable()
                   $(".precio").val(data[0]['precioventa']);         
                   produccion = data[0]['produccion'];
                   cantidadactual =  data[0]['disponibilidad'];
+                  $(".precioreal").val(data[0]['precioventa']);         
 
 
                   var total = data[0]['precioventa']*$(".cantidad").val();                
                   $(".total").val(total);
-                  $(".cantidad").change();
+                  
                   $(".promocion").val(produccion);
                   $(".cantidadactual").val(cantidadactual);
-
+                  var suma = parseFloat($(".precioreal").val())+parseFloat($(".precio").val());
+                  $(".utilidad").val(suma)
+                $(".cantidad").change();
               }
               
           });

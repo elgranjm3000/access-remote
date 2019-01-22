@@ -7,11 +7,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Facturas;
 use App\Entity\Productos;
 use App\Entity\Clientes;
+use App\Entity\Agruparproducto;
 use App\Entity\Ingresos;
 use App\Entity\Proveedores;
 use App\Repository\FacturasRepository;
 use App\Entity\DetallesFactura;
 use App\Repository\DetallesFacturaRepository;
+use App\Repository\AgruparproductoRepository;
+
 use App\Repository\ClientesRepository;
 use App\Repository\ProductosRepository;
 use App\Repository\IngresosRepository;
@@ -130,6 +133,16 @@ class ReportesController extends AbstractController
     }
 
 
+/**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS')")
+     * @Route("/reportes/inventarios/alcance", name="inventarioalcance")
+     */
+    public function alcance(AgruparproductoRepository $agruparproductoRepository)
+    {
+        return $this->render('reportes/alcance.html.twig', [
+            'productos' => $agruparproductoRepository->findAll(),
+        ]);
+    }
 
 
 }

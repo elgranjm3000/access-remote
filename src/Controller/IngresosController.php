@@ -42,16 +42,19 @@ class IngresosController extends AbstractController
             $productos = $ingreso->getProductos();
             $cantidadnueva = $ingreso->getCantidad();
             $agrupar = $agruparproductoRepository->findBy(["idproducto"=>$productos]);
-            
+            $birthday = date("Y-m-d"); // I changed this
+
             if(count($agrupar) > 0 ){                
                 foreach ($agrupar as $key) {
                     $actual =  $key->getCantidad();
                     $idagrupar = $key->getId();
                 }
+
                 $post = $this->getDoctrine()->getManager()->getRepository(Agruparproducto::class)->find($idagrupar);
                 $cantidadtotal = $actual + $cantidadnueva;
                 $em = $this->getDoctrine()->getManager();
                 $post->setCantidad($cantidadtotal);
+                $post->setIngresofecha(new \DateTime($birthday)); // setting a new date instance
                 $em->persist($post);
                 $em->flush();
             }else{
@@ -59,6 +62,7 @@ class IngresosController extends AbstractController
                 $agrupar = new Agruparproducto();
                 $agrupar->setIdproducto($ip->getReference(Productos::class,$productos));
                 $agrupar->setCantidad($cantidadnueva);
+                 $post->setIngresofecha(new \DateTime($birthday)); // setting a new date instance
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($agrupar);
                 $em->flush();

@@ -329,6 +329,7 @@ if($factura->getDias() > 0){
                 $lineaproducto->setPrecio($_POST["precio"][$i]);
                 $lineaproducto->setTotal($_POST["total"][$i]);
                 $lineaproducto->setDescuento($_POST["descuento"][$i]);
+                $lineaproducto->setPrecioreal($_POST["precioreal"][$i]);
                 $lineaproducto->setIdproducto($ip->getReference(Productos::class,$_POST["productos"][$i]));
                 $lineaproducto->setIdfactura($ip->getReference(Facturas::class,$idfactura));
                 $em = $this->getDoctrine()->getManager();
@@ -477,6 +478,7 @@ if($factura->getDias() > 0){
                 $lineaproducto->setPrecio($_POST["precio"][$i]);
                 $lineaproducto->setTotal($_POST["total"][$i]);
                 $lineaproducto->setDescuento($_POST["descuento"][$i]);
+                $lineaproducto->setPrecioreal($_POST["precioreal"][$i]);
                 $lineaproducto->setIdproducto($ip->getReference(Productos::class,$_POST["productos"][$i]));
                 $lineaproducto->setIdfactura($ip->getReference(Facturas::class,$factura));
                 $em = $this->getDoctrine()->getManager();

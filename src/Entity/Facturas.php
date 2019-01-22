@@ -91,9 +91,6 @@ class Facturas
      */
     private $tipofactura;
 
-
-    
-
     public function __construct()
     {
         $this->movimientosdepositos = new ArrayCollection();
@@ -361,6 +358,8 @@ class Facturas
 
         return $this;
     }
+
+    
 
    
 }
