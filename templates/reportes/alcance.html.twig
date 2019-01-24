@@ -63,13 +63,15 @@
                 <th>Productos</th>
                 <th>Cobertura</th>
                 <th>Consumo Diario</th>
+                <th>Max</th>
+                 <th>Min</th>
+                 <th>Semaforo</th>
                 
             </tr>
         </thead>
         <tbody>
         {% for producto in productos %}
 
-            <tr>
                   {% set salida = 0 %}
                   {% for productosalida in producto.idproducto.detallesFacturas %}
                       {% set salida = salida + 1 %}
@@ -77,6 +79,41 @@
                   {% set diferencia = date(producto.ingresofecha).diff(date('now')) %}
                   {% set diasRestantes = diferencia.days %}                  
                   {% set existencia = producto.cantidad %}
+                      {% set maximo = 0 %}
+
+                     {% for productosalida in producto.idproducto.detallesFacturas %}
+                      
+                           {% set maximo = max( productosalida.cantidad, maximo) %}
+                     {% endfor %}
+
+
+                      {% set minimo = 99999999999 %}
+
+                     {% for productosalida in producto.idproducto.detallesFacturas %}
+                      
+                           {% set minimo = max( productosalida.cantidad, minimo) %}
+                     {% endfor %}
+                      {% if minimo == 99999999999 %}
+                          {% set minimo = 0 %}
+                      {% endif %}
+
+                       {% if diasRestantes == 0 %}
+                          {% set cobertura = 0 %}                    
+                       {% else %}
+                          {% set cobertura = existencia/diasRestantes %}
+                        {% endif %}
+                {% set semaforo = "" %}
+                {% if cobertura > maximo %}
+                    {% set semaforo = "rojo" %}
+                {% elseif cobertura < minimo %}
+                    {% set semaforo = "amarillo" %}
+                {% else %}
+                    {% set semaforo = "verde" %}
+                {% endif %}
+                      
+
+            <tr>
+                  
                 <td>{{ producto.idproducto.nombre }}</td>
 
                 <td>                  
@@ -97,6 +134,44 @@
                   {% set consumodiario = salida/diasRestantes %}
                     {{ consumodiario|number_format(2, '.', ',') }}
                   {% endif %}
+                 </td>
+                 <td>
+                  {% set maxValue = 0 %}
+
+                     {% for productosalida in producto.idproducto.detallesFacturas %}
+                      
+                           {% set maxValue = max( productosalida.cantidad, maxValue) %}
+                     {% endfor %}
+
+                       
+                       {% if maxValue == 99999999999 %}
+                           {% set maxValue = 0 %}
+                       {% endif %}
+                       {{ maxValue }}
+                 </td>
+
+                  <td>
+                  {% set maxValue = 99999999999 %}
+
+                     {% for productosalida in producto.idproducto.detallesFacturas %}
+                      
+                           {% set maxValue = min( productosalida.cantidad, maxValue) %}
+                     {% endfor %}
+
+                       
+                       {% if maxValue == 99999999999 %}
+                           {% set maxValue = 0 %}
+                       {% endif %}
+                       {{ maxValue }}
+                 </td>
+                 <td>
+                    {% if semaforo == "rojo" %}
+                        <span class="btn btn-danger"></span>
+                    {% elseif semaforo == "amarillo" %}
+                        <span class="btn btn-warning"></span>
+                    {% else %}
+                        <span class="btn btn-success"></span>
+                    {% endif %}
                  </td>
                 
                       </tr>

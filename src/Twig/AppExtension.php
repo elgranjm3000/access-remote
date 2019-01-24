@@ -16,6 +16,8 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use App\Entity\Ingresos;
 use App\Services\NumeroALetras;
+use App\Services\Conectarbase;
+
 
 
 class AppExtension extends AbstractExtension
@@ -35,6 +37,7 @@ class AppExtension extends AbstractExtension
             new TwigFilter('ingresomontos', array($this, 'ingresomontoFilter')),
             new TwigFilter('cobrar', array($this, 'cobrarFilter')),
             new TwigFilter('dias', array($this, 'diaspagadoFilter')),
+            new TwigFilter('maxproducto', array($this, 'maxproductoFilter')),
 
         );
     }
@@ -124,6 +127,8 @@ private $doctrine;
         return $contar;
     }
 
+
+
     public function cobrarFilter($sumar)
     {
 
@@ -153,5 +158,14 @@ private $doctrine;
         $letras = NumeroALetras::convertir($number,'QUETZALES','centimos');
 
         return $letras;
+    }
+
+     public function maxproductoFilter($maximo)
+    {
+
+        //$maximos  = Conectarbase::buscarmaximo($maximo);
+        $maximos = 2;
+
+        return $maximos;
     }
 }
