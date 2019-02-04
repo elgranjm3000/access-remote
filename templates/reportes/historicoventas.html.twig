@@ -7,25 +7,13 @@
 
              <div class="topbar-left">
             <ol class="breadcrumb">
-              <li class="crumb-active"><a href="#">Usuarios</a></li>                            
-              <li class="crumb-trail">Detalles</li>
+              <li class="crumb-active"><a href="{{ path('rolvendedores') }}">Rol vendedores</a></li>                            
+              <li class="crumb-trail">Historicos</li>
             </ol>
           </div>
           
         </header>
-         <header id="topbar" class="ph10">
-          <div class="topbar-left">
-            <ul class="nav nav-list nav-list-topbar pull-left">
-              <li class="active"><a href="{{ path('user_new') }}">Listado de Usuarios</a></li>
-              <li class="active"><a href="{{ path('user_edit', {'id': user.id}) }}">Editar Usuario</a></li>
-              <li>{{ include('user/_delete_form.html.twig') }}</li>
-              
-            </ul>
-          </div>
-         
-        </header>
-          
-          
+                  
       {% endblock %}
 
 {% block body %}
@@ -78,8 +66,42 @@
               </div>
           </div>
       </div>
+   <div class="table-responsive" style="">
+    <h1>Productos vendidos a: <b>{{ datosclientes.nombre }}</b></h1>
+    <table class="table table-bordered mbn footable">
+        <thead>
+            <tr>
+               
+                <th>Productos</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+              {% for empresa in user.clientes if user.clientes %}
+              {% if empresa.id == cliente %}
+              {% for cliente in empresa.facturas %}
+                
+                    {% set suma = 0 %}
+                    {% for sumar in cliente.detallesFacturas %}
+                        <tr>
+                            <td>{{ sumar.idproducto.nombre }}</td>
+                            <td>{{ sumar.cantidad }}</td>
+                            <td>{{ sumar.precio }}</td>
+                            <td>{{ sumar.total }}</td>
+                        </tr>
+                
+                    {% endfor %}
 
+                
+                </tr>
+                {% endfor %}
+                {% endif %}
+              {% endfor %}
+        </tbody>
 
-
-   
+    
+  </table>
+</div>
 {% endblock %}

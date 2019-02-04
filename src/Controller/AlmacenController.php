@@ -26,7 +26,7 @@ class AlmacenController extends AbstractController
     }
 
     /**
-     * @Security("is_granted('ROLE_ADMIN')")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ALMACEN')")
      * @Route("/new", name="almacen_new", methods="GET|POST")
      */
     public function new(Request $request): Response

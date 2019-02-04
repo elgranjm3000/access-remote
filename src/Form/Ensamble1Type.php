@@ -35,6 +35,7 @@ class Ensamble1Type extends AbstractType
             ->add('monto')
             ->add('subtotal')
             
+            
         ;
     }
 

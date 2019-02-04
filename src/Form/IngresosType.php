@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
 
 
 class IngresosType extends AbstractType
@@ -44,7 +45,10 @@ class IngresosType extends AbstractType
             ->add('productos', EntityType::class, array(
     // looks for choices from this entity
     'class' => Productos::class,
-
+'query_builder' => function (EntityRepository $er) {
+        return $er->createQueryBuilder('u')
+            ->orderBy('u.nombre', 'ASC');
+    },
     // uses the User.username property as the visible option string
     'choice_label' => 'nombre',
      'placeholder' => 'Seleccione su producto'
@@ -56,7 +60,10 @@ class IngresosType extends AbstractType
             ->add('proveedor',EntityType::class, array(
     // looks for choices from this entity
     'class' => Proveedores::class,
-
+'query_builder' => function (EntityRepository $er) {
+        return $er->createQueryBuilder('u')
+            ->orderBy('u.nombreEmpresa', 'ASC');
+    },
     // uses the User.username property as the visible option string
     'choice_label' => 'nombreEmpresa',
      'placeholder' => 'Seleccione su proveedor'

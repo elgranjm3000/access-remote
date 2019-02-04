@@ -101,6 +101,21 @@ class Productos
     */
    private $agruparproductos;
 
+ /**
+     * @ORM\Column(type="integer",nullable=true)
+     */
+    private $max;
+
+     /**
+     * @ORM\Column(type="integer",nullable=true)
+     */
+    private $min;
+
+    /**
+     * @ORM\Column(type="float",nullable=true)
+     */
+    private $totalemsable;
+
 
     public function __construct()
     {
@@ -412,6 +427,44 @@ class Productos
 
         return $this;
     }
+
+    public function getMax(): ?int
+    {
+        return $this->max;
+    }
+
+    public function setMax(int $max): self
+    {
+        $this->max = $max;
+
+        return $this;
+    }
+
+    public function getMin(): ?int
+    {
+        return $this->min;
+    }
+
+    public function setMin(int $min): self
+    {
+        $this->min = $min;
+
+        return $this;
+    }
+
+    public function getTotalemsable(): ?float
+    {
+        return $this->totalemsable;
+    }
+
+    public function setTotalemsable(?float $totalemsable): self
+    {
+        $this->totalemsable = $totalemsable;
+
+        return $this;
+    }
+
+
 
 
        

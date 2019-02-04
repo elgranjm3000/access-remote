@@ -7,6 +7,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Facturas;
 use App\Entity\Productos;
 use App\Entity\Clientes;
+use App\Entity\User;
+
 use App\Entity\Agruparproducto;
 use App\Entity\Ingresos;
 use App\Entity\Proveedores;
@@ -17,13 +19,15 @@ use App\Repository\AgruparproductoRepository;
 
 
 use App\Repository\ClientesRepository;
+use App\Repository\User1Repository;
+
 use App\Repository\ProductosRepository;
-use App\Repository\IngresosRepository;
 use App\Repository\ProveedoresRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
+use App\Form\IngresosType;
+use App\Repository\IngresosRepository;
 
 class ReportesController extends AbstractController
 {
@@ -90,7 +94,7 @@ class ReportesController extends AbstractController
     }
 
      /**
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS')")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/reportes/productos", name="reportesproductos")
      */
     public function productos(ProductosRepository $productosRepository)
@@ -137,7 +141,7 @@ class ReportesController extends AbstractController
 
 
 /**
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS')")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/reportes/inventarios/alcance", name="inventarioalcance")
      */
     public function alcance(AgruparproductoRepository $agruparproductoRepository)
@@ -149,7 +153,7 @@ class ReportesController extends AbstractController
 
 
     /**
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS')")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/reportes/movimiento", name="inventariosinmovimiento")
      */
     public function vencimientosproductos(ProductosRepository $productosRepository)
@@ -301,11 +305,115 @@ class ReportesController extends AbstractController
         
     }
 
-    //costo inicial
-    //SELECT sum(ingresos.cantidad) as entrada,MONTH(ingresos.fecha) as mes, YEAR(ingresos.fecha) as anno FROM ingresos GROUP by MONTH(ingresos.fecha) , YEAR(ingresos.fecha)
+    
+      /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS')")
+     * @Route("/rolvendedores", name="rolvendedores")
+     */
+    public function rolvendedores(User1Repository $user1Repository)
+    {
 
-    //costo vendido
-    //SELECT sum(detalles_factura.cantidad) as salidaalmacen, MONTH(ingresos.fecha) as mes, YEAR(ingresos.fecha) as anno FROM ingresos inner join detalles_factura on detalles_factura.idproducto_id = productos_id GROUP by MONTH(ingresos.fecha) , YEAR(ingresos.fecha)
+
+        $em = $this->getDoctrine()->getManager();
+        $RAW_QUERY = 'SELECT year(fecha) as anno FROM facturas GROUP by anno';        
+        $statement = $em->getConnection()->prepare($RAW_QUERY);
+        $statement->execute();
+        $opciones = $statement->fetchAll();
+        return $this->render('reportes/rolvendedor.html.twig', [
+            'opciones' => $opciones,'users' => $user1Repository->findAll(),
+        ]);
+
+        
+    }
+
+
+    /*SELECT facturas.idcliente_id as idcliente, count(facturas.idcliente_id) as ventastotales,clientes.nombre as nombrecliente,year(facturas.fecha) as anno,month(facturas.fecha) as mes,app_users.username,app_users.id as idusuario FROM facturas
+INNER JOIN clientes on clientes.id = facturas.idcliente_id 
+INNER JOIN app_users on clientes.id_usuario_id = app_users.id where year(facturas.fecha) = 2019 and app_users.id = 7
+GROUP by facturas.idcliente_id*/
+
+    /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
+     * @Route("/rolvendedoresjson", name="rolvendedoresjson", methods="GET")
+     */
+    public function rolvendedoresjson()
+    {
+        $generardatos = array();
+        $mesproceso  = $_GET["mes"];
+        $annoproceso = $_GET["anno"];
+        $userproceso = $_GET["user"];
+        $em = $this->getDoctrine()->getManager();
+        $metas = "SELECT IFNULL(sum(montoventas), '0')as totalmetas FROM metas WHERE (year(desde)=$annoproceso and month(desde) = $mesproceso) or  (year(hasta)=$annoproceso and month(hasta) = $mesproceso) and usuario_id = $userproceso";
+         $statement = $em->getConnection()->prepare($metas);
+        $statement->execute();
+        $opciones = $statement->fetchAll();
+        foreach ($opciones as $key) {
+            $metastotal = $key["totalmetas"];
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $RAW_QUERY = "SELECT facturas.idcliente_id as idcliente, count(facturas.idcliente_id) as ventastotales,clientes.nombre as nombrecliente,year(facturas.fecha) as anno,month(facturas.fecha) as mes,app_users.username,app_users.id as idusuario FROM facturas
+INNER JOIN clientes on clientes.id = facturas.idcliente_id 
+INNER JOIN app_users on clientes.id_usuario_id = app_users.id where year(facturas.fecha) = $annoproceso and app_users.id = $userproceso and month(facturas.fecha) = $mesproceso
+GROUP by facturas.idcliente_id";     
+        $statement = $em->getConnection()->prepare($RAW_QUERY);
+        $statement->execute();
+        $opciones = $statement->fetchAll();
+        foreach ($opciones as $key) {
+            $localidad["cliente"] = $key["nombrecliente"];
+
+            if($metastotal == 0){
+                $localidad["metas"] = "No tiene metas cargadas para este plazo";
+            }else{
+                $porcentaje = ($key["ventastotales"]*100)/$metastotal;
+                $english_format_number = number_format($porcentaje, 2, '.', '');
+
+                $localidad["metas"] = $english_format_number." %";
+            }
+            $localidad["idcliente"] = $key["idcliente"];
+            $localidad["idusuario"] = $key["idusuario"];
+
+            $generardatos[] = $localidad;
+
+        }
+        
+        return new JsonResponse($generardatos);
+    }
+
+    /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
+     * @Route("/historico/{idcliente}/{iduser}", name="historico", methods="GET")
+     */
+    public function historico($idcliente,$iduser,User1Repository $user1Repository,ClientesRepository $clientesRepository)
+    {
+        $user = $user1Repository->find($iduser);
+        $datosclientes = $clientesRepository->find($idcliente);
+        
+        return $this->render('reportes/historicoventas.html.twig', [
+            'user' => $user,'cliente' => $idcliente,'datosclientes'=>$datosclientes
+        ]);
+    }
+
+
+    /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')")
+     * @Route("/reportes/vencimiento", name="vencimientofactura")
+     */
+    public function vencimiento(FacturasRepository $facturasRepository)
+    {
+        return $this->render('reportes/vencimiento.html.twig', [
+            'facturas' => $facturasRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')")
+     * @Route("/reportes/productos/vencimiento", name="vencimientoproducto")
+     */
+    public function vencimientoproducto(IngresosRepository $ingresosRepository)
+    {
+        return $this->render('reportes/vencimientoproducto.html.twig', ['ingresos' => $ingresosRepository->findAll()]);
+    }
 
 
 }

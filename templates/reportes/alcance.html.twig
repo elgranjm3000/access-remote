@@ -61,8 +61,8 @@
         <thead>
             <tr>
                 <th>Productos</th>
-                <th>Cobertura</th>
                 <th>Consumo Diario</th>
+                <th>Cobertura en dias</th>
                 <th>Max</th>
                  <th>Min</th>
                  <th>Semaforo</th>
@@ -79,28 +79,16 @@
                   {% set diferencia = date(producto.ingresofecha).diff(date('now')) %}
                   {% set diasRestantes = diferencia.days %}                  
                   {% set existencia = producto.cantidad %}
-                      {% set maximo = 0 %}
+                      {% set maximo = producto.idproducto.max %}
 
-                     {% for productosalida in producto.idproducto.detallesFacturas %}
-                      
-                           {% set maximo = max( productosalida.cantidad, maximo) %}
-                     {% endfor %}
+                      {% set minimo = producto.idproducto.min %}
 
-
-                      {% set minimo = 99999999999 %}
-
-                     {% for productosalida in producto.idproducto.detallesFacturas %}
-                      
-                           {% set minimo = max( productosalida.cantidad, minimo) %}
-                     {% endfor %}
-                      {% if minimo == 99999999999 %}
-                          {% set minimo = 0 %}
-                      {% endif %}
+                   
 
                        {% if diasRestantes == 0 %}
                           {% set cobertura = 0 %}                    
                        {% else %}
-                          {% set cobertura = existencia/diasRestantes %}
+                          {% set cobertura = salida/diasRestantes %}
                         {% endif %}
                 {% set semaforo = "" %}
                 {% if cobertura > maximo %}
@@ -121,7 +109,7 @@
                     {% set cobertura = 0 %}
                     {{ cobertura|number_format(2, '.', ',') }}
                   {% else %}
-                  {% set cobertura = existencia/diasRestantes %}
+                  {% set cobertura = salida/diasRestantes %}
                     {{ cobertura|number_format(2, '.', ',') }}
                   {% endif %}
                  </td>
@@ -131,38 +119,25 @@
                     {% set consumodiario = 0 %}
                     {{ consumodiario|number_format(2, '.', ',') }}
                   {% else %}
-                  {% set consumodiario = salida/diasRestantes %}
+                  {% if cobertura == 0 %}
+                    {% set consumodiario = 0 %}
+                  {% else %}
+                      {% set consumodiario = existencia/cobertura %}
+                  {% endif %}
+
+                     
+
                     {{ consumodiario|number_format(2, '.', ',') }}
                   {% endif %}
                  </td>
                  <td>
-                  {% set maxValue = 0 %}
-
-                     {% for productosalida in producto.idproducto.detallesFacturas %}
-                      
-                           {% set maxValue = max( productosalida.cantidad, maxValue) %}
-                     {% endfor %}
-
-                       
-                       {% if maxValue == 99999999999 %}
-                           {% set maxValue = 0 %}
-                       {% endif %}
-                       {{ maxValue }}
+               
+                       {{ maximo }}
                  </td>
 
                   <td>
-                  {% set maxValue = 99999999999 %}
-
-                     {% for productosalida in producto.idproducto.detallesFacturas %}
-                      
-                           {% set maxValue = min( productosalida.cantidad, maxValue) %}
-                     {% endfor %}
-
-                       
-                       {% if maxValue == 99999999999 %}
-                           {% set maxValue = 0 %}
-                       {% endif %}
-                       {{ maxValue }}
+                
+                       {{ minimo }}
                  </td>
                  <td>
                     {% if semaforo == "rojo" %}

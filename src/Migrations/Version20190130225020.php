@@ -8,14 +8,14 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190122053223 extends AbstractMigration
+final class Version20190130225020 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE agruparproducto ADD ingresofecha DATE DEFAULT NULL');
+        $this->addSql('ALTER TABLE productos CHANGE max max INT DEFAULT NULL, CHANGE min min INT DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -23,6 +23,6 @@ final class Version20190122053223 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE agruparproducto DROP ingresofecha');
+        $this->addSql('ALTER TABLE productos CHANGE max max INT NOT NULL, CHANGE min min INT NOT NULL');
     }
 }

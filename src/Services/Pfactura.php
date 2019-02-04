@@ -7,10 +7,11 @@ class Pfactura extends TCPDF {
 
    //Page header
     public function Header() {
- global $numerofactura, $first_name,$nombres,$idcliente,$direccion,$telefono,$fechavencimiento;
+ global $numerofactura, $first_name,$nombres,$idcliente,$direccion,$telefono,$fechavencimiento,$fecha;
 
 $factura = str_pad($numerofactura, 5, "0", STR_PAD_LEFT);  // produce "-=-=-Alien"
-$fecha = date("d/m/Y");
+
+//$fecha = date("d/m/Y");
        
 $html = <<<EOF
 <style>   

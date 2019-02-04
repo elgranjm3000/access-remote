@@ -12,13 +12,25 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
+use Doctrine\ORM\EntityRepository;
 
 class EnsambleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')                        
+            ->add('nombre', EntityType::class, array(    
+                        'class' => Productos::class,
+                        'choice_label' => 'nombre',
+                        'placeholder' => 'Seleccione un producto',
+                        'query_builder' => function (EntityRepository $er) {
+                            return $er->createQueryBuilder('u')
+                            ->where("u.fechaensamble is NULL")
+                            ->orderBy('u.nombre', 'ASC');
+
+                        },
+                ))         
+            ->add('totalemsable')                        
             ->add('precioVenta')
             ->add('comentarios', CKEditorType::class, array(
                         'config' => array('toolbar' => 'basic'),

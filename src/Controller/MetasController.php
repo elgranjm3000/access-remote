@@ -26,7 +26,7 @@ class MetasController extends AbstractController
 
 
     /**
-    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
+    * @Security("is_granted('ROLE_ADMIN')")
      * @Route("/graficos", name="metas_graficos",  methods="GET|POST")
      */
     public function graficos(User1Repository $user1Repository, FacturasRepository $facturasRepository, Request $request): Response

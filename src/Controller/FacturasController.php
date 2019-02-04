@@ -168,7 +168,7 @@ $pdf->writeHTMLCell($w = 0, $h = 60, $x = '', $y = '', $html, $border = 0, $ln =
 
 
     public function pdfactura($html,$id){
- global $numerofactura, $first_name,$nombres,$idcliente,$direccion,$telefono,$fechavencimiento;
+ global $numerofactura, $first_name,$nombres,$idcliente,$direccion,$telefono,$fechavencimiento,$fecha;
 
    $entityManager = $this->getDoctrine()->getManager();
         $datos = $entityManager->getRepository(Facturas::class)->find($id);
@@ -185,7 +185,7 @@ $pdf->writeHTMLCell($w = 0, $h = 60, $x = '', $y = '', $html, $border = 0, $ln =
     }else{
            $fechavencimiento = date("d/m/Y");
     }
-
+    $fecha = $datos->getFecha()->format('d/m/Y');
 
         //set_time_limit(30); uncomment this line according to your needs
         // If you are not in a controller, retrieve of some way the service container and then retrieve it
@@ -257,7 +257,7 @@ $pdf->writeHTMLCell($w = 0, $h = 60, $x = '', $y = '', $html, $border = 0, $ln =
      */
     public function index(FacturasRepository $facturasRepository): Response
     {
-        return $this->render('facturas/index.html.twig', ['facturas' => $facturasRepository->findByTipofactura("F")]);
+        return $this->render('facturas/index.html.twig', ['facturas' => $facturasRepository->findAll()]);
     }
 
     /**     
@@ -382,7 +382,7 @@ if($factura->getDias() > 0){
     }
 
     /**
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_ADMIN') or is_granted('ROLE_FACTURA')")
      * @Route("/{id}/{cliente}/edit", name="facturas_edit", methods="GET|POST")
      */
     public function edit(Request $request, Facturas $factura,$cliente,AgruparproductoRepository $agruparproductoRepository): Response
@@ -532,7 +532,7 @@ if($factura->getDias() > 0){
      * @Security("has_role('ROLE_ADMIN')")
      * @Route("/delete/{id}", name="facturas_delete", methods="DELETE")
      */
-    public function delete(Request $request, Facturas $factura): Response
+    public function delete(Request $request, Facturas $factura,FacturasRepository $facturasRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$factura->getId(), $request->request->get('_token'))) {
 
@@ -549,11 +549,15 @@ if($factura->getDias() > 0){
         }
      }
     
-
-
+            $factura = $facturasRepository->find($factura);
+            $factura->setTipofactura('A');
             $em = $this->getDoctrine()->getManager();
-            $em->remove($factura);
+            $em->persist($factura);
             $em->flush();
+
+           /* $em = $this->getDoctrine()->getManager();
+            $em->remove($factura);
+            $em->flush();*/
         }
 
         return $this->redirectToRoute('facturas_index');

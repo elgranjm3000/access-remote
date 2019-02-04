@@ -9,7 +9,7 @@
  {{ form_start(form, {'attr': {'id': 'form-ui', 'enctype':'multipart/form-data'}}) }}
                  <div id="spy1" class="section-divider mb40"><span></span></div>
 		        	 <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-4">
                           <div class="section">
                             <label class="field">
                               {{ form_widget(form.nombre, {'attr': {'class': 'gui-input','placeholder':"Nombre de producto"}}) }}
@@ -24,8 +24,26 @@
 
                           </div>
                         </div>
-                      </div>
+                     
 
+
+                      <div class="col-md-2">
+                          <div class="section">
+                            <label class="field">
+                               {{ form_widget(form.max, {'attr': {'class': 'gui-input','placeholder':'Max'}}) }}
+
+                          </div>
+                        </div>
+
+
+                    <div class="col-md-2">
+                          <div class="section">
+                            <label class="field">
+                               {{ form_widget(form.min, {'attr': {'class': 'gui-input','placeholder':'Min'}}) }}
+
+                          </div>
+                        </div>
+                      </div>
 
                       <div class="row">
                       <div class="col-md-3">

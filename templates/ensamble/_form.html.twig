@@ -12,16 +12,24 @@
                         <div class="col-md-8">
                           <div class="section">
                             <label class="field">
-                              {{ form_widget(form.nombre, {'attr': {'class': 'gui-input','placeholder':"Nombre de producto"}}) }}
+                              {{ form_widget(form.nombre, {'attr': {'class': 'producto gui-input','placeholder':"Nombre de producto"}}) }}
 
                             </label>
                           </div>
                         </div>
 
-                         <div class="col-md-4">
+                         <div class="col-md-4" style="display:none">
                           <div class="section">
                             <label class="field"><b>Precio de venta</b>
                                {{ form_widget(form.precioVenta, {'attr': {'class': 'gui-input precioventa','placeholder':'Precio de venta','readonly':'readonly'}}) }}
+
+                          </div>
+                        </div>
+
+                            <div class="col-md-4">
+                          <div class="section">
+                            <label class="field"><b>Total emsables</b>
+                               {{ form_widget(form.totalemsable, {'attr': {'class': 'gui-input totalensambles','placeholder':'Total ensambles'}}) }}
 
                           </div>
                         </div>
@@ -35,12 +43,14 @@
                                 <span class="btn btn-danger cantidadtotales">Total de ensambles: 0</span>
                                 <span class="btn btn-danger costototal">Costo Total de Producto: 0</span>
                                 <span class="btn btn-danger unidad">Costo por unidad: 0</span>
+
+
 <table class="table footable">
   <thead>
       <th>Producto</th>
       <th>Cantidad</th>
-      <th>Precio de venta</th>
-      <th>Sub-Total</th>
+      <th>Costo de producto</th>
+      <th>Costo Total</th>
       <th>Accion</th>
   </thead>
   <tbody>
@@ -86,6 +96,7 @@
  
 
 		        </div>
+        
 {{ form_end(form) }}
 
 

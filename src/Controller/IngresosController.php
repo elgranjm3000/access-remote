@@ -62,7 +62,7 @@ class IngresosController extends AbstractController
                 $agrupar = new Agruparproducto();
                 $agrupar->setIdproducto($ip->getReference(Productos::class,$productos));
                 $agrupar->setCantidad($cantidadnueva);
-                 $post->setIngresofecha(new \DateTime($birthday)); // setting a new date instance
+                 $agrupar->setIngresofecha(new \DateTime($birthday)); // setting a new date instance
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($agrupar);
                 $em->flush();

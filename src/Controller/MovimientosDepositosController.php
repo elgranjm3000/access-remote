@@ -27,7 +27,7 @@ class MovimientosDepositosController extends AbstractController
     }
 
     /**
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN') or is_granted('ROLE_FACTURA')")
      * @Route("/new/{deposito}", name="movimientos_depositos_new", methods="GET|POST")
      */
     public function new(Request $request,$deposito,MovimientosDepositosRepository $movimientosDepositosRepository): Response
@@ -111,7 +111,7 @@ class MovimientosDepositosController extends AbstractController
     }
 
     /**
-      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
+      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN') or is_granted('ROLE_FACTURA')")
      * @Route("/{id}/{deposito}/edit", name="movimientos_depositos_edit", methods="GET|POST")
      */
     public function edit(Request $request, MovimientosDepositos $movimientosDeposito,$deposito,MovimientosDepositosRepository $movimientosDepositosRepository): Response

@@ -56,51 +56,81 @@
 </div>
 </div>
 <br>#}
-<div class="table-responsive">
-    <table class="table table-bordered mbn facturas">
+
+<form class="form-control">
+      
+            <div id="spy1" class="section-divider mb40"><span></span></div>
+               <div class="row">
+                        <div class="col-md-4 text-center">
+                          <div class="section">
+                            <label class="field">
+{% set nav = {
+    enero:      { title: "Enero",value:"1"},
+    febrero:    { title: "Febrero",value:"2"},
+    marzo:      { title: "Marzo",value:"3"},
+    abril:      { title: "Abril",value:"4"},
+    mayo:       { title: "Mayo",value:"5"},
+    junio:      { title: "Junio",value:"6"},
+    julio:      { title: "Julio",value:"7"},
+    agosto:     { title: "Agosto",value:"8"},
+    septiembre: { title: "Septiembre",value:"9"},
+    octubre:    { title: "Octubre",value:"10"},
+    noviembre:  { title: "Noviembre",value:"11"},
+    diciembre:  { title: "Diciembre",value:"12"},
+
+} %}
+
+
+ 
+                                <select class="form-control" name="mes" id="mesproceso">
+                                  <option value="" >Seleccione mes</option>
+                                    {% for item in nav %}                    
+                                      <option value="{{ item.value }}">{{ item.title }}</option>
+                                    {% endfor %}
+                              </select>
+                            </label>
+                          </div>
+                        </div>
+
+                         <div class="col-md-4 text-center">
+                          <div class="section">
+                            <label class="field">
+                              <select class="form-control" name="anno" id="annoproceso">
+                                  <option value="">Seleccione año</option>
+                                    {% for opcione in opciones %}
+                                      <option value="{{ opcione.anno }}">{{ opcione.anno }}</option>
+                                  {% endfor %}
+                              </select>
+                              </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-8 text-center">
+                        <div class="section">
+                            <input type="button" name="aceptar" value="Buscar" class="btn btn-success buscar">
+                          </div>
+                        </div>
+                      </div>
+        
+      
+
+</form>
+
+<div class="table-responsive" style="margin-top:150px">
+    <table class="table table-bordered mbn almacen">
         <thead>
             <tr>
-                <th>Productos</th>
-                <th>Precios Asignado</th>                
-                <th>Familia</th>                                
-                <th>Existencia</th>
+               <th>#</th>
+                <th>Rotacion</th>
+                <th>Inventario</th>
+                
+                
             </tr>
         </thead>
         <tbody>
-        {% for producto in productos %}
-
-            <tr>
-         
-                <td>{{ producto.nombre }}</td>
-                <td>Q{{ producto.precioVenta }}</td>                
-                <td>
-                  {% if producto.idfamilia != NULL %}
-                          {{ producto.idfamilia.nombre }}
-                  {% else %}
-                      Ensamblado
-                  {% endif %}                
-                </td>
-                <td>
-                    {% set existente = 0 %}
-                    {% for existencia in producto.agruparproductos %}
-                        {% set existente = existente + existencia.cantidad %}
-                    {% endfor %}
-                    {{ existente }}
-                </td>
-                      </tr>
-                
-      
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
         </tbody>
-        <tfoot>
-            <tr>
-               <th><h4>Totales de productos: <span class="totales"></span> </h4></th>
-            </tr>
-        </tfoot>
+
     
   </table>
 </div>
@@ -117,7 +147,75 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script type="text/javascript">
           jQuery(document).ready(function () {
+$('.almacen').DataTable({
+                    "order": [[ 0, "asc" ]]
+                  });
 
+ $(".buscar").click(function() {
+
+             var mes =  $("#mesproceso").val();
+            var anno =  $("#annoproceso").val();
+
+            console.log(mes);
+            console.log(anno);
+       $.get( "{{ path('rotacionjson') }}", { mes:mes,anno:anno}).done(function( data ) {
+
+            if(data.length>0){ 
+                  console.log(data[0]['inicial']);
+                  var final = (data[0]['inicial']+data[0]['costofinal'])/2;
+                  var indicador = data[0]['vendidos']/final;
+                  if (isNaN(final) == true){
+                     final = 0;
+                  }
+
+                  if (isNaN(indicador) == true){
+                     indicador = 0;
+                  }
+                   var t = $('.almacen').DataTable();
+                  var counter = 1;
+                  t
+                  .clear()
+                  .draw();
+                  t.row.add( [
+                  '1' ,
+                  'Costo Inicial',
+                  "Q "+data[0]['inicial']
+                  
+                  ] ).draw( false );
+
+                  t.row.add( [
+                  '2' ,
+                 'Costo del producto que se vendio',
+                  "Q "+data[0]['vendidos']
+                  ] ).draw( false );
+
+
+
+                  t.row.add( [
+                  '3' ,
+                 'Costo Final que se encuenta el almacen',
+                  "Q "+data[0]['costofinal']
+                  ] ).draw( false );
+
+                   t.row.add( [
+                  '4' ,
+                 'Inventario Promedio',
+                  "Q "+final
+                  ] ).draw( false );
+
+                    t.row.add( [
+                  '5' ,
+                 'Indicador rotacion de inventario',
+                  "Q "+indicador
+                  ] ).draw( false );
+
+              }
+              
+          });
+
+
+       
+    });
 
 
 $('.facturas').DataTable({
@@ -239,7 +337,7 @@ $('.facturas').DataTable({
   
 }
 /*se la llama a los 10 segundos*/
-setInterval(funcAvisa,1000);
+//setInterval(funcAvisa,1000);
 
    });
 

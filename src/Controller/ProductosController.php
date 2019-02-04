@@ -48,7 +48,7 @@ class ProductosController extends AbstractController
                 $generardatos[] = $localidad;
         }
          
-        
+        //sleep(2);
         return new JsonResponse($generardatos);
         
         
@@ -63,7 +63,7 @@ class ProductosController extends AbstractController
       
         $entityManager = $this->getDoctrine();     
         $tareas = $entityManager->getRepository(Productos::class)->find($_GET['iditems']);
-        $localidad['precioventa'] =   $tareas->getprecioVenta();   
+        $localidad['precioventa'] =   $tareas->getCosto();   
         $localidad['produccion'] = $tareas->getId();  
         foreach ($tareas->getAgruparproductos() as $key ) {
                    $localidad['disponibilidad'] = $key->getCantidad();

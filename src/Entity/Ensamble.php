@@ -33,6 +33,8 @@ class Ensamble
      */
     private $monto;
 
+
+    
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Productos", inversedBy="emsablesaddproductos")
      */

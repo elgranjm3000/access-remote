@@ -19,6 +19,8 @@ class ProductosType extends AbstractType
     {
         $builder
             ->add('nombre')
+            ->add('max')
+            ->add('min')
             ->add('idmedidas', EntityType::class, array(
     // looks for choices from this entity
     'class' => Medidas::class,

@@ -67,7 +67,7 @@ var descuento = 0;
 
 
 
-      $(".cantidad").change(function() {
+      $(".cantidad").blur(function() {
 
           var producto =  $("#ensamble1_idproducto").val();
           var cantidad = $(this).val();
@@ -81,13 +81,15 @@ var descuento = 0;
                $(".cantidad").val('');
                     $(".cantidad").focus();
                 toastr.error( "Producto <b>"+ $(".producto option:selected").text()+ '</b> No hay producto disponible');
+                return false;
                 
               }else{
                 
                   if(cantidad > data[0]['cantidad']){
                     $(".cantidad").val('');
                     $(".cantidad").focus();
-                    toastr.error( "Debe colocar una cantidad menor a "+ data[0]['cantidad']);
+                  toastr.error( "Debe colocar una cantidad menor a "+ data[0]['cantidad']);
+                  return false;
                     
                   }
               }
@@ -97,7 +99,23 @@ var descuento = 0;
 
     });
 
-      $( ".ingresar" ).click(function() {
+        $( ".totalensambles" ).blur(function() {
+var datossuma =  table.column( 3 ).data().sum();
+  var cantidad = $(".totalensambles").val();//table.column(1).data().sum();
+  console.log(cantidad);
+  $(".cantidadtotales").html("total de ensamble:  "+cantidad);
+  $(".costototal").html("Costo Total de Producto:  "+datossuma);
+  var unidad = datossuma/cantidad;
+   $(".unidad").html("Costo por unidad:  "+unidad.toFixed(2));
+
+  var precio = datossuma/table.column( 1 ).data().sum()
+  console.log(precio);
+    $(".precioventa").val(precio.toFixed(2));
+          });
+
+$( ".ingresar" ).click(function() {
+                         $(".cantidad").blur();
+
           var t = $('.footable').DataTable();
 
             var productos =  $(".producto").val();
@@ -105,8 +123,17 @@ var descuento = 0;
             var precio = $(".monto").val();
             var total = $(".subtotal").val();
             
+            if(cantidad == ""){
+                toastr.error( "Debe colocar una cantidad");
+                  return false;
+            }
+            if(productos == ""){
+                toastr.error( "Seleccione un producto");
+                  return false;
+            }
 
-                   t.row.add( [
+          
+                     t.row.add( [
                   $(".producto option:selected").text()+"<input type='hidden' value='"+productos+"' name='productos[]'><input type='hidden' value='"+total+"' name='subtotal[]'>",
                   $(".cantidad").val(),
                   $(".monto").val()+"<input type='hidden' value='"+precio+"' name='precio[]'><input type='hidden' value='"+cantidad+"' name='cantidad[]'>",
@@ -119,7 +146,7 @@ var descuento = 0;
                    $(".ensamble")[0].reset();
 
   var datossuma =  table.column( 3 ).data().sum();
-  var cantidad = table.column(1).data().sum();
+  var cantidad = $(".totalensambles").val();//table.column(1).data().sum();
   console.log(cantidad);
   $(".cantidadtotales").html("total de ensamble:  "+cantidad);
   $(".costototal").html("Costo Total de Producto:  "+datossuma);
@@ -129,8 +156,6 @@ var descuento = 0;
   var precio = datossuma/table.column( 1 ).data().sum()
   console.log(precio);
     $(".precioventa").val(precio.toFixed(2));  
-
-
           });
 
 
@@ -152,7 +177,7 @@ var descuento = 0;
 
 
       var datossuma =  table.column( 3 ).data().sum();
-  var cantidad = table.column(1).data().sum();
+  var cantidad = $(".totalensambles").val();//table.column(1).data().sum();
   console.log(cantidad);
   $(".cantidadtotales").html("total de ensamble:  "+cantidad);
   $(".costototal").html("Costo Total de Producto:  "+datossuma);

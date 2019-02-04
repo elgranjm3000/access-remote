@@ -44,6 +44,21 @@
  {% block addscript %}
  <script type="text/javascript">
 jQuery(document).ready(function () {
+
+$( "#form-ui" ).submit(function( event ) {
+
+      var costo = $("#productos_costo").val();
+      var precioventa = $( "#productos_precioVenta" ).val();
+      if (costo>precioventa){
+          $("#productos_precioVenta").val('');
+          $("#productos_precioVenta").focus();
+           toastr.error( "El costo es mayor que el precio de ventas.",'Sistema de inventario');
+          return false;
+      }
+      $( "#form-ui" ).submit();
+  event.preventDefault();
+});
+  
    $('.filearchivo').removeAttr("required");
     {% if is_granted('ROLE_ALMACEN') %}
         $("#productos_costo").prop('readonly', true);

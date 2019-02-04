@@ -78,9 +78,9 @@
                 <td>{{ producto.idfamilia.nombre }}</td>
                 {% if is_granted('ROLE_FACTURA') or is_granted('ROLE_ALMACEN')%}
                 {% else %}
-                <td>{{ producto.costo }}</td>
+                <td>Q{{ producto.costo|number_format(2, '.', ',') }}</td>
                 {% endif %}
-                <td>{{ producto.precioVenta }}</td>                
+                <td>Q{{ producto.precioVenta|number_format(2, '.', ',') }}</td>                
                 <td>{{ producto.cantidadPresentacion }}</td>
                 <td> 
 {% if producto.brochure == "" %} 

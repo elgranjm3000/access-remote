@@ -18,7 +18,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class ClientesController extends AbstractController
 {
     /**     
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS')")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS') or is_granted('ROLE_ALMACEN')")
      * @Route("/", name="clientes_index", methods="GET")
      */
     public function index(ClientesRepository $clientesRepository): Response
@@ -27,7 +27,7 @@ class ClientesController extends AbstractController
     }
 
     /**    
-    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')")
+    * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA') or is_granted('ROLE_ALMACEN')")
      * @Route("/new", name="clientes_new", methods="GET|POST")
      */
     public function new(Request $request): Response

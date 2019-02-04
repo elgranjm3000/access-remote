@@ -62,7 +62,8 @@ class SecurityController extends AbstractController
 
     if ($authChecker->isGranted('ROLE_ALMACEN') ) {
         
-            return $this->redirectToRoute('metas_graficos');
+            //return $this->redirectToRoute('metas_graficos');
+        return $this->redirectToRoute('clientes_index');
   
     }
   if ($authChecker->isGranted('ROLE_ADMIN')) {

@@ -67,9 +67,15 @@
             </tr>
         </thead>
         <tbody>
-        {% for factura in facturas %}
-            <tr>                
-                <td style="color:red">{{ "%08d" | format(factura.numfactura) }} </td>
+        {% for factura in facturas if factura.tipofactura == 'F' or factura.tipofactura == 'A' %}
+            <tr {% if factura.tipofactura == 'A' %} style="background-color:red; color:white" {% endif %}>                
+              <td {% if factura.tipofactura == 'F' %} style="color:red" {% endif %}>
+                {% if factura.tipofactura == 'A' %}
+                  ANULADA
+                {% else %}
+                {{ "%08d" | format(factura.numfactura) }} 
+                {% endif %}
+              </td>
                 <td>{{ factura.serie }}</td>
                 <td>{{ factura.reciboCaja }}</td>
                 <td>
@@ -83,9 +89,13 @@
                 <td>{{ factura.comentarios|raw }}</td>
                 <td>{{ factura.detallesFacturas|ingresomontos }} </td>
                 <td>
+                   {% if factura.tipofactura == 'A' %}
+                    ANULADA
+                   {% else %}
                     <a title="Detalles" href="{{ path('facturas_show', {'id': factura.id}) }}"><span class="glyphicon glyphicon-search"></span></a>
                     <a title="Editar Factura" href="{{ path('facturas_edit', {'id': factura.id,'cliente':factura.idcliente.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
                     <a title="Crear deposito" href="{{ path('movimientos_depositos_new', {'deposito': factura.id}) }}"><span class="fa fa-file"></span></a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
