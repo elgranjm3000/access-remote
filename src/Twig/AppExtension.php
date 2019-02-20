@@ -38,6 +38,7 @@ class AppExtension extends AbstractExtension
             new TwigFilter('cobrar', array($this, 'cobrarFilter')),
             new TwigFilter('dias', array($this, 'diaspagadoFilter')),
             new TwigFilter('maxproducto', array($this, 'maxproductoFilter')),
+            new TwigFilter('arrayunique', array($this, 'arrayunique')),
 
         );
     }
@@ -167,5 +168,11 @@ private $doctrine;
         $maximos = 2;
 
         return $maximos;
+    }
+
+     public function arrayunique($array){
+        
+        $result  = array_unique($array);
+        return $result;
     }
 }

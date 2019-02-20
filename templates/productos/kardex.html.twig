@@ -1,0 +1,370 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Productos{% endblock %}
+
+
+
+{% block header %}
+
+        <header id="topbar" class="ph10">
+
+             <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="#">Productos</a></li>                            
+              <li class="crumb-trail">Kardex</li>
+            </ol>
+          </div>
+          
+        </header>
+         
+          
+          
+{% endblock %}
+{% block body %}
+{% for message in app.flashes('notice') %}
+  
+
+
+                <div class="alert alert-danger alert-dismissable">
+                  <button type="button" data-dismiss="alert" aria-hidden="true" class="close"></button><i class="fa fa-remove pr10"></i><a href="#" class="alert-link">{{ message }}</a> 
+                </div>
+    
+{% endfor %}
+   <section id="content" class="table-layout animated fadeIn">
+          <!-- begin: .tray-left-->
+        
+          <!-- begin: .tray-center-->
+          <div class="tray tray-center">
+            <!-- Panel with: Basic Footable-->
+          
+            <!-- Panel with: Data Filter-->
+     
+            <!-- Panel with: Pagination-->
+            <div id="spy3" class="panel">
+             
+              <div class="panel-body pn">
+
+                {#<div class="row">
+                  <div class="container">
+                    <div class="col-md-4">
+                      <h4>Busqueda por rango de fecha</h4>
+                <label>Desde</label>
+                <input type="text" id="min" name="min" class="form-control js-datepickertable">
+                <label>Hasta</label>
+                <input type="text" id="max" name="max" class="form-control js-datepickertable">
+</div>
+</div>
+</div>
+<br>#}
+
+<form class="form-control">
+      
+            <div id="spy1" class="section-divider mb40"><span></span></div>
+               <div class="row">
+                        <div class="col-md-8">
+                          <div class="section">
+                            <label class="field">
+{% set nav = {
+    enero:      { title: "Enero",value:"1"},
+    febrero:    { title: "Febrero",value:"2"},
+    marzo:      { title: "Marzo",value:"3"},
+    abril:      { title: "Abril",value:"4"},
+    mayo:       { title: "Mayo",value:"5"},
+    junio:      { title: "Junio",value:"6"},
+    julio:      { title: "Julio",value:"7"},
+    agosto:     { title: "Agosto",value:"8"},
+    septiembre: { title: "Septiembre",value:"9"},
+    octubre:    { title: "Octubre",value:"10"},
+    noviembre:  { title: "Noviembre",value:"11"},
+    diciembre:  { title: "Diciembre",value:"12"},
+
+} %}
+
+
+                         
+                            </label>
+                          </div>
+                        </div>
+
+                         
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                         <div class="form-group">
+                            <label>Producto</label>
+                                <select class="form-control producto" name="mes" id="producto">
+                                  <option value="" >Seleccione producto</option>
+                                    {% for item in productos %}                    
+                                      <option value="{{ item.id }}">{{ item.nombre }}</option>
+                                    {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                        <div class="col-md-8">
+                          <label>
+                              Desde
+                          </label>
+                            <input type="text" name="desde" id="desde" class="form-control 
+                            js-datepicker">
+                            <label>
+                              Hasta
+                          </label>
+                            <input type="text" name="hasta" id="hasta" class="form-control js-datepicker">
+                        </div>
+                          <div class="col-md-12">
+                        <div class="section">
+                            <input type="button" name="aceptar" value="Buscar" class="btn btn-success buscar">
+                          </div>
+                        </div>
+                      </div>
+        
+      
+
+</form>
+
+<div class="table-responsive" style="margin-top:250px">
+    <table class="table table-bordered mbn almacen">
+        <thead>
+            <tr>
+               <th>ID</th>
+               <th>Nro de movimiento</th>
+               <th>Fecha de Movimiento</th>
+               <th>Tipo</th>
+               <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5"><H3>Total cantidad: <b><span class="totales">0</span></b></H3></td>
+            </tr>
+        </tfoot>
+
+    
+  </table>
+</div>
+    </div>
+</div>
+</div>
+</section>
+{% endblock %}
+
+
+    {% block addscript %}
+    
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript">
+          jQuery(document).ready(function () {
+                $('.almacen').DataTable({
+                    "order": [[ 2, "asc" ]],
+                    dom: 'Bfrtip',
+        buttons: [
+      
+            { 
+              extend: 'excelHtml5', 
+              footer: true,
+               attr: { 
+                  'class': 'btn btn-success',
+                },
+                text:'Excel',
+                exportOptions: {
+                    columns: ':visible',
+                    search: 'applied',
+                    order: 'applied'
+              }
+
+             },
+            
+
+            
+
+        ]
+                  });
+
+ $(".buscar").click(function() {
+
+             var producto =  $("#producto").val();
+             var desde =  $("#desde").val();
+             var hasta =  $("#hasta").val();
+
+            if(producto == "")
+            {
+                toastr.error( "Seleccione un producto");
+                return false;
+            }
+            if(desde == ""){
+                toastr.error( "Indique la fecha inicial");
+                return false;
+            }
+            if(hasta == ""){
+                toastr.error( "Indique la fecha final");
+                return false;
+            }
+
+            console.log(producto);
+            
+       $.get( "{{ path('kardexproceso') }}", { producto:producto,desde:desde,hasta:hasta }).done(function( data ) {
+
+              var t = $('.almacen').DataTable();
+                  var counter = 1;
+                  t
+                  .clear()
+                  .draw();
+                 $('.totales').html(0);
+            if(data.length>0){ 
+                    for(i = 0; i < data.length; i++){
+                       // console.log(data[i]['cantidad'])
+
+                               t.row.add( [
+                                data[i]['id'],
+                                data[i]['movimiento'],
+                                data[i]['fecha'],
+                                data[i]['tipo'],
+                                data[i]['cantidad'],
+                                ] ).draw( false );
+
+                     //funcAvisa();
+                      
+                  }
+                        var datossuma =  t.column(4).data().sum();
+                       console.log(datossuma);
+                       $('.totales').html(datossuma);
+              }
+              
+          });
+
+
+       
+    });
+
+
+$('.facturas').DataTable({
+
+   "order": [[ 0, "desc" ]],
+ "iDisplayLength": 1000,
+           "bLengthChange":false,
+                  "bFilter":true,
+                  "bInfo":false,
+                  "bAutoWidth":false,
+
+
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        },
+        initComplete: function () {
+            
+
+             
+              var div=$('.dataTables_wrapper');
+
+         
+          div.find(".dataTables_filter").append('<br><label>Productos<select id="idfamilia"><option value=""></option></select></label>');
+            this.api().column(2).each(function () {
+                var column = this;
+                console.log(column);
+                $('#idfamilia').on('change',function(){
+                var val=$(this).val();
+                console.log(val);
+                column.search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                });
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    $("#idfamilia").append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+
+            });
+
+          
+        },
+
+         dom: 'Bfrtip',
+        buttons: [
+            {
+
+
+                extend: 'pdfHtml5',
+                attr: { 
+                  'class': 'btn btn-success',
+                },
+                text:'Imprimir PDF',
+                //orientation: 'landscape',
+                //pageSize: 'LEGAL',
+                exportOptions: {
+            columns: ':visible',
+            search: 'applied',
+            order: 'applied'
+          },
+                 download: 'open',
+                 footer: true
+                
+            },
+
+            { 
+              extend: 'excelHtml5', 
+              footer: true,
+               attr: { 
+                  'class': 'btn btn-success',
+                },
+                text:'Excel',
+                exportOptions: {
+                    columns: ':visible',
+                    search: 'applied',
+                    order: 'applied'
+              }
+
+             },
+            {
+              extend: 'colvis',
+                collectionLayout: 'fixed two-column',
+                 attr: { 
+                  'class': 'btn btn-success',
+                },
+                text:'Selecciona columnas'
+            },
+
+            
+
+        ]
+
+
+
+    });
+
+
+  var table = $('.facturas').DataTable();
+
+    //$(".totales").html(datossuma.toFixed(2));
+
+
+
+
+      function funcAvisa(){
+        var totalmonto = 0;
+ var t = $('.almacen').DataTable();
+   t
+    .column( 1 , {page:'current'})
+    .data()
+    .each( function ( value, index ) {
+      totalmonto = value;
+       // console.log( 'Data in index: '+index+' is: '+value );
+       console.log(value);
+    } );
+
+    //console.log(totalmonto);
+    $(".totales").html(totalmonto.toFixed(0));
+
+  
+}
+/*se la llama a los 10 segundos*/
+//setInterval(funcAvisa,1000);
+
+   });
+
+
+
+
+    </script>
+    {% endblock %}

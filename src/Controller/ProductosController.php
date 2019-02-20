@@ -28,6 +28,56 @@ class ProductosController extends AbstractController
 
 
 
+    /**
+     * @Route("/kardex", name="kardex")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_ALMACEN')")
+     */
+    public function kardex(ProductosRepository $productosRepository)
+    {
+        return $this->render('productos/kardex.html.twig', [
+            'productos' => $productosRepository->findAll(),
+        ]);
+    }
+    /**
+    
+     * @Route("/kardexproceso", name="kardexproceso")
+     */
+    public function kardexproceso()
+    {
+
+ 
+
+        $productos = $_GET["producto"];
+        $desde = $_GET["desde"];
+        $hasta = $_GET["hasta"];
+        $generardatos = array();
+         $sql = "SELECT ingresos.id as id, ('N/A') as movimiento, productos.nombre,ingresos.cantidad as cantidad, ingresos.fecha, ('+') as simbolo,('INGRESO') AS tipo FROM productos 
+INNER JOIN ingresos on productos.id = ingresos.productos_id WHERE productos.id = '$productos' and ingresos.fecha between '$desde' and '$hasta' UNION 
+(SELECT detalles_factura.id as id, facturas.numfactura as movimiento,productos.nombre,detalles_factura.cantidad as cantidad, facturas.fecha, ('-') as simbolo, ('FACTURA') AS tipo FROM productos 
+INNER JOIN detalles_factura on productos.id = detalles_factura.idproducto_id
+INNER JOIN facturas on facturas.id = detalles_factura.idfactura_id
+WHERE productos.id = '$productos' AND facturas.tipofactura = 'F' and facturas.fecha between '$desde' and '$hasta')  
+ORDER BY fecha ASC";   
+
+        $stmt = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+
+          foreach ($result as  $value) {
+                $localidad['nombre']     =  $value["nombre"];  
+                $localidad['cantidad']   =  $value["simbolo"].''.$value["cantidad"];  
+                $localidad['fecha']      =  date("d/m/Y", strtotime($value["fecha"]));  
+                $localidad['simbolo']    =  $value["simbolo"];  
+                $localidad['id']         =  $value["id"];
+                $localidad['movimiento'] =  $value["movimiento"];
+                $localidad['tipo']       =  $value["tipo"];
+
+                $generardatos[] = $localidad;
+        }
+         
+        //sleep(2);
+        return new JsonResponse($generardatos);
+    }
 
     /**
     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_ALMACEN')")
@@ -63,7 +113,7 @@ class ProductosController extends AbstractController
       
         $entityManager = $this->getDoctrine();     
         $tareas = $entityManager->getRepository(Productos::class)->find($_GET['iditems']);
-        $localidad['precioventa'] =   $tareas->getCosto();   
+        $localidad['precioventa'] =   $tareas->getPrecioVenta();   
         $localidad['produccion'] = $tareas->getId();  
         foreach ($tareas->getAgruparproductos() as $key ) {
                    $localidad['disponibilidad'] = $key->getCantidad();
@@ -365,4 +415,19 @@ class ProductosController extends AbstractController
         // uniqid(), which is based on timestamps
         return md5(uniqid());
     }
+
+
+    
+
+
+    /*
+        SELECT productos.nombre,ingresos.cantidad as ingresos, ingresos.fecha, ("+") as simbolo FROM productos 
+INNER JOIN ingresos on productos.id = productos.id WHERE productos.id = "13" UNION 
+(SELECT productos.nombre,detalles_factura.cantidad as salida, facturas.fecha, ("-") as simbolo FROM productos 
+INNER JOIN detalles_factura on productos.id = detalles_factura.idproducto_id
+INNER JOIN facturas on facturas.id = detalles_factura.idfactura_id
+WHERE productos.id = "13" AND facturas.tipofactura = 'F' )  
+ORDER BY `fecha` ASC
+    */
 }
+

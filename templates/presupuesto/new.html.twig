@@ -56,12 +56,33 @@
 <script type="text/javascript">
       jQuery(document).ready(function (){
 
+        $(".precio").change(function() {
+  console.log($(this).val());
+    console.log($(".precioreal").val());
+var precioreal = $(".precioreal").val();
+var precio = $(this).val();
+  if(parseFloat(precio) < parseFloat(precioreal) ){
+    $(this).val('');
+      toastr.error( 'El valor no puede se menor a precio de venta');
+      $(this).focus();
+      return false;
+
+  }else{
+  var total = parseFloat($(".precio").val())*parseFloat($(".cantidad").val());                
+  $(".total").val(total);
+  var suma = parseFloat($(".precioreal").val())+parseFloat($(".precio").val());
+   $(".utilidad").val(suma)
+ }
+
+     });
+
 $('#facturas_dias').removeAttr('required');
 $('#facturas_ordenCompra').removeAttr('required');
 $('#facturas_reciboCaja').removeAttr('required');
 $("#facturas_dias").hide();
 $("#facturas_ordenCompra").hide();
 $('#facturas_reciboCaja').hide();
+
 
 $( "#facturas_forma input:radio" ).click(function() {
     if($(this).val() == "CR"){
@@ -139,7 +160,7 @@ $( "#facturas_forma input:radio" ).click(function() {
 var total = 0;
 var descuento = 0;
 
-    $("#detalles_factura_idproducto").change(function() {
+    $("#detalles_factura1_idproducto").change(function() {
        $.get( "{{ path('buscarproducto') }}", { iditems:$(this).val()}).done(function( data ) {
 
             if(data.length>0){ 

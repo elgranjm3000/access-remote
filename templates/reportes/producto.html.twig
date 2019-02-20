@@ -60,6 +60,7 @@
     <table class="table table-bordered mbn facturas">
         <thead>
             <tr>
+               <th width="30px">ID</th>
                 <th>Productos</th>
                 <th>Precios Asignado</th>                
                 <th>Familia</th>                                
@@ -70,7 +71,7 @@
         {% for producto in productos %}
 
             <tr>
-         
+                <td>{{ producto.id }}</td>
                 <td>{{ producto.nombre }}</td>
                 <td>Q{{ producto.precioVenta }}</td>                
                 <td>
@@ -122,7 +123,7 @@
 
 $('.facturas').DataTable({
 
-   "order": [[ 0, "desc" ]],
+   "order": [[ 3, "desc" ]],
  "iDisplayLength": 1000,
            "bLengthChange":false,
                   "bFilter":true,
@@ -141,7 +142,7 @@ $('.facturas').DataTable({
 
          
           div.find(".dataTables_filter").append('<br><label>Productos<select id="idfamilia"><option value=""></option></select></label>');
-            this.api().column(2).each(function () {
+            this.api().column(1).each(function () {
                 var column = this;
                 console.log(column);
                 $('#idfamilia').on('change',function(){

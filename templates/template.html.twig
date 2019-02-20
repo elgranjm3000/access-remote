@@ -200,6 +200,12 @@
                   <a href="{{ path('vencimientoproducto') }}">
                     <span class="glyphicon glyphicon-modal-window"></span>Rol de Almacen</a>
                 </li>
+
+
+                <li>
+                  <a href="{{ path('kardex') }}">
+                    <span class="glyphicon glyphicon-modal-window"></span>Kardex</a>
+                </li>
            
               </ul>
                </li>
@@ -249,13 +255,13 @@
 
 
 
-  {% if is_granted('ROLE_ADMIN') %}
+  
     <li><a title="Descuentos" href="{{ path('descuento_index') }}" ><span class="fa fa-percent" aria-hidden="true"></span><span class="sidebar-title">Descuentos</span><span class="caret"></span></a>           </li>
 
                 <li><a title="Movimientos" href="{{ path('movimientos_depositos_index') }}" ><span class=" fa fa-plus-square-o" aria-hidden="true"></span><span class="sidebar-title">Depositos</span><span class="caret"></span></a>
               
                 </li>
-      {% endif %}   
+  
 
 {#                <li><a title="Clientes" href="{{ path('inventario') }}" ><span class=" fa fa-plus-square-o" aria-hidden="true"></span><span class="sidebar-title">Control de Inventario</span><span class="caret"></span></a>
               

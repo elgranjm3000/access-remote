@@ -64,8 +64,8 @@ $( "#form-ui" ).submit(function( event ) {
 
    $('.filearchivo').removeAttr("required");
     {% if is_granted('ROLE_ALMACEN') %}
-        $("#productos_costo").prop('readonly', true);
-        $("#productos_precioVenta").prop('readonly', true);
+       /* $("#productos_costo").prop('readonly', true);
+        $"#productos_precioVenta").prop('readonly', true);*/
         
 
     {% endif %}

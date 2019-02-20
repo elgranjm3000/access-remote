@@ -16,11 +16,8 @@ use App\Repository\FacturasRepository;
 use App\Entity\DetallesFactura;
 use App\Repository\DetallesFacturaRepository;
 use App\Repository\AgruparproductoRepository;
-
-
 use App\Repository\ClientesRepository;
 use App\Repository\User1Repository;
-
 use App\Repository\ProductosRepository;
 use App\Repository\ProveedoresRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -58,10 +55,11 @@ class ReportesController extends AbstractController
      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ALMACEN')")
      * @Route("/reportes/inventarios", name="reportesinventario")
      */
-    public function inventarios(DetallesFacturaRepository $detallesFacturaRepository)
+    public function inventarios(DetallesFacturaRepository $detallesFacturaRepository,AgruparproductoRepository $agruparproductoRepository)
     {
         return $this->render('reportes/inventario.html.twig', [
             'detalles_facturas' => $detallesFacturaRepository->findAll(),
+            'productos' => $agruparproductoRepository->findAll()
         ]);
     }
 
@@ -99,6 +97,7 @@ class ReportesController extends AbstractController
      */
     public function productos(ProductosRepository $productosRepository)
     {
+        
         return $this->render('reportes/producto.html.twig', [
             'productos' => $productosRepository->findAll(),
         ]);
@@ -307,7 +306,7 @@ class ReportesController extends AbstractController
 
     
       /**
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS')")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')  or is_granted('ROLE_VENTAS')  or is_granted('ROLE_ALMACEN')")
      * @Route("/rolvendedores", name="rolvendedores")
      */
     public function rolvendedores(User1Repository $user1Repository)
@@ -396,7 +395,7 @@ GROUP by facturas.idcliente_id";
 
 
     /**
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA') or is_granted('ROLE_ALMACEN')")
      * @Route("/reportes/vencimiento", name="vencimientofactura")
      */
     public function vencimiento(FacturasRepository $facturasRepository)
@@ -407,7 +406,7 @@ GROUP by facturas.idcliente_id";
     }
 
     /**
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA')")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_FACTURA') or is_granted('ROLE_ALMACEN')")
      * @Route("/reportes/productos/vencimiento", name="vencimientoproducto")
      */
     public function vencimientoproducto(IngresosRepository $ingresosRepository)

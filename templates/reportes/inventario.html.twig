@@ -67,11 +67,12 @@
                 <th>SALIDA</th>                                           
                 <th>FECHA</th>
                 <th>EXISTENCIA</th>   
-                <th>COSTO EXTENDIDO</th>       
+                <th>COSTO EXTENDIDO</th>     
+                <th>UBICACION</th>  
             </tr>
         </thead>
         <tbody>
-        {% for detalles_factura in detalles_facturas %}
+       {#{% for detalles_factura in detalles_facturas %}
             <tr>
          
                 <td>{{ "%08d" | format(detalles_factura.idproducto.id) }}</td>
@@ -83,9 +84,41 @@
                 <td>{% set existencia = detalles_factura.cantidadactual-detalles_factura.cantidad %}
                   {{ existencia }}
                 </td>
-                <td>{{ existencia-detalles_factura.idproducto.costo }}</td>
+                {#<td>{{ existencia-detalles_factura.idproducto.costo }}</td>#}
+              {#<td>{{ existencia*detalles_factura.idproducto.costo }}</td> </tr>#}
+        {% for producto in productos %}
+            {% set totalingresos = 0 %}
+             {% set array = [] %}
 
+            {% for ingresos in producto.idproducto.ingresos %}
+                  {% set totalingresos = totalingresos + ingresos.cantidad %}
+                  {% set array = array|merge([ ingresos.Almacen.nombre ]) %}
+            {% endfor %}
+            {% set totalsalida = 0 %}
+             {% for salidas in producto.idproducto.detallesFacturas  %}
+                  {% if salidas.idfactura.tipofactura == "F" %}
+                    {% set totalsalida = totalsalida + salidas.cantidad %}
+                  {% endif %}
+            {% endfor %}
+            {% set existencia = producto.cantidad %}
+            {% set costoextendido = existencia*producto.idproducto.costo %}
 
+            <tr>
+                <td>{{ producto.id }}</td>
+                <td>{{ producto.idproducto.nombre }}</td>
+                <td>{{ producto.idproducto.costo }}</td>
+                <td>{{ totalingresos }}</td>
+                <td>{{ totalsalida }}</td>
+                <td>{{ producto.ingresofecha ? producto.ingresofecha|date('d/m/Y') : ''  }}</td>
+                <td>{{ existencia }}</td>
+                <td>{{ costoextendido }}</td>
+                <dl>
+                <td>
+                     {% for valor in array|arrayunique() %}
+                         <dd>{{ valor }}</dd>
+                    {% endfor %}
+                </td>
+              </dl>
             </tr>
         {% else %}
             <tr>

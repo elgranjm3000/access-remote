@@ -73,6 +73,7 @@
         </thead>
         <tbody>
         {% for detalles_factura in detalles_facturas %}
+        {% if detalles_factura.idfactura.tipofactura == 'F' %}
             <tr>
          
                 <td>{{ "%08d" | format(detalles_factura.idfactura.numfactura) }}</td>
@@ -85,6 +86,7 @@
                 <td>{{detalles_factura.idfactura.fecha ? detalles_factura.idfactura.fecha|date('d/m/Y') : ''  }}</td>
                 
             </tr>
+            {% endif %}
         {% else %}
             <tr>
                 <td colspan="6">no records found</td>

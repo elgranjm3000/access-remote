@@ -63,7 +63,7 @@ class ClientesController extends AbstractController
     }
 
     /**    
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_VENTAS')")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_VENTAS') or is_granted('ROLE_FACTURA') or is_granted('ROLE_ALMACEN')")
      * @Route("/{id}/edit", name="clientes_edit", methods="GET|POST")
      */
     public function edit(Request $request, Clientes $cliente): Response

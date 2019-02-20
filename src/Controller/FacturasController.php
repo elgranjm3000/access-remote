@@ -10,6 +10,7 @@ use App\Entity\Productos;
 use App\Entity\DetallesFactura;
 use App\Form\FacturasType;
 use App\Form\DetallesFacturaType;
+use App\Form\DetallesFactura1Type;
 use App\Form\PresupuestoType;
 use App\Repository\FacturasRepository;
 use App\Repository\AgruparproductoRepository;
@@ -572,7 +573,7 @@ if($factura->getDias() > 0){
     {
 
         $productos = new DetallesFactura();
-        $form1 = $this->createForm(DetallesFacturaType::class, $productos);
+        $form1 = $this->createForm(DetallesFactura1Type::class, $productos);
         $form1->handleRequest($request);
 
 
@@ -664,7 +665,7 @@ if($factura->getDias() > 0){
       
 
            $productos = new DetallesFactura();
-        $form1 = $this->createForm(DetallesFacturaType::class, $productos);
+        $form1 = $this->createForm(DetallesFactura1Type::class, $productos);
         $form1->handleRequest($request);
         $form = $this->createForm(PresupuestoType::class, $factura);
         $form->handleRequest($request);
